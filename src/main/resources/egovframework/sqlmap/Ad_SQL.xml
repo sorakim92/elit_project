@@ -4,6 +4,6 @@
 <sqlMap namespace="ad_space" >
 
 <typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
-<typeAlias  alias="adVO" type="egov.service1.adVO"/>
+<typeAlias  alias="adVO" type="egov.service1.AdVO"/>
 
 </sqlMap>
