@@ -2,10 +2,13 @@
 # Created by https://www.toptal.com/developers/gitignore/api/windows,macos,java,eclipse
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,macos,java,eclipse
 
-### Maven ###
-target/m2e-wtp/web-resources/META-INF/maven/1/elit/pom.properties
-target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+### java ###
+pom.properties
+### maven metadata.... ? ###
+MANIFEST.MF
 
+### maven ###
+target/
 
 ### Eclipse ###
 .metadata
