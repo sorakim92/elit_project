@@ -8,6 +8,6 @@ import egov.service1.StoreService;
 
 @Service("storeService")
 public class StoreImpl implements StoreService{
-	@Resource(name = "StoreDAO")
+	@Resource(name = "storeDAO")
 	StoreDAO storeDAO;
 }

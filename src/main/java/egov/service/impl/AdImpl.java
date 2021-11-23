@@ -9,7 +9,7 @@ import egov.service1.AdService;
 @Service("adService")
 public class AdImpl implements AdService{
 
-		@Resource(name = "adrejectDAO")
-		AdRejectDAO adrejectDAO;
+		@Resource(name = "adDAO")
+		AdDAO adDAO;
 	
 }

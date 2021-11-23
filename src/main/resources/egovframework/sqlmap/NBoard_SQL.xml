@@ -4,4 +4,25 @@
 <sqlMap namespace = "nboard_space">
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="nboardVO" type="egov.service1.NBoardVO"/>
+
+
+	<select id="nboardDAO.selectNboardList" resultClass="egovMap">
+		SELECT b.* FROM (
+			SELECT rownum rn, a.* from (
+				SELECT 	unq, 
+						title,
+						hits,
+						to_char(rdate,'yyyy/mm/dd')rdate,
+						content,
+						sort
+				FROM 	nboard
+				WHERE 	title IS NOT NULL
+				ORDER BY unq)a	)b 
+	</select>
+
+
+
+
+
 </sqlMap>
+

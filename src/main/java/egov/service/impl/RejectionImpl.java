@@ -9,6 +9,6 @@ import egov.service1.RejectionService;
 @Service("rejectionService")
 public class RejectionImpl implements RejectionService{
 		@Resource(name = "rejectionDAO")
-		RejectionDAO RejectionDAO;
+		RejectionDAO rejectionDAO;
 
 }

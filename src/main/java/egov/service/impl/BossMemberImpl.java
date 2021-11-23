@@ -8,6 +8,6 @@ import egov.service1.BossMemberService;
 
 @Service("bossMemberService")
 public class BossMemberImpl implements BossMemberService{
-	@Resource(name = "BossMemberDAO")
+	@Resource(name = "bossmemberDAO")
 	BossMemberDAO bossmemberDAO;
 }
