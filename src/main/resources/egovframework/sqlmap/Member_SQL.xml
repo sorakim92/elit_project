@@ -5,4 +5,33 @@
 <sqlMap namespace = "member_space">
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="memberVO" type="egov.service1.MemberVO"/>
+
+	<insert id="memberDAO.insertMember">
+		INSERT INTO member (
+			userid,
+			userpw,
+			reuserpw,
+			username,
+			email,
+			userphone,
+			useraddr1,
+			useraddr2,
+			useraddr3,
+			business) VALUES (
+			
+			#userid#,
+			#userpw#,
+			#reuserpw#,
+			#username#,
+			#email#,
+			#userphone#,
+			#useraddr1#,
+			#useraddr2#,
+			#useraddr3#,
+			#business#
+			)
+
+	</insert>
+	
+	
 </sqlMap>

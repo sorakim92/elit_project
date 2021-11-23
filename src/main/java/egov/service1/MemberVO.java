@@ -4,18 +4,78 @@ public class MemberVO {
 
 	private String userid;
 	private String userpw;
+	private String reuserpw;
 	private String username;
 	private String email;
 	private String userphone;
 	private String useraddr1;
 	private String useraddr2;
 	private String useraddr3;
+	private String useraddr4;
+	private String useraddr5;
+	private String useraddr6;
+	private String useraddr7;
+	private String useraddr8;
+	private String useraddr9;
 	private String storelongitude;
 	private String storelatitude;
 	private String business;
 	private String rdate;
+
 	
+	@Override
+	public String toString() {
+		return "MemberVO [userid=" + userid + ", userpw=" + userpw + ", reuserpw=" + reuserpw + ", username=" + username
+				+ ", email=" + email + ", userphone=" + userphone + ", useraddr1=" + useraddr1 + ", useraddr2="
+				+ useraddr2 + ", useraddr3=" + useraddr3 + ", useraddr4=" + useraddr4 + ", useraddr5=" + useraddr5
+				+ ", useraddr6=" + useraddr6 + ", useraddr7=" + useraddr7 + ", useraddr8=" + useraddr8 + ", useraddr9="
+				+ useraddr9 + ", storelongitude=" + storelongitude + ", storelatitude=" + storelatitude + ", business="
+				+ business + ", rdate=" + rdate + "]";
+	}
 	
+	public String getReuserpw() {
+		return reuserpw;
+	}
+	public void setReuserpw(String reuserpw) {
+		this.reuserpw = reuserpw;
+	}
+	public String getUseraddr4() {
+		return useraddr4;
+	}
+	public void setUseraddr4(String useraddr4) {
+		this.useraddr4 = useraddr4;
+	}
+	public String getUseraddr5() {
+		return useraddr5;
+	}
+	public void setUseraddr5(String useraddr5) {
+		this.useraddr5 = useraddr5;
+	}
+	public String getUseraddr6() {
+		return useraddr6;
+	}
+	public void setUseraddr6(String useraddr6) {
+		this.useraddr6 = useraddr6;
+	}
+	public String getUseraddr7() {
+		return useraddr7;
+	}
+	public void setUseraddr7(String useraddr7) {
+		this.useraddr7 = useraddr7;
+	}
+	public String getUseraddr8() {
+		return useraddr8;
+	}
+	public void setUseraddr8(String useraddr8) {
+		this.useraddr8 = useraddr8;
+	}
+	public String getUseraddr9() {
+		return useraddr9;
+	}
+	public void setUseraddr9(String useraddr9) {
+		this.useraddr9 = useraddr9;
+	}
+
 	public String getUserid() {
 		return userid;
 	}
