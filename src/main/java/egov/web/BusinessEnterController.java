@@ -8,6 +8,6 @@ import egov.service1.BusinessEnterService;
 
 @Controller
 public class BusinessEnterController {
-	@Resource(name = "BusinessEnterService")
+	@Resource(name = "businessEnterService")
 	BusinessEnterService businessenterService;
 }

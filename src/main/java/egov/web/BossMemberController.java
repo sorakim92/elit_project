@@ -8,6 +8,6 @@ import egov.service1.BossMemberService;
 
 @Controller
 public class BossMemberController {
-	@Resource(name = "BossMemberService")
+	@Resource(name = "bossMemberService")
 	BossMemberService bossmemberService;
 }
