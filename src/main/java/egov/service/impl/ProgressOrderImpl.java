@@ -9,6 +9,6 @@ import egov.service1.ProgressOrderService;
 @Service("progressorderService")
 public class ProgressOrderImpl implements ProgressOrderService{
 
-		@Resource(name = "ProgressOrderDAO")
+		@Resource(name = "progressorderDAO")
 		ProgressOrderDAO progressorderDAO;
 }

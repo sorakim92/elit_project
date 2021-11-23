@@ -9,7 +9,7 @@ import egov.service1.BusinessEnterService;
 @Service("businessEnterService")
 public class BusinessEnterImpl implements BusinessEnterService{
 
-	@Resource(name = "BusinessEnterDAO")
+	@Resource(name = "businessenterDAO")
 	BusinessEnterDAO businessenterDAO;
 	
 }

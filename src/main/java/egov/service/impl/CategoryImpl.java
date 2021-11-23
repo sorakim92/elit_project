@@ -8,7 +8,7 @@ import egov.service1.CategoryService;
 
 @Service("categoryService")
 public class CategoryImpl implements CategoryService{
-	@Resource(name = "CategoryDAO")
+	@Resource(name = "categoryDAO")
 	CategoryDAO categoryDAO;
 
 }

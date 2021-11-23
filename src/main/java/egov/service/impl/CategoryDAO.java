@@ -4,7 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
 
-@Repository("categotyDAO")
+@Repository("categoryDAO")
 public class CategoryDAO extends EgovAbstractDAO{
 
 }
