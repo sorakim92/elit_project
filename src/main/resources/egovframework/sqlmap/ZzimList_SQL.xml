@@ -5,4 +5,20 @@
 <sqlMap namespace = "zzimlist_space">
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="zzimlistVO" type="egov.service1.ZzimListVO"/>
+	
+	<insert id="zzimlistDAO.insertZzimList">
+	<![CDATA[
+	INSERT INTO ZzimList(zzimindex,
+						 rdate,
+						 userid,
+						 storeunq,
+						 
+			   VALUES  ( zzimlist_seq.nextval,
+			   			 sysdate,
+						 #userid#,
+						 #storeunq#,
+						
+		]]>			
+	</insert>
+	
 </sqlMap>

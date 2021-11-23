@@ -6,6 +6,7 @@ public class ZzimListVO {
 	private String rdate;
 	private String userid;
 	private int storeunq;
+	
 	public int getZzimindex() {
 		return zzimindex;
 	}
