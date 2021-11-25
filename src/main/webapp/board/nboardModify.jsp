@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>공지사항 글쓰기</title>
+    <title>공지사항 수정하기</title>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
@@ -152,9 +152,34 @@ section {
 <script>
 
 $(function(){
-
-	/* 공지사항 글쓰기에서 저장 버튼 클릭시 */
-	$("#btn_save").click(function(){
+	
+	/* 삭제버튼 클릭시  */
+	$("#btn_del").click(function(){
+		if(confirm("해당글을 삭제하시겠습니까?") == true) {
+			var formdata = $("#frm").serialize();
+			$.ajax({
+				type : "post",
+				url  : "nBoardDelete.do",
+				data : formdata,
+				
+				datatype : "text",
+				success  : function(data) {
+					if(data == "ok") {
+						alert("삭제성공");
+						location="nBoardList.do";
+					} else {
+						alert("삭제 실패");
+					}
+					
+				},
+				error :	function() {
+					alert("오류발생");
+				}
+			})
+		}
+	})
+	/* 수정  버튼 클릭시 */
+	$("#btn_modi").click(function(){
 		
 		if($("#title").val() == "" ) {
 			alert("제목을 입력해주세요.");
@@ -170,17 +195,17 @@ $(function(){
   		var formdata = $("#frm").serialize();
   		$.ajax({
   			type : "post",
-  			url  : "nboardWriteSave.do",
+  			url  : "nboardModifySave.do",
   			data : formdata,
   			
   			datatype : "text",  //성공여부 ( ok )
   			success : function(data) {
   				
   				if(data == "ok") {
-  					alert("저장성공");
+  					alert("수정저장성공");
   					location="nBoardList.do";
   				}else {
-  					alert("저장실패");
+  					alert("수정실패");
   				}
   				
   			},
@@ -226,7 +251,7 @@ $(function(){
         <div style="width:100%; height:auto; padding:10px;  margin: -40px;">
             <div style="width:70%; text-align: left; margin-left:40px;
                         font-family: jua; float:left;">
-                공지사항 글쓰기
+                공지사항 수정
             </div>
         </div>
         
@@ -234,6 +259,7 @@ $(function(){
                     float:left; margin-top: 10px;">
                     
         <form name="frm" id="frm">
+        <input type="hidden" name="unq" id="unq" value="${vo.unq }" >
         <table style="width:100%;" class="table table-hover">
             <colgroup>
                 <col width="15%" />
@@ -242,19 +268,21 @@ $(function(){
             <tr>
                 <th class="">제목</th>
                 <td class="" style="text-align:left;">
-                    <input type="text" name="title" id="title" class="bd_input1" autofocus>
+                    <input type="text" name="title" id="title" 
+                    	value="${vo.title }" class="bd_input1" autofocus>
                 </td>
             </tr>
             <tr>
                 <th class="">글쓴이</th>
                 <td class="" style="text-align:left;">	
-                	<input type="text" name="name" id="name" value="관리자">
+                	<input type="text" name="name" id="name" 
+                		value="관리자">
                 </td>
             </tr>
             <tr>
                 <th class="">내용</th>
                 <td class="" style="text-align:left;">
-                    <textarea name="content" id="content" class="bd_textarea"></textarea>
+                    <textarea name="content" id="content" class="bd_textarea">${vo.content }</textarea>
                 </td>
             </tr>
         </table>
@@ -273,11 +301,15 @@ $(function(){
                 style="border-color: #f8cacc; color: black;"
                 onclick="location.href='nBoardList.do'";
                 >
-            목록</button>
+         		   목록</button>
         <button type="button" class="btn btn-outline-warning" 
-        		id="btn_save" 
+        		id="btn_modi" 
                 style="border-color: #f8cacc;background-color: #f8cacc; color: black;">
-            저장</button>
+          		  수정</button>
+        <button type="button" class="btn btn-outline-warning" 
+        		id="btn_del"
+           style="border-color: #f8cacc; color: black;">
+       			삭제</button>
     </div>
     
 
