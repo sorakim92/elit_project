@@ -18,4 +18,29 @@ public class NBoardImpl implements NBoardService{
 	public List<?> selectNboardList(NBoardVO vo) throws Exception {
 		return nboardDAO.selectNboardList(vo);
 	}
+
+	@Override
+	public String insertnboardWrite(NBoardVO vo) throws Exception {
+		return nboardDAO.insertnboardWrite(vo);
+	}
+
+	@Override
+	public NBoardVO selectnboardDetail(NBoardVO vo) throws Exception {
+		return nboardDAO.selectnboardDetail(vo);
+	}
+
+	@Override
+	public int updatenboard(NBoardVO vo) throws Exception {
+		return nboardDAO.updatenboard(vo);
+	}
+
+	@Override
+	public int deletenboard(NBoardVO vo) throws Exception {
+		return nboardDAO.deletenboard(vo);
+	}
+
+	@Override
+	public int updatenboardHits(NBoardVO vo) throws Exception {
+		return nboardDAO.updatenboardHits(vo);
+	}
 }

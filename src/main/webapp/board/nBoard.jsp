@@ -58,13 +58,7 @@ nav {
     height: 50px; 
     float : left;
 }
-.search {
-    width: 500px;
-    height: 50px;
-    float : left;
-    margin: 20px 0 0 0;
-    text-align: right;
-}
+
 .login {
     width: 150px;
     height: 50px;
@@ -86,9 +80,7 @@ section {
 	width:100%;
     height:100px;
 	background-color:#ccc;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    clear:both;
 }
 .ft_ul {
     width:100%;

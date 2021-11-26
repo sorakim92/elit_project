@@ -17,11 +17,11 @@
 <style>
 @font-face {
     font-family: "hanna";
-    src: url("../fonts/BMHANNAAir_otf.otf")format("opentype");
+    src: url("../fonts/BMHANNAAir_otf.otf");
 }
 @font-face {
     font-family: "jua";
-    src: url("../fonts/BMJUA_otf.otf")format("opentype");
+    src: url("../fonts/BMJUA_otf.otf");
 }
 html{
     height: 100%;
@@ -83,7 +83,8 @@ section {
 	width:100%;
     height:100px;
 	background-color:#ccc;
-     clear:both;
+ 
+    clear:both;
 }
 .ft_ul {
     width:100%;
@@ -153,46 +154,10 @@ section {
 
 $(function(){
 
-	/* 공지사항 글쓰기에서 저장 버튼 클릭시 */
-	$("#btn_save").click(function(){
-		
-		if($("#title").val() == "" ) {
-			alert("제목을 입력해주세요.");
-			("#title").focus();
-			return false;
-		}
-		if($("#content").val() == "" ) {
-			alert("내용을 입력해주세요.");
-			("#content").focus();
-			return false;
-		}
-		
-  		var formdata = $("#frm").serialize();
-  		$.ajax({
-  			type : "post",
-  			url  : "nboardWriteSave.do",
-  			data : formdata,
-  			
-  			datatype : "text",  //성공여부 ( ok )
-  			success : function(data) {
-  				
-  				if(data == "ok") {
-  					alert("저장성공");
-  					location="nBoardList.do";
-  				}else {
-  					alert("저장실패");
-  				}
-  				
-  			},
-  			error  : function() {
-					alert("오류발생");
-  			}
-  			
-  		});
-		
-		
-		
+	$("#btn_modi").click(function(){
+		location.href="nboardModify.do?unq=${vo.unq}";
 	})
+	
 	
 })
 
@@ -226,61 +191,76 @@ $(function(){
         <div style="width:100%; height:auto; padding:10px;  margin: -40px;">
             <div style="width:70%; text-align: left; margin-left:40px;
                         font-family: jua; float:left;">
-                공지사항 글쓰기
+                공지사항
             </div>
         </div>
         
-        <div style="width:100%; height:500px; border:1px solid #ccc; 
-                    float:left; margin-top: 10px;">
-                    
-        <form name="frm" id="frm">
-        <table style="width:100%;" class="table table-hover">
-            <colgroup>
-                <col width="15%" />
-                <col width="*" />
-            </colgroup>
-            <tr>
-                <th class="">제목</th>
-                <td class="" style="text-align:left;">
-                    <input type="text" name="title" id="title" class="bd_input1" autofocus>
-                </td>
-            </tr>
-            <tr>
-                <th class="">글쓴이</th>
-                <td class="" style="text-align:left;">	
-                	<input type="text" name="name" id="name" value="관리자">
-                </td>
-            </tr>
-            <tr>
-                <th class="">내용</th>
-                <td class="" style="text-align:left;">
-                    <textarea name="content" id="content" class="bd_textarea"></textarea>
-                </td>
-            </tr>
-        </table>
-		</form>
-        </div>
+	                    
+	      <div style="width:100%; min-height:500px; border:1px solid #ccc; 
+	                    float:left; margin-top: 10px;">
+	        <table style="width:100%; border-bottom:1px solid #ccc;" 
+	        		class="table table-hover">
+	            <colgroup>
+	                <col width="*" />
+	                <col width="15%" />
+	                <col width="10%" />
+	            </colgroup>
+	            
+	            <tr>
+	                <td>${vo.title} </td>
+	                <td>${vo.rdate }</td>
+	                <td>${vo.hits }</td>
+	            </tr>
+	         </table>
+	           
+           	<div style="width:98%; height:auto; text-align:left; 
+           			padding:30px;">
+               ${vo.content }
+            </div>
+	        </div>
 
 
     </section>
     <!-- 글쓰기 버튼부분 (관리자)-->
 
-    <div class="" style=" width: 100%;
+    <div class="" style=" width: 100%; float:left;
     height: 50px;
     margin: 20px 50px 0 0;
-    text-align: right;">
+    text-align: left;">
         <button type="button" class="btn btn-outline-warning" 
                 style="border-color: #f8cacc; color: black;"
                 onclick="location.href='nBoardList.do'";
                 >
             목록</button>
-        <button type="button" class="btn btn-outline-warning" 
-        		id="btn_save" 
+           <!--  관리자로 로그인시만.. -->
+         <button type="button" class="btn btn-outline-warning" 
+        		id="btn_modi" 
                 style="border-color: #f8cacc;background-color: #f8cacc; color: black;">
-            저장</button>
+            수정</button>
     </div>
-    
-
+   
+              
+    <div style="width:100%; height:auto; 
+    				float:left;">
+      <table style="width:100%; " 
+      		class="table table-hover">
+          <colgroup>
+				<col width="10%" />
+            	<col width="*" />
+          </colgroup>
+          	<tr>
+          		<td>이전글</td>
+          		<td></td>
+          	</tr>
+          	<tr>
+          		<td>다음글</td>
+          		<td></td>
+          	</tr>
+	   </table>
+	 </div>    
+	 
+	 
+	 
 </div>
     <footer>
           <%@include file = "../include/main_footer.jsp" %>

@@ -16,13 +16,65 @@
 						content,
 						sort
 				FROM 	nboard
-				WHERE 	title IS NOT NULL
-				ORDER BY unq)a	)b 
+				WHERE 	title IS NOT NULL and sort = 'N'
+				<isNotNull property="s_text">
+					<isNotEmpty property="s_text">
+					and $s_field$ LIKE '%$s_text$%'
+					</isNotEmpty>
+				</isNotNull>
+				ORDER BY udate DESC)a	)b 
 	</select>
+	
+	<select id="nboardDAO.selectnboardDetail" resultClass="NBoardVO">
+		SELECT 	unq, 
+				title,
+				hits,
+				to_char(rdate,'yyyy/mm/dd')rdate,
+				content
+		FROM nboard 
+		WHERE unq = #unq#
+	
+	</select>
+	
+	
+	<insert id="nboardDAO.insertnboardWrite">
+		INSERT INTO nboard(	unq,
+							title,
+							rdate,
+							udate,
+							content,
+							sort) 
+					VALUES(	nboard_seq.nextval,
+							#title#,
+							sysdate,
+							sysdate,
+							#content#,
+							'N')
+
+	</insert>
 
 
-
-
+	<update id="nboardDAO.updatenboard">
+		UPDATE nboard 
+			SET 
+				title=#title#,
+				content=#content#,
+				udate = sysdate
+		WHERE unq = #unq#
+	</update>
+	
+	<update id="nboardDAO.updatenboardHits">
+		UPDATE nboard
+			SET hits= hits+1
+		WHERE unq = #unq#
+	
+	</update>
+	
+	<delete id="nboardDAO.deletenboard">
+	
+		DELETE FROM nboard WHERE unq = #unq#
+	
+	</delete>
 
 </sqlMap>
 
