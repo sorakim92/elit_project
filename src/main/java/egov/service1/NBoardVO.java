@@ -9,8 +9,22 @@ public class NBoardVO {
 	private String content;
 	private String sort;
 	
+	String s_field;
+	String s_text;
 	
 	
+	public String getS_field() {
+		return s_field;
+	}
+	public void setS_field(String s_field) {
+		this.s_field = s_field;
+	}
+	public String getS_text() {
+		return s_text;
+	}
+	public void setS_text(String s_text) {
+		this.s_text = s_text;
+	}
 	public int getUnq() {
 		return unq;
 	}
