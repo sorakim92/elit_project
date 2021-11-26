@@ -1,8 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
 
-
 <sqlMap namespace = "inquiry_space">
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="inquiryVO" type="egov.service1.InquiryVO"/>
+	
+	<insert id="inquiryDAO.insertInquiry">
+		<![CDATA[
+			INSERT INTO inquiry( title,
+								 content,
+								 files,
+							  	 hits,
+								 rdate,
+								 inquiryindex,
+								 userid )
+					VALUES  ( inquiry_seq.nextval,
+								 #title#,
+								 #content#,
+								 #files#,
+							  	 #hits#,
+								 sysdate,
+								 #inquiryindex#,
+								 #userid# )
+								
+		]]>
+	</insert>
+	
+	<select id="inquiryDAO.selectInquiryList">
+	
+	
+	</select>
+	
 </sqlMap>
