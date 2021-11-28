@@ -62,9 +62,9 @@ nav {
 }
 
 .login {
-    width: 150px;
+    width: 70px;
     height: 50px;
-    float: left;
+    float: right;
     margin: 20px 50px 0 0;
     text-align: right;
 }
