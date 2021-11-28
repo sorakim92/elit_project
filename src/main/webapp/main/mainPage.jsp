@@ -198,6 +198,18 @@ section {
     padding-right:10px;
 }
 </style>
+
+<script>
+
+$(function(){
+	
+	$("#current_loc").click(function(){
+		
+	})
+	
+})
+
+</script>
 <body>
 <div class="wrapper">
     <div class="main" style="min-height: 100%; padding-bottom:100px; flex:1;">
@@ -212,7 +224,8 @@ section {
     <section>
         <div class="div_addr">
             <input type="text" name="" id="" class="" style="width:400px; height:30px;"> 
-            <img src="" width="10px"; height="10px" alt="위치설정아이콘">
+            <img id="current_loc" src="<c:url value='/img/currentLoc.png'/>" width="20px" height="20px" alt="위치설정아이콘">
+           
         </div>
     <!-- 카테고리 -->
     <article class="article1">
