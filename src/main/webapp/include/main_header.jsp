@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div class="logo">
+<div class="logo" style=" cursor: pointer;" onclick="location.href='mainPage.do';">
     <img src="<c:url value='/img/logo.png'/>" width="200px" height="100px" alt="로고"/>
 </div>
 

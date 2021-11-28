@@ -2,8 +2,30 @@
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
 
 <sqlMap namespace = "category_space">
-<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="answerVO" type="egov.service1.AnswerVO"/>
 
+
+	<select id="categoryDAO.selectKRfoodList" resultClass="egovMap">
+		
+		SELECT b.* FROM (
+			SELECT rownum rn, a.* FROM (
+				SELECT 	storeunq,
+						cateunq,
+						storename,
+						storeinfo,
+						storeopentime,
+						storeclosetime,
+						storeclosedays,
+						storephone,
+						storeaddr,
+						storerate,
+						decode(fee,'0','무료',fee) fee
+				FROM 	store
+				WHERE 	cateunq = '111'
+				ORDER BY	storerate DESC )a) b
+				
+			
+	</select>
 
 </sqlMap>

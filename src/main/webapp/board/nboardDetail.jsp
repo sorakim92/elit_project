@@ -171,7 +171,7 @@ $(function(){
     <header class="width:100%; height:50px;">
        <%@include file = "../include/main_header.jsp" %>
     </header>
-        
+         
     <nav>
         <div style="width:100%; 
                     height:50px; border-bottom: 1px solid #ccc;">

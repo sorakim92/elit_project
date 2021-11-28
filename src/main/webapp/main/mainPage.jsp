@@ -7,8 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>main</title>
+    <!-- 카카오맵 api -->
+    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca0677edae05b7ec94acd37b20938aa7"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca0677edae05b7ec94acd37b20938aa7&libraries=services"></script>
+    
+    
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <!--  	부트스트랩 -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -205,8 +211,41 @@ $(function(){
 	
 	$("#current_loc").click(function(){
 		
-	})
 	
+		
+		var lat;
+		var lon;
+		// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+		if (navigator.geolocation) {
+		   
+		    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+		    navigator.geolocation.getCurrentPosition(function(position) {
+		        
+		        var lat = position.coords.latitude, // 위도
+		            lon = position.coords.longitude; // 경도
+		       
+		      
+		      });
+		    
+		} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+			 alert("GPS_추적이 불가합니다.");
+
+		}
+		// 주소-좌표 변환 객체를 생성합니다
+		var geocoder = new kakao.maps.services.Geocoder();
+
+		var coord = new kakao.maps.LatLng(lat, lon);
+		var callback = function(result, status) {
+			 if (status === kakao.maps.services.Status.OK) {
+				 console.log("fsdflkj"+ result[0].address.address_name );
+			 }
+			
+		};
+		geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
+		
+	})
+
+	   
 })
 
 </script>
@@ -223,9 +262,11 @@ $(function(){
     <!-- 주소 검색창 -->
     <section>
         <div class="div_addr">
-            <input type="text" name="" id="" class="" style="width:400px; height:30px;"> 
             <img id="current_loc" src="<c:url value='/img/currentLoc.png'/>" width="20px" height="20px" alt="위치설정아이콘">
-           
+            <input type="text" name="" id="" class="" style="width:400px; height:30px;"> 
+          	<button type="button" id="btn_addr_search"
+          				class="btn btn-outline-warning" 
+          				style="border-color: #f8cacc; color: black;">검색</button>
         </div>
     <!-- 카테고리 -->
     <article class="article1">
@@ -239,7 +280,7 @@ $(function(){
                         </div>
                     </td>
                     <td>
-                    	<div style=" cursor: pointer;" onclick="location.href='#';">
+                    	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do';">
 	                    	<img src="<c:url value='/img/mKRfood.jpg'/>" width="200" height="150" alt="사진">
 	                		<br>한식
                         </div>

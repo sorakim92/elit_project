@@ -181,7 +181,7 @@ $(function(){
                 공지사항
             </div>
             <form name="frm" method="post" action="nBoardList.do">
-            <div style="float:left; width:50%; background:pink; text-align:right;">
+            <div style="float:left; width:50%;  text-align:right;">
             	 <select name="s_field" style="font-size:15px;">
             	 	<option value="title"
             	 		<c:if test="${s_field=='title' }">selected</c:if> 
