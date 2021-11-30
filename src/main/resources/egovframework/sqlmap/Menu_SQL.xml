@@ -5,4 +5,41 @@
 <sqlMap namespace = "menu_space">
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="menuVO" type="egov.service1.MenuVO"/>
+	
+	<insert id = "menuDAO.insertMenu">
+	<![CDATA[
+	
+		INSERT INTO menu(
+						menuunq,
+						menuname,
+						menuimage,
+						menukeyword,
+						menuinfo,
+						price
+						       )  
+				VALUES  ( menu_seq.nextval,
+							#menuname#,
+							#thumbnailImg#
+							'$menukeyword$',
+							#menuinfo#,
+							#price#
+							
+							)
+		]]>
+
+	</insert>
+	
+	<select id="menuDAO.selectMenuList"  resultClass="egovMap"  >
+		SELECT 
+				menuunq,
+				menuimage,
+				menuname,
+				price 
+		FROM menu 
+		  		WHERE menuunq=#menuunq#
+	</select>
+	
+	
+	
+	
 </sqlMap>
