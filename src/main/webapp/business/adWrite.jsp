@@ -8,10 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sample</title>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	
+	
 </head>
 <style>
 @font-face {
@@ -190,6 +193,11 @@ $(function() {
 				$("#userid").focus();
 				return false;
 			}
+			if( $("#phonecode").val() == "" ) {
+				alert("핸드폰 앞자리를 선택 해주세요.");
+				$("#phonecode").focus();
+				return false;
+			}
 			if( $("#phone").val() == "" ) {
 				alert("핸드폰 번호을 입력해주세요.");
 				$("#phone").focus();
@@ -260,21 +268,28 @@ $(function() {
     </nav>
         
     
-     <section>
-        <div style="text-align:left;" >
-            <font size="5">광고신청</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </div>
-        <div style="text-align:right;" >
-            <a href><font size="3">ELIT 에 아직 입점 안하셨어요? 지금 바로 입점문의 하기</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </div>
-        <br>
+<section>
+      <div style="width:100%; height:auto; padding:10px;  margin: -40px;">
+            <div style="width:70%; text-align: left; margin-left:40px;
+                        font-family: jua; float:left;">
+          광고신청
+            </div>
+     </div>
+     <div style="width:100%; height:auto; padding:10px;  margin: -40px;">
+            <div style="width:70%; text-align: right; margin-left:40px;
+                        font-family: jua; float:right;">
+          <a href="">ELIT 에 아직 입점 안하셨어요? 지금 바로 입점문의 하기</a>
+           </div>
+     </div><br><br><br><br><br><br>
 
-            <div class="">
+     <div class="">
                 아래 항목을 작성해서 제출해주시면,
                 담당자가 24시이내로 빠른 연락드리겠습니다
-            </div>
+    </div>
             
-           <form name="frm" id="frm">
+   
+                    
+        <form name="frm" id="frm">
             <article class="text-align:left" >
                 <font size="3">ELIT 이용약관과 개인정보 수집 및 동의 페이지입니다. (ELIT’s Terms and Privacy Policy)</font><br>
                 <textarea  class="article_text"   readonly>
@@ -316,10 +331,10 @@ $(function() {
                 <div class="mw_agree1"><br>
                     <span>회원가입약관의 내용에 동의합니다.</span>
                     <input type="checkbox" name="agree" id="agree" value="t1">
-                </div>
-            </article><br><br><br>
-       
-            <div class="row">
+                </div><br>
+                  
+            </article><br><br><br><br>
+               <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="email" class="fieldTitle">이메일 </label>
@@ -327,26 +342,35 @@ $(function() {
                     </div>
                 </div>
             </div>
+            <div class="row" >
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="email" class="fieldTitle">이메일 </label>
+                        <input type="email" class="email" name="email" id="email" value="" >
+                    </div>
+                </div>
+            </div>
 
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label class="fieldTitle" for="'first_name" >이름</label>
-                        <input type="text" placeholder="" value="" class="emailField form-control" required name='first_name' id='first_name'>
+                        <label class="fieldTitle" for="first_name" >이름</label>
+                        <input type="text" placeholder="" value="" class="emailField form-control"  name='first_name' id='first_name'>
                     </div>
                     <div class="form-group">
                         <label class="fieldTitle" for="'">아이디</label>
-                        <input type="text" placeholder="" value="" class="emailField form-control" required name='userid' id='userid'>
+                        <input type="text" placeholder="" value="" class="emailField form-control"  name='userid' id='userid'>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label class="fieldTitle" for="last_name">휴대폰</label><br>
                         <select name="phonecode" id="phonecode" class=" phonecode">
-                            <option value="">  010 </option>
-                            <option value="">  011 </option>
-                            <option value="">  017 </option>
-                            <option value="">  019 </option></select>
+                        	<option value="">  선택 </option>
+                            <option value="0">  010 </option>
+                            <option value="1">  011 </option>
+                            <option value="2">  017 </option>
+                            <option value="3">  019 </option></select>
                             <input type="text" class="phone1" name="phone" id="phone" value="" required>    
                       
                     </div>
@@ -364,14 +388,16 @@ $(function() {
 
 
 
-         <div class="row">
+         	<div class="row">
                  <div class="col-sm-12">
-                            <div class="form-group">
+                       <div class="form-group">
                                  <label  class="">추가문의사항</label>
                                  <textarea placeholder="" class="form-control" name="ment" id="ment"></textarea>
-                               </div>
+                      </div>
                  </div>
-              </div>  <br>
+         </div>  <br>
+     
+    </div>          
             
                 
            
@@ -382,7 +408,7 @@ $(function() {
         <div style ="text-align:center;">
             <button type="button" class="btn3" id="btn3" >제출</button>
         </div>                         
-     </form>
+     		</form>
     
     <footer>
         <div class="">

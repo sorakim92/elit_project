@@ -7,4 +7,35 @@
 	<typeAlias  alias="businessenterVO" type="egov.service1.BusinessEnterVO"/>
 
 
+
+	<insert id = "businessenterDAO.insertbusinessEnterWrite">
+		<![CDATA[
+		INSERT INTO businessenter(
+						openindex,
+						storename,
+						region,
+						category,
+						phone,
+						email,
+						address,
+						name,
+						inquire,
+						rdate
+									
+						       )  
+				VALUES  ( businessenter_seq.nextval,
+							'$storename$',
+							'$region$',
+							'$category$',
+							'$phone$',
+							'$email$',
+							'$address$',
+							'$name$',
+							'$inquire$',
+							sysdate				
+							)
+		 ]]>
+
+	</insert>
+
 </sqlMap>

@@ -17,14 +17,15 @@ public class AdController {
 	
 	
 	@RequestMapping("adWrite.do")
-	public String business_adWrite() {
+	public String adWrite() throws Exception {
 		
 		return "business/adWrite"; 
 	}
+
 	
 	@RequestMapping(value="adWriteSave.do")
 	@ResponseBody
-	public String admin_nBoardWriteSave( AdVO vo ) throws Exception {
+	public String insertAd( AdVO vo) throws Exception {
 					
 			String result = adService.insertAd(vo);
 			String message = "ok";

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,11 +8,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sample</title>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+</head>	  	
+	
 <style>
 .logo {
     width:  300px;
@@ -57,17 +59,17 @@ $(function() {
 				$("#storename").focus();
 				return false;
 			}
-			if( $("#region").val() == 0  ) {
+			if( $("#region").val() == ""  ) {
 				alert("신청 지역을 선택해주세요.");
 				$("#region").focus();
 				return false;
 			}
-			if( $("#category").val() == 0) {
+			if( $("#category").val() == "") {
 				alert("메뉴을 선택해주세요.");
 				$("#category").focus();
 				return false;
 			}
-			if( $("#phone_op ").val() == 0 ) {
+			if( $("#phone_op ").val() == "" ) {
 				alert("핸드폰 앞자리 번호을 입력해주세요.");
 				$("#phone_op").focus();
 				return false;
@@ -102,14 +104,14 @@ $(function() {
 			var formdata = $("#frm").serialize();
 			$.ajax({
 				type : "post",
-				url  : "business_businessEnterSave.do",
+				url  : "businessEnterWriteSave.do",
 				data : formdata,
 				
 				datatype : "text",  // 성공여부 (ok)
 				success : function(data) {
 					if (data == "ok") {
 						alert("저장완료");
-						location="business_businessEnter.do";
+						location="businessEnterWrite.do";
 					} else {
 						alert("저장실패");
 					}
@@ -123,14 +125,14 @@ $(function() {
 
 
 </script>
-</head>
+
 
 
 
 <header>
-    <div class="logo" >
-    <img src="../img/banner.PNG" width="300px" height="100px">
-    </div>    
+   <div class="logo">
+    <img src="<c:url value='/img/logo.png'/>" width="200px" height="100px" alt="로고"/>
+   </div>
 </header>
 <br><br>
 
@@ -189,7 +191,7 @@ $(function() {
     <div>
         3. 신청 지역을 선택주세요.*
         <select name="region" id="region">
-            <option value="0" >지역선택</option>
+            <option value="" >지역선택</option>
             <option>강남</option>
             <option>홍대</option>
 
@@ -198,7 +200,7 @@ $(function() {
     <div>
         4. 매뉴 카테고리를 선택해주세요.*<br>(최대 3개선택가능) &nbsp;&nbsp;&nbsp;&nbsp;
         <select name="category" id="category">
-            <option value="0">카테고리 선택</option>
+            <option value="">카테고리 선택</option>
             <option>한식</option>
             <option>중식</option>
             <option>치킨</option>   
@@ -221,7 +223,7 @@ $(function() {
     <div>
         5. 휴대폰 입력 해주세요.*
         <select name="" id= "phone_op" >
-            <option value="0">선택</option>
+            <option value="">선택</option>
             <option>010</option>
             <option>011</option>
             <option>017</option>
@@ -247,7 +249,7 @@ $(function() {
 
 <br>
 <div class="btnloc">
-    <button class="btn3" id="btn3">확인</button>
+    <button type="button"class="btn3" id="btn3">확인</button>
 </div>
 </form>
 </body>

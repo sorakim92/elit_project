@@ -18,7 +18,7 @@
 	
 <script type="text/javascript">
 	
-    /*function uploadImgPreview() {
+    function uploadImgPreview() {
 
     	// @breif 업로드 파일 읽기
 
@@ -45,7 +45,7 @@
 	     }
     	
     }
-*/
+
 </script>
 
 <script>
@@ -75,14 +75,14 @@
   			}
   			
 	
-  			var formdata = new FormData(document.getElementById('frm'));
+  			var formdata = $("#frm").serialize();
   			$.ajax({
   				type : "post",
   				url  : "menuWriteSave.do",
   				data : formdata,
   				
-  				processData : false,
-  				contentType : false,
+  				//processData : false,
+  				//contentType : false,
   				
   				datatype : "text",  // 성공여부 (ok)
   				success : function(data) {
@@ -270,7 +270,7 @@ section {
         </div>
     </nav>
         
-    <form name="frm" id="frm" enctype="multipart/form-data" > 
+    <form name="frm" id="frm" enctype="miltipart/form-data"  > 
      <section>
      	
         <div style="text-align:left;" >
@@ -331,7 +331,7 @@ section {
                         </select>
                         
               </div> 
-           <!--   <div class="col-sm-12">
+              <div class="col-sm-12">
             <div class="form-group" >
                   <label class="fieldTitle" for="last_name">이미지 넣기</label><br><br>
                   <input  type="file"   name="file1" id="file1" onChange="uploadImgPreview();"  accept="image/*" ></input>
@@ -340,7 +340,7 @@ section {
                   <img id="thumbnailImg" name="thumbnailImg"  style="width:400px; height:300px;">
                   <br/>						
                         
-        </div><br> <br><br><br><br>  -->
+        </div><br> <br><br><br><br>  
                        
                  
 

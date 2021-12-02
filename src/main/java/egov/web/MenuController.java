@@ -1,6 +1,6 @@
 package egov.web;
 
-import java.io.BufferedInputStream;
+//import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.HashMap;
@@ -27,8 +27,8 @@ import egovframework.rte.fdl.property.EgovPropertyService;
 @Controller
 public class MenuController {
 	
-	@Resource(name = "propertiesService")
-	protected EgovPropertyService ps;
+	//@Resource(name = "propertiesService")
+	//protected EgovPropertyService ps;
 	
 	
 	@Resource(name = "menuService")
@@ -51,16 +51,16 @@ public class MenuController {
 	
 	@RequestMapping("menuWriteSave.do")
 	@ResponseBody
-	public String insertMenu( MultipartHttpServletRequest multiRequest, MenuVO vo) throws Exception {
+	public String insertMenu( MenuVO vo) throws Exception {
 		
-		//System.out.println("zzz");
+		
 		
 		//String path = ps.getString("upload_path");
 		//Map map = fileupload(multiRequest,path);
 		
 		
 		//System.out.println("------------ vo111" + vo);
-		// map에 있는 filename과 filesize를  vo로 옮김 
+		
 		//vo.setMenuimage(map.get("filename")+"");
 		
 		
@@ -87,8 +87,8 @@ public class MenuController {
 		return "menu/menuModify";
 	}
 	
-	/*@RequestMapping(value = "/downloadFile.do")
-	public void downloadFile(   String file,
+	//@RequestMapping(value = "/downloadFile.do")
+	/*public void downloadFile(   String file,
 								HttpServletResponse response) throws Exception {
 		
 		String path = ps.getString("uploadDir");
@@ -122,9 +122,7 @@ public class MenuController {
 		String filename = "";
 		String filesize = "";
 		
-		//   /tmp ---> 세션  , 파일들
-		/*  a.jpg ;; b.jpg  
-		 * { "aaa":"dfsfsfsfs121212.xcxxvc" , a.jpg , 98byte , image } , { sdfsdfds.xxxs , b.jpg , 100byte , image  }
+		
 		 
 		Map<String, MultipartFile> files = multiRequest.getFileMap();
 		Iterator<Entry<String, MultipartFile>> itr = files.entrySet().iterator();

@@ -18,12 +18,12 @@
 						phone						
 						       )  
 				VALUES  ( ad_seq.nextval,
-							#userid#,
-							#first_name#
+							'$userid$',
+							'$first_name$',
 							'$service_op$',
-							#ment#,
-							#email#.
-							#phone#							
+							'$ment$',
+							'$email$',
+							'$phone$'							
 							)
 		]]>
 

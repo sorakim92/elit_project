@@ -12,18 +12,17 @@
 		INSERT INTO menu(
 						menuunq,
 						menuname,
-						menuimage,
+					
 						menukeyword,
 						menuinfo,
 						price
 						       )  
 				VALUES  ( menu_seq.nextval,
 							#menuname#,
-							#thumbnailImg#
-							'$menukeyword$',
-							#menuinfo#,
-							#price#
 							
+							#menukeyword#,
+							#menuinfo#,
+							#price#						
 							)
 		]]>
 
