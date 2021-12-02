@@ -17,7 +17,7 @@ public class MenuOrderController {
 	@Resource(name="menuorderService")
 	MenuOrderService menuorderService;
 	
-	@RequestMapping("menuList.do")
+	@RequestMapping("menuOrderList.do")
 	public String selectStoreMenuList(MenuOrderVO vo,Model model) 
 											throws Exception {
 		
