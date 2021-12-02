@@ -11,22 +11,11 @@
     
 </head>
 <body>
-    <div class= "wrapper">
-        <header class="width:100px; height:50px;">
-            <div class="logo">
-                <img src="../img/logo.png" width:"150px" height="50px" alt="로고">
-            </div>
-            <div class="search">
-                <input type="text" name="" id="" class=""> 
-                <img scr="" width="" height="" alt="돋보기">
-            </div> 
-            <div class="login">
-                <button type="button" class="btn btn-outline-warning" style="border-color: #f8cacc; color: black;">로그인</button>
-            </div> 
-          
-        </header>
+    <div>
+       <%@ include file="../include/main_header.jsp" %>          
+    </div>
         <nav>
-          <div>
+          <div class="">
                 <ul class="gnb">
                     <li><a href="#">주문내역</a></li>
                     <li><a href="#">회원정보수정</a></li>
@@ -35,13 +24,11 @@
                     <li><a href="#">리뷰관리</a></li>                    
                 </ul>
                
-            </div>
+           </div>
         </nav>
         <section>
-            <ul style="text-align: left; padding-top:10px;">
-                <li>리뷰관리</li>
-             </ul>
-            <div style="margin-top: 20px; border-top: 1px solid #ccc; line-height: 2.0;">
+           
+            <div class="s_review">
                 <!-- 상위 추천메뉴 이외에 -->
                 <table style="margin-top: 10px; width:100%;" class="cate_tbl2"> 
                     <colgroup>
@@ -50,15 +37,15 @@
                         <col width="15%"/>
                         <col width="35%"/>
                     </colgroup>
-            <td>
-                <div style="width:120px; height: 120px; border: 1px solid #f8cacc; border-radius: 2em;
-                margin:5px 20px 10px 20px; text-align: center;">
-                    <img src="/img/addpic.png" alt="업체대표사진" width="100" height="100" name="" id="">
-                </div>
-            </td>
-            <td style="text-align: left; ">
-                <span style="font-weight: bold;">가게이름</span>
-                       
+		            <td>
+		                <div style="width:120px; height: 120px; border: 1px solid #f8cacc; border-radius: 2em;
+		                margin:5px 20px 10px 20px; text-align: center;">
+		                    <img src="/img/addpic.png" alt="업체대표사진" width="100" height="100" name="" id="">
+		                </div>
+		            </td>
+		            <td style="text-align: left; ">
+		                <span style="font-weight: bold;">가게이름</span>
+		                       
                     <div style="font-size:13px; text-align: left; padding-left: 0px;">                       
                         <span>주문상품</span>
                     </div>

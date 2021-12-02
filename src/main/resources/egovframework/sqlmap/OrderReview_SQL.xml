@@ -5,4 +5,31 @@
 <sqlMap namespace = "orderreview_space">
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="orderreviewVO" type="egov.service1.OrderReviewVO"/>
+	
+	<insert id="orderreviewDAO.insertOrderReviewboard">
+		<![CDATA[
+		
+		INSERT INTO orderreview (	reviewindex,
+									storeunq,
+									rate,
+									rcontent,
+									rimage,
+									rdate,
+									userid,
+									oderindex )
+						VALUES  ( 	orderreview_seq.nextval,
+									#storeunq#,
+									sysate,
+									#rcontent#,
+									#rimage#,
+									sysdate,
+									#userid#,
+									#oderindex# )
+		
+		]]>
+	
+	</insert>
+	
+	
+	
 </sqlMap>

@@ -3,15 +3,6 @@
   padding: 0;
 }
 
-@font-face {
-  font-family: "hanna";
-  src: url("../fonts/BMHANNAAir_otf.otf");
-}
-@font-face {
-  font-family: "jua";
-  src: url("../fonts/BMJUA_otf.otf");
-}
-
 html {
   font-size: 16px;
 }
@@ -101,7 +92,7 @@ a {
 }
 
 .board_list > div.top > div {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .board_list .num {
@@ -287,21 +278,4 @@ a {
   font-size: 16px;
 }
 
-.logo {
-  width: 200px;
-  height: 50px;
-  float: left;
-}
-.search {
-  width: 500px;
-  height: 50px;
-  float: left;
-  text-align: right;
-}
 
-.login {
-  width: 100px;
-  height: 50px;
-  float: left;
-  text-align: right;
-}

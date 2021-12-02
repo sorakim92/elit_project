@@ -10,32 +10,34 @@ import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
 @Repository("inquiryDAO")
 public class InquiryDAO extends EgovAbstractDAO{
 
-	public String insertInquiry(InquiryVO vo) {
-		return (String) insert("inquiryDAO.insertInquiry",vo);
+	public String insertInquiryboard(InquiryVO vo) {
+		return (String) insert("inquiryDAO.insertInquiryboard",vo);
 	}
 
-	public List<?> selectInquiryList(InquiryVO vo) {
-		return list("inquiryDAO.selectInquiryList",vo);
+	public List<?> selectInquiryboardList(InquiryVO vo) {
+		return list("inquiryDAO.selectInquiryboardList",vo);
 	}
 
-	public int selectInquiryListTotal(InquiryVO vo) {
+	public InquiryVO selectInquiryboardDetail(InquiryVO vo) {
+		return (InquiryVO) select("inquiryDAO.selectInquiryboardDetail",vo);
+	}
+
+	public int updateInquiryboard(InquiryVO vo) {
+		return update("inquiryDAO.updateInquiryboard",vo);
+	}
+
+	public int deleteInquiryboard(InquiryVO vo) {
+		return delete("inquiryDAO.deleteInquiryboard",vo);
+	}
+
+	public int updateInquiryboardHits(InquiryVO vo) {
+		return update("inquiryDAO.updateInquiryboardHits",vo);
+	}
+
+	public int selectInquiryboardTotal(InquiryVO vo) {
 		return (int) select("inquiryDAO.selectInquiryListTotal",vo);
 	}
 
-	public InquiryVO selectInquiryDetail(InquiryVO vo) {
-		return (InquiryVO) select("inquiryDAO.selectInquiryDetail",vo);
-	}
 
-	public int updateInquiry(InquiryVO vo) {
-		return update("inquiryDAO.updateInquiry",vo);
-	}
-
-	public int deleteInquiry(InquiryVO vo) {
-		return delete("inquiryDAO.deleteInquiry",vo);
-	}
-
-	public int updateInquiryHits(InquiryVO vo) {
-		return update("inquiryDAO.updateInquiryHits",vo);
-	}
 
 }

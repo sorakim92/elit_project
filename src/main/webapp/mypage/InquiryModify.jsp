@@ -10,15 +10,7 @@
     <link rel="stylesheet" href="../css/css.css">
 </head>
 <style>
-@font-face {
-  font-family: "Hanna";
-  src: url("fonts/BMHANNAAir_ttf.ttf");
-}
 
-@font-face {
-  font-family: "jua";
-  src: url("fonts/BMJUA_ttf.ttf");
-}
 
 </style>
 <body>
@@ -33,11 +25,12 @@
                     <dl>
                         <dt>문의유형</dt>
                         <dd><select style="width:150px; height:40px;" placeholder="유형 선택"></dd>
-                            <option value="주문/결제">주문/결제</option>
-                            <option value="주문취소">주문취소</option>
-                            <option value="주소변경">주소변경</option>
-                            <option value="상품변경">상품변경</option>
-                            <option value="기타">기타</option>
+	                            <option value="주문/결제">주문/결제</option>
+	                            <option value="주문취소">주문취소</option>
+	                            <option value="주소변경">주소변경</option>
+	                            <option value="상품변경">상품변경</option>
+	                            <option value="기타">기타</option>
+	                        </select>
 
                     </dl>
                 </div>

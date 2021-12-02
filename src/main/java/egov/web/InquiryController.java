@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import egov.service1.InquiryService;
 import egov.service1.InquiryVO;
 
@@ -28,8 +29,8 @@ public class InquiryController {
 			vo.getS_no();
 			vo.getE_no();
 			
-			List<?> list = inquiryService.selectInquiryList(vo);
-			int total = inquiryService.selectInquiryListTotal(vo);
+			List<?> list = inquiryService.selectInquiryboardList(vo);
+			int total = inquiryService.selectInquiryboardTotal(vo);
 			
 			int total_page = (int)Math.ceil((double)total/10);
 			int rownum = total - (page_no-1)*10;
@@ -45,14 +46,14 @@ public class InquiryController {
 		@RequestMapping(value="/mypage_InquiryWrite.do")
 		public String mypage_InquiryWrite() {
 
-			return "";
+			return "mypage/InquiryWrite";
 		}
 		
 		@RequestMapping(value="/mypage_InquiryWriteSave.do")
 		@ResponseBody
 		public String mypage_InquiryWriteSave(InquiryVO vo) throws Exception {
 			
-			int result = inquiryService.updateInquiry(vo);
+			int result = inquiryService.updateInquiryboard(vo);
 			
 			String message = "ok";
 			if( result != 1 ) {
@@ -66,7 +67,7 @@ public class InquiryController {
 		@ResponseBody
 		public String mypage_InquiryDelete(InquiryVO vo) throws Exception {
 			
-			int result = inquiryService.deleteInquiry(vo);
+			int result = inquiryService.deleteInquiryboard(vo);
 			
 			String message = "ok";
 			if( result != 1 ) {
@@ -74,6 +75,12 @@ public class InquiryController {
 			}
 	
 			return message;
+		}
+		
+		@RequestMapping(value="/mypage_InquiryModify.do")
+		public String mypage_InquiryModify( InquiryVO vo, Model model ) throws Exception {
+			
+			return "";
 		}
 
 }
