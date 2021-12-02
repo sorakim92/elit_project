@@ -7,6 +7,7 @@
 	        <map>
 	        	<entry key="pageUnit" value="10"/>
 	        	<entry key="pageSize" value="10"/>
+	        		<entry key="upload_path" value="D:/eGovFrameDev-3.10.0-64bit/workspace/elit_project/src/main/webapp/upload"/>
 	        </map>
 		</property>
 	</bean>
