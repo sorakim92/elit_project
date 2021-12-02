@@ -9,13 +9,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>공지사항</title>
+    <title>자주묻는질문</title>
 	    
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<!-- 아코디언게시판 관련 부트스트랩 -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<!-- footer header css -->
 	<link rel="stylesheet" href="css/headFooter.css">
 
@@ -70,11 +72,9 @@ section {
 	/*background-color:#92a8d1;*/
 	text-align:center;
 }
-
-
-
+/* sub tab 부분 */
 .article_nav {
-   display: inline-block;
+    display: inline-block;
 
 }
 .article_nav li {
@@ -82,17 +82,33 @@ section {
     list-style:none;
     float:left;
     padding-left:10px;
-    padding-right:20px;
-    padding-bottom: -10px;
+    padding-right:10px;
+    padding-bottom: -20px;
 }
+
+/* 아코디언 박스부분 클릭시 */
+.accordion-button:not(.collapsed){
+	color:#2f3030;
+	background-color:#f8cacc ;
+}
+.accordion-button:not(.collapsed)::after{
+	background-image:none;
+}
+.accordion-button:focus {
+	box-shadow: 0 0 0 0.25rem rgb(248 202 204 / 35%);
+}
+.accordion-body {
+	background-color: #fffcfc;
+}
+
 </style>
 <script>
 
 $(function(){
 	
-	$("#btn_write").click(function(){
+	$("#btn_writefaq").click(function(){
 		/* 추후 추가 : 관리자 아이디인지 세션확인  */
-		location.href = "nboardWrite.do";
+		location.href = "faqWrite.do";
 	})
 	
 })
@@ -109,7 +125,7 @@ $(function(){
     <nav>
         <div style="width:100%; 
                     height:50px; border-bottom: 1px solid #ccc;">
-           <%@include file = "../include/board_subTab.jsp" %>
+            <%@include file = "../include/board_subTab.jsp" %>
        </div>
     </nav>
         
@@ -121,9 +137,9 @@ $(function(){
         <div style="width:100%; height:auto; padding:10px; margin-top:-40px;">
             <div style="width:50%; text-align: left; 
                         font-family: jua; float:left;">
-                공지사항
+                자주묻는질문
             </div>
-            <form name="frm" method="post" action="nBoardList.do">
+            <form name="frm" method="post" action="faqList.do">
             <div style="float:left; width:50%;  text-align:right;">
             	 <select name="s_field" style="font-size:15px;">
             	 	<option value="title"
@@ -150,32 +166,39 @@ $(function(){
         </div>
        
 
-
         <div style="width:100%; float:left; margin-top:20px; font-size:13px;">
-            <table style="width:100%;" class="table table-hover">
-                <colgroup>
-                    <col width="*" />
-                    <col width="10%" />
-                    <col width="10%" />
-                  
-                </colgroup>
-                 <tr>
-                    <td>제목</td>
-                    <td>등록일</td> 
-                    <td>조회수</td> 
-                </tr>
-                
-                <c:forEach var="result" items="${list }">
-                <tr>
-                    <td>
-                    <a href="nboardDetail.do?unq=${result.unq }">${result.title }
-                    </a></td>
-                    <td>${result.rdate }</td> 
-                    <td>${result.hits }</td> 
-                </tr>
-                </c:forEach>
-            </table>
           
+          <div class="accordion" id="accordionExample" >
+			  <div class="accordion-item" >
+			    <h2 class="accordion-header" id="headingOne" >
+			      <button class="accordion-button"  type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+					자주묻는질문1 
+			      </button>
+			    </h2>
+			    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+			      <div class="accordion-body">
+			        자주묻는 질문에 대한 ....대다다ㅏ다다답... 
+			      </div>
+			    </div>
+			  </div>
+			<c:forEach var="result" items="${list }">
+			<c:set var="i" value="${i+1 }" />  
+			<div class="accordion-item">
+			    <h2 class="accordion-header" id="heading${i }">
+			      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${i }" aria-expanded="false" aria-controls="collapse${i }">
+			        ${result.title }
+			      </button>
+			    </h2>
+			    <div id="collapse${i }" class="accordion-collapse collapse" aria-labelledby="heading${i }" data-bs-parent="#accordionExample">
+			      <div class="accordion-body">
+			      	${result.content }
+			      </div>
+			    </div>
+			  </div>
+			 </c:forEach>
+			 
+			</div>
+			
         </div>
     </section>
  
@@ -185,7 +208,7 @@ $(function(){
     height: 50px;
     margin: 20px 50px 0 0;
     text-align: right;">
-        <button type="button" id="btn_write" name="btn_write"
+        <button type="button" id="btn_writefaq" name="btn_writefaq"
         class="btn btn-outline-warning" style="border-color: #f8cacc; color: black;">
         글쓰기</button>
     </div>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="menuorder_space">
+
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="menuorderVO" type="egov.service1.MenuOrderVO"/>
+	
+
+	<select id="MenuOrderDAO.selectStoreMenuList" resultClass="egovMap">
+		select 	s.storeunq, 
+				s.cateunq, 
+				s.storename, 
+				s.storeinfo,
+				s.storerate, 
+				s.fee,
+                m.menuunq,
+                m.menuname,
+                m.menukeyword,
+                m.menuinfo,
+                m.price
+		from 	store s, menu m
+			where s.storeunq=m.storeunq and m.storeunq = #storeunq#
+
+	
+	</select>
+
+	<select id="menuorderDAO.selectStoreinfo" resultClass="menuorderVO">
+		SELECT 	storeunq, 
+				storename,
+				storerate, 
+				decode(fee,0,'무료',fee) fee
+				
+		from 	store s
+			where storeunq = #storeunq#
+		
+				
+	
+	</select>
+
+</sqlMap>

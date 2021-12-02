@@ -33,5 +33,10 @@ public class NBoardDAO extends EgovAbstractDAO{
 	public int updatenboardHits(NBoardVO vo) {
 		return (int) update("nboardDAO.updatenboardHits",vo);
 	}
+
+	
+	public List<?> selectFAQList(NBoardVO vo) {
+		return list("nboardDAO.selectFAQList",vo);
+	}
 	
 }

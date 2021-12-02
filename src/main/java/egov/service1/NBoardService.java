@@ -9,6 +9,7 @@ public interface NBoardService {
 	 * */
 	List<?> selectNboardList(NBoardVO vo) throws Exception;
 
+
 	/*
 	 * 공지사항 글쓰기 저장 
 	 * */
@@ -27,5 +28,10 @@ public interface NBoardService {
 	int deletenboard(NBoardVO vo) throws Exception;
 
 	int updatenboardHits(NBoardVO vo) throws Exception;
+
+	/*
+	 * faq 리스트 
+	 * */
+	List<?> selectFAQList(NBoardVO vo) throws Exception;
 
 }

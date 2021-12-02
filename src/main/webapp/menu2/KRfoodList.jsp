@@ -15,15 +15,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<!-- footer header css -->
+	<link rel="stylesheet" href="css/headFooter.css">
+
 </head>
+
 <style>
 @font-face {
     font-family: "hanna";
-    src: url("../fonts/BMHANNAAir_otf.otf");
+    src: url("fonts/BMHANNAAir_otf.otf");
 }
 @font-face {
     font-family: "jua";
-    src: url("../fonts/BMJUA_otf.otf");
+    src: url("fonts/BMJUA_otf.otf");
 }
 html{
     height: 100%;
@@ -57,23 +61,12 @@ nav {
     display: flex;
     margin: auto;
 }
-.logo {
-    width:  300px;
-    height: 50px; 
-    float : left;
-}
+
 .search {
     width: 500px;
     height: 50px;
     float : left;
     margin: 20px 0 0 0;
-    text-align: right;
-}
-.login {
-    width: 70px;
-    height: 50px;
-    float: right;
-    margin: 20px 50px 0 0;
     text-align: right;
 }
 
@@ -87,51 +80,7 @@ section {
 }
 
 
-.footer {
-	width:100%;
-    height:100px;
-	background-color:#ccc;
- 
-    clear:both;
-}
-.ft_ul {
-    width:100%;
-    height:50px;
-}
-.ft_info {
-    width:100%;
-    height:50px;
-    text-align: center;
-    font-size:14px;
-    padding-bottom:20px;
-}
-.ul1{
-    float:left;
-    padding-top:7px;
-}
 
-.ul1 li{
-    font-size:14px;
-    list-style:none;
-    float:left;
-    border-left:1px solid #ccc;
-    padding-left:10px;
-    padding-right:10px;
-}
-
-.ul2{
-    float:right;
-    padding-top:7px;
-}
-
-.ul2 li{
-    font-size:14px;
-    list-style:none;
-    float:left;
-    border-left:1px solid #ccc;
-    padding-left:10px;
-    padding-right:10px;
-}
 .nav1 {
     float:left;
     width:1000px;
@@ -202,12 +151,12 @@ section {
            		<td>
                	   <div style="width:120px; height: 120px; border: 1px solid #f8cacc; border-radius: 2em;
                    margin:5px 20px 10px 20px; text-align: center;
-                   cursor: pointer;" onclick="location.href='#';">
+                   cursor: pointer;" onclick="location.href='menuList.do?storeunq=${result.storeunq}';">
                        <img src="<c:url value='/img/addpic.png'/>" alt="업체대표사진" width="100" height="100" name="" id="">
                    </div>
                	</td>
                	<td>
-                   <span style="font-weight: bold; cursor: pointer;" onclick="location.href='?${result.storeunq}';"> ${result.storename }</span>
+                   <span style="font-weight: bold; cursor: pointer;" onclick="location.href='menuList.do?storeunq=${result.storeunq}';"> ${result.storename }</span>
                           
                        <div style="font-size:12px; text-align: left; padding-left: 10px;">
                            <span><img src="<c:url value='/img/star.png'/>" style="width:20px; height:20px; ">5.0</span>
@@ -215,8 +164,8 @@ section {
                        </div>
             
 	                   <div style="font-size:13px; text-align: left; padding-left: 10px;">
-	                       <span>손두부</span><br>
-	                       <span>이보다 맛있는 두부는 맛본적 없다</span>
+	                       <span>대표메뉴</span><br>
+	                       <span>대표한줄평</span>
 	                   </div>
              	 </td>
              	 
