@@ -36,6 +36,33 @@
 	
 	</select>
 	
+	<select id="nboardDAO.selectFAQList" resultClass="egovMap">
+		SELECT b.* FROM (
+			SELECT rownum rn, a.* from (
+				SELECT 	unq, 
+						title,
+						hits,
+						to_char(rdate,'yyyy/mm/dd')rdate,
+						content,
+						sort
+				FROM 	nboard
+				WHERE 	title IS NOT NULL and sort = 'F'
+				<isNotNull property="s_text">
+					<isNotEmpty property="s_text">
+					and $s_field$ LIKE '%$s_text$%'
+					</isNotEmpty>
+				</isNotNull>
+				ORDER BY udate DESC)a	)b 
+	
+	
+	
+	</select>
+	
+	
+	
+	
+	
+	
 	
 	<insert id="nboardDAO.insertnboardWrite">
 		INSERT INTO nboard(	unq,
@@ -49,7 +76,8 @@
 							sysdate,
 							sysdate,
 							#content#,
-							'N')
+							#sort#
+							)
 
 	</insert>
 

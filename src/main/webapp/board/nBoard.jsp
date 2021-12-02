@@ -6,20 +6,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>공지사항 1</title>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <title>공지사항 레이아웃</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<!-- footer header css -->
+	<link rel="stylesheet" href="css/headFooter.css">
 </head>
 <style>
 @font-face {
     font-family: "hanna";
-    src: url("../fonts/BMHANNAAir_otf.otf");
+    src: url("fonts/BMHANNAAir_otf.otf");
 }
 @font-face {
     font-family: "jua";
-    src: url("../fonts/BMJUA_otf.otf");
+    src: url("fonts/BMJUA_otf.otf");
 }
 html{
     height: 100%;
@@ -53,19 +55,6 @@ nav {
     display: flex;
     margin: auto;
 }
-.logo {
-    width:  300px;
-    height: 50px; 
-    float : left;
-}
-
-.login {
-    width: 150px;
-    height: 50px;
-    float: left;
-    margin: 20px 50px 0 0;
-    text-align: right;
-}
 
 
 section {
@@ -75,51 +64,6 @@ section {
 	text-align:center;
 }
 
-
-.footer {
-	width:100%;
-    height:100px;
-	background-color:#ccc;
-    clear:both;
-}
-.ft_ul {
-    width:100%;
-    height:50px;
-}
-.ft_info {
-    width:100%;
-    height:50px;
-    text-align: center;
-    font-size:14px;
-    padding-bottom:20px;
-}
-.ul1{
-    float:left;
-    padding-top:7px;
-}
-
-.ul1 li{
-    font-size:14px;
-    list-style:none;
-    float:left;
-    border-left:1px solid #ccc;
-    padding-left:10px;
-    padding-right:10px;
-}
-
-.ul2{
-    float:right;
-    padding-top:7px;
-}
-
-.ul2 li{
-    font-size:14px;
-    list-style:none;
-    float:left;
-    border-left:1px solid #ccc;
-    padding-left:10px;
-    padding-right:10px;
-}
 .article_nav {
     display: inline-block;
 }

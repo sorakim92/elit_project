@@ -45,6 +45,7 @@ public class NBoardController {
 	public String insertnboardWrite(NBoardVO vo) 
 									throws Exception {
 		
+		vo.setSort("N");
 		String result = nboardService.insertnboardWrite(vo);
 	
 		String msg = "";
@@ -128,6 +129,52 @@ public class NBoardController {
 		
 		return msg;
 	}
+	
+	
+	@RequestMapping("faqList.do")
+	public String selectFAQList(NBoardVO vo, Model model) 
+									throws Exception {
+		
+		/* 목록화면 출력 서비스 실시*/
+		List<?> list = nboardService.selectFAQList(vo);
+		
+		
+		model.addAttribute("s_field",vo.getS_field());
+		model.addAttribute("s_text",vo.getS_text());
+		model.addAttribute("list",list);
+		
+		
+		return "board/faqList";
+	}
+	
+	@RequestMapping("faqWrite.do")
+	public String faqWrite() throws Exception {
+		
+		return "board/faqWrite";
+	}
+	
+	@RequestMapping("faqWriteSave.do")
+	@ResponseBody
+	public String insertFAQboard(NBoardVO vo) 
+									throws Exception {
+		
+		vo.setSort("F");
+		
+		String msg = "ok";
+		
+		String result = nboardService.insertnboardWrite(vo);
+		
+		if(result != null) {
+			msg = "save_fail";
+		}
+		
+		return msg;
+	}
+	
+	
+	
+	
+	
 	
 	
 }

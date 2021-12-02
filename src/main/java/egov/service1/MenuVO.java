@@ -9,6 +9,9 @@ public class MenuVO {
 	private int price;
 	private int cateunq;
 	private int storeunq;
+	
+	
+	
 	public int getMenuunq() {
 		return menuunq;
 	}

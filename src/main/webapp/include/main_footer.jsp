@@ -3,7 +3,7 @@
  <div class="footer">
     <div class="ft_ul">
         <ul class="ul1">
-            <li>공지사항</li>
+            <li><a href="nBoardList.do">공지사항</a></li>
             <li>고객센터</li>
             <li>입점문의</li>
             <li>회원탈퇴</li>

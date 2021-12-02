@@ -43,4 +43,11 @@ public class NBoardImpl implements NBoardService{
 	public int updatenboardHits(NBoardVO vo) throws Exception {
 		return nboardDAO.updatenboardHits(vo);
 	}
+
+	
+	@Override
+	public List<?> selectFAQList(NBoardVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return nboardDAO.selectFAQList(vo);
+	}
 }
