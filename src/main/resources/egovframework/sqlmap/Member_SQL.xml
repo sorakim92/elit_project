@@ -5,4 +5,45 @@
 <sqlMap namespace = "member_space">
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="memberVO" type="egov.service1.MemberVO"/>
+	
+	<!-- 회원가입 화면  -->
+	<insert id="memberDAO.insertMember">
+		INSERT INTO member (
+			userid,
+			userpw,
+			reuserpw,
+			username,
+			email,
+			userphone,
+			useraddr1,
+			useraddr2,
+			useraddr3,
+			business) VALUES (
+			'$userid$',
+			'$userpw$',
+			'$reuserpw$',
+			'$username$',
+			'$email$',
+			'$userphone$',
+			'$useraddr1$',
+			'$useraddr2$',
+			'$useraddr3$',
+			'$business$'
+			)
+	</insert>
+	
+	<!-- 로그인화면  -->
+	<select id="memberDAO.selectMemberCount" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM member
+			 WHERE userid = '$userid$' AND userpw = '$userpw$'
+	</select>
+	
+	<select id="memberDAO.popidck" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM member WHERE userid = #userid#
+	</select>
+	
+	<select id="memberDAO.selectMemberIdCheck" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM member WHERE userid = #userid#
+	</select>
+	
 </sqlMap>
