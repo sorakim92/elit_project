@@ -12,17 +12,15 @@
 		INSERT INTO menu(
 						menuunq,
 						menuname,
-					
 						menukeyword,
 						menuinfo,
 						price
 						       )  
 				VALUES  ( menu_seq.nextval,
-							#menuname#,
-							
-							#menukeyword#,
-							#menuinfo#,
-							#price#						
+							'$menuname$',
+							'$menukeyword$',
+							'$menuinfo$',
+							'$price$'						
 							)
 		]]>
 
@@ -30,14 +28,25 @@
 	
 	<select id="menuDAO.selectMenuList"  resultClass="egovMap"  >
 		SELECT 
-				menuunq,
-				menuimage,
+				menuunq,	
 				menuname,
+				menukeyword,
 				price 
 		FROM menu 
-		  		WHERE menuunq=#menuunq#
+		  		
 	</select>
 	
+	<select id="menuDAO.selectMenuDetail" resultClass="MenuVO">
+		SELECT 	menuunq, 
+				menuname,
+				menuinfo,
+				price,
+				menukeyword
+				
+		FROM menu 
+		WHERE menuunq = #menuunq#
+	
+	</select>
 	
 	
 	

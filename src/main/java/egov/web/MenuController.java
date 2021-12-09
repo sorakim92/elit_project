@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -35,12 +36,28 @@ public class MenuController {
 	MenuService menuService;
 	
 		
-	@RequestMapping(value="menuList.do")
-	public String menuList(MenuVO vo, Model model) throws Exception {
-	
-										
+	@RequestMapping("menuDetail.do")
+	public String selectMenuDetail(MenuVO vo, Model model) 
+									throws Exception {
+		// 상세보기 서비스
+		vo = menuService.selectMenuDetail(vo);	
+		
+		model.addAttribute("vo",vo);
+		
 		return "menu/menuModifyList";
 	}
+	@RequestMapping("menuModify.do")
+	public String selectMenuModify(MenuVO vo, Model model) 
+									throws Exception {
+
+		vo = menuService.selectMenuDetail(vo);
+		
+		model.addAttribute("vo",vo);
+		
+		
+		return "menu/menuModify";
+	}
+
 	
 	
 	@RequestMapping("menuWrite.do")
@@ -80,11 +97,13 @@ public class MenuController {
 		
 	}
 	
-	@RequestMapping(value="menuModify.do")
-	public String menuModify(MenuVO vo, Model model) throws Exception {
+	@RequestMapping(value="menuList.do")
+	public String selectMenuList(MenuVO vo, Model model) throws Exception {
 		
+		List<?> list = menuService.selectMenuList(vo);
+		model.addAttribute("list",list);
 		
-		return "menu/menuModify";
+		return "menu/menuModifyList";
 	}
 	
 	//@RequestMapping(value = "/downloadFile.do")

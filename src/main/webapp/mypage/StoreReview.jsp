@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>    
-    
+<%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>        
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,13 +8,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sample</title>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  	 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<!-- footer header css -->
 	<link rel="stylesheet" href="css/headFooter.css">
+	
+  
 </head>
-
 <style>
 @font-face {
     font-family: "hanna";
@@ -62,11 +65,6 @@ nav {
     height: 50px; 
     float : left;
 }
-.logo1 {
-    width:  300px;
-    height: 50px; 
-    float : left;
-}
 .search {
     width: 500px;
     height: 50px;
@@ -81,7 +79,6 @@ nav {
     margin: 20px 50px 0 0;
     text-align: right;
 }
-
 
 
 section {
@@ -141,43 +138,26 @@ section {
 .th {
     text-align:left;
 }
+.btn3 {
+    width:120px;
+    height:40px;
+    color:white;
+    
+}
+
 </style>
-
-<script>
-
-$(function(){
-	
-	$("#btn_menu").click(function(){
-		/* 추후 추가 : 관리자 아이디인지 세션확인  */
-		location.href = "menuWrite.do";
-	})
-	
-})
-$(function(){
-	
-	$("#btn_modify").click(function(){
-		
-		location.href = "menuModify.do?menuunq=${vo.menuunq}";
-	})
-	
-})
-
-
-</script>
 <body>
 <div class="wrapper">
     <div class="main" style="min-height: 100%; padding-bottom:100px; flex:1;">
     <header class="width:100%; height:50px;">
-        <div class="logo" style=" cursor: pointer;" onclick="location.href='mainPage.do';">
-    	<img src="<c:url value='/img/logo.png'/>" width="200px" height="100px" alt="로고"/>
-	     <h4>사장님광장</h4>
+        <div class="logo">
+    		<img src="<c:url value='/img/logo.png'/>" width="200px" height="100px" alt="로고"/>
+            <h4>사장님광장</h4>
         </div>
         <div class="search">
-      
-            <a href>마이페이지</a>
-            <a href>사장님 광장</a>
+            <a href><font size="4" color="black">마이페이지</font></a>
+            <a href><font size="4">사장님 광장</font></a>
         </div> 
-        <!-- 기능: 로그아웃상태에서는 로그인 버튼,  로그인상태에서는 마이페이지 | 로그아웃 -->
         <div class="login">
             <button type="button" class="btn btn-outline-warning" style="border-color: #f8cacc; color: black;">로그인</button>
         </div>
@@ -186,63 +166,91 @@ $(function(){
     <nav>
         <div class="">
             <a href><font size="4" color="black">주문관리 |</font></a>
-            <a href="menuList.do"><font size="4">메뉴관리 |</font></a>
+            <a href><font size="4">메뉴관리 |</font></a>
             <a href><font size="4" color="black">광고신청/관리 |</font></a>
             <a href><font size="4" color="black">커뮤니티</font></a>
         </div>
     </nav>
         
-    <form name="frm" id="frm" action="MenuList.do" > 
+    
      <section>
         <div style="text-align:left;" >
             <font size="5">메뉴관리</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <font size="4" color="blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;메뉴편집 |   </font>
-            <font size="4">&nbsp;&nbsp; 리뷰관리</font>
+            <a href><font size="4" color="black" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;메뉴편집 |  </font></a>
+            <font size="4" >&nbsp;&nbsp;<a href> 리뷰관리</font></a>
         </div>
         <br>
-        <div class="" >     
-            <div style="text-align:right;">
-                    <button type="button" id="btn_menu" name="btn_menu"><h5> 메뉴 추가</h5></button><br><br>
-            </div>
+
+    <div style="width:100%;">
+        <div class="" style="text-align:left; float:left; width:25%;">
+            <img src="../img/name.PNG" width="200px" height="100px" alt="">
+        </div>        
+        <div style="float:left;  width:25%;">
+            <span style=""> 최근 리뷰  *개</span><br>
+            <span size="3">평균 별점(최근 6개월 기준)</span><br>
+            <span size="3">(최근 6개월 기준)</span><br><br>
+            <font size="5">4.6</font>
+        </div>    
+        
+        <div style="float:left;  width:25%;">
+            
+           
+            <font> 5점</font><br>
+                   4점<br>
+                   3점<br>
+                   2점<br>
+                   1점<br>
         </div>
-        <br>
-        <div style="text-align:left;" >  
-          
-            <table style="width:700px; text-align:center;">
-	  		<colgroup>
-	  			<col width="15%"/>
-	  			<col width="40%"/>
-	  			<col width="30%"/>
-	  			<col width="10%" />
-	  			<col width="5%" />
-	  						
-	  		</colgroup>
-	  		<tr>
-	  			<th>번호</th>
-	  			<th>이미지</th>
-	  			<th>메뉴이름</th>
-	  			<th>가격</th>
-	  			<th>구분</th>
-	  			
-	  		</tr>
-        <c:forEach  var="result" items="${list }">
-	  		<tr>
-	  			<td>${result.menuunq }</td>
-	  			<td>${result.menuimage }</td>
-	  			<td><a href="menuModify.do?menuunq=${result.menuunq }">${result.menuname }
-                    </a></td>
-	  			<td>${result.price }</td>
-	  			<td>${result.menukeyword }</td>
-	  		</tr>		  		
-	  	</c:forEach>
-	  	</table>               
-          
-                    
-        </div>
-	</section>
-    </form>
+
+        <div style="text-align:right; float:left;  width:25%;"  >
+                <img src="../img/stat.PNG" width="200px" height="150px" alt="">
+           
+        </div><br>
+
+    </div><br><br><br><br><br><br>
+		
+        <div style="text-align:left;">
+            <input type="text" value="">
+            <button> 조회</button>
+        </div><br><br><br><br>
     
-    <footer>
+        
+         <div style="width:100%; float:left; margin-top:20px; font-size:13px;">
+            <table style="width:100%;" class="table table-hover">
+                <colgroup>
+                    <col width="20%" />
+                    <col width="*" />
+                    <col width="20%" />
+                  
+                </colgroup>
+                 <tr>
+                    <td>전체</td>
+                    <td>미답변</td> 
+                    <td>답변완료</td> 
+                </tr>
+                  <c:forEach var="result" items="${list }">
+                <tr>
+                    <td>
+                    <a href="?b_reviewindex=${result.b_reviewindex }">${result.b_userid }
+                    </a></td>
+                    <td>${result.rcontent }</td> 
+                    <td><button type="button" ><a href="PopReviewAns.jsp">답변하기</a></button></td> 
+                </tr>
+                </c:forEach>
+            </table>
+          
+        </div>
+        
+        
+        
+      </section>
+     
+    
+       
+    </div>
+  
+    
+   <footer>
       <%@ include file = "../include/main_footer.jsp" %>
     </footer>
 </div>
