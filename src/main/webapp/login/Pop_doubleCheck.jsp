@@ -53,6 +53,24 @@ $("#id_input").click(function() {
 		}
 	});
 });//중복체크 버튼 제어
+	$("#p_btn_submit").click(function(){
+		var userid = $("#userid").val();
+		var result1 =  $("#idck").serialize();
+		
+		$.ajax({
+			/* 전송 전 셋팅 */
+			type : "POST",					//json(전송)타입
+			url  : "memberwrite.do",
+			data : result1,
+			
+			datatype : "text",                         //리턴 타입
+			
+			// 전송 후 셋팅
+			success: function(data) {
+				alert("성공");
+			}
+		});
+	});//확인버튼 값 넘기기
 });
 </script>
 
@@ -66,10 +84,11 @@ $("#id_input").click(function() {
 	                	value="${userid1 }" placeholder="아이디를 입력해주세요.">
 	                <button value="button" id="id_input">중복확인</button>
 	            </div>
-	       <!--      <div>
-	            	<span class="id_input_re_1">사용 가능한 아이디입니다.</span>
-	            	<span class="id_input_re_2">아이디가 이미 존재합니다.</span>
-	            </div> -->
+	             <div>
+	            	<button type="submit" id="p_btn_submit" value="확인">
+	            		확인
+	            	</button>
+	            </div> 
 	      	</form>
         </div>
 </body>

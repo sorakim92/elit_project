@@ -37,8 +37,7 @@
   $(function() {
 	  $("#btn_popupid").click(function(){
 		var userid = $("#userid").val();
-		//alert(userid);
-		window.open("Pop_doubleCheck.do?userid="+userid,"","width=500,height=500,toolbars=no,scrollbars=no");
+		window.open("Pop_doubleCheck.do","_blank","width=500px,height=500px,toolbars=no,scrollbars=no");
 	});
 });
 
@@ -137,7 +136,7 @@
             </div>
             <div class="" style="width:80%; height: 10%;">
                 <label for="name">아이디</label>
-                <input type="text" class="form-control" id="userid" name="userid" placeholder="아이디를 입력해주세요" value="" required>
+                <input type="text" class="form-control" id="userid" name="userid" placeholder="아이디를 입력해주세요" value="${userid1 }" required>
               </div>
                 <div class="invalid-feedback">
                   아이디를 입력해주세요.

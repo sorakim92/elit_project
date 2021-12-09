@@ -11,7 +11,10 @@
      <link rel="stylesheet" href="css/memberSignin.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
+    <title>로그인 테스트</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+     <style>
       body {
         min-height: 100vh;
 
@@ -74,10 +77,19 @@
     </style>
     
     <script>
-    
+    $(function() {
+  	  $("#userpwfd").click(function(){
+  		window.open("Pop_memberpassfind.do","_blank","width=500px,height=500px,toolbars=no,scrollbars=no");
+  	});
+  });
+    $(function() {
+    	  $("#useridfd").click(function(){
+    		window.open("Pop_useridfd.do","_blank","width=500px,height=500px,toolbars=no,scrollbars=no");
+    	});
+    });   
     
 	$(function() {
-		$("#btn_submit").click(function(){
+		$("#userpwfd").click(function(){
 			
 			var userid = $("#userid").val();
 			var pass = $("#userpw").val();
@@ -119,23 +131,14 @@
 				}
 	    	});
 		});
+		
 	});
  
     </script>
-    <title>로그인 테스트</title>
   </head>
 
   <body>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 
 <div class="container" >
   <div class="input-form-backgroud row" >
@@ -143,16 +146,15 @@
       <div class="row">
         <div style="width:35%">  &nbsp; </div>
       <div class="main">
-        <form name="frm" method="post" action="memberlogin.do" >
+        <form name="frm" method="post">
         <div class="form-group" >
           <label for="inputUsernameEmail">아이디</label>
+          <input type="button" value="아이디 찾기" id="useridfd" name="useridfd" style="float:right;" >
           <input type="text" class="form-control" id="userid" name="userid">
         </div>
         <div class="form-group">
-          <a class="pull-right" href="Pop_memberpassfindpopup.html" onclick="javascript:window.open(this.href, '_blank', 'width=500px,height=500px,toolbars=no,scrollbars=no'); return false;">
-            비밀번호찾기
-          </a>
           <label for="inputPassword">비밀번호</label>
+          <input type="button" value="비밀번호 찾기" id="userpwfd" name="userpwfd" style="float:right;" >
           <input type="text" class="form-control" id="userpw" name="userpw">
         </div>
         <div class="checkbox pull-right" style="width:100%; ">
