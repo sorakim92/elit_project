@@ -32,6 +32,12 @@ public class MemberImpl implements MemberService{
 	public int selectMemberCount(MemberVO vo) throws Exception {
 		return memberDAO.selectMemberCount(vo);
 	}
+	@Override
+	public int Pop_memberpassfind(String email) throws Exception {
+		return memberDAO.Pop_memberpassfind(email);
+	}
+	
+	
 	
 	
 

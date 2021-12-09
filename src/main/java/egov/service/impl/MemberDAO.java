@@ -24,6 +24,9 @@ public class MemberDAO extends EgovAbstractDAO{
 	public int selectMemberCount(MemberVO vo) {
 		return (int) select("memberDAO.selectMemberCount",vo);
 	}
+	public int Pop_memberpassfind(String email) {
+		return (int) select("memberDAO.Pop_memberpassfind",email);
+	}
 	
 	
 

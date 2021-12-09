@@ -46,4 +46,8 @@
 		SELECT COUNT(*) FROM member WHERE userid = #userid#
 	</select>
 	
+	<select id="memberDAO.Pop_memberpassfind" resultClass="java.lang.Integer">
+		SELCET COUNT(*) FROM member WHERE email = #email#
+	</select>
+	
 </sqlMap>

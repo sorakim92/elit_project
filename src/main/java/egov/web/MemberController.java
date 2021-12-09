@@ -50,9 +50,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping("Pop_doubleCheck.do")
-
 	public String popidckwrite(String userid, Model model) throws Exception {
-		
 		
 		model.addAttribute("userid1",userid);
 		
@@ -107,6 +105,22 @@ public class MemberController {
 		
 		session.removeAttribute("SessionUserID");
 		return "login/memberlogin";
+	}
+	
+	@RequestMapping("Pop_memberpassfind.do")
+	public String Pop_memberpassfind(String email, Model model) throws Exception {
+		
+		model.addAttribute("email1",email);
+		
+		return "login/Pop_memberpassfind";
+	}
+	
+	@RequestMapping("Pop_useridfd.do")
+	public String Pop_useridfd(String email, Model model) throws Exception {
+		
+		model.addAttribute("email1",email);
+		
+		return "login/Pop_useridfd";
 	}
 	
 }
