@@ -1,6 +1,7 @@
 package egov.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -23,5 +24,42 @@ public class MenuOrderImpl implements MenuOrderService {
 	@Override
 	public MenuOrderVO selectStoreinfo(MenuOrderVO vo) throws Exception {
 		return menuorderDAO.selectStoreinfo(vo);
+	}
+
+	@Override
+	public int selectStoreReviewTotalCount(MenuOrderVO vo) throws Exception {
+		return menuorderDAO.selectStoreReviewTotalCount(vo);
+	}
+
+	
+
+	@Override
+	public MenuOrderVO selectmenudetail(MenuOrderVO vo) throws Exception {
+		return menuorderDAO.selectmenudetail(vo);
+	}
+
+	@Override
+	public String insertAddOrder(MenuOrderVO vo) throws Exception {
+		return menuorderDAO.insertAddOrder(vo);
+	}
+
+	@Override
+	public int countMenuunq(MenuOrderVO vo) throws Exception {
+		return menuorderDAO.countMenuunq(vo);
+	}
+
+	@Override
+	public int updateqty(MenuOrderVO vo) throws Exception {
+		return menuorderDAO.updateqty(vo);
+	}
+
+	@Override
+	public List<?> selectPreOrderList(Map map) throws Exception {
+		return menuorderDAO.selectPreOrderList(map);
+	}
+
+	@Override
+	public int selectTotPrice(MenuOrderVO vo) throws Exception {
+		return menuorderDAO.selectTotPrice(vo);
 	}
 }

@@ -108,7 +108,7 @@ $(function(){
 	
 	$("#btn_writefaq").click(function(){
 		/* 추후 추가 : 관리자 아이디인지 세션확인  */
-		location.href = "faqWrite.do";
+		location.href = "nboardWrite.do";
 	})
 	
 })
@@ -181,6 +181,8 @@ $(function(){
 			      </div>
 			    </div>
 			  </div>
+			  
+			  
 			<c:forEach var="result" items="${list }">
 			<c:set var="i" value="${i+1 }" />  
 			<div class="accordion-item">
@@ -200,16 +202,16 @@ $(function(){
 			</div>
 			
         </div>
-    </section>
- 
+   
+  </section>
  <!-- 글쓰기 버튼부분 (관리자)-->
 
     <div class="" style=" width: 100%;
     height: 50px;
     margin: 20px 50px 0 0;
-    text-align: right;">
+    text-align: right; " >
         <button type="button" id="btn_writefaq" name="btn_writefaq"
-        class="btn btn-outline-warning" style="border-color: #f8cacc; color: black;">
+        class="btn btn-outline-warning" style="border-color: #f8cacc; color: black; margin-top:20px;">
         글쓰기</button>
     </div>
     
@@ -219,7 +221,7 @@ $(function(){
     <nav aria-label="Page navigation example" 
     class="d-flex justify-content-center"
     style="display:inline-block;">
-        <ul class="pagination" >
+        <ul class="pagination" style="margin-top:30px; " >
           <li class="page-item">
             <a class="page-link" href="#" aria-label="Previous">
               <span aria-hidden="true">&laquo;</span>

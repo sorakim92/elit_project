@@ -45,15 +45,22 @@ public class NBoardController {
 	public String insertnboardWrite(NBoardVO vo) 
 									throws Exception {
 		
-		vo.setSort("N");
 		String result = nboardService.insertnboardWrite(vo);
-	
+		
 		String msg = "";
 		
-		if(result == null) {
-			msg = "ok";
-		}
 		
+		if(result !=  null) {
+			msg = "fail";
+		} else {
+		
+			if(vo.getSort().equals("N")) {
+				msg = "Nok";
+			} else if (vo.getSort().equals("F")) {
+				msg = "Fok";
+			}
+		}
+		//System.out.println("======="+result+"====="+vo.getSort()+"====="+msg);
 		return msg;
 	}
 	
@@ -152,25 +159,7 @@ public class NBoardController {
 		
 		return "board/faqWrite";
 	}
-	
-	@RequestMapping("faqWriteSave.do")
-	@ResponseBody
-	public String insertFAQboard(NBoardVO vo) 
-									throws Exception {
-		
-		vo.setSort("F");
-		
-		String msg = "ok";
-		
-		String result = nboardService.insertnboardWrite(vo);
-		
-		if(result != null) {
-			msg = "save_fail";
-		}
-		
-		return msg;
-	}
-	
+
 	
 	
 	

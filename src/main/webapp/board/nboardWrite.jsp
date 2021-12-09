@@ -124,9 +124,12 @@ $(function(){
   			datatype : "text",  //성공여부 ( ok )
   			success : function(data) {
   				
-  				if(data == "ok") {
+  				if(data == "Nok") {
   					alert("저장성공");
   					location="nBoardList.do";
+  				} else if(data == "Fok") {
+  					alert("저장성공");
+					location="faqList.do";
   				}else {
   					alert("저장실패");
   				}
@@ -183,6 +186,15 @@ $(function(){
                 <col width="15%" />
                 <col width="*" />
             </colgroup>
+            <tr>
+            	<th class="">분류</th>
+                <td class="" style="text-align:left;">
+                	<select name="sort" id="sort">
+                		<option value="N">공지사항</option>
+						<option value="F">자주묻는질문</option>
+                	</select>
+                </td>
+            </tr>
             <tr>
                 <th class="">제목</th>
                 <td class="" style="text-align:left;">

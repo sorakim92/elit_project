@@ -5,14 +5,14 @@
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="menuorderVO" type="egov.service1.MenuOrderVO"/>
 	
+	
 
-	<select id="MenuOrderDAO.selectStoreMenuList" resultClass="egovMap">
+	<select id="menuorderDAO.selectStoreMenuList" resultClass="egovMap">
 		select 	s.storeunq, 
 				s.cateunq, 
 				s.storename, 
 				s.storeinfo,
-				s.storerate, 
-				s.fee,
+				s.storerate,
                 m.menuunq,
                 m.menuname,
                 m.menukeyword,
@@ -30,11 +30,88 @@
 				storerate, 
 				decode(fee,0,'무료',fee) fee
 				
-		from 	store s
+		from 	store
 			where storeunq = #storeunq#
-		
-				
+
+	</select>
+	
+	
+	<select id="menuorderDAO.selectStoreReviewTotalCount" resultClass="java.lang.Integer">
+		SELECT count(*) FROM  storereview WHERE storeunq = #storeunq#
 	
 	</select>
+	
+	<select id="menuorderDAO.selectmenudetail" resultClass="menuorderVO" >
+		select menuunq, menuname, price, storeunq from menu where menuunq= #menuunq#
+	
+	
+	</select>
+	
+	<select id="menuorderDAO.countMenuunq" resultClass="java.lang.Integer">
+		SELECT count(*)
+		FROM	preorder
+		WHERE 
+				userid = #userid#
+			AND
+				menuunq = #menuunq#
+	
+	</select>
+	
+	
+	
+	<select id="menuorderDAO.selectPreOrderList" resultClass="egovMap">
+		SELECT 	
+				pindex,
+				menuunq,
+				menuname,
+				price,
+				qty,
+				userid,
+				storeunq
+		FROM	
+				preorder
+		WHERE 
+				storeunq = #storeunq# AND userid=#userid#
+	
+	</select>
+	
+	<select id = "menuorderDAO.selectTotPrice" resultClass="java.lang.Integer">
+		SELECT 
+				sum(price * qty) total 
+		FROM 
+				preorder 
+		WHERE 	
+				userid = #userid# 
+			AND storeunq = #storeunq#
+	
+	</select>
+	
+	<insert id="menuorderDAO.insertAddOrder" parameterClass="menuorderVO">
+		INSERT INTO preorder(
+						pindex, 
+						menuunq, 
+						menuname,
+						price,
+						qty,
+						storeunq,
+						userid)
+						VALUES(preorder_seq.nextval,
+								$menuunq$,
+								#menuname#,
+								#price#,
+								#qty#,
+								#storeunq#,
+								#userid#)
+	</insert>
+	
+
+
+	<update id="menuorderDAO.updateqty">
+	
+		UPDATE preorder SET qty = qty+1 
+		WHERE menuunq=#menuunq# AND userid = #userid#
+	
+	</update>
+
 
 </sqlMap>

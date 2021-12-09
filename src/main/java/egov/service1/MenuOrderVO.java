@@ -9,12 +9,49 @@ public class MenuOrderVO {
 	double storerate; 
 	String menukeyword; 
 	int fee;
+	
     int menuunq;
     String menuname;
+    
     String menuinfo;
     int price;
     
+    int pindex;
+    int qty =1;
     
+    // 나중에 세션할때 .... 수정하기
+    String userid="test";
+
+    int total =0;
+    
+    
+    
+    
+    
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
+	}
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+	public int getPindex() {
+		return pindex;
+	}
+	public void setPindex(int pindex) {
+		this.pindex = pindex;
+	}
+	public int getQty() {
+		return qty;
+	}
+	public void setQty(int qty) {
+		this.qty = qty;
+	}
 	public int getStoreunq() {
 		return storeunq;
 	}

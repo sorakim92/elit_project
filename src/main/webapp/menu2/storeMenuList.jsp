@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sample</title>
     
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -98,6 +101,66 @@ section {
     padding: 10px 10px 10px 10px;
 } 
 </style>
+
+<script>
+
+function fn_update(a,p) {
+	
+	var qty = $("#qty").val();
+	var price = p;
+	
+	
+	qty = Number(qty);
+	if(a == '+') {
+		qty++;
+	} else if (a == '-') {
+		qty--;
+		if(qty<0) qty=0;
+	}
+	$("#qty").val(qty);
+
+}
+
+
+function fn_addOrder(u) {
+
+	$("#menuunq").val(u);
+	//console.log($("#menuunq").val(u));
+	//console.log(menuunq);
+	
+	/*
+	var menuunq = u;
+	var param = {"menuunq":menuunq}
+	//console.log(parm); */
+	
+	var formdata = $("#frm").serialize();
+	console.log(formdata);
+	
+ 	$.ajax({
+ 		type : "post",
+ 		url : "addOrderMenu.do",
+ 		data : formdata,
+ 			
+ 		datatype : "text",
+ 		success :	function(data) {
+ 			
+ 			if(data == "ok") {
+ 				alert("처리완료");
+ 				document.location.reload();
+ 			
+ 			} else {
+ 				alert("처리실패");
+ 			}
+ 		},
+ 		error : function() {
+ 			alert("오류. 처리실패");
+ 		}	
+
+ 	});
+	
+	
+}
+</script>
 <body>
 <div class="wrapper">
     <div class="main" style="min-height: 100%; padding-bottom:100px; flex:1;">
@@ -119,7 +182,7 @@ section {
                         width:45%; height:40px;
                         line-height: 2.0;
                         float:left; margin-right:20px;">
-                가게이름 (별점)</div>
+                ${vo.storename } (${vo.storerate })</div>
             <!-- 가게 주문시 유의정보 -->
             <div style=" text-align:right; 
                 font-size: 15px; font-family:hanna;  width:50%; 
@@ -143,7 +206,7 @@ section {
             <div style=" width:100%; height:20px; 
                         float:left; margin:10px 0 5px 0;">
                 <span style="display:block; width:50%; text-align: left; float:left; 
-                                font-size:12px;">리뷰(100건)</span>
+                                font-size:12px;">리뷰(${reviewTot }건)</span>
                 <span style="display:block; width:50%; text-align: right; float:left;
                                 font-size: 12px;">더보기></span>
             </div>
@@ -189,11 +252,15 @@ section {
          <!--메뉴-->
          <div style="width:100%;">
             <table style="width:100%; text-align: left;">
+            
                 <colgroup>
                     <col width="30%" />
                     <col width="*" />
                 </colgroup>
-
+               
+             	
+                <c:forEach var="result" items="${list }">
+				
                 <tr>
                     <td rowspan="4">
                         <div style="width:130px; height: 130px; border: 1px solid #f8cacc; 
@@ -202,20 +269,29 @@ section {
                             <img src="/img/addpic.png" alt="업체대표사진" width="100" height="100" name="" id="">
                         </div>
                     </td>
-                    <td style="font-weight: bold; font-size:16px;"><span>메뉴이름</span></td>
-                    <td><span style="font-size:25px; font-weight: bold;">+</span></td>
+                    <td style="font-weight: bold; font-size:16px;"><span>${result.menuname}</span></td>
+                    <td><span style="font-size:25px; font-weight: bold; cursor: pointer;" onclick="fn_addOrder('${result.menuunq }')">+</span></td>
                 </tr>
                 <tr>
-                    <td><span>메뉴소개란</span></td>
+                    <td><span>${result.menuinfo }</span></td>
                 </tr>
                 <tr>
-                    <td>가격</td>
+                    <td>${result.price }</td>
                 </tr>
                 <tr >
                     <td style="padding-bottom:10px;">한줄평~~~</td>
                 </tr>
-
+                
+                
+				</c:forEach>
+				
+				
             </table>
+             <form name="frm" id="frm">
+               <input type="hidden" name="userid" id="userid" value="${vo.userid }">
+              <input type="hidden" name="storeunq" id="storeunq" value="${vo.storeunq }">
+               <input type="hidden" name="menuunq" id="menuunq" value="">
+            </form>
         </div>
     </section>
 
@@ -231,47 +307,37 @@ section {
                 주문표
             </span>
             <div style="width:100%; height:auto; ">
+            
+            <c:forEach var="p" items="${preList }">
                 <div style="width:100%; height: 60px;  margin-bottom:10px;">
                     <div style="padding:0 10px 5px 10px; width:80%; float:left; 
                                 font-weight: bold;">
-                        주문한메뉴명 
+                        ${p.menuname } 
                     </div>
-                    <div style="width:10%; float:left;"> 
-                        <img src="/img/x.png" alt="x"
+                    <div style="width:10%; float:left; cursor: pointer;" onclick="fn_delete('${p.menuunq}')"> 
+                        <img src="img/x.png" alt="x"
                         style="text-align:right; width:15px; height:15px;" />
                     </div>
                     <div style="padding:0 10px 5px 10px; width:60%; float:left;">
-                        가격표기  
+                        ${p.price }  
                     </div>
                     <div style="width:35%; float:right; font-size: 14px;"> 
-                        <img src="/img/minus.png" alt="-"
-                        style="text-align:right; width:14px; height:14px;" />
-                        &nbsp;&nbsp;<span>수량</span>&nbsp;&nbsp;
-                        <img src="/img/plus.png" alt="+"
-                        style="text-align:right; width:13px; height:13px;" />
+                        
+                      	<img src="img/minus.png" alt="-"
+                       			style="text-align:right; width:14px; height:14px; cursor: pointer;" 
+                       			onclick="fn_update('-','${p.price}')"/>
+                      
+                        <input type="text" name="qty" id="qty" value="${p.qty }" size ="2" readonly>
+                        
+                        <img src="img/plus.png" alt="+"
+	                        	style="text-align:right; width:13px; height:13px; cursor: pointer;" 
+	                        	onclick="fn_update('+','${p.price}')" />
                     </div>
                 </div>
-
-                <div style="width:100%; height: 60px; margin-bottom:10px;">
-                    <div style="padding:0 10px 5px 10px; width:80%; float:left; 
-                                font-weight: bold;">
-                        주문한메뉴명 
-                    </div>
-                    <div style="width:10%; float:left;"> 
-                        <img src="/img/x.png" alt="x"
-                        style="text-align:right; width:15px; height:15px;" />
-                    </div>
-                    <div style="padding:0 10px 5px 10px; width:60%; float:left;">
-                        가격표기  
-                    </div>
-                    <div style="width:35%; float:right; font-size: 14px;"> 
-                        <img src="/img/minus.png" alt="-"
-                        style="text-align:right; width:14px; height:14px;" />
-                        &nbsp;&nbsp;<span>수량</span>&nbsp;&nbsp;
-                        <img src="/img/plus.png" alt="+"
-                        style="text-align:right; width:13px; height:13px;" />
-                    </div>
-                </div>
+             
+			</c:forEach>
+               
+            	
             </div>
         </div>
 
@@ -281,8 +347,7 @@ section {
             <span style="display:inline-block; border-radius: 0.5em;
                     background: #f8cacc; padding: 5px 10px 5px 10px;
                     margin:5px 0 10px 10px;
-                    font-family: jua;
-                    ">
+                    font-family: jua;">
                 결제금액
             </span>
             <div style="width:100%; height:auto; ">
@@ -293,7 +358,7 @@ section {
                     </colgroup>
                     <tr>
                         <td>배달비</td>
-                        <td>금액</td>
+                        <td>${vo.fee }</td>
                     </tr>
                     <tr>
                         <td>쿠폰</td>
@@ -303,10 +368,12 @@ section {
                         </td>
                     </tr>
                     <tr>
-                        <td>총주문금액</td>
-                        <td>total</td>
+                        <td>총주문금액(배달비 포함)</td>
+                        <td>${vo.total + vo.fee }</td>
                     </tr>
                 </table>
+                
+               
             </div>
         </div>
         <!-- 결제하기 -->

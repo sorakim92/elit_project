@@ -151,12 +151,12 @@ section {
            		<td>
                	   <div style="width:120px; height: 120px; border: 1px solid #f8cacc; border-radius: 2em;
                    margin:5px 20px 10px 20px; text-align: center;
-                   cursor: pointer;" onclick="location.href='menuList.do?storeunq=${result.storeunq}';">
+                   cursor: pointer;" onclick="location.href='menuOrderList.do?storeunq=${result.storeunq}';">
                        <img src="<c:url value='/img/addpic.png'/>" alt="업체대표사진" width="100" height="100" name="" id="">
                    </div>
                	</td>
                	<td>
-                   <span style="font-weight: bold; cursor: pointer;" onclick="location.href='menuList.do?storeunq=${result.storeunq}';"> ${result.storename }</span>
+                   <span style="font-weight: bold; cursor: pointer;" onclick="location.href='menuOrderList.do?storeunq=${result.storeunq}';"> ${result.storename }</span>
                           
                        <div style="font-size:12px; text-align: left; padding-left: 10px;">
                            <span><img src="<c:url value='/img/star.png'/>" style="width:20px; height:20px; ">5.0</span>
