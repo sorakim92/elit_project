@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>    
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +14,7 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	
+	<link rel="stylesheet" href="css/headFooter.css">
 	
 </head>
 <style>
@@ -89,52 +90,6 @@ section {
 }
 
 
-.footer {
-	width:100%;
-    height:1000px;
-	background-color:#ccc;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-}
-.ft_ul {
-    width:100%;
-    height:50px;
-}
-.ft_info {
-    width:100%;
-    height:50px;
-    text-align: center;
-    font-size:14px;
-    padding-bottom:20px;
-}
-.ul1{
-    float:left;
-    padding-top:7px;
-}
-
-.ul1 li{
-    font-size:14px;
-    list-style:none;
-    float:left;
-    border-left:1px solid #ccc;
-    padding-left:10px;
-    padding-right:10px;
-}
-
-.ul2{
-    float:right;
-    padding-top:7px;
-}
-
-.ul2 li{
-    font-size:14px;
-    list-style:none;
-    float:left;
-    border-left:1px solid #ccc;
-    padding-left:10px;
-    padding-right:10px;   
-}
 .th {
     text-align:left;
 }
@@ -240,14 +195,11 @@ $(function() {
 <div class="wrapper">
     <div class="main" style="min-height: 100%; padding-bottom:100px; flex:1;">
     <header class="width:100%; height:50px;">
-        <div class="logo">
-            <img src="../img/logo.png" width="200px" height="100px" alt="로고">
-            <h4>사장님광장</h4>
-        </div>
-        <div class="search">
-        <!-- 돋보기누를때 input 박스 활성화 -->
-            <input type="text" name="" id="" class=""> 
-            <img src="../img/mag.png" width="15" height="15" alt="돋보기">
+        <div class="logo" style=" cursor: pointer;" onclick="location.href='mainPage.do';">
+    	<img src="<c:url value='/img/logo.png'/>" width="200px" height="100px" alt="로고"/>  
+	    </div>      
+        
+        <div class="search">    
             <a href>마이페이지</a>
             <a href>사장님 광장</a>
         </div> 
@@ -342,14 +294,7 @@ $(function() {
                     </div>
                 </div>
             </div>
-            <div class="row" >
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="email" class="fieldTitle">이메일 </label>
-                        <input type="email" class="email" name="email" id="email" value="" >
-                    </div>
-                </div>
-            </div>
+           
 
             <div class="row">
                 <div class="col-sm-6">
@@ -401,35 +346,19 @@ $(function() {
             
                 
            
-      </section>
+      </section><br><br><br><br><br><br><br>
    
     
        
         <div style ="text-align:center;">
             <button type="button" class="btn3" id="btn3" >제출</button>
         </div>                         
-     		</form>
-    
+     	</form>
+     		
+     		
+</div>
     <footer>
-        <div class="">
-            <div class="ft_ul">
-                <ul class="ul1">
-                    <li>공지사항</li>
-                    <li>고객센터</li>
-                    <li>입점문의</li>
-                    <li>회원탈퇴</li>
-                </ul>
-                <ul class="ul2">
-                    <li>이용약관</li>
-                    <li>개인정보처리방침</li>
-                </ul>
-            </div>
-            <div class="ft_info">
-                (주) 이릿딜리버리...? 사업자등록번호 131-0000-0000<br>
-                 주소 서울송파구 ********************* <br>
-                COPYRIGHT ~~~~~~~~~ ALL RIGHT RESERVED
-            </div>
-        </div>
+      <%@ include file = "../include/main_footer.jsp" %>
     </footer>
 </div>
 </body>

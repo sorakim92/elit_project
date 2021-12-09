@@ -11,13 +11,15 @@ import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
 public class MenuDAO extends EgovAbstractDAO{
 
 	public String insertMenu(MenuVO vo) {
-		
 		return (String) insert("menuDAO.insertMenu",vo);
 	}
 
-	public List<?> selectMenuList(MenuVO vo) {
-		
+	public List<?> selectMenuList(MenuVO vo) {	
 		return list("menuDAO.selectMenuList",vo);
+	}
+
+	public MenuVO selectMenuDetail(MenuVO vo) {
+		return (MenuVO) select("menuDAO.selectMenuDetail",vo);
 	}
 
 }

@@ -16,13 +16,17 @@ public class MenuImpl implements MenuService{
 
 	@Override
 	public String insertMenu(MenuVO vo) throws Exception {
-	
 		return menuDAO.insertMenu(vo);
 	}
 
 	@Override
 	public List<?> selectMenuList(MenuVO vo) throws Exception {
-	
 		return menuDAO.selectMenuList(vo);
+	}
+
+	@Override
+	public MenuVO selectMenuDetail(MenuVO vo) throws Exception {
+		
+		return menuDAO.selectMenuDetail(vo);
 	}
 }

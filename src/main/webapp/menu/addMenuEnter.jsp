@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +13,7 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
   	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+  	<link rel="stylesheet" href="css/headFooter.css">
   	
 	
 	
@@ -88,7 +90,7 @@
   				success : function(data) {
   					if (data == "ok") {
   						alert("저장완료");
-  						location="menuWrite.do";
+  						location="menuList.do";
   					} else {
   						alert("저장실패");
   					}
@@ -242,14 +244,11 @@ section {
      
     
      <header class="width:100%; height:50px;">
-        <div class="logo">
-            <img src="../img/logo.png" width="200px" height="100px" alt="로고">
-            <h4>사장님광장</h4>
-        </div>
+        <div class="logo" style=" cursor: pointer;" onclick="location.href='mainPage.do';">
+    	<img src="<c:url value='/img/logo.png'/>" width="200px" height="100px" alt="로고"/>
+	    <h4>사장님광장</h4>
+	    </div>
         <div class="search">
-        <!-- 돋보기누를때 input 박스 활성화 -->
-            <input type="text" name="" id="" class=""> 
-            <img src="/img/mag.png" width="15" height="15" alt="돋보기">
             <a href>마이페이지</a>
             <a href>사장님 광장</a>
         </div> 
@@ -285,8 +284,8 @@ section {
         <br>
         <div>
         
-<div class="row">
-    <div class="col-sm-12">
+	<div class="row">
+    	<div class="col-sm-12">
       
         
 <fieldset>
@@ -324,10 +323,10 @@ section {
                         
         <div class="col-sm-12">
              <div class="form-group">   
-                        <select name="menukeyword"   id="menukeyword" class="form-control country-code">
+                        <select type="text" name="menukeyword"   id="menukeyword" class="form-control country-code">
                             <option value="">추천메뉴</option>
-                            <option value="1">인기메뉴</option>
-                            <option value="2">음료</option>
+                            <option value="인기메뉴">인기메뉴</option>
+                            <option value="음료">음료</option>
                         </select>
                         
               </div> 
@@ -353,8 +352,11 @@ section {
     <button type="button" id="btn_save">적용</button>
     <button type="reset">취소</button>
 </div>   
- </form>   
+ </form>  
  
+  
+ </div>
+
     <footer>
       <%@ include file = "../include/main_footer.jsp" %>
     </footer>

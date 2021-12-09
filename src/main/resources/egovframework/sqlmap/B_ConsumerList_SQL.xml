@@ -5,4 +5,36 @@
 <typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 <typeAlias  alias="b_consumerlistVO" type="egov.service1.B_ConsumerListVO"/>
 
+<insert id="b_consumerlistDAO.insertb_ConsumerListWrite">
+		INSERT INTO b_consumerlist( 
+							commindex,
+							b_group,
+							userid,
+							ment,
+							rdate
+							) 
+					VALUES(	b_consumerlist_seq.nextval,
+							'$b_group$',
+							'$userid$',
+							'$ment$',
+							sysdate
+							)
+
+</insert>
+
+<select id="b_consumerlistDAO.selectb_ConsumerList"  resultClass="egovMap"  >
+		SELECT 
+				commindex,	
+				b_group as bgroup,
+				userid,
+				ment,
+				to_char(rdate,'yyyy/mm/dd') rdate
+				
+		FROM b_consumerlist  
+		  		
+</select>
+
+
+
+
 </sqlMap>
