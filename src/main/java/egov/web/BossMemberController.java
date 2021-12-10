@@ -13,28 +13,4 @@ import egov.service1.BossMemberVO;
 public class BossMemberController {
 	@Resource(name = "bossmemberService")
 	BossMemberService bossmemberService;
-	
-	
-	@RequestMapping("bossmemberWrite.do")
-	public String bossmemberWrite() throws Exception {
-
-		return "mypage/businessMypage";
-	}
-	
-	@RequestMapping("bossmemberWriteSave.do")
-	@ResponseBody
-	public String insertbossmemberWrite(BossMemberVO vo) 
-									throws Exception {
-		
-		
-		String result = bossmemberService.insertbossmemberWrite(vo);
-	
-		String msg = "";
-		
-		if(result == null) {
-			msg = "ok";
-		}
-		
-		return msg;
-	}
 }
