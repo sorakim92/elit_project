@@ -10,7 +10,10 @@ public interface MenuService {
 	MenuVO selectMenuDetail(MenuVO vo) throws Exception;
 	
 	
-	
+	int updateMenu(MenuVO vo) throws Exception;
+
+	int deleteMenu(MenuVO vo) throws Exception;
+
 	
 	
 }

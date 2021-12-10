@@ -22,4 +22,12 @@ public class MenuDAO extends EgovAbstractDAO{
 		return (MenuVO) select("menuDAO.selectMenuDetail",vo);
 	}
 
+	public int updateMenu(MenuVO vo) {
+		return (int) update("menuDAO.updateMenu",vo);
+	}
+
+	public int deleteMenu(MenuVO vo) {
+		return (int) delete("menuDAO.deleteMenu",vo);
+	}
+
 }

@@ -57,8 +57,43 @@ public class MenuController {
 		
 		return "menu/menuModify";
 	}
+	@RequestMapping("menuModifySave.do")
+	@ResponseBody
+	public String updateMenu(MenuVO vo) 
+									throws Exception {
 
+		int result = menuService.updateMenu(vo);
+		String msg = "";
+		
+		if(result == 0) {
+			msg = "modify_fail";
+		} else if (result ==1) {
+			msg = "ok";
+		}
+		
+		
+		return msg;
+	}
 	
+
+	@RequestMapping("menuDelete.do")
+	@ResponseBody
+	public String deleteMenu(MenuVO vo) throws Exception {
+		
+		int result = menuService.deleteMenu(vo);
+		String msg = "";
+		
+		if(result == 0) {
+			msg = "del_fail";
+		} else if (result ==1) {
+			msg = "ok";
+		}
+		
+		
+		return msg;
+		
+		
+	}
 	
 	@RequestMapping("menuWrite.do")
 	public String menu_addMenuEnter() {

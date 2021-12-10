@@ -25,6 +25,20 @@
 		]]>
 
 	</insert>
+	<update id="menuDAO.updateMenu">
+		UPDATE menu 
+			SET 
+				menuname='$menuname$',
+				menuinfo='$menuinfo$',
+				price = '$price$',
+				menukeyword = '$menukeyword$'
+		WHERE menuunq = '$menuunq$'
+	</update>
+	
+	
+	
+	
+	
 	
 	<select id="menuDAO.selectMenuList"  resultClass="egovMap"  >
 		SELECT 
@@ -33,6 +47,7 @@
 				menukeyword,
 				price 
 		FROM menu 
+		
 		  		
 	</select>
 	
@@ -48,6 +63,11 @@
 	
 	</select>
 	
+	<delete id="menuDAO.deleteMenu">
+	
+		DELETE FROM menu WHERE menuunq = '$menuunq$'
+	
+	</delete>
 	
 	
 </sqlMap>
