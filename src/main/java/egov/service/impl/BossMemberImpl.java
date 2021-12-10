@@ -12,8 +12,4 @@ public class BossMemberImpl implements BossMemberService{
 	@Resource(name = "bossmemberDAO")
 	BossMemberDAO bossmemberDAO;
 
-	@Override
-	public String insertbossmemberWrite(BossMemberVO vo) throws Exception {
-		return bossmemberDAO.insertbossmemberWrite(vo);
-	}
 }
