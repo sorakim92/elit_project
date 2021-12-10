@@ -29,4 +29,14 @@ public class MenuImpl implements MenuService{
 		
 		return menuDAO.selectMenuDetail(vo);
 	}
+
+	@Override
+	public int updateMenu(MenuVO vo) throws Exception {
+		return menuDAO.updateMenu(vo);
+	}
+
+	@Override
+	public int deleteMenu(MenuVO vo) throws Exception {
+		return menuDAO.deleteMenu(vo);
+	}
 }

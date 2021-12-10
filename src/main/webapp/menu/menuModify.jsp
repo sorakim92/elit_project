@@ -172,9 +172,33 @@ section {
 
 $(function(){
 	
-	
+	/* 삭제버튼 클릭시  */
+	$("#del").click(function(){
+		if(confirm("해당글을 삭제하시겠습니까?") == true) {
+			var formdata = $("#frm").serialize();
+			$.ajax({
+				type : "post",
+				url  : "menuDelete.do",
+				data : formdata,
+				
+				datatype : "text",
+				success  : function(data) {
+					if(data == "ok") {
+						alert("삭제성공");
+						location="menuList.do";
+					} else {
+						alert("삭제 실패");
+					}
+					
+				},
+				error :	function() {
+					alert("오류발생");
+				}
+			})
+		}
+	})
 	/* 수정  버튼 클릭시 */
-	$("#btn3").click(function(){
+	$("#modi").click(function(){
 		
 		if($("#menuname").val() == "" ) {
 			alert("메뉴명을 입력해주세요.");
@@ -263,7 +287,7 @@ $(function(){
     
      <section>
      <form name="frm" id="frm" >
-    
+     <input type="hidden" name="menuunq" id="menuunq" value="${vo.menuunq }" >	
         <div style="text-align:left;" >
             <font size="5">메뉴수정</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            
@@ -339,7 +363,7 @@ $(function(){
                  
 
         </div>
-
+	</form>
     </div>
     
 </section>                            
@@ -347,10 +371,11 @@ $(function(){
                             
 
 <div style="text-align:center;" >
-    <button type="button"class="btn3" id="btn3">수정</button>
+    <button type="button"class="btn3" id="modi">수정</button>
+    <button type="button"class="btn3" id="del">삭제</button>
     <button type="reset" class="btn3" id="btn2">취소</button>
 </div>
-</form>             
+           
 </div>    
     <footer>
           <%@include file = "../include/main_footer.jsp" %>
