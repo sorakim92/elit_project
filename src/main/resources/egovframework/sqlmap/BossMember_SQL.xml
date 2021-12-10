@@ -6,21 +6,5 @@
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="bossmemberVO" type="egov.service1.BossMemberVO"/>
 	
-	<insert id="bossmemberDAO.insertbossmemberWrite">
-		INSERT INTO bossmember(	storeunq,
-							b_userid,
-							userpw,
-							email,
-							userphone
-							) 
-					VALUES(	store_seq.nextval,
-							'$b_userid$',
-							'$userpw$',
-							'$email$',
-							'$userphone$'
-							
-							)
 
-	</insert>
-	
 </sqlMap>
