@@ -5,30 +5,28 @@
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="inquiryVO" type="egov.service1.InquiryVO"/>
 	
-	<insert id="inquiryDAO.insertInquiryboard">
+	<insert id="inquiryDAO.insertBoard">
 		<![CDATA[
-			INSERT INTO inquiry( title,
+			INSERT INTO inquiry( inquiryindex,
+								title,
 								 content,
-								 files,
-							  	 hits,
+								 hits,
 								 rdate,
-								 inquiryindex,
 								 userid )
 					VALUES  ( inquiry_seq.nextval,
 								 #title#,
 								 #content#,
-								 #files#,
-							  	 #hits#,
+								 
+							     0,
 								 sysdate,
-								 #inquiryindex#,
-								 #userid# )
-								
+								 '$userid$' )
 		]]>
 	</insert>
 	
-	<select id="inquiryDAO.selectInquiryboardList" resultClass="egovMap">
+	<select id="inquiryDAO.selectBoardList" resultClass="egovMap">
 	
-				
+		SELECT b.* FROM (
+			SELECT rownum rn, a.* FROM (
 				     SELECT		 title,
 								 content,
 								 files,
@@ -37,12 +35,56 @@
 								 inquiryindex,
 								 userid 
 					 FROM
-											Inquiryboard
+											Inquiry
 									ORDER BY
-											unq DESC ) a ) b
+											inquiryindex DESC ) a ) b
 			WHERE 
-							rn BETWEEN #s_no# AND #e_no#
-	
+							rn BETWEEN '$s_no$' AND '$e_no$'
+			
+				
+			
 	</select>
+	
+
+	<select id="inquiryDAO.selectBoardDetail" resultClass="InquiryVO">
+		SELECT 
+				  	 title,
+					 content,
+					 files,
+				  	 hits,
+					 to_char(rdate,'yyyy/mm/dd') rdate,
+					 inquiryindex,
+					 userid
+				 
+		FROM inquiry 
+		  		WHERE inquiryindex = #inquiryindex#
+	</select>
+	
+	<update id="inquiryDAO.updateBoard">
+			UPDATE inquiry
+					SET
+						title='$title$',
+						userid='$userid$',
+						content='$content$'
+						
+				WHERE 
+						inquiryindex='$inquiryindex$'
+	</update>
+	
+	<update id="inquiryDAO.updateBoardHits">
+		UPDATE inquiry SET hits=hits+1 WHERE inquiryindex=#inquiryindex#
+	
+	</update>
+
+	<delete id="inquiryDAO.deleteBoard">
+		DELETE FROM inquiry WHERE inquiryindex=#inquiryindex#
+	</delete>
+	
+
+	<select id="inquiryDAO.selectBoardTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM inquiry 
+
+	</select>
+
 	
 </sqlMap>

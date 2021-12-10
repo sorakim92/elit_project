@@ -8,24 +8,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>리뷰관리</title>
     <link rel="stylesheet" href="../css/css.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<!-- footer header css -->
+	<link rel="stylesheet" href="css/headFooter.css">
     
 </head>
 <body>
+   <div class="wrapper">   
+  <header class="width:100%; height:50px;">
+       <%@include file = "../include/main_header.jsp" %>
+  </header>
+ 
+<nav class="navbar">
     <div>
-       <%@ include file="../include/main_header.jsp" %>          
+        <ul class="gnb">
+            <li><a href="#">마이페이지</a></li>
+            <li><a href="#">주문내역</a></li>
+            <li><a href="#">회원정보수정</a></li>
+            <li><a href="#">문의내역</a></li>
+            <li><a href="#">찜목록</a></li>
+            <li><a href="#">리뷰관리</a></li>
+            <li><a href="#">ADMIN</a></li>
+        </ul>
     </div>
-        <nav>
-          <div class="">
-                <ul class="gnb">
-                    <li><a href="#">주문내역</a></li>
-                    <li><a href="#">회원정보수정</a></li>
-                    <li><a href="#">문의내역</a></li>
-                    <li><a href="#">찜목록</a></li>
-                    <li><a href="#">리뷰관리</a></li>                    
-                </ul>
-               
-           </div>
-        </nav>
+</nav>
         <section>
            
             <div class="s_review">
@@ -55,6 +65,7 @@
                     <span><img src="/img/star.png" style="width:20px; height:20px; ">5.0</span>
                 </div>
             </table>
+            </div>
             <div style="font-size:16px; ; margin-left: 30px;  text-align: left;">
               <textarea cols="90" rows="20" placeholder="음식의 맛, 양, 포장 상태 등 음식에 대한 솔직한 리뷰를 남겨주세요."></textarea>
             </div>  
@@ -65,26 +76,10 @@
             </div>
 
         </section>
-         <footer>
-        <div class="footer">
-            <div class="ft_ul">
-                <ul class="ul1">
-                    <li>공지사항</li>
-                    <li>고객센터</li>
-                    <li>입점문의</li>
-                    <li>회원탈퇴</li>
-                </ul>
-                <ul class="ul2">
-                    <li>이용약관</li>
-                    <li>개인정보처리방침</li>
-                </ul>
-            </div>
-            <div class="ft_info">
-                (주) 이릿딜리버리...? 사업자등록번호 131-0000-0000<br>
-                 주소 서울송파구 ********************* <br>
-                COPYRIGHT ~~~~~~~~~ ALL RIGHT RESERVED
-            </div>
-        </div>
+          
+    <footer>
+          <%@include file = "../include/main_footer.jsp" %>
     </footer>
+    </div>
 </body>
 </html>
