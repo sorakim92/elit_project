@@ -6,5 +6,24 @@
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="bossmemberVO" type="egov.service1.BossMemberVO"/>
 	
+	<select id="bossmemberDAO.selectbossmemberService" resultClass = "egovMap">
+		SELECT b.* FROM (
+			SELECT rownum rn, a.* from (	
+				SELECT  USERID,
+						USERPW,
+						USERNAME,
+						EMAIL,
+						USERPHONE,
+						STOREADDR,
+						BUSINESS,
+						RDATE,
+						STOREUNQ
+				FROM	
+						BOSSMEMBER
+				WHERE	
+						USERID IS NOT NULL and BUSINESS = 'y'
+				ORDER BY RDATE DESC) a )b
+	</select>
+				
 
 </sqlMap>

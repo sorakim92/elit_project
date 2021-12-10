@@ -1,5 +1,7 @@
 package egov.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -12,4 +14,10 @@ public class BossMemberImpl implements BossMemberService{
 	@Resource(name = "bossmemberDAO")
 	BossMemberDAO bossmemberDAO;
 
+	@Override
+	public List<?> selectbossmemberService(BossMemberVO vo) throws Exception {
+
+		
+		return bossmemberDAO.selectbossmemberService(vo);
+	}
 }
