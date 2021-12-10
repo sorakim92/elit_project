@@ -15,37 +15,38 @@ public class InquiryImpl implements InquiryService{
 	InquiryDAO inquiryDAO;
 
 	@Override
-	public String insertInquiryboard(InquiryVO vo) throws Exception {
-		return inquiryDAO.insertInquiryboard(vo);
+	public String insertBoard(InquiryVO vo) throws Exception {
+		return inquiryDAO.insertBoard(vo);
 	}
 
 	@Override
-	public List<?> selectInquiryboardList(InquiryVO vo) throws Exception {
-		return inquiryDAO.selectInquiryboardList(vo);
+	public List<?> selectBoardList(InquiryVO vo) throws Exception {
+		return inquiryDAO.selectBoardList(vo);
 	}	
 
 	@Override
-	public InquiryVO selectInquiryboardDetail(InquiryVO vo) throws Exception {
-		return inquiryDAO.selectInquiryboardDetail(vo);
+	public InquiryVO selectBoardDetail(InquiryVO vo) throws Exception {
+		return inquiryDAO.selectBoardDetail(vo);
 	}
 
 	@Override
-	public int updateInquiryboard(InquiryVO vo) throws Exception {
-		return inquiryDAO.updateInquiryboard(vo);
+	public int updateBoard(InquiryVO vo) throws Exception {
+		return inquiryDAO.updateBoard(vo);
 	}
 
 	@Override
-	public int deleteInquiryboard(InquiryVO vo) throws Exception {
-		return inquiryDAO.deleteInquiryboard(vo);
+	public int deleteBoard(InquiryVO vo) throws Exception {
+		return inquiryDAO.deleteBoard(vo);
 	}
 
 	@Override
-	public int updateInquiryboardHits(InquiryVO vo) throws Exception {
-		return inquiryDAO.updateInquiryboardHits(vo);
+	public int updateBoardHits(InquiryVO vo) throws Exception {
+		return inquiryDAO.updateBoardHits(vo);
 	}
 
 	@Override
-	public int selectInquiryboardTotal(InquiryVO vo) throws Exception {
-		return inquiryDAO.selectInquiryboardTotal(vo);
+	public int selectBoardTotal(InquiryVO vo) throws Exception {
+		return inquiryDAO.selectBoardTotal(vo);
 	}
+
 }

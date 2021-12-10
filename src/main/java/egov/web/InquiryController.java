@@ -19,68 +19,158 @@ public class InquiryController {
 		@Resource(name = "inquiryService")
 		InquiryService inquiryService;
 		
-		@RequestMapping(value="/mypage_InquiryList.do")
-		public String mypage_InquiryList(InquiryVO vo, Model model) throws Exception {
+		@RequestMapping("InquiryList.do")
+		public String selectInquiryList(InquiryVO vo, Model model) throws Exception {
+						
 			
-			int page_no = vo.getPage_no();
-			int s_no = (page_no-1)*10 + 1;
-			int e_no = s_no + (10-1);
+			  int page_no = vo.getPage_no(); // 1->1 ;; 2->11 ;; 3->21 
+			  int s_no = (page_no -1)*10 + 1;
+			  int e_no = s_no + (10-1);
+			  
+			  vo.setS_no(s_no); 
+			  vo.setE_no(e_no);
+			  
+			 
+			 
+			List<?> list = inquiryService.selectBoardList(vo);
+			int total = inquiryService.selectBoardTotal(vo);
 			
-			vo.getS_no();
-			vo.getE_no();
-			
-			List<?> list = inquiryService.selectInquiryboardList(vo);
-			int total = inquiryService.selectInquiryboardTotal(vo);
 			
 			int total_page = (int)Math.ceil((double)total/10);
-			int rownum = total - (page_no-1)*10;
+			
+			
+			int rownum = total - (page_no-1)*10; 
+			
+			model.addAttribute("s_field",vo.getS_field());
+			model.addAttribute("s_text",vo.getS_text()); 
 			
 			model.addAttribute("list",list);
 			model.addAttribute("total",total);
 			model.addAttribute("total_page",total_page);
-			model.addAttribute("rownum",rownum);
-
-			return "mypage/InquiryList.do";
+			model.addAttribute("rownum",rownum); 
+			
+			
+			
+			
+			return "mypage/InquiryList";
 		}
 		
-		@RequestMapping(value="/mypage_InquiryWrite.do")
-		public String mypage_InquiryWrite() {
+		@RequestMapping("InquiryWrite.do")
+		public String mypage_InquiryWrite( InquiryVO vo ) throws Exception{
 
 			return "mypage/InquiryWrite";
 		}
 		
-		@RequestMapping(value="/mypage_InquiryWriteSave.do")
+		@RequestMapping("InquiryWriteSave.do")
 		@ResponseBody
 		public String mypage_InquiryWriteSave(InquiryVO vo) throws Exception {
 			
-			int result = inquiryService.updateInquiryboard(vo);
+			String result = inquiryService.insertBoard(vo);
 			
-			String message = "ok";
-			if( result != 1 ) {
-				message = "error";
+			String message = "";
+			if( result == null ) {
+				message = "ok";
 			}
 			
 			return message;			
 		}
 		
-		@RequestMapping(value="/mypage_InquiryDelete.do")
-		@ResponseBody
-		public String mypage_InquiryDelete(InquiryVO vo) throws Exception {
+		@RequestMapping("InquiryDetail.do")
+		public String selectBoardDetail(InquiryVO vo, Model model ) throws Exception {
 			
-			int result = inquiryService.deleteInquiryboard(vo);
+			// 상세 보기 서비스
+			vo = inquiryService.selectBoardDetail(vo);
 			
-			String message = "ok";
-			if( result != 1 ) {
-				message = "error";
+			// 조회수 증가
+			inquiryService.updateBoardHits(vo);
+			
+			String content = vo.getContent();
+			if(content != null && !content.equals("")) {
+				content = content.replace("\n", "<br>");
+				content = content.replace(" ", "&nbsp;");
+				vo.setContent(content);
 			}
-	
-			return message;
+			
+			model.addAttribute("vo",vo);
+					
+			return "mypage/InquiryDetail";
 		}
-		
-		@RequestMapping(value="/mypage_InquiryModify.do")
+				
+		@RequestMapping("InquiryModify.do")
 		public String mypage_InquiryModify( InquiryVO vo, Model model ) throws Exception {
 			
-			return "";
+			InquiryVO vo1 = inquiryService.selectBoardDetail(vo);
+			inquiryService.updateBoardHits(vo1);
+			
+			String unq1 = "";
+			String unq2 = "";
+			String data = "";
+			String next_unq = "";
+			String before_unq = "";
+			String[] array;
+			int len = 0;		
+			List<?> list = null;
+			
+			int unq = vo.getInquiryindex();
+			vo.setUnq1(unq+"");
+			vo.setUnq2(null);
+			
+			list = inquiryService.selectBoardList(vo);
+			
+			len = list.size();
+			
+			if(len > 0) {
+				data = list.get(len-1) + "";  
+				array = data.split(", ");
+				next_unq = array[1].split("=")[1];
+			}
+						
+			vo.setUnq1(null);	
+			vo.setUnq2(unq+"");	
+			list = inquiryService.selectBoardList(vo);
+			len = list.size();
+			if(len > 0) {
+				data = list.get(0)+"";
+				array = data.split(", ");
+				before_unq = array[1].split("=")[1];
+			}
+					
+			model.addAttribute("vo",vo1);
+			model.addAttribute("next_unq",next_unq);
+			model.addAttribute("before_unq",before_unq);		
+			
+			return "mypage/InquiryModify";
+		}
+		
+		@RequestMapping("InquiryModifySave.do")
+		@ResponseBody
+		public String InquiryModifySave( InquiryVO vo) throws Exception {
+			
+			int result = inquiryService.updateBoard(vo);
+			
+			String message = "ok";
+			if( result == 0) {
+				message = "error";
+			} else if(result ==1) {
+				message = "ok";
+			}
+			
+			return message;
+			
+		}
+		
+		@RequestMapping("InquiryDelete.do")
+		@ResponseBody
+		public String InquiryDelete(InquiryVO vo) throws Exception {
+			
+			int result = inquiryService.deleteBoard(vo);
+			
+			String message = "ok";
+			if( result != 1) {
+				message = "error";
+			}
+			return message;
+		
 		}
 
 }
