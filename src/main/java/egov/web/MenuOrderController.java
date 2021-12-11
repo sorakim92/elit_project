@@ -44,6 +44,7 @@ public class MenuOrderController {
 		map.put("userid", userid);
 		map.put("storeunq", storeunq+"");
 		List<?> preList = menuorderService.selectPreOrderList(map);
+		
 		int total =menuorderService.selectTotPrice(vo);
 		
 		vo.setTotal(total);

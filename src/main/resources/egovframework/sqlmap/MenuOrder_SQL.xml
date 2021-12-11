@@ -77,7 +77,7 @@
 	
 	<select id = "menuorderDAO.selectTotPrice" resultClass="java.lang.Integer">
 		SELECT 
-				sum(price * qty) total 
+				nvl(sum(price * qty),0) total 
 		FROM 
 				preorder 
 		WHERE 	

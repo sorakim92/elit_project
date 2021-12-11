@@ -118,6 +118,8 @@ function fn_update(a,p) {
 		if(qty<0) qty=0;
 	}
 	$("#qty").val(qty);
+	
+	alert(p);
 
 }
 
@@ -369,7 +371,7 @@ function fn_addOrder(u) {
                     </tr>
                     <tr>
                         <td>총주문금액(배달비 포함)</td>
-                        <td>${vo.total + vo.fee }</td>
+                        <td><span id="totalPrice"></span></td>
                     </tr>
                 </table>
                 
