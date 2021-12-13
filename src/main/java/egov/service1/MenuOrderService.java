@@ -34,6 +34,10 @@ public interface MenuOrderService {
 
 	int selectTotPrice(MenuOrderVO vo) throws Exception;
 
+	MemberVO selectMemberInfo(String userid) throws Exception;
+
+	int deleteOrderMenu(MenuOrderVO vo) throws Exception ;
+
 	
 	
 	

@@ -104,11 +104,64 @@ section {
 
 <script>
 
-function fn_update(a,p) {
+function fn_pay() {
+
+	var len = $(".menunames").length;
 	
-	var qty = $("#qty").val();
+	var menulist = new Array(len);
+	var menuqty = new Array(len);
+	var datas = "";
+	for(var i=0; i<len; i++){
+		menulist[i] = $(".menunames").eq(i).html();
+		menuqty[i] = $(".qty").eq(i).val();
+		datas += menulist[i]+": "+menuqty[i]+"개, ";
+	}
+	alert(datas);
+	//alert(len);
+	//alert( $(".menunames").eq(1).html() );
+	//alert($(".qty").eq(0).val());
+	//$("#totalPrice").text(total+${vo.fee});
+	//$("#s_totalPrice").val(total+${vo.fee});
+
+	
+}
+
+function fn_delete(u) {
+	
+	$("#menuunq").val(u);
+	
+
+	var formdata = $("#frm").serialize();
+	console.log(formdata);
+	
+ 	$.ajax({
+ 		type : "post",
+ 		url : "deleteOrderMenu.do",
+ 		data : formdata,
+ 			
+ 		datatype : "text",
+ 		success :	function(data) {
+ 			if(data == "ok") {
+ 				document.location.reload();
+ 			} else {
+ 				alert("시스템 오류입니다. 다시 시도해주세요.");
+ 			}
+ 		},
+ 		error : function() {
+ 			alert("오류. 처리실패");
+ 		}	
+
+ 	});
+}
+
+function fn_update(a,p,i) {
+	
+	
+	
 	var price = p;
 	
+	var qty = $("input[name='qty_"+i+"']").val();
+	//alert(qty);
 	
 	qty = Number(qty);
 	if(a == '+') {
@@ -117,23 +170,38 @@ function fn_update(a,p) {
 		qty--;
 		if(qty<0) qty=0;
 	}
-	$("#qty").val(qty);
+	$("input[name='qty_"+i+"']").val(qty);
 	
-	alert(p);
-
+	price = p * qty;
+	
+	
+	$("input[name='e_price"+i+"']").val(price);
+	
+	var len = $(".t_price").length;
+	
+	var pp = new Array(len);
+	var total = 0;
+	for(var n=0; n<len; n++){
+		pp[n] = $(".t_price").eq(n).val();
+		total += Number(pp[n]);
+	}
+	//alert(total);
+	
+	$("#totalPrice").text(total+${vo.fee});
+	$("#s_totalPrice").val(total+${vo.fee});
 }
 
 
 function fn_addOrder(u) {
 
 	$("#menuunq").val(u);
-	//console.log($("#menuunq").val(u));
-	//console.log(menuunq);
+	
 	
 	/*
 	var menuunq = u;
 	var param = {"menuunq":menuunq}
 	//console.log(parm); */
+	
 	
 	var formdata = $("#frm").serialize();
 	console.log(formdata);
@@ -145,13 +213,17 @@ function fn_addOrder(u) {
  			
  		datatype : "text",
  		success :	function(data) {
- 			
- 			if(data == "ok") {
- 				alert("처리완료");
+ 			if(data == "focus_orderlist") {
+ 				alert("주문표에 이미 추가되어있는 메뉴입니다. ");
+ 				$("#qty").focus();
+ 				//var qq = Number($("#qty").val()) + 1;
+ 				//$("#qty").val(qq);
+ 				
+ 			} else if(data == "ok") {
  				document.location.reload();
  			
  			} else {
- 				alert("처리실패");
+ 				alert("시스템 오류입니다. 다시 시도해주세요.");
  			}
  		},
  		error : function() {
@@ -309,12 +381,15 @@ function fn_addOrder(u) {
                 주문표
             </span>
             <div style="width:100%; height:auto; ">
-            
+           
+            <c:set var="i" value="0" />
+         
             <c:forEach var="p" items="${preList }">
+           		 
                 <div style="width:100%; height: 60px;  margin-bottom:10px;">
                     <div style="padding:0 10px 5px 10px; width:80%; float:left; 
-                                font-weight: bold;">
-                        ${p.menuname } 
+                                font-weight: bold;" >
+                        <span id="menunames" class="menunames">${p.menuname }</span> 
                     </div>
                     <div style="width:10%; float:left; cursor: pointer;" onclick="fn_delete('${p.menuunq}')"> 
                         <img src="img/x.png" alt="x"
@@ -327,13 +402,16 @@ function fn_addOrder(u) {
                         
                       	<img src="img/minus.png" alt="-"
                        			style="text-align:right; width:14px; height:14px; cursor: pointer;" 
-                       			onclick="fn_update('-','${p.price}')"/>
+                       			onclick="fn_update('-','${p.price}','${p.menuunq }')"/>
                       
-                        <input type="text" name="qty" id="qty" value="${p.qty }" size ="2" readonly>
+                        <input type="text" class="qty" name="qty_${p.menuunq }" id="qty" value="${p.qty }" size ="2" readonly>
                         
                         <img src="img/plus.png" alt="+"
 	                        	style="text-align:right; width:13px; height:13px; cursor: pointer;" 
-	                        	onclick="fn_update('+','${p.price}')" />
+	                        	onclick="fn_update('+','${p.price}','${p.menuunq }')" />
+	                  
+	             	<input type="hidden" class = "t_price" id="e_price" name="e_price${p.menuunq }" value="${p.price }"> 
+           
                     </div>
                 </div>
              
@@ -371,7 +449,7 @@ function fn_addOrder(u) {
                     </tr>
                     <tr>
                         <td>총주문금액(배달비 포함)</td>
-                        <td><span id="totalPrice"></span></td>
+                        <td><span id="totalPrice">${vo.total + vo.fee}</span></td>
                     </tr>
                 </table>
                 
@@ -389,45 +467,96 @@ function fn_addOrder(u) {
                     ">
                 주문하기
             </span>
+            <form name="orderFrm" id="orderFrm">
+            
+            <input type="hidden" name="userid" id="userid" value="${vo.userid }">
+            <input type="hidden" name="storeunq" id="storeunq" value="${vo.storeunq }">
+            <input type="text" id="s_totalPrice" name="s_totalPrice" value="${vo.total }">
+        
+            
+            
             <div style="width:100%; height:auto; ">
                 <table style="width:98%;margin:5px 0 10px 10px; line-height: 1.5;">
                     <colgroup>
-                        <col width="40%" />
+                         <col width="33%" />
+                        <col width="33%" />
                         <col width="*" />
                     </colgroup>
                     <tr>
-                        <td>서울 송파구.......! 주소</td>
+                        <td colspan="3">${mvo.useraddr1 }</td>
                     </tr>
                     <tr>
-                        <td><span style="font-size:14px;">010 - 0000 - 0000</span></td>
+                        <td colspan="3"><span style="font-size:14px;">${mvo.userphone }</span></td>
                     </tr>
                     <tr>
-                        <td>
+                        <td colspan="3">
                             <div style="line-height: 1.3; "> 
-                                <span style="font-weight: bold;">요청사항</span>
+                                <span style="font-weight: bold;">(요청사항) 사장님께 </span>
                                 <br>
-                                <span style="font-size: 14px;">요청사항작성이요</span>
+                                <span style="font-size: 14px;">
+                                <input type="text" class="" id="comment1" name="comment1">         
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td colspan="3">
+                            <div style="line-height: 1.3; "> 
+                                <span style="font-weight: bold;">(요청사항) 라이더님께 </span>
+                                <br>
+                                <span style="font-size: 14px;">
+                                <input type="text" class="" id="comment2" name="comment2">         
+                                </span>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <td><span style="font-weight: bold;">결제수단</span></td>
+                        <td colspan="3"><span style="font-weight: bold;">결제수단</span></td>
                     </tr>
                     <tr>
-                        <td>신용카드</td>
-                        <td>카카오페이</td>
+                        <td>
+	                        <div style="width:100%; height: auto; 
+	                  			 margin:5px; text-align: center;
+	                   			cursor: pointer;" 
+	                   			onclick="">
+	                       <img src="<c:url value='/img/cardpay.png'/>" alt="카드결제" width="50" height="50" name="" id="">
+	                   		카드
+	                   		</div>
+                        </td>
+                        	
+                        <td>
+                        	<div style="width:120px; height: auto; 
+                  			 margin:5px; text-align: center;
+                   			cursor: pointer;" 
+                   			onclick="">
+	                       <img src="<c:url value='/img/kakaopay.png'/>" alt="카카오페이" width="90" name="" id="">
+	                   		
+	                   		</div>
+                        
+                        </td>
+                        <td>
+                        	<div style="width:120px; height: auto; 
+                  			 margin:5px; text-align: center;
+                   			cursor: pointer;" 
+                   			onclick="">
+	                       <img src="<c:url value='/img/npay.png'/>" alt="네이버페이" width="90" name="" id="">
+	                   		
+	                   		</div>
+                        
+                        </td>
                     </tr>
                 </table>
-                <div style="text-align: right; padding-right: 10px;"> 
+                <div style="text-align: right; padding-right: 10px; cursor: pointer;"
+                		onclick="fn_pay()"> 
                     <span style="display:inline-block; border-radius: 0.5em;
                     background: #f8cacc; padding: 5px 10px 5px 10px;
                     margin:5px 0 10px 10px;
-                    font-family: jua;
-                    ">
+                    font-family: jua; ">
                 결제하기
             </span>
                 </div>
             </div>
+            </form>
         </div>
     </aside>
 

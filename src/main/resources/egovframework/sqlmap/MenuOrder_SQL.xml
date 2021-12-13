@@ -4,6 +4,7 @@
 
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="menuorderVO" type="egov.service1.MenuOrderVO"/>
+	<typeAlias  alias="memberVO" type="egov.service1.MemberVO"/>
 	
 	
 
@@ -86,6 +87,19 @@
 	
 	</select>
 	
+	<select id="menuorderDAO.selectMemberInfo" resultClass="memberVO">
+		SELECT userid,
+				username,
+				userphone,
+				useraddr1,
+				useraddr2,
+				useraddr3
+		FROM	member
+		WHERE userid = #userid#
+	
+	
+	</select>
+	
 	<insert id="menuorderDAO.insertAddOrder" parameterClass="menuorderVO">
 		INSERT INTO preorder(
 						pindex, 
@@ -113,5 +127,11 @@
 	
 	</update>
 
+
+	<delete id="menuorderDAO.deleteOrderMenu" >
+		DELETE FROM preorder 
+				WHERE  userid = #userid# AND menuunq = #menuunq#
+				
+	</delete>
 
 </sqlMap>
