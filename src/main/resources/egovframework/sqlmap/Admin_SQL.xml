@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace = "Admin_space">
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="adminVO" type="egov.service1.AdminVO"/>
+	
+	<select id="adminDAO.selectadminService" resultClass = "egovMap">
+
+	SELECT b.* FROM (
+			SELECT rownum rn, a.* from (	
+				SELECT  EMPID
+						PASSWD
+						PHONE
+						EMAIL
+						HIREDATE
+						ENAME
+						SECTION
+				FROM	
+						EMP
+				WHERE	
+						USERID IS NOT NULL
+				ORDER BY HIREDATE DESC) a )b
+
+
+
+</select>
+</sqlMap>
