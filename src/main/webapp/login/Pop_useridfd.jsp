@@ -9,7 +9,7 @@
 	<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>비밀번호 찾기</title>
+    <title>아이디 찾기</title>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
@@ -24,24 +24,29 @@
 				$("#email").focus();
 				return false;
 			}
+			$("#email").val(email);
+			
+			var formData = $("#frm_uesrid").serialize();
+			
 			$.ajax ({
 	    		/* 전송 전 셋팅 */
 	    		type : "POST",
 	    		data : formData,
-	    		url  : "memberWriteSave.do",
+	    		url  : "Pop_useridfdSave.do",
 	    		dataType : "text",                         //리턴 타입
 
+
 	    		// 전송 후 셋팅
-	    		success: function(result) {
-					if(result == "ok") {
+	    		success: function(data) {
+					if(data == "ok") {
 						alert("성공.");
-						location="Pop_newuserpw.do";
+						location="Pop_findselectuserid.do";
 					} else {
-						 alert("실패.");
+						 alert("이메일과 일치하는 아이디가 존재하지 않습니다. ");
 					}
 				},
 				error: function() { //장애발생
-					alert("오류발생")
+					alert("오류발생");
 		
 				}
 	    	});
@@ -58,7 +63,7 @@
             	이메일 : <input type="text" id ="email"  name ="email" placeholder="Enter Your EMAIL">
             <br><br>
             <input type="hidden" value="1" name = "check">
-            <button type="submit" class="" id="btn_submit">다음</button>
+            <button type="button" class="" id="btn_submit">다음</button>
             <br>
         
         </form>

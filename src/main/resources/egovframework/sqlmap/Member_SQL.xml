@@ -37,7 +37,7 @@
 		SELECT COUNT(*) FROM member
 			 WHERE userid = '$userid$' AND userpw = '$userpw$'
 	</select>
-	
+	<!-- 아이디 중복체크 -->
 	<select id="memberDAO.popidck" resultClass="java.lang.Integer">
 		SELECT COUNT(*) FROM member WHERE userid = #userid#
 	</select>
@@ -45,9 +45,13 @@
 	<select id="memberDAO.selectMemberIdCheck" resultClass="java.lang.Integer">
 		SELECT COUNT(*) FROM member WHERE userid = #userid#
 	</select>
-	
+	<!-- 비밀번호 찾기 -->
 	<select id="memberDAO.Pop_memberpassfind" resultClass="java.lang.Integer">
-		SELCET COUNT(*) FROM member WHERE email = #email#
+		SELCET COUNT(*) FROM member WHERE email = #email# AND userid = #userid#
+	</select>
+	<!-- 아이디 찾기 -->
+	<select id="memberDAO.Pop_useridfd" resultClass="memberVO">
+		SELECT userid,email FROM member WHERE email = #email#
 	</select>
 	
 </sqlMap>

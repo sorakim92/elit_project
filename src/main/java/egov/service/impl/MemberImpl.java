@@ -36,6 +36,11 @@ public class MemberImpl implements MemberService{
 	public int Pop_memberpassfind(String email) throws Exception {
 		return memberDAO.Pop_memberpassfind(email);
 	}
+	@Override
+	public MemberVO Pop_useridfd(MemberVO vo) throws Exception {
+		return memberDAO.Pop_useridfd(vo);
+	}
+	
 	
 	
 	

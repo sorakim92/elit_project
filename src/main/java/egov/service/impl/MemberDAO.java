@@ -27,6 +27,9 @@ public class MemberDAO extends EgovAbstractDAO{
 	public int Pop_memberpassfind(String email) {
 		return (int) select("memberDAO.Pop_memberpassfind",email);
 	}
+	public MemberVO Pop_useridfd(MemberVO vo) {
+		return (MemberVO) select("memberDAO.Pop_useridfd",vo);
+	}
 	
 	
 
