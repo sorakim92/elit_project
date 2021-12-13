@@ -38,7 +38,7 @@
         <br><br>
         <li class='launcher'>
           <i class='icon-file-text-alt'></i>
-          <a href="adAdvertise.do">광고</a>
+          <a href="AdList.do">광고</a>
         </li>
         <br><br>
         <li class='launcher'>
