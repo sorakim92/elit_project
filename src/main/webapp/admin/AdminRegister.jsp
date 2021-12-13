@@ -111,12 +111,13 @@
               </tr>
             </thead>
             <tbody>
+            <c:forEach var="result" items="${list }">
               <tr class='success'>
                 <td>1</td>
-                <td>Sungmo223</td>
-                <td>강성모</td>
-                <td>010-5069-6360</td>
-                <td>[시스템 관리자]</td>
+                <td>${result.empid }</td>
+                <td>${result.ename }</td>
+                <td>${result.phone }</td>
+                <td>${result.section }</td>
                 <td class='action'>
                   <a class='btn btn-success' data-toggle='tooltip' href='#' title='add'>
                     <i class='icon-zoom-in'></i>
@@ -128,150 +129,9 @@
                   </a>
                 </td>
               </tr>
-              <tr class='danger'>
-                <td>2</td>
-                <td>Sungmo223</td>
-                <td>강성모</td>
-                <td>010-5069-6360</td>
-                <td>[시스템 관리자]</td>
-                <td class='action'>
-                  <a class='btn btn-success' data-toggle='tooltip' href='#' title='add'>
-                    <i class='icon-zoom-in'></i>
-                  </a>
-                  
-                  <a class='btn btn-danger' data-toggle='tooltip' href='#' title='del'>
-                    <i class='icon-trash'></i>
-                  </a>
-                </td>
-              </tr>
-              <tr class='warning'>
-                <td>3</td>
-                <td>Sungmo223</td>
-                <td>강성모</td>
-                <td>010-5069-6360</td>
-                <td>[시스템 관리자]</td>
-                <td class='action'>
-                  <a class='btn btn-success' data-toggle='tooltip' href='#' title='add'>
-                    <i class='icon-zoom-in'></i>
-                  </a>
-                 
-                  <a class='btn btn-danger' data-toggle='tooltip' href='#' title='del'>
-                    <i class='icon-trash'></i>
-                  </a>
-                </td>
-              </tr>
-              <tr class='active'>
-                <td>4</td>
-                <td>Sungmo223</td>
-                <td>강성모</td>
-                <td>010-5069-6360</td>
-                <td>[시스템 관리자]</td>
-                <td class='action'>
-                  <a class='btn btn-success' data-toggle='tooltip' href='#' title='add'>
-                    <i class='icon-zoom-in'></i>
-                  </a>
-                  
-                  <a class='btn btn-danger' data-toggle='tooltip' href='#' title='del'>
-                    <i class='icon-trash'></i>
-                  </a>
-                </td>
-              </tr>
-              <tr class='active'>
-                <td>5</td>
-                <td>Sungmo223</td>
-                <td>강성모</td>
-                <td>010-5069-6360</td>
-                <td>[시스템 관리자]</td>
-                <td class='action'>
-                  <a class='btn btn-success' data-toggle='tooltip' href='#' title='add'>
-                    <i class='icon-zoom-in'></i>
-                  </a>
-                  
-                  <a class='btn btn-danger' data-toggle='tooltip' href='#' title='del'>
-                    <i class='icon-trash'></i>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>6</td>
-                <td>Sungmo223</td>
-                <td>강성모</td>
-                <td>010-5069-6360</td>
-                <td>[시스템 관리자]</td>
-                <td class='action'>
-                  <a class='btn btn-success' data-toggle='tooltip' href='#' title='add'>
-                    <i class='icon-zoom-in'></i>
-                  </a>
-                 
-                  <a class='btn btn-danger' data-toggle='tooltip' href='#' title='del'>
-                    <i class='icon-trash'></i>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>7</td>
-                <td>Sungmo223</td>
-                <td>강성모</td>
-                <td>010-5069-6360</td>
-                <td>[시스템 관리자]</td>
-                <td class='action'>
-                  <a class='btn btn-success' data-toggle='tooltip' href='#' title='add'>
-                    <i class='icon-zoom-in'></i>
-                  </a>
-                 
-                  <a class='btn btn-danger' data-toggle='tooltip' href='#' title='del'>
-                    <i class='icon-trash'></i>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>8</td>
-                <td>Sungmo223</td>
-                <td>강성모</td>
-                <td>010-5069-6360</td>
-                <td>[시스템 관리자]</td>
-                <td class='action'>
-                  <a class='btn btn-success' data-toggle='tooltip' href='#' title='add'>
-                    <i class='icon-zoom-in'></i>
-                  </a>
-                 
-                  <a class='btn btn-danger' data-toggle='tooltip' href='#' title='del'>
-                    <i class='icon-trash'></i>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>9</td>
-                <td>Sungmo223</td>
-                <td>강성모</td>
-                <td>010-5069-6360</td>
-                <td>[시스템 관리자]</td>
-                <td class='action'>
-                  <a class='btn btn-success' data-toggle='tooltip' href='#' title='add'>
-                    <i class='icon-zoom-in'></i>
-                  </a>
-                  
-                  <a class='btn btn-danger' data-toggle='tooltip' href='#' title='del'>
-                    <i class='icon-trash'></i>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>10</td>
-                <td>Sungmo223</td>
-                <td>강성모</td>
-                <td>010-5069-6360</td>
-                <td>[시스템 관리자]</td>
-                <td class='action'>
-                  <a class='btn btn-success' data-toggle='tooltip' href='#' title='add'>
-                    <i class='icon-zoom-in'></i>
-                  </a>
-                 
-                  <a class='btn btn-danger' data-toggle='tooltip' href='#' title='del'>
-                    <i class='icon-trash'></i>
-                  </a>
-                </td>
-              </tr>
+              
+              </c:forEach>
+             
             </tbody>
           </table>
           <div class='panel-footer' style="text-align:center;">

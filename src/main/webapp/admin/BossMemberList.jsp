@@ -58,7 +58,7 @@
         <br><br>
         <li class='launcher'>
           <i class='icon-cog'></i>
-          <a href='adAdmin.do'>관리자관리</a>
+          <a href='AdminRegister.do'>관리자관리</a>
         </li>
       </ul>
     </section>

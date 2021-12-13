@@ -19,7 +19,7 @@ public class AdminImpl implements AdminService{
 	
 	@Override
 	public List<?> selectadminService(AdminVO vo) throws Exception {
-		// TODO Auto-generated method stub
+		
 		return adminDAO.selectadminService(vo);
 	}
 
