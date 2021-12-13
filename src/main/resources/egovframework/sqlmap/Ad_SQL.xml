@@ -29,6 +29,30 @@
 
 </insert>
 
+	<select id="adDAO.selectadService" resultClass = "egovMap">
+		SELECT b.* FROM (
+			SELECT rownum rn, a.* from (	
+				SELECT  ADINDEX
+						USERID
+						SERVICE
+						MENT
+						SDATE
+						EDATE
+						RDATE
+						BANNER
+						STATUS
+						EMAIL
+						PHONE
+						NAME
+				FROM	
+						AD
+				WHERE	
+						ADINDEX IS NOT NULL
+				ORDER BY RDATE DESC) a )b
+	</select>
+
+
+
 
 
 </sqlMap>
