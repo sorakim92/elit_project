@@ -9,18 +9,19 @@
 
 	SELECT b.* FROM (
 			SELECT rownum rn, a.* from (	
-				SELECT  EMPID
-						PASSWD
-						PHONE
-						EMAIL
-						HIREDATE
-						ENAME
+				SELECT  EMPID,
+						PASSWD,
+						PHONE,
+						EMAIL,
+						HIREDATE,
+						ENAME,
 						SECTION
 				FROM	
 						EMP
 				WHERE	
-						USERID IS NOT NULL
+						EMPID IS NOT NULL
 				ORDER BY HIREDATE DESC) a )b
+				
 
 
 
