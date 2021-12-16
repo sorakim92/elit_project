@@ -6,7 +6,18 @@ public class ZzimListVO {
 	private String rdate;
 	private String userid;
 	private int storeunq;
+	private String likechk;
 	
+	
+	
+	
+	
+	public String getLikechk() {
+		return likechk;
+	}
+	public void setLikechk(String likechk) {
+		this.likechk = likechk;
+	}
 	public int getZzimindex() {
 		return zzimindex;
 	}

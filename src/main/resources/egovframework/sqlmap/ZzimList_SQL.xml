@@ -21,4 +21,60 @@
 		]]>			
 	</insert>
 	
+	
+	
+	<select id = "zimlistDAO.LikeInsertChk" resultClass ="java.lang.Integer">
+		select count(*) from zzimlist where userid = #userid# and storeunq = #storeunq#
+	</select>
+	
+	<select id="zimlistDAO.selectLikeChk" resultClass = "java.lang.String" >
+		select 
+				likechk 
+		from 
+				zzimlist 
+		where 
+				userid = #userid# and storeunq = #storeunq#
+	</select>
+	
+	
+	<insert id="zimlistDAO.insertZzimlike">
+	
+		INSERT INTO zzimlist(
+							zzimindex,
+							rdate,
+							userid,
+							storeunq,
+							likechk
+									)VALUES (
+							zzimlist_seq.nextval,
+							sysdate,		
+							#userid#,
+							#storeunq#,		
+							'L') 
+			
+	</insert>
+	
+	<update id="zimlistDAO.addzzimlike">
+	
+		UPDATE  
+				zzimlist 
+		SET 
+				likechk = 'L'
+		WHERE
+				userid= #userid# and storeunq = #storeunq#
+	</update>
+	
+	<update id="zimlistDAO.cancelzzimlike">
+			UPDATE  
+				zzimlist 
+		SET 
+				likechk = 'U'
+		WHERE
+				userid= #userid# and storeunq = #storeunq#
+	
+	</update>
+	
+	
+	
+	
 </sqlMap>

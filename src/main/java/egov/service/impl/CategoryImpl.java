@@ -1,6 +1,7 @@
 package egov.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -17,6 +18,11 @@ public class CategoryImpl implements CategoryService{
 	@Override
 	public List<?> selectKRfoodList(CategoryVO vo) throws Exception {
 		return categoryDAO.selectKRfoodList(vo);
+	}
+
+	@Override
+	public List<?> selectZZIMlike(Map<String, String> map) throws Exception {
+		return categoryDAO.selectZZIMlike(map);
 	}
 
 }

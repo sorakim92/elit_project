@@ -130,7 +130,7 @@
 
 	<delete id="menuorderDAO.deleteOrderMenu" >
 		DELETE FROM preorder 
-				WHERE  userid = #userid# AND menuunq = #menuunq#
+				WHERE  pindex = #pindex#
 				
 	</delete>
 

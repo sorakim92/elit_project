@@ -24,5 +24,25 @@ public class ZzimListDAO extends EgovAbstractDAO{
 		return 0;
 	}
 
+	public int LikeInsertChk(ZzimListVO vo) {
+		return (int) select("zimlistDAO.LikeInsertChk",vo);
+	}
+
+	public String selectLikeChk(ZzimListVO vo) {
+		return (String) select("zimlistDAO.selectLikeChk",vo);
+	}
+
+	public String insertZzimlike(ZzimListVO vo) {
+		return (String) insert("zimlistDAO.insertZzimlike",vo);
+	}
+
+	public int addzzimlike(ZzimListVO vo) {
+		return update("zimlistDAO.addzzimlike",vo);
+	}
+
+	public int cancelzzimlike(ZzimListVO vo) {
+		return update("zimlistDAO.cancelzzimlike",vo);
+	}
+
 
 }

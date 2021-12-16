@@ -28,4 +28,16 @@
 			
 	</select>
 
+	<select id="categoryDAO.selectZZIMlike" resultClass="egovMap">
+		select 
+				cateunq, 
+				storeunq, 
+				userid, 
+				likechk
+		from 	
+				zzimlist
+		where 	
+				cateunq = #cateunq# and userid = #userid# 
+		
+	</select>
 </sqlMap>
