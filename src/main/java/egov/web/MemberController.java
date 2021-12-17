@@ -120,7 +120,7 @@ public class MemberController {
 	public String Pop_findselectuserid() throws Exception {
 		return "login/Pop_findselectuserid";
 	}
-}
+
 	
 	@RequestMapping("memberloginSub.do")
 	@ResponseBody

@@ -20,7 +20,7 @@ public class ProgressOrderImpl implements ProgressOrderService{
 		public List<?> selectProgressOrderList(ProgressOrderVO vo) throws Exception {
 			
 			return progressorderDAO.selectProgressOrderList(vo);
-
+		}
 		public String insertProgressOrder(ProgressOrderVO vo) throws Exception {
 			return progressorderDAO.insertProgressOrder(vo);
 		}

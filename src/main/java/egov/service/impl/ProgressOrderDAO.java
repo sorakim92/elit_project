@@ -14,7 +14,7 @@ public class ProgressOrderDAO extends EgovAbstractDAO{
 	public List<?> selectProgressOrderList(ProgressOrderVO vo) {
 		
 		return list("progressorderDAO.selectProgressOrderList",vo);
-
+	}
 	public String insertProgressOrder(ProgressOrderVO vo) {
 		return (String) insert("progressorderDAO.insertProgressOrder",vo);
 	}
