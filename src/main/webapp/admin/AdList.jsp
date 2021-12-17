@@ -76,12 +76,12 @@
           <br><br>
           <li class='launcher'>
             <i class='icon-star'></i>
-            <a href='#'>ELIT 이동</a>
+            <a href='mainPage.do'>ELIT 이동</a>
           </li>
           <br><br><br><br><br><br>
           <li class='launcher'>
             <i class='icon-cog'></i>
-            <a href='admin.html'>관리자설정</a>
+            <a href='AdminRegister.do'>관리자설정</a>
           </li>
         </ul>
       </section>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
+     
 <!DOCTYPE html>
 <html class='no-js' lang='en'>
   <head>
@@ -11,7 +12,8 @@
     <meta content='' name='description'>
     <meta content='' name='keywords'>
     <link href="admin/assets/stylesheets/application-a07755f5.css" rel="stylesheet" type="text/css" /><link href="//netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-   
+   	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     
   </head>
   <body class='main page'>
@@ -51,7 +53,7 @@
           <br><br>
           <li class='launcher'>
             <i class='icon-star'></i>
-            <a href='#'>ELIT 이동</a>
+            <a href='mainPage.do'>ELIT 이동</a>
           </li>
           <br><br>
           <li class='active launcher'>
@@ -81,14 +83,21 @@
               <div class='col-md-9'>               
               </div>
               <div class='col-md-3'>
+              
+              	<form name="frm" method="post" action="AdminRegister.do">
                 <div class='input-group'>
-                  <input class='form-control' placeholder='Quick search...' type='text'>
+                  <input class='form-control' name = "ktext" id="ktext"
+                   value="${ktext }"
+                   placeholder='Quick search...' type='text'>
+                   
                  <span class='input-group-btn'>
-                  <button class='btn' type='button'>
+                  <button class='btn'>
                     <i class='icon-search'></i>
                   </button>
                 </span>
-              </div>              
+              </div> 
+              </form>   
+                        
             </div>
            </div>
 
@@ -112,7 +121,7 @@
             </thead>
             <tbody>
             <c:forEach var="result" items="${list }">
-              <tr class='success'>
+              <tr class='warning'>
                 <td>1</td>
                 <td>${result.empid }</td>
                 <td>${result.ename }</td>

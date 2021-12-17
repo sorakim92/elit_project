@@ -13,13 +13,21 @@
 						PASSWD,
 						PHONE,
 						EMAIL,
-						HIREDATE,
+						to_char(hiredate,'yyyy/mm/dd') HIREDATE,
 						ENAME,
 						SECTION
 				FROM	
 						EMP
 				WHERE	
 						EMPID IS NOT NULL
+				<isNotNull property="ktext">
+					<isNotEmpty property="ktext">
+					and ( EMPID LIKE '%$ktext$%'
+					OR   ENAME LIKE '%$ktext$%'
+					OR   PHONE LIKE '%$ktext$%'
+					OR   SECTION LIKE '%$ktext$%' )
+					</isNotEmpty>
+				</isNotNull>
 				ORDER BY HIREDATE DESC) a )b
 				
 

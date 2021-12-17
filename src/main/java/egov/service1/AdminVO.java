@@ -9,6 +9,14 @@ public class AdminVO {
 	private String HIREDATE;
 	private String ENAME;
 	private String SECTION;
+	String ktext;
+	
+	public String getKtext() {
+		return ktext;
+	}
+	public void setKtext(String ktext) {
+		this.ktext = ktext;
+	}
 	public String getEMPID() {
 		return EMPID;
 	}

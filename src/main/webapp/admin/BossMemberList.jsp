@@ -53,7 +53,7 @@
         <br><br>
         <li class='launcher'>
           <i class='icon-star'></i>
-          <a href='#'>ELIT 이동</a>
+          <a href='mainPage.do'>ELIT 이동</a>
         </li>
         <br><br>
         <li class='launcher'>

@@ -23,8 +23,9 @@ public class AdminController {
 		
 		model.addAttribute("vo",vo);
 		model.addAttribute("list",list);
-		return "admin/AdminRegister";
+		model.addAttribute("ktext",vo.getKtext());
 		
 		
+		return "admin/AdminRegister";		
 	}
 }
