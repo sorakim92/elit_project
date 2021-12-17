@@ -50,4 +50,8 @@
 		SELCET COUNT(*) FROM member WHERE email = #email#
 	</select>
 	
+	
+	
+	
+	
 </sqlMap>

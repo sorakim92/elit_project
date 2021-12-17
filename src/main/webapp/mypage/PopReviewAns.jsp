@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title></title>
 </head>
 <style>
 .review.title {
@@ -32,24 +32,68 @@
 }
 
 </style>
+<script>
+
+
+
+	$(function() {
+		$("#btn_submit").click(function(){ 
+			
+			
+			if( $("#contents").val() == "" ) {
+				alert("내용을 입력해주세요.");
+				$("#contents").focus();
+				return false;
+			}
+			
+
+			var formdata = $("#frm").serialize();
+			$.ajax({
+				type : "post",
+				url  : "popReviewAnsWrite.do",
+				data : formdata,
+				
+				//processData : false,
+				//contentType : false,
+				
+				datatype : "text",  // 성공여부 (ok)
+				success : function(data) {
+					if (data == "ok") {
+						alert("저장완료");
+						location="storeReviewList.do";
+					} else {
+						alert("저장실패");
+					}
+				},	
+				error : function() {
+					alert("오류발생");
+				}
+			});
+		});
+	});
+</script>
+	
+
+
 <body>
+	<form name="frm" id="frm">
   <div align="center" >
         <h3 id="" class="review.title">답변하기</h3><br>
-        </div>
+  </div>
     
         <div align="center">
-                <input name="" id=""  class="contents" ></input>
+                <input name="contents" id="contents"  class="contents"  ></input>
        </div>
                     
    
 
         <br><br>
         <div class="win_btn" align="center">
-            <input type="submit" value="답변등록" id="btn_submit" class="btn_submit">
+            <input type="submit" value="답변등록" id="btn_submit" class="btn_submit" >
             
-            <button type="button" class="btn1_submit" onclick="window.close();">취소</button>
+            <button type="reset" class="btn1_submit" onclick="window.close();">취소</button>
         </div>
-        </form>
-    </div>
+	</form>
+    
 </body>
 </html>

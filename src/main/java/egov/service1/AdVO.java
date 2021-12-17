@@ -3,6 +3,7 @@ package egov.service1;
 public class AdVO {
 	private int adindex;
 	private String userid;
+	private String name;
 	private String service;
 	private String ment;
 	private String sdate;
@@ -84,6 +85,12 @@ public class AdVO {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	

@@ -1,7 +1,7 @@
 package egov.service1;
 
 public class BossMemberVO {
-	private String b_userid;
+	private String userid;
 	private String userpw;
 	private String username;
 	private String email;
@@ -12,11 +12,11 @@ public class BossMemberVO {
 	private int storeunq;
 	
 	
-	public String getB_userid() {
-		return b_userid;
+	public String getuserid() {
+		return userid;
 	}
-	public void setB_userid(String b_userid) {
-		this.b_userid = b_userid;
+	public void setuserid(String userid) {
+		this.userid = userid;
 	}
 	public String getUserpw() {
 		return userpw;

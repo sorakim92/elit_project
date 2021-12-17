@@ -5,4 +5,15 @@
 <sqlMap namespace = "progressorder_space">
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="progressorderVO" type="egov.service1.ProgressOrderVO"/>
+	
+	<select id="progressorderDAO.selectProgressOrderList"  resultClass="egovMap"  >
+		SELECT 
+				menuunq,	
+				menuname,
+				menukeyword,
+				price 
+		FROM menu 
+		
+		  		
+	</select>
 </sqlMap>

@@ -37,5 +37,21 @@
 		 ]]>
 
 	</insert>
+	
+	<select id="businessenterDAO.selectbusinessEnterList"  resultClass="egovMap"  >
+		SELECT 
+						
+						storename,
+						region,
+						category,
+						phone,
+						email,
+						address,
+						name,
+						inquire
+		
+		FROM businessenter
+		  		
+	</select>
 
 </sqlMap>

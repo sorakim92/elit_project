@@ -136,8 +136,8 @@ $(function() {
    <div class="logo">
     <img src="<c:url value='/img/logo.png'/>" width="200px" height="100px" alt="로고"/>
    </div>
-</header>
-<br><br>
+</header><br><br><br><br><br>
+
 
 <body>
  <form name="frm" id="frm">
@@ -145,7 +145,7 @@ $(function() {
     <font size="4"><b>입점문의</b></font><br>
     <div class="text-align:left" >
    
-    <font size="3">1. ELIT 이용약관과 개인정보 수집 및 동의 페이지입니다. (ELIT’s Terms and Privacy Policy)</font><br>
+    <font size="4">1. ELIT 이용약관과 개인정보 수집 및 동의 페이지입니다. (ELIT’s Terms and Privacy Policy)</font><br><br>
     <textarea  class="article_text"   readonly>
     제 1 장 총 칙
     제 1 조 (목적) 
@@ -189,7 +189,7 @@ $(function() {
 
     <div>
         2. 매장 이름을 알려주세요.*
-        <input type="text" size="145" name="storename" id="storename">
+        <input type="text" size="53" name="storename" id="storename">
     </div><br>
     <div>
         3. 신청 지역을 선택주세요.*
@@ -231,26 +231,26 @@ $(function() {
             <option>011</option>
             <option>017</option>
         </select>
-        <input type="number" size="40" name="phone" id="phone">
+        <input type="text" size="48" name="phone" id="phone">
     </div><br>
     <div>
         6. 이메일 알려주세요.*
-        <input type="email" size="50"  name="email" id="email">
+        <input type="email" size="57"  name="email" id="email">
     </div><br>
     <div>
         7. 매장 주소 알려주세요.*
-        <input type="text" size="145" name="address" id="address">
+        <input type="text" size="54" name="address" id="address">
     </div><br>
     <div>
         8. 문의자 이름 알려주세요.*
-        <input type="text" size="45"  name="name" id="name">
+        <input type="text" size="53"  name="name" id="name">
     </div><br>
     <div>
-        9. 기타사항 알려주세요.*
+        9. 기타사항 알려주세요.*<br>
         <input type="text" size="145" name="inquire" id="inquire">
     </div>
 
-<br>
+<br><br>
 <div class="btnloc">
     <button type="button"class="btn3" id="btn3">확인</button>
 </div>

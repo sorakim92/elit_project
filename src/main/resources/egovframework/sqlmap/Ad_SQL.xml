@@ -3,31 +3,31 @@
 
 <sqlMap namespace="ad_space" >
 
-<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
-<typeAlias  alias="adVO" type="egov.service1.AdVO"/>
-
-<insert id = "adDAO.insertAd">
-	<![CDATA[
-		INSERT INTO ad(
-						adindex,
-						userid,
-						name,
-						service,
-						ment,
-						email,
-						phone						
-						       )  
-				VALUES  ( ad_seq.nextval,
-							'$userid$',
-							'$first_name$',
-							'$service_op$',
-							'$ment$',
-							'$email$',
-							'$phone$'							
-							)
-		]]>
-
-</insert>
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="adVO" type="egov.service1.AdVO"/>
+	
+	<insert id = "adDAO.insertAd">
+			   INSERT INTO ad( adindex,
+							email,
+							name,
+							userid,
+							phone,	
+							service,
+							ment
+								
+							       )  
+					VALUES  ( ad_seq.nextval,
+								'$email$',
+								'$name$',
+								'$userid$',
+								'$phone$',
+								'$service$',
+								'$ment$'
+													
+								)
+			
+	
+	</insert>
 
 
 
