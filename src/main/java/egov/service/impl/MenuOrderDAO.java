@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
+import egov.service1.MemberVO;
 import egov.service1.MenuOrderVO;
 import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
 
@@ -47,6 +48,14 @@ public class MenuOrderDAO extends EgovAbstractDAO{
 
 	public int selectTotPrice(MenuOrderVO vo) {
 		return (int) select("menuorderDAO.selectTotPrice",vo);
+	}
+
+	public MemberVO selectMemberInfo(String userid) {
+		return (MemberVO) select("menuorderDAO.selectMemberInfo",userid);
+	}
+
+	public int deleteOrderMenu(MenuOrderVO vo) {
+		return (int) delete("menuorderDAO.deleteOrderMenu",vo);
 	}
 
 }

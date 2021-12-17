@@ -3,14 +3,14 @@
 
 <sqlMap namespace = "category_space">
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
-	<typeAlias  alias="answerVO" type="egov.service1.AnswerVO"/>
+	<typeAlias  alias="categoryVO" type="egov.service1.CategoryVO"/>
 
 
 	<select id="categoryDAO.selectKRfoodList" resultClass="egovMap">
 		
 		SELECT b.* FROM (
 			SELECT rownum rn, a.* FROM (
-				SELECT 	storeunq,
+				SELECT 	storeunq||'' storeunq,
 						cateunq,
 						storename,
 						storeinfo,
@@ -19,8 +19,8 @@
 						storeclosedays,
 						storephone,
 						storeaddr,
-						storerate,
-						decode(fee,'0','무료',fee) fee
+						to_char(storerate,'fm9.0')||'' storerate,
+						decode(fee,'0','무료',fee||'원') fee
 				FROM 	store
 				WHERE 	cateunq = '111'
 				ORDER BY	storerate DESC )a) b
@@ -28,4 +28,19 @@
 			
 	</select>
 
+	<select id="categoryDAO.selectZZIMlike" resultClass="egovMap">
+		select 
+				
+				storeunq||'' storeunq, 
+			
+				likechk
+		from 	
+				zzimlist
+		where 	
+				cateunq = #cateunq# and userid = #userid# 
+		
+	</select>
+	
+	
+	
 </sqlMap>

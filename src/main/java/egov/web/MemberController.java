@@ -99,7 +99,7 @@ public class MemberController {
 		}
 		return message;
 	}
-	
+	//로그아웃 화면
 	@RequestMapping("memberlogout.do")
 	public String memberlogout(HttpSession session) {
 		
@@ -107,26 +107,54 @@ public class MemberController {
 		return "login/memberlogin";
 	}
 	
+	//비밀번호 찾기 화면
 	@RequestMapping("Pop_memberpassfind.do")
-	public String Pop_memberpassfind(String email, Model model) throws Exception {
-		
-		model.addAttribute("email1",email);
+	public String Pop_memberpassfind() throws Exception {
 		
 		return "login/Pop_memberpassfind";
 	}
-	
-	@RequestMapping("Pop_useridfd.do")
-	public String Pop_useridfd(String email, Model model) throws Exception {
+	// 비밀번호 세이브 찾기
+	@RequestMapping("Pop_memberpassfindSave.do")
+	public String Pop_memberpassfind(String email, String userid ,Model model) throws Exception {
 		
-		model.addAttribute("email1",email);
+		model.addAttribute("email",email);
+		model.addAttribute("userid",userid);
+		
+		return "";
+	}
+	
+	//아이디 찾기
+	@RequestMapping("Pop_useridfd.do")
+	public String Pop_useridfd() throws Exception {
 		
 		return "login/Pop_useridfd";
 	}
 	
-	
-	
-	
-	
-	
-	
+
+	//아이디 찾기 세이브
+	@RequestMapping("Pop_useridfdSave.do")
+	public String Pop_useridfdSave(MemberVO vo, Model model) throws Exception{
+		
+		//System.out.println("============"+vo.getUserid());
+		vo = memberService.Pop_useridfd(vo);
+		String msg = "";
+		//System.out.println(vo);
+		//System.out.println("=========222======="+vo.getUserid());
+		String userid= vo.getUserid();
+		
+		//System.out.println(userid);
+		if(userid != null) {
+			msg="ok";
+		} else {
+			msg = "fail";
+		}
+		
+		//System.out.println(msg);
+		return msg;
+	}
+	@RequestMapping("Pop_findselectuserid.do")
+	public String Pop_findselectuserid() throws Exception {
+		return "login/Pop_findselectuserid";
+	}
+
 }

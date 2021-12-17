@@ -16,6 +16,9 @@ public interface MemberService {
 	
 	//비밀번호 찾기
 	public int Pop_memberpassfind(String email) throws Exception;
+	
+	//아이디 찾기
+	public MemberVO Pop_useridfd(MemberVO vo)throws Exception;
 
 	
 	

@@ -9,10 +9,8 @@
 
     <!-- Bootstrap CSS -->
      <link rel="stylesheet" href="css/memberSignin.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>로그인 테스트</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
      <style>
       body {
@@ -89,39 +87,42 @@
     });   
     
 	$(function() {
-		$("#userpwfd").click(function(){
+		$("#btn_submit").click(function(){
 			
 			var userid = $("#userid").val();
 			var pass = $("#userpw").val();
 			userid = $.trim(userid);
-			userpw = $.trim(userpw);
+			pass = $.trim(pass);
+			$("#userid").val(userid);
+			$("#userpw").val(pass);
+			
 			if(userid == "") {
 				alert("아이디를 입력해주세요.");
 				$("#userid").focus();
 				return false;
 			}
-			if(userpw == "") {
+			
+			if(pass == "") {
 				alert("비밀번호를 입력해주세요.");
 				$("#userpw").focus();
 				return false;
 			}
-			$("#userid").val(userid);
-			$("#userpw").val(userpw);
+			
 			
 			var formData = $("#frm").serialize();
 			
 		   	$.ajax ({
 	    		/* 전송 전 셋팅 */
 	    		type : "POST",
-	    		data : "userid="+userid+"&userpw="+userpw, //josn (전송타입)
-	    		url  : "memberlogin.do",
+	    		data : formData, //josn (전송타입)
+	    		url  : "memberloginSub.do",
 	    		dataType : "text",                         //리턴 타입
 
 	    		// 전송 후 셋팅
-	    		success: function(result) {
-					if(result == "ok") {
+	    		success: function(data) {
+					if(data == "ok") {
 						alert(userid+"님이 로그인 되었습니다.");
-						location="main.do";
+						location="mainPage.do";
 					} else {
 						 alert("로그인정보를 다시 확인해주세요.");
 					}
@@ -146,24 +147,24 @@
       <div class="row">
         <div style="width:35%">  &nbsp; </div>
       <div class="main">
-        <form name="frm" method="post">
+        <form name="frm" id="frm" method="post">
         <div class="form-group" >
           <label for="inputUsernameEmail">아이디</label>
-          <input type="button" value="아이디 찾기" id="useridfd" name="useridfd" style="float:right;" >
+          <input type="button" value="아이디 찾기" id="useridfd" name="useridfd" style="float:right;">
           <input type="text" class="form-control" id="userid" name="userid">
         </div>
         <div class="form-group">
           <label for="inputPassword">비밀번호</label>
-          <input type="button" value="비밀번호 찾기" id="userpwfd" name="userpwfd" style="float:right;" >
-          <input type="text" class="form-control" id="userpw" name="userpw">
+          <input type="button" value="비밀번호 찾기" id="userpwfd" name="userpwfd" style="float:right;">
+          <input type="password" class="form-control" id="userpw" name="userpw">
         </div>
-        <div class="checkbox pull-right" style="width:100%; ">
+        <div class="checkbox pull-right" style="width:100%;">
           <label>
             <input type="checkbox">자동로그인
           </label>
         </div>
         <div style="width:100%; text-align:center;">
-        <button type="submit" class="btn btn btn-primary" id="btn_submit" >
+        <button type="button" class="btn btn btn-primary" id="btn_submit" >
           로그인
         </button>
         <!-- 로그인버튼과 sns로그인 공간 확보용 -->

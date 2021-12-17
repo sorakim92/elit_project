@@ -28,4 +28,33 @@ public class ZzimListImpl implements ZzimListService{
 	public int selectZzimListTotal(ZzimListVO vo) throws Exception {
 		return zzimlistDAO.selectZzimListTotal(vo);
 	}
+
+	@Override
+	public int LikeInsertChk(ZzimListVO vo) throws Exception {
+		return zzimlistDAO.LikeInsertChk(vo);
+	}
+
+	@Override
+	public String selectLikeChk(ZzimListVO vo) throws Exception {
+		return zzimlistDAO.selectLikeChk(vo);
+	}
+	
+	@Override
+	public String insertZzimlike(ZzimListVO vo) throws Exception{
+		return zzimlistDAO.insertZzimlike(vo);
+	}
+	
+	@Override
+	public int addzzimlike(ZzimListVO vo) throws Exception {
+		return zzimlistDAO.addzzimlike(vo);
+	}
+
+	@Override
+	public int cancelzzimlike(ZzimListVO vo) throws Exception{
+		return zzimlistDAO.cancelzzimlike(vo);
+	}
+
+	
+
+	
 }

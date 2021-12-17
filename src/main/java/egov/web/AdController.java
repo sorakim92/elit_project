@@ -1,8 +1,11 @@
 package egov.web;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -14,6 +17,23 @@ public class AdController {
 
 	@Resource(name = "adService")
 	AdService adService;
+	
+	
+	@RequestMapping("AdList.do")
+	public String selectadlist( AdVO vo, Model model ) throws Exception{
+		
+		List<?> list = adService.selectadService(vo);
+		
+		model.addAttribute("vo",vo);
+		model.addAttribute("list",list);
+		
+		return "admin/AdList";
+	}
+	
+	
+	
+	
+	
 	
 	
 	@RequestMapping("adWrite.do")

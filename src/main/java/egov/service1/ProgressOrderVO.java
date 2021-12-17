@@ -2,10 +2,10 @@ package egov.service1;
 
 public class ProgressOrderVO {
 
-	private int oderindex;
+	private int orderindex;
 	private String menuname;
 	private int price;
-	private String comnment1;
+	private String comment1;
 	private String comment2;
 	private String map;
 	private String addr;
@@ -17,11 +17,28 @@ public class ProgressOrderVO {
 	private String accept;
 	private int storeunq;
 	private String userid;
-	public int getOderindex() {
-		return oderindex;
+	private String phone;
+	
+	
+	
+	
+	public int getOrderindex() {
+		return orderindex;
 	}
-	public void setOderindex(int oderindex) {
-		this.oderindex = oderindex;
+	public void setOrderindex(int orderindex) {
+		this.orderindex = orderindex;
+	}
+	public String getComment1() {
+		return comment1;
+	}
+	public void setComment1(String comment1) {
+		this.comment1 = comment1;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	public String getMenuname() {
 		return menuname;
@@ -35,12 +52,7 @@ public class ProgressOrderVO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public String getComnment1() {
-		return comnment1;
-	}
-	public void setComnment1(String comnment1) {
-		this.comnment1 = comnment1;
-	}
+	
 	public String getComment2() {
 		return comment2;
 	}
