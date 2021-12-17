@@ -130,6 +130,7 @@ public class MemberController {
 		return "login/Pop_useridfd";
 	}
 	
+
 	//아이디 찾기 세이브
 	@RequestMapping("Pop_useridfdSave.do")
 	public String Pop_useridfdSave(MemberVO vo, Model model) throws Exception{
@@ -155,4 +156,5 @@ public class MemberController {
 	public String Pop_findselectuserid() throws Exception {
 		return "login/Pop_findselectuserid";
 	}
+
 }

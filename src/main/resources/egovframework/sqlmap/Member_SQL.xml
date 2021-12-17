@@ -54,4 +54,8 @@
 		SELECT userid,email FROM member WHERE email = #email#
 	</select>
 	
+	
+	
+	
+	
 </sqlMap>

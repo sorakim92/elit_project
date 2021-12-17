@@ -6,4 +6,7 @@ public interface BossMemberService {
 
 	List<?> selectbossmemberService(BossMemberVO vo) throws Exception;
 
+	BossMemberVO selectbossmemberDetail(BossMemberVO vo) throws Exception;
+	int updatebossmember(BossMemberVO vo) throws Exception;
+	
 }

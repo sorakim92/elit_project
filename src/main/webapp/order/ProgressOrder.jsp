@@ -195,8 +195,8 @@ $(function() {
             <span style="font-size: 20px;">사장님 광장</span>
         </div>
         <div class="search">
-            <span style="font-size: 15px;">마이페이지</span>
-            <span style="font-size: 15px;">사장님 광장</span>
+            <span style="font-size: 15px;"><a href="">마이페이지</a></span>
+            <span style="font-size: 15px;"><a href="">사장님 광장</a></span>
         </div> 
         <!-- 기능: 로그아웃상태에서는 로그인 버튼,  로그인상태에서는 마이페이지 | 로그아웃 -->
         <div class="login">
@@ -208,14 +208,15 @@ $(function() {
         <div style="margin:30px 0 0 0; width:100%; text-align: center;  
                     border-bottom: 1px solid #ccc; ">
             <ul class="on_nav1">
-                <li>주문관리</li>
-                <li>메뉴관리</li>
-                <li>광고신청/관리</li>
-                <li>커뮤니티</li>
+                <li><a href="">주문관리</a></li>
+                <li><a href="menuList.do">메뉴관리</a></li>
+                <li><a href="adWrite.do">광고신청/관리</a></li>
+                <li><a href="b_consumerList.do">커뮤니티</a></li>
             </ul>
        </div>
     
-    <div>    
+    <div>
+     <form name="frm" id="frm" action="progressorderList.do" >     
     <section class="content" style="border-right:1px solid #ccc; width:60%; float:left;">
         <!-- 주문관리 탭 -->
         <div style="float:left; width:20%; margin-top:10px; ">
@@ -230,33 +231,34 @@ $(function() {
             </ul>
         </div>
          <!--**** 상연님 여기 추가해주세요 ㅎㅎ 주문부분 !!!!!! -->
+         <c:forEach  var="result" items="${list }">
         <div style="width:100%;  height:180px;
                     display:inline-block;
                     margin-bottom: 10px; ">
             <div style="width:20%; height:180px;float:left; border-right:1px solid #ccc;">
-                <span style="font-size: 40px;">13:22</span>
+                <span style="font-size: 40px;">${result.menuunq }</span>
             </div>
             <div style="width:40%; height:180px;float:left; text-align: left; 
                         padding-left:10px;">
-                [메뉴 4개] 
+               ${result.price } 
                 <span style="display:inline-block; border-radius: 0.5em;
                     background: #ccc; padding: 3px 7px 3px 7px;
                     margin:5px 0 5px 10px;
                     font-family: jua;
                     ">
-                    결제완료
+                   ${result.menukeyword }
                 </span>
                 
-                <span style="display:block;">A메뉴1개 / B메뉴3개 / C메뉴1개</span>
-                <span style="display:block;">[요청사항] 맵게해주세요</span>
-                <br>
-                <span style="display:block;" >서울 송파구 방이동</span>
-                <span style="display:block;">010-1234-0000</span>
+                <span style="display:block;">${result.menuname }</span>
+                <span style="display:block;">${result.menuname }</span>
+                <span style="display:block;" >${result.menuname }</span>
+                <span style="display:block;">${result.menukeyword }</span>
             </div>       
             <div style="width:40%; height:180px;float:left; text-align: left;">
                     <button type="reset" class="btn2" onclick=""><h3>접수</h3></button>
                     <button type="submit" class="btn3" onclick=""><h3>거부</h3></button>
             </div>
+            </c:forEach>
             <!-- 2번째-->
             <div style="width:20%; height:180px;float:left; border-right:1px solid #ccc;">
                 <span style="font-size: 40px;">13:22</span>
@@ -283,33 +285,10 @@ $(function() {
                     <button type="submit" class="btn3" onclick=""><h3>거부</h3></button>
             </div>
             
-            <div style="width:20%; height:180px;float:left; border-right:1px solid #ccc;">
-                <span style="font-size: 40px;">13:22</span>
-            </div>
-            <div style="width:40%; height:180px;float:left; text-align: left; 
-                        padding-left:10px;">
-                [메뉴 4개] 
-                <span style="display:inline-block; border-radius: 0.5em;
-                    background: #ccc; padding: 3px 7px 3px 7px;
-                    margin:5px 0 5px 10px;
-                    font-family: jua;
-                    ">
-                    결제완료
-                </span>
-                
-                <span style="display:block;">A메뉴1개 / B메뉴3개 / C메뉴1개</span>
-                <span style="display:block;">[요청사항] 맵게해주세요</span>
-                <br>
-                <span style="display:block;" >서울 송파구 방이동</span>
-                <span style="display:block;">010-1234-0000</span>
-            </div>       
-            <div style="width:40%; height:180px;float:left; text-align: left;">
-                    <button type="reset" class="btn2" onclick=""><h3>접수</h3></button>
-                    <button type="submit" class="btn3" onclick=""><h3>거부</h3></button>
-            </div>
+           
         </div>
     </section>
-
+	</form>
 
 
 <!--    사이드 바 부분 ! -->

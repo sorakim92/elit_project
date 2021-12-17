@@ -20,4 +20,12 @@ public interface MemberService {
 	//아이디 찾기
 	public MemberVO Pop_useridfd(MemberVO vo)throws Exception;
 
+	
+	
+	
+	
+	
+	
+	
+	
 }

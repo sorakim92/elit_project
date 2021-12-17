@@ -144,11 +144,7 @@ section {
 $(function() {
 		$("#btn3").click(function(){ 	
 			
-			if( $("#b_userid").val() == "" ) {
-				alert("아이디를 입력해주세요.");
-				$("#b_userid").focus();
-				return false;
-			}
+			
 			if( $("#userpw").val() == "" ) {
 				alert("암호을 입력해주세요.");
 				$("#userpw").focus();
@@ -169,11 +165,6 @@ $(function() {
 				$("#userphone").focus();
 				return false;
 			}
-			if( $("#phone").val() == "" ) {
-				alert("핸드폰 번호을 입력해주세요.");
-				$("#phone").focus();
-				return false;
-			}
 			if( $("#email").val() == "" ) {
 				alert("이메일을 입력해주세요.");
 				$("#email").focus();
@@ -184,14 +175,14 @@ $(function() {
 			var formdata = $("#frm").serialize();
 			$.ajax({
 				type : "post",
-				url  : "bossmemberWriteSave.do",
+				url  : "BossMemberModifySave.do",
 				data : formdata,
 				
 				datatype : "text",  // 성공여부 (ok)
 				success : function(data) {
 					if (data == "ok") {
 						alert("저장완료");
-						location="bossmemberWrite.do";
+						location="BossMemberDetail.do";
 					} else {
 						alert("저장실패");
 					}
@@ -215,7 +206,7 @@ $(function() {
         </div>
         <div class="search">
             <a href>마이페이지</a>
-             <a href>사장님 광장</a>
+             <a href><font color="black">사장님 광장</font></a>
           
         </div> 
         <!-- 기능: 로그아웃상태에서는 로그인 버튼,  로그인상태에서는 마이페이지 | 로그아웃 -->
@@ -227,10 +218,10 @@ $(function() {
     <nav>
         <div class="" >
           
-            <a href><font size="4">주문내역 | </font></a>
-            <a href="businessMypage.jsp"><font size="4">회원정보수정 |</font></a>
-            <a href><font size="4">문의내역 |</font></a>
-            <a href><font size="4">리뷰관리</font></a>
+            <a href><font size="4" color="black">주문내역 | </font></a>
+            <a href="BossMemberDetail.do"><font size="4">회원정보수정 |</font></a>
+            <a href><font size="4" color="black">문의내역 |</font></a>
+            <a href><font size="4" color="black">리뷰관리</font></a>
         </div>
     </nav>
         
@@ -238,24 +229,24 @@ $(function() {
     <form name="frm" id="frm"> 
    
     <div style="">
-        아이디&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="b_userid" id="b_userid" value="${vo.b_userid}" ><br>
+        아이디&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="userid" id="userid" placeholder="${vo.userid}" readonly><br>
         새로운 암호 <input type="text" name="userpw" id="userpw">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         비밀번호 확인 <input type="text" name="userpw2" id="userpw2" > <br>
-        핸드폰 번호 <input type="text" id="userphone" name="userphone"> <br>
+        핸드폰 번호 <input type="text" id="userphone" name="userphone" value="${vo.userphone}"> <br>
         이메일 주소 
         <input type="email" name="email" id="email" value="${vo.email}"> <br>
         <br>주소 <br>
-        <input type="text" name="storeaddr" id="storeaddr" value="우편번호" readonly> 
-        <button>주소검색</button>
-        <button>주소추가하기</button><br>
+        <input type="text" name="storeaddr" id="storeaddr" placeholder="우편번호" value="${vo.storeaddr}" > 
+        <button type="button" >검색</button>
+        <br>
         <div>
-            <input type="text" class="form-control" value="기본주소" id="" name="">
+            <input type="text" class="form-control" placeholder="기본주소" id="" name="">
         </div>
         <div>
-            <input type="text" class="form-control" value="상세주소" id="" name="" value="${vo.storeaddr}">
+            <input type="text" class="form-control" placeholder="상세주소" id="" name="" value="">
         </div>
         <div>
-            <input type="text" class="form-control" value="참고항목" id="" name="">
+            <input type="text" class="form-control" placeholder="참고항목" id="" name="">
         </div><br>
         
     </div> 

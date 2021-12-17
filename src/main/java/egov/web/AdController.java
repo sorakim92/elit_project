@@ -45,8 +45,9 @@ public class AdController {
 	
 	@RequestMapping(value="adWriteSave.do")
 	@ResponseBody
-	public String insertAd( AdVO vo) throws Exception {
-					
+	public String insertAd(AdVO vo) throws Exception {
+			
+		    
 			String result = adService.insertAd(vo);
 			String message = "ok";
 			
@@ -54,6 +55,8 @@ public class AdController {
 				message = "error";
 			}
 			return message;
-		}
+			
+		    
+	}
 		
 }

@@ -6,6 +6,19 @@
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="progressorderVO" type="egov.service1.ProgressOrderVO"/>
 
+	
+	<select id="progressorderDAO.selectProgressOrderList"  resultClass="egovMap"  >
+		SELECT 
+				menuunq,	
+				menuname,
+				menukeyword,
+				price 
+		FROM menu 
+		
+		  		
+	</select>
+
+
 
 	<insert id = "progressorderDAO.insertProgressOrder" >
 		INSERT INTO progressorder 
@@ -41,5 +54,6 @@
 		DELETE FROM preorder 
 				WHERE  userid = #userid# and storeunq = #storeunq#
 	</delete>
+
 
 </sqlMap>

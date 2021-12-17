@@ -1,5 +1,7 @@
 package egov.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -16,6 +18,12 @@ public class BusinessEnterImpl implements BusinessEnterService{
 	@Override
 	public String insertbusinessEnterWrite(BusinessEnterVO vo) throws Exception {
 		return businessenterDAO.insertbusinessEnterWrite(vo);
+	}
+
+	@Override
+	public List<?> selectbusinessEnterList(BusinessEnterVO vo) throws Exception {
+		
+		return businessenterDAO.selectbusinessEnterList(vo);
 	}
 	
 	

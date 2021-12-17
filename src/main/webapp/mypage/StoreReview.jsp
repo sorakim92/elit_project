@@ -155,8 +155,8 @@ section {
             <h4>사장님광장</h4>
         </div>
         <div class="search">
-            <a href><font size="4" color="black">마이페이지</font></a>
-            <a href><font size="4">사장님 광장</font></a>
+            <a href=""><font size="4" color="black">마이페이지</font></a>
+            <a href=""><font size="4">사장님 광장</font></a>
         </div> 
         <div class="login">
             <button type="button" class="btn btn-outline-warning" style="border-color: #f8cacc; color: black;">로그인</button>
@@ -166,24 +166,24 @@ section {
     <nav>
         <div class="">
             <a href><font size="4" color="black">주문관리 |</font></a>
-            <a href><font size="4">메뉴관리 |</font></a>
-            <a href><font size="4" color="black">광고신청/관리 |</font></a>
-            <a href><font size="4" color="black">커뮤니티</font></a>
+            <a href="menuList.do"><font size="4">메뉴관리 |</font></a>
+            <a href="adWrite.do"><font size="4" color="black">광고신청/관리 |</font></a>
+            <a href="b_consumerList.do"><font size="4" color="black">커뮤니티</font></a>
         </div>
     </nav>
         
-    
+    <form name="frm" id="frm" action="storeReviewList.do" > 
      <section>
         <div style="text-align:left;" >
             <font size="5">메뉴관리</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href><font size="4" color="black" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;메뉴편집 |  </font></a>
-            <font size="4" >&nbsp;&nbsp;<a href> 리뷰관리</font></a>
+           <a href="menuList.do"> <font size="4" color="black" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;메뉴편집 |</font> </a> 
+            <font size="4" >&nbsp;&nbsp;<a href=""> 리뷰관리</a></font>
         </div>
         <br>
 
     <div style="width:100%;">
         <div class="" style="text-align:left; float:left; width:25%;">
-            <img src="../img/name.PNG" width="200px" height="100px" alt="">
+            <img src="../img/food1.PNG" width="200px" height="100px" alt="">
         </div>        
         <div style="float:left;  width:25%;">
             <span style=""> 최근 리뷰  *개</span><br>
@@ -221,20 +221,23 @@ section {
                     <col width="20%" />
                     <col width="*" />
                     <col width="20%" />
-                  
+                  	<col width="20%" />
                 </colgroup>
                  <tr>
                     <td>전체</td>
                     <td>미답변</td> 
-                    <td>답변완료</td> 
+                    <td>답변완료</td>
+                    <td>상태</td> 
                 </tr>
                   <c:forEach var="result" items="${list }">
                 <tr>
-                    <td>
-                    <a href="?b_reviewindex=${result.b_reviewindex }">${result.b_userid }
+                    
+                    <td><a href="menuModify.do?menuunq=${result.menuunq }">${result.menuname }
                     </a></td>
-                    <td>${result.rcontent }</td> 
-                    <td><button type="button" ><a href="PopReviewAns.jsp">답변하기</a></button></td> 
+	  				<td>${result.price }</td>
+	  				<td>${result.menukeyword }</td>
+                   
+                    <td><button type="button" ><a href="popReviewAnsWrite.do">답변하기</a></button></td>  
                 </tr>
                 </c:forEach>
             </table>
@@ -244,7 +247,7 @@ section {
         
         
       </section>
-     
+      </form>
     
        
     </div>

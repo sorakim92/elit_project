@@ -24,6 +24,27 @@
 						USERID IS NOT NULL and BUSINESS = 'y'
 				ORDER BY RDATE DESC) a )b
 	</select>
+	<select id="bossmemberDAO.selectbossmemberDetail" resultClass="BossMemberVO">
+		SELECT 	userid, 
+				userphone,
+				email,
+				storeaddr
+				
+		FROM bossmember
+		WHERE userid = 'test1'
+	
+	</select>
+
+
+	<update id="bossmemberDAO.updatebossmember">
+		UPDATE bossmember
+			SET 
+				userpw=#userpw#,		
+				email=#email#,
+				storeaddr=#storeaddr#
+				
+		WHERE userid = 'test1'
+	</update>
 				
 
 </sqlMap>
