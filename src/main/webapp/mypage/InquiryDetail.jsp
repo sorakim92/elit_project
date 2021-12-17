@@ -46,8 +46,8 @@
         </div>
         <div class="board_view_wrap">
             <div class="board_view">
-               <div class="title">${vo.title} ${vo.rdate }${vo.hits }</div>
-
+               <div class="title">${vo.title} ${vo.rdate }</div>
+				<span>${vo.hits }</span>
                <div class="cont"> ${vo.content } </div>
 
 

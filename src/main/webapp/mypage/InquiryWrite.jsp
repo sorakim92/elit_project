@@ -116,7 +116,7 @@
             </div>
             
             <div class="bt_wrap">
-                <a href="" id="btn_save"> 등록 </a>
+                <a href="InquiryList.do" id="btn_save"> 등록 </a>
                 <a href="InquiryList.do">취소</a> 
             </div>
             </div>

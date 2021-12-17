@@ -48,9 +48,7 @@ public class InquiryController {
 			model.addAttribute("total",total);
 			model.addAttribute("total_page",total_page);
 			model.addAttribute("rownum",rownum); 
-			
-			
-			
+
 			
 			return "mypage/InquiryList";
 		}

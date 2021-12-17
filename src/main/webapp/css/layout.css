@@ -68,6 +68,7 @@ li {
   justify-content: space-between;
   align-items: center;
   padding: 8px 12px;
+  border-bottom: 1px solid #ccc;
 }
 .navbar_menu {
   display: flex;
