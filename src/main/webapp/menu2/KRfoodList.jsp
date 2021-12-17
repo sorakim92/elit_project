@@ -112,6 +112,47 @@ section {
     padding-top: 20px;
 }
 </style>
+
+<script>
+function fn_like(u,c) {
+
+	$("#storeunq").val(u);
+	$("#cateunq").val(c);
+	//alert(u+"uu"+c);
+	var formdata = $("#frm").serialize();
+
+	$.ajax({
+		type : "post",
+		url : "zzimlike.do",
+		data : formdata,
+		
+		datatype : "text",
+		success : function(data) {
+		
+			if(data == "ok") {
+				/*if(data.likechk == "U") {
+					like_img = "img/dislike.png";
+				
+				} else {
+					like_img = "img/like.png";
+			
+				}*/
+			
+				//$("img[name='like_img_"+u+"']").attr('src',like_img);
+				
+ 				document.location.reload();
+
+			}
+		},
+		error : function() {
+			alert("오류.");
+		}
+		
+	})
+	
+}
+
+</script>
 <body>
 <div class="wrapper">
     <div class="main" style="min-height: 100%; padding-bottom:100px; flex:1;">
@@ -133,7 +174,7 @@ section {
         </ul>
         </div>
     </nav>
-        
+      				
   	<section>
   	<article class="">	
     	<table style="margin-top: 10px; width:100%; " class="cate_tbl2"> 
@@ -149,6 +190,7 @@ section {
            		<c:forEach var="result" items="${list }" varStatus="status">
            		
            		<td>
+           		
                	   <div style="width:120px; height: 120px; border: 1px solid #f8cacc; border-radius: 2em;
                    margin:5px 20px 10px 20px; text-align: center;
                    cursor: pointer;" onclick="location.href='menuOrderList.do?storeunq=${result.storeunq}';">
@@ -159,13 +201,34 @@ section {
                    <span style="font-weight: bold; cursor: pointer;" onclick="location.href='menuOrderList.do?storeunq=${result.storeunq}';"> ${result.storename }</span>
                           
                        <div style="font-size:12px; text-align: left; padding-left: 10px;">
-                           <span><img src="<c:url value='/img/star.png'/>" style="width:20px; height:20px; ">5.0</span>
-                           <span style="padding:0 10px 0 10px">배달비: ${result.fee }원</span>
+                           <span><img src="<c:url value='/img/star.png'/>" style="width:20px; height:20px; ">
+                           		${result.storerate }
+                           </span>
+                           <span style="padding:0 10px 0 10px">
+                           
+                           <a href ="javascript:fn_like('${result.storeunq }','${result.cateunq }')">
+                           
+                  						
+                           		<img  
+                           			<c:choose>
+                           				<c:when test="${result.likechk.equals('L') }"> src='img/like.png' </c:when>
+                           				<c:when test="${result.likechk.equals('U') }"> src='img/dislike.png' </c:when>
+                           				<c:otherwise> src='img/dislike.png' </c:otherwise>
+                           			</c:choose>
+                           				style="width:20px;"
+                           				id="like_img" name="like_img_${result.storeunq }">
+                           		
+                           
+                           	</a>
+                           
+                           </span>
                        </div>
-            
+            			<div style="font-size:12px; text-align: left; padding-left: 10px;">
+            				<span style="padding:0 10px 0 0">배달비: ${result.fee }</span>
+            			</div>
 	                   <div style="font-size:13px; text-align: left; padding-left: 10px;">
 	                       <span>대표메뉴</span><br>
-	                       <span>대표한줄평</span>
+	                      
 	                   </div>
              	 </td>
              	 
@@ -179,6 +242,14 @@ section {
                	</c:forEach>
            </tr>
         </table>
+       
+        <form id="frm" name="frm">
+        <input type="hidden" name="userid" id="userid" value="test1">
+        <input type="hidden" name="storeunq" id="storeunq" value="0">
+      	<input type="hidden" name="cateunq" id="cateunq" value="0">
+        
+        </form>
+        
     </article>
     </section>
     </div>

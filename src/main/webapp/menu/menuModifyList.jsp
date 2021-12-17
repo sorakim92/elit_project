@@ -174,7 +174,7 @@ $(function(){
         </div>
         <div class="search">
       
-            <a href>마이페이지</a>
+            <a href><font color="black">마이페이지</font></a>
             <a href>사장님 광장</a>
         </div> 
         <!-- 기능: 로그아웃상태에서는 로그인 버튼,  로그인상태에서는 마이페이지 | 로그아웃 -->
@@ -187,8 +187,8 @@ $(function(){
         <div class="">
             <a href><font size="4" color="black">주문관리 |</font></a>
             <a href="menuList.do"><font size="4">메뉴관리 |</font></a>
-            <a href><font size="4" color="black">광고신청/관리 |</font></a>
-            <a href><font size="4" color="black">커뮤니티</font></a>
+            <a href="adWrite.do"><font size="4" color="black">광고신청/관리 |</font></a>
+            <a href="b_consumerList.do"><font size="4" color="black">커뮤니티</font></a>
         </div>
     </nav>
         
@@ -196,13 +196,13 @@ $(function(){
      <section>
         <div style="text-align:left;" >
             <font size="5">메뉴관리</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <font size="4" color="blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;메뉴편집 |   </font>
+            <font size="4" color="blue"><a href="menuList.do">메뉴편집 |</a></font>
             <font size="4">&nbsp;&nbsp; 리뷰관리</font>
         </div>
         <br>
         <div class="" >     
             <div style="text-align:right;">
-                    <button type="button" id="btn_menu" name="btn_menu"><h5> 메뉴 추가</h5></button><br><br>
+                    <button type="button" id="btn_menu" name="btn_menu"><a href="menuWrite.do"><h5> 메뉴 추가</h5></a></button><br><br>
             </div>
         </div>
         <br>

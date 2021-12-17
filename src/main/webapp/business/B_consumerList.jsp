@@ -167,9 +167,9 @@ section {
         <div class="">
           
             <a href><font size="4" color="black" >주문관리 |</font></a>
-            <a href><font size="4" color="black" >메뉴관리 |</font></a>
-            <a href><font size="4" color="black" >광고신청/관리 |</font></a>
-            <a href><font size="4"  >커뮤니티</font></a>
+            <a href="menuList.do"><font size="4" color="black" >메뉴관리 |</font></a>
+            <a href ="adWrite.do"><font size="4" color="black" >광고신청/관리 |</font></a>
+            <a href ="b_consumerList.do"><font size="4"  >커뮤니티</font></a>
         </div>
     </nav>
         
@@ -196,6 +196,7 @@ section {
             <input type="text" name= "s_text" id="s_text" value="${s_text }"
             placeholder="검색어를 입력하세요"> 
             <button>검색</button>
+            </form>
         </div>
       
         <br>
@@ -237,7 +238,7 @@ section {
        
   
     </section>
-    </form>
+  
     <div style="text-align:center;" >
         <a href><font size="4" >1</font></a>
         <a href><font size="4" color="black">2</font></a>
@@ -248,7 +249,7 @@ section {
     </div>
     
     <div style="text-align:right;" >
-    <button type="button" class="btn3" style="background-color:orange"><a href="b_ConsumerListWrite.do"> 글쓰기</a></button>
+    <button type="button" class="btn3" style="background-color:orange" ><a href="b_ConsumerListWrite.do">글쓰기</a></button>
     </div>
 	
     <footer>

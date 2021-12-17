@@ -138,7 +138,7 @@ $(function() {
 				$("#email").focus();
 				return false;
 			}
-			if( $("#first_name").val() == "" ) {
+			if( $("#name").val() == "" ) {
 				alert("이름을 입력해주세요.");
 				$("#first_name").focus();
 				return false;
@@ -158,9 +158,9 @@ $(function() {
 				$("#phone").focus();
 				return false;
 			}
-			if( $("#service_op").val() == "" ) {
+			if( $("#serviceop").val() == "" ) {
 				alert("서비스 선택을 입력해주세요.");
-				$("#service_op").focus();
+				$("#serviceop").focus();
 				return false;
 			}
 			
@@ -200,7 +200,7 @@ $(function() {
 	    </div>      
         
         <div class="search">    
-            <a href>마이페이지</a>
+            <a href><font color="black">마이페이지</font></a>
             <a href>사장님 광장</a>
         </div> 
         <!-- 기능: 로그아웃상태에서는 로그인 버튼,  로그인상태에서는 마이페이지 | 로그아웃 -->
@@ -213,9 +213,9 @@ $(function() {
         <div class="">
           
             <a href><font size="4" color="black">주문관리 |</font></a>
-            <a href><font size="4" color="black">메뉴관리 |</font></a>
-            <a href><font size="4">광고신청/관리 |</font></a>
-            <a href><font size="4" color="black">커뮤니티</font></a>
+            <a href="menuList.do"><font size="4" color="black">메뉴관리 |</font></a>
+            <a href="adWrite.do"><font size="4">광고신청/관리 |</font></a>
+            <a href="b_consumerList.do"><font size="4" color="black">커뮤니티</font></a>
         </div>
     </nav>
         
@@ -230,18 +230,18 @@ $(function() {
      <div style="width:100%; height:auto; padding:10px;  margin: -40px;">
             <div style="width:70%; text-align: right; margin-left:40px;
                         font-family: jua; float:right;">
-          <a href="">ELIT 에 아직 입점 안하셨어요? 지금 바로 입점문의 하기</a>
+          <a href="businessEnterWrite.do">ELIT 에 아직 입점 안하셨어요? 지금 바로 입점문의 하기</a>
            </div>
      </div><br><br><br><br><br><br>
 
-     <div class="">
+     <div class="" >
                 아래 항목을 작성해서 제출해주시면,
                 담당자가 24시이내로 빠른 연락드리겠습니다
     </div>
             
    
                     
-        <form name="frm" id="frm">
+<form name="frm" id="frm">
             <article class="text-align:left" >
                 <font size="3">ELIT 이용약관과 개인정보 수집 및 동의 페이지입니다. (ELIT’s Terms and Privacy Policy)</font><br>
                 <textarea  class="article_text"   readonly>
@@ -280,8 +280,8 @@ $(function() {
                 - 회원의 법령 또는 약관의 위반을 포함하여 부정행위 확인 등의 정보보호 업무를 위해 필요한 경우
                 - 기타 법률에 의해 요구되는 경우 
                 </textarea><br>
-                <div class="mw_agree1"><br>
-                    <span>회원가입약관의 내용에 동의합니다.</span>
+                <div class="mw_agree1" ><br>
+                    <span >회원가입약관의 내용에 동의합니다.</span>
                     <input type="checkbox" name="agree" id="agree" value="t1">
                 </div><br>
                   
@@ -299,12 +299,12 @@ $(function() {
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label class="fieldTitle" for="first_name" >이름</label>
-                        <input type="text" placeholder="" value="" class="emailField form-control"  name='first_name' id='first_name'>
+                        <label class="fieldTitle" for="" >이름</label>
+                        <input type="text" placeholder="" value="" class="emailField form-control"  name="name" id="name">
                     </div>
                     <div class="form-group">
                         <label class="fieldTitle" for="'">아이디</label>
-                        <input type="text" placeholder="" value="" class="emailField form-control"  name='userid' id='userid'>
+                        <input type="text" placeholder="" value="" class="emailField form-control"  name="userid" id="userid">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -312,11 +312,11 @@ $(function() {
                         <label class="fieldTitle" for="last_name">휴대폰</label><br>
                         <select name="phonecode" id="phonecode" class=" phonecode">
                         	<option value="">  선택 </option>
-                            <option value="0">  010 </option>
-                            <option value="1">  011 </option>
-                            <option value="2">  017 </option>
-                            <option value="3">  019 </option></select>
-                            <input type="text" class="phone1" name="phone" id="phone" value="" required>    
+                            <option value="010">  010 </option>
+                            <option value="011">  011 </option>
+                            <option value="017">  017 </option>
+                            <option value="019">  019 </option></select>
+                            <input type="text" class="phone1" name="phone" id="phone" value="" >    
                       
                     </div>
                 </div>
@@ -327,9 +327,12 @@ $(function() {
                     <div class="row">
                         <div class="col-sm-12">
                             <label class="fieldTitle" for="phone1">서비스 선택</label>
-                            <select class="form-control" name="service_op" id="service_op">
-                                <option value="">서비스 선택하세요</option>
-                                    <option value="GH">배너</option></select><br>
+                            <select class="form-control" name="service" id="service">
+                                    
+                                    <option value="">서비스 선택하세요</option>
+                                    <option value="메인상단">메인  상단</option>
+                                    <option value="메인하단">메인  하단</option>
+                            </select>
 
 
 
@@ -353,7 +356,7 @@ $(function() {
         <div style ="text-align:center;">
             <button type="button" class="btn3" id="btn3" >제출</button>
         </div>                         
-     	</form>
+</form>
      		
      		
 </div>

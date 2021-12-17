@@ -161,13 +161,13 @@ section {
         <div class="">
           
             <a href><font size="4" >주문관리 |</font></a>
-            <a href><font size="4" color="black" >메뉴관리 |</font></a>
-            <a href><font size="4" color="black" >광고신청/관리 |</font></a>
-            <a href><font size="4" color="black" >커뮤니티</font></a>
+            <a href="menuList.do"><font size="4" color="black" >메뉴관리 |</font></a>
+            <a href="adWrite.do"><font size="4" color="black" >광고신청/관리 |</font></a>
+            <a href="b_consumerList.do"><font size="4" color="black" >커뮤니티</font></a>
         </div>
     </nav>
         
-    
+    <form name="frm" id="frm" action="" >
      <section>
         <div style="text-align:left;" >
             <font size="5">주문관리</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

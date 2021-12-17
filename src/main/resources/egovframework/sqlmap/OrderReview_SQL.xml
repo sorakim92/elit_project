@@ -6,9 +6,8 @@
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="orderreviewVO" type="egov.service1.OrderReviewVO"/>
 	
-	<insert id="orderreviewDAO.insertOrderReviewboard">
-		<![CDATA[
-		
+	<insert id="orderreviewDAO.insertBoard">
+	<![CDATA[
 		INSERT INTO orderreview (	reviewindex,
 									storeunq,
 									rate,
@@ -17,19 +16,84 @@
 									rdate,
 									userid,
 									oderindex )
-						VALUES  ( 	orderreview_seq.nextval,
-									#storeunq#,
-									sysate,
-									#rcontent#,
-									#rimage#,
+									
+						VALUES (	orderreview_seq.nextval,
+									'$storeunq$',
+									'$rate$',
+									'$rcontent$',
+									'$rimage$',
 									sysdate,
-									#userid#,
-									#oderindex# )
+									'test1',
+									'$oderindex$' )
+	]]>
+	</insert>	
+ 	
+	<select id="orderreviewDAO.selectBoardList" resultClass="egovMap">
 		
-		]]>
+		SELECT b.* FROM (
+			SELECT rownum rn, a.* FROM (
+			
+					SELECT 		reviewindex,
+								storeunq,
+								rate,
+								rcontent,
+								rimage,
+								to_char(rdate,'yyyy/mm/dd')rdate,
+								userid,
+								oderindex 
+					FROM
+										OrderReview
+								ORDER BY
+										reviewindex DESC ) a ) b
+			WHERE
+						rn BETWEEN '$s_no$' AND '$e_no$'
 	
-	</insert>
 	
+	</select>
 	
+	<select id="orderreviewDAO.selectBoardDetail" resultClass="OrderReviewVO">
+	
+		SELECT 		
+					storeunq,
+					rate,
+					rcontent,
+					rimage,
+					to_char(rdate,'yyyy/mm/dd')rdate,
+					userid,
+					oderindex 
+		FROM orderreview
+			 	WHERE reviewindex = #reviewindex#
+
+	
+	</select>
+		 
+
+	
+	<update id="orderreviewDAO.updateBoard">
+		
+		UPDATE orderreview
+				SET					
+					userid = '$userid$',
+					rdate =  sysdate,					
+					rcontent = '$rcontent$'
+			WHERE
+					reviewindex = #reviewindex#
+	</update>
+	
+	<update id="orderreviewDAO.updateBoardHits">
+		UPDATE orderreview SET hits=hits+1 WHERE reviewindex=#reviewindex#
+
+	</update>
+	
+	<delete id="orderreviewDAO.deleteBoard">
+	
+		DELETE FROM orderreview WHERE reviewindex=#reviewindex#
+	
+	</delete>
+	
+	<select id="orderreviewDAO.selectBoardTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM orderreview
+
+	</select>
 	
 </sqlMap>

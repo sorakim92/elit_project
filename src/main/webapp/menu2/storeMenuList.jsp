@@ -116,19 +116,38 @@ function fn_pay() {
 		menuqty[i] = $(".qty").eq(i).val();
 		datas += menulist[i]+": "+menuqty[i]+"개, ";
 	}
-	alert(datas);
-	//alert(len);
-	//alert( $(".menunames").eq(1).html() );
-	//alert($(".qty").eq(0).val());
-	//$("#totalPrice").text(total+${vo.fee});
-	//$("#s_totalPrice").val(total+${vo.fee});
-
+	var data_len = datas.length;
+	datas = datas.substring(0,(data_len-2));
 	
+	$("#menuname").val(datas);
+	
+	var formdata = $("#orderFrm").serialize();
+
+	console.log(formdata);
+	$.ajax({
+ 		type : "post",
+ 		url : "orderSub.do",
+ 		data : formdata,
+ 		
+ 		datatype : "text",
+ 		success :	function(data) {
+ 			if(data == "ok") {
+ 				document.location.reload();
+ 				alert("주문이 전송되었습니다. [ 주문접수 대기중 ]");
+ 			} else {
+ 				alert("시스템 오류입니다. 다시 시도해주세요.");
+ 			}
+ 		},
+ 		error : function() {
+ 			alert("오류. 처리실패");
+ 		}	
+
+ 	});
 }
 
 function fn_delete(u) {
 	
-	$("#menuunq").val(u);
+	$("#pindex").val(u);
 	
 
 	var formdata = $("#frm").serialize();
@@ -188,7 +207,7 @@ function fn_update(a,p,i) {
 	//alert(total);
 	
 	$("#totalPrice").text(total+${vo.fee});
-	$("#s_totalPrice").val(total+${vo.fee});
+	$("#price").val(total+${vo.fee});
 }
 
 
@@ -364,7 +383,8 @@ function fn_addOrder(u) {
              <form name="frm" id="frm">
                <input type="hidden" name="userid" id="userid" value="${vo.userid }">
               <input type="hidden" name="storeunq" id="storeunq" value="${vo.storeunq }">
-               <input type="hidden" name="menuunq" id="menuunq" value="">
+               <input type="hidden" name="menuunq" id="menuunq" value="0">
+                 <input type="hidden" name="pindex" id="pindex" value="0">
             </form>
         </div>
     </section>
@@ -391,7 +411,7 @@ function fn_addOrder(u) {
                                 font-weight: bold;" >
                         <span id="menunames" class="menunames">${p.menuname }</span> 
                     </div>
-                    <div style="width:10%; float:left; cursor: pointer;" onclick="fn_delete('${p.menuunq}')"> 
+                    <div style="width:10%; float:left; cursor: pointer;" onclick="fn_delete('${p.pindex}')"> 
                         <img src="img/x.png" alt="x"
                         style="text-align:right; width:15px; height:15px;" />
                     </div>
@@ -440,13 +460,7 @@ function fn_addOrder(u) {
                         <td>배달비</td>
                         <td>${vo.fee }</td>
                     </tr>
-                    <tr>
-                        <td>쿠폰</td>
-                        <td>
-                            <button type="button" class="" id="">
-                                조회</button>
-                        </td>
-                    </tr>
+                    
                     <tr>
                         <td>총주문금액(배달비 포함)</td>
                         <td><span id="totalPrice">${vo.total + vo.fee}</span></td>
@@ -471,8 +485,10 @@ function fn_addOrder(u) {
             
             <input type="hidden" name="userid" id="userid" value="${vo.userid }">
             <input type="hidden" name="storeunq" id="storeunq" value="${vo.storeunq }">
-            <input type="text" id="s_totalPrice" name="s_totalPrice" value="${vo.total }">
-        
+            <input type="hidden" id="price" name="price" value="${vo.total + vo.fee} ">
+          	<input type="hidden" id="menuname" name="menuname" value="">
+        	<input type="hidden" id="phone" name="phone" value="${mvo.userphone }">
+            <input type="hidden" id="addr" name="addr" value="${mvo.useraddr1 }">
             
             
             <div style="width:100%; height:auto; ">
