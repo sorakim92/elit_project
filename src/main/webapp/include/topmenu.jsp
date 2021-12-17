@@ -9,7 +9,7 @@
 <body>
 <div style="width:100%;">
         <ul class="navbar_menu">
-            <h4 class="h4">마이페이지</h4>            
+            <li><a href="#">마이페이지</a></li>            
             <li><a href="#">주문내역</a></li>
             <li><a href="#">회원정보수정</a></li>
             <li><a href="#">문의내역</a></li>
