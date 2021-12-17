@@ -7,11 +7,18 @@ public class ZzimListVO {
 	private String userid;
 	private int storeunq;
 	private String likechk;
+	private int cateunq;
+
 	
 	
 	
 	
-	
+	public int getCateunq() {
+		return cateunq;
+	}
+	public void setCateunq(int cateunq) {
+		this.cateunq = cateunq;
+	}
 	public String getLikechk() {
 		return likechk;
 	}

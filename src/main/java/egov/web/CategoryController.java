@@ -14,6 +14,7 @@ import egov.service1.CategoryService;
 import egov.service1.CategoryVO;
 import egov.service1.ZzimListService;
 import egov.service1.ZzimListVO;
+import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 @Controller
 public class CategoryController {
@@ -39,7 +40,39 @@ public class CategoryController {
 		List<?> zlist = categoryService.selectZZIMlike(map);
 		
 		
+		
+		
+		for(int l=0; l<list.size(); l++) {
+		
+			EgovMap map1 = (EgovMap) list.get(l);
+			//System.out.println(map1);
+			
+			String storeunq = (String) map1.get("storeunq");
+			
+			//System.out.println(storeunq);
+			
+			for(int i = 0; i<zlist.size(); i++) {
+				EgovMap zmap = (EgovMap) zlist.get(i);
+				
+				String zstoreunq = (String) zmap.get("storeunq");
+				String likechk = (String) zmap.get("likechk");
+				
+				//System.out.println(storeunq + "z"+zstoreunq+"l"+likechk);
+				
+				if(storeunq.equals(zstoreunq)) {
+					map1.put("likechk", likechk);
+				}
+			}
+			//System.out.println(map1);
+			//System.out.println(map1.get("likechk"));
+		}
+		
+		//System.out.println(zlist.size());
+		//System.out.println(zlist.get(0));
+		
 		model.addAttribute("list",list);
+		model.addAttribute("zlist",zlist);
+
 		return "menu2/KRfoodList";
 	}
 	
