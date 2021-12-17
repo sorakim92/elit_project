@@ -1,3 +1,4 @@
+
 package egov.web;
 
 import java.util.HashMap;
@@ -24,12 +25,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import egov.service1.MemberService;
 import egov.service1.MemberVO;
 
+
 @Controller
 public class MemberController {
 	@Resource(name = "memberService")
 	MemberService memberService;
 	
-	//회원가입화면담당
+  //회원가입화면담당
 	@RequestMapping("memberwrite.do")
 	public String memberSignin() {
 		return "login/memberSignin";
@@ -48,8 +50,8 @@ public class MemberController {
 		}
 		return message;
 	}
-	
-	@RequestMapping("Pop_doubleCheck.do")
+  
+  @RequestMapping("Pop_doubleCheck.do")
 	public String popidckwrite(String userid, Model model) throws Exception {
 		
 		model.addAttribute("userid1",userid);
@@ -84,6 +86,41 @@ public class MemberController {
 		return "login/memberlogin";
 	}
 	
+
+	//아이디 찾기
+	@RequestMapping("Pop_useridfd.do")
+	public String Pop_useridfd() throws Exception {
+		
+		return "login/Pop_useridfd";
+	}
+	
+	//아이디 찾기 세이브
+	@RequestMapping("Pop_useridfdSave.do")
+	@ResponseBody
+	public String Pop_useridfdSave(MemberVO vo, Model model) throws Exception{
+		
+		//System.out.println("============"+vo.getUserid());
+		vo = memberService.Pop_useridfd(vo);
+		String msg = "";
+		//System.out.println(vo);
+		//System.out.println("=========222======="+vo.getUserid());
+		String userid= vo.getUserid();
+		
+		//System.out.println(userid);
+		if(userid != null) {
+			msg="ok";
+		} else {
+			msg = "fail";
+		}
+		
+		//System.out.println(msg);
+		return msg;
+	}
+	@RequestMapping("Pop_findselectuserid.do")
+	public String Pop_findselectuserid() throws Exception {
+		return "login/Pop_findselectuserid";
+	}
+}
 	
 	@RequestMapping("memberloginSub.do")
 	@ResponseBody
@@ -123,38 +160,5 @@ public class MemberController {
 		return "";
 	}
 	
-	//아이디 찾기
-	@RequestMapping("Pop_useridfd.do")
-	public String Pop_useridfd() throws Exception {
-		
-		return "login/Pop_useridfd";
-	}
-	
-
-	//아이디 찾기 세이브
-	@RequestMapping("Pop_useridfdSave.do")
-	public String Pop_useridfdSave(MemberVO vo, Model model) throws Exception{
-		
-		//System.out.println("============"+vo.getUserid());
-		vo = memberService.Pop_useridfd(vo);
-		String msg = "";
-		//System.out.println(vo);
-		//System.out.println("=========222======="+vo.getUserid());
-		String userid= vo.getUserid();
-		
-		//System.out.println(userid);
-		if(userid != null) {
-			msg="ok";
-		} else {
-			msg = "fail";
-		}
-		
-		//System.out.println(msg);
-		return msg;
-	}
-	@RequestMapping("Pop_findselectuserid.do")
-	public String Pop_findselectuserid() throws Exception {
-		return "login/Pop_findselectuserid";
-	}
 
 }
