@@ -132,6 +132,7 @@ public class MemberController {
 	
 	//아이디 찾기 세이브
 	@RequestMapping("Pop_useridfdSave.do")
+	@ResponseBody
 	public String Pop_useridfdSave(MemberVO vo, Model model) throws Exception{
 		
 		//System.out.println("============"+vo.getUserid());
