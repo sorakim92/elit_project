@@ -50,7 +50,7 @@ public class MemberController {
 		}
 		return message;
 	}
-  
+  //아이디 중복체크
   @RequestMapping("Pop_doubleCheck.do")
 	public String popidckwrite(String userid, Model model) throws Exception {
 		
@@ -116,12 +116,31 @@ public class MemberController {
 		//System.out.println(msg);
 		return msg;
 	}
+	//아이디 찾기 결과 팝업창
 	@RequestMapping("Pop_findselectuserid.do")
 	public String Pop_findselectuserid() throws Exception {
 		return "login/Pop_findselectuserid";
 	}
-
 	
+	//아이디찾기 결과 팝업창 메세지 출력
+	@RequestMapping("Pop_findselectuseridSave.do")
+	@ResponseBody
+	public String Pop_findselectuseridSave(MemberVO vo, Model model) throws Exception {
+		
+		vo = memberService.Pop_useridfd(vo);
+		
+		String msg = "";
+		String userid= vo.getUserid();
+		if(userid != null) {
+			msg="ok";
+		} else {
+			msg = "fail";
+		}
+		
+		//System.out.println(msg);
+		return msg;
+	}
+	// 로그인 서브 처리창
 	@RequestMapping("memberloginSub.do")
 	@ResponseBody
 	public String memberlogin(MemberVO vo, HttpSession session) throws Exception {
@@ -152,13 +171,30 @@ public class MemberController {
 	}
 	// 비밀번호 세이브 찾기
 	@RequestMapping("Pop_memberpassfindSave.do")
-	public String Pop_memberpassfind(String email, String userid ,Model model) throws Exception {
+	@ResponseBody
+	public String Pop_memberpassfind(MemberVO vo ,Model model) throws Exception {
 		
-		model.addAttribute("email",email);
-		model.addAttribute("userid",userid);
 		
-		return "";
+		
+		vo = memberService.Pop_useridfd(vo);
+		String msg = "";
+		String userid= vo.getUserid();
+		String email = vo.getEmail();
+		
+		if(userid != null && email != null) {
+			msg="ok";
+		} else {
+			msg = "fail";
+		}
+		
+		return msg;
+		
 	}
-	
+	//비밀번호 재설정 화면
+	@RequestMapping("Pop_newuserpw.do")
+	public String Pop_newuserpw() throws Exception {
+		
+		return "login/Pop_newuserpw";
+	}
 
 }

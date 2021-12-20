@@ -21,7 +21,7 @@ public class MemberImpl implements MemberService{
 	public int popidck(String userid) throws Exception {
 		return memberDAO.popidck(userid);
 	}
-	
+	//아아디 중복체크
 	@Override
 	public int selectMemberIdCheck(String userid) throws Exception {
 		return memberDAO.selectMemberIdCheck(userid);
@@ -32,13 +32,20 @@ public class MemberImpl implements MemberService{
 	public int selectMemberCount(MemberVO vo) throws Exception {
 		return memberDAO.selectMemberCount(vo);
 	}
+	//비밀번호 찾기
 	@Override
-	public int Pop_memberpassfind(String email) throws Exception {
+	public MemberVO Pop_memberpassfind(String email) throws Exception {
 		return memberDAO.Pop_memberpassfind(email);
 	}
+	//아이디 찾기
 	@Override
 	public MemberVO Pop_useridfd(MemberVO vo) throws Exception {
 		return memberDAO.Pop_useridfd(vo);
+	}
+	//비밀번호 찾기 화면(비밀번호 변경)
+	@Override
+	public int Pop_newuserpw(MemberVO vo) throws Exception {
+		return memberDAO.Pop_newuserpw(vo);
 	}
 	
 	
