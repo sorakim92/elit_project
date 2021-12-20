@@ -12,7 +12,7 @@ public class ProgressOrderVO {
 	private String method;
 	private String rdate;
 	private String adate;
-	private String reveive;
+	private String REVEIVE;
 	private String complete;
 	private String accept;
 	private int storeunq;
@@ -90,10 +90,10 @@ public class ProgressOrderVO {
 		this.adate = adate;
 	}
 	public String getReveive() {
-		return reveive;
+		return REVEIVE;
 	}
 	public void setReveive(String reveive) {
-		this.reveive = reveive;
+		this.REVEIVE = reveive;
 	}
 	public String getComplete() {
 		return complete;

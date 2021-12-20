@@ -28,9 +28,10 @@
             <td><form name="frm" method="post">
                 <div style="text-align:center;">
             변경할 비밀번호 입력 : <input type = "number" name = "newuserpw" id="newuserpw" placeholder = "비밀번호를 입력하세요." >
-
             <br> <br>
-            <button type="submit" name="submit">비밀번호 변경</button>
+           비밀번호 재입력 : <input type = "number" name = "newuserpw" id="newuserpw" placeholder = "비밀번호를 입력하세요." >
+            <br> <br>
+            <button type="button" name="submit">비밀번호 변경</button>
             </div>
                     
                 </form>
