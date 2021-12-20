@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import egov.service1.BossMemberService;
 import egov.service1.BossMemberVO;
+import egov.service1.MemberVO;
 
 @Service("bossmemberService")
 public class BossMemberImpl implements BossMemberService{
@@ -32,4 +33,23 @@ public class BossMemberImpl implements BossMemberService{
 		
 		return bossmemberDAO.updatebossmember(vo);
 	}
+
+	@Override
+	public int updateMemberBusiness(MemberVO vo) throws Exception {
+		return bossmemberDAO.updateMemberBusiness(vo);
+	}
+
+	@Override
+	public BossMemberVO selectBossMemberInfo(MemberVO vo) throws Exception {
+		return bossmemberDAO.selectBossMemberInfo(vo);
+	}
+
+	@Override
+	public String insertBossMember(BossMemberVO bvo) throws Exception {
+		return bossmemberDAO.insertBossMember(bvo);
+	}
+
+	
+
+	
 }

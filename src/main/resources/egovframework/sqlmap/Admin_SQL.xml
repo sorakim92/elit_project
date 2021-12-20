@@ -9,29 +9,51 @@
 
 	SELECT b.* FROM (
 			SELECT rownum rn, a.* from (	
-				SELECT  EMPID,
-						PASSWD,
-						PHONE,
-						EMAIL,
-						to_char(hiredate,'yyyy/mm/dd') HIREDATE,
-						ENAME,
-						SECTION
+				SELECT  empid,
+						passwd,
+						phone,
+						email,
+						to_char(hiredate,'yyyy/mm/dd') hiredate,
+						ename||'님' ename,
+						decode(section,'Y','[시스템관리자]','N','회원') section
 				FROM	
-						EMP
+						emp
 				WHERE	
-						EMPID IS NOT NULL
+						empid IS NOT NULL
 				<isNotNull property="ktext">
 					<isNotEmpty property="ktext">
-					and ( EMPID LIKE '%$ktext$%'
-					OR   ENAME LIKE '%$ktext$%'
-					OR   PHONE LIKE '%$ktext$%'
-					OR   SECTION LIKE '%$ktext$%' )
+					and ( empid LIKE '%$ktext$%'
+					OR   ename LIKE '%$ktext$%'
+					OR   phone LIKE '%$ktext$%'
+					OR   section LIKE '%$ktext$%' )
 					</isNotEmpty>
 				</isNotNull>
-				ORDER BY HIREDATE DESC) a )b
-				
-
-
-
-</select>
+				ORDER BY hiredate DESC) a )b	
+	</select>
+	
+	<!-- 관리자 추가 -->
+	<update id ="adminDAO.adminPlus">
+		UPDATE
+				emp
+		SET
+				section = 'Y'
+		WHERE
+				empid = #empid#
+	</update>
+	
+	<!-- 관리자 박탈 -->
+	<update id = "adminDAO.adminDelete">
+		UPDATE
+				emp
+		SET
+				section = 'N'
+		WHERE
+				empid = #empid#
+		
+	</update>
+	
+	
+	
+	
+	
 </sqlMap>
