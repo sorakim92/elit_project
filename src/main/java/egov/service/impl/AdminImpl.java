@@ -23,4 +23,22 @@ public class AdminImpl implements AdminService{
 		return adminDAO.selectadminService(vo);
 	}
 
+
+	@Override
+	public int adminPlus(AdminVO vo) throws Exception {
+
+		return adminDAO.adminPlus(vo);
+	}
+
+
+	//emp update section Y -> N
+	@Override
+	public int adminDelete(AdminVO vo) throws Exception {
+		
+		return adminDAO.adminDelete(vo);
+	}
+
+
+	
+
 }

@@ -9,20 +9,20 @@
 	<select id="bossmemberDAO.selectbossmemberService" resultClass = "egovMap">
 		SELECT b.* FROM (
 			SELECT rownum rn, a.* from (	
-				SELECT  USERID,
-						USERPW,
-						USERNAME,
-						EMAIL,
-						USERPHONE,
-						STOREADDR,
-						BUSINESS,
-						RDATE,
-						STOREUNQ
+				SELECT  userid,
+						userpw,
+						username,
+						email,
+						userphone,					
+						business,
+						rdate						
 				FROM	
-						BOSSMEMBER
+						member
 				WHERE	
-						USERID IS NOT NULL and BUSINESS = 'y'
-				ORDER BY RDATE DESC) a )b
+						userid IS NOT NULL 
+				AND		business = 'P'
+				OR 		business = 'Y'
+				ORDER BY rdate DESC) a )b
 	</select>
 	<select id="bossmemberDAO.selectbossmemberDetail" resultClass="BossMemberVO">
 		SELECT 	userid, 
@@ -35,6 +35,20 @@
 	
 	</select>
 
+	<select id = "bossmemberDAO.selectBossMemberInfo" resultClass = "BossMemberVO">
+		SELECT userid,
+				userpw,
+				username,
+				email,
+				userphone,
+				business
+		FROM 	
+				member
+		WHERE 	
+				userid = #userid# 
+		AND 	
+				business = 'Y'
+	</select>
 
 	<update id="bossmemberDAO.updatebossmember">
 		UPDATE bossmember
@@ -45,6 +59,42 @@
 				
 		WHERE userid = 'test1'
 	</update>
+	
+	<update id ="bossmemberDAO.updateMemberBusiness">
+		UPDATE
+				member				
+		SET
+				business = 'Y'
+		WHERE
+				userid is not null and userid = #userid#
+	
+	</update>
+	
+	<insert id ="bossmemberDAO.insertBossMember">
+		INSERT INTO bossmember(
+								    userid,
+								    userpw,
+								    username,
+								    email,
+								    userphone,
+								    storeaddr,
+								    business,
+								    rdate,
+								    storeunq
+								)
+			VALUES(
+									#userid#,
+									#userpw#,
+									#username#,
+									#email#,
+									#userphone#,
+									#storeaddr#,
+									#business#,
+									sysdate,									
+									store_seq.nextval
+					)
+	
+	</insert>
 				
 
 </sqlMap>

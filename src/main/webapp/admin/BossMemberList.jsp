@@ -13,7 +13,48 @@
     <meta content='' name='description'>
     <meta content='' name='keywords'>
     <link href="admin/assets/stylesheets/application-a07755f5.css" rel="stylesheet" type="text/css" /><link href="//netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-   
+   	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    
+<script>
+function fn_bossplus(id){
+	var user = id;
+	$("#userid").val(user);
+	
+	var formdata = $("#bossfrm").serialize();
+	//console.log(formdata);
+	
+	$.ajax({
+		type :"post",
+		data :formdata,
+		url  :"BossPlus.do",
+			
+		datatype :"text",
+		success  : function(data){
+			if(data == "ok"){
+				alert("등록 완료");
+				document.location.reload();				
+			} else if (date == "er1"){
+				alert("업데이트가 제대로 되지 않았습니다.");
+			} else if(date =="er2"){
+				alert("bossmember에 데이터가 입력되지 않았습니다.")
+			}			
+			else {
+				alert("등록 실패");
+			}
+		},
+		error    : function(){
+			alert("시스템오류, 관리자에게 문의하세요.");
+		}	
+		
+	})
+}
+
+
+
+
+</script>
+    
     
   </head>
   <body class='main page'>
@@ -106,7 +147,7 @@
           <table class='table'>
             <thead>
               <tr>
-                <th>#</th>
+                <th>Status</th>
                 <th>User ID</th>
                 <th>Name</th>
                 <th>Number</th>
@@ -119,13 +160,14 @@
             <tbody>
               <c:forEach var="result" items="${list }">
               <tr class='success'>
-                <td>1</td>
+                <td>${result.business }</td>
                 <td>${result.userid }</td> 
                 <td>${result.username}</td> 
-               <td>${result.userphoen }</td> 
+               <td>${result.userphone }</td> 
                 <td>[하남]네네치킨</td>
                 <td class='action'>
-                  <a class='btn btn-success' data-toggle='tooltip' href='#' title='add'>
+                  <a class='btn btn-success' data-toggle='tooltip' title='add'
+                  		onclick = "fn_bossplus('${result.userid}')">
                     <i class='icon-zoom-in'></i>
                   </a>
              
@@ -140,6 +182,11 @@
                 
             </tbody>
           </table>
+          
+          <form name ="bossfrm" id="bossfrm">
+          	<input type="hidden" id ="userid" name ="userid">          
+          </form>
+          
           <div class='panel-footer' style="text-align:center;">
             <ul class='pagination pagination-sm'>
               <li>
