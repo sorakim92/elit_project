@@ -193,11 +193,33 @@ $(function(){
           </colgroup>
           	<tr>
           		<td>이전글</td>
-          		<td></td>
+          		<td>
+          			<span>
+          			<c:if test = "${vo.punq == 0 }">
+          			${vo.ptitle }
+          			</c:if>
+          			<c:if test = "${vo.punq != 0 }">
+          			<a href="nboardDetail.do?unq=${vo.punq }">
+          			 ${vo.ptitle }
+          			 </a>
+          			</c:if>
+          			</span>
+          		</td>
           	</tr>
           	<tr>
           		<td>다음글</td>
-          		<td></td>
+          		<td>
+          			<span>
+          			<c:if test = "${vo.nunq == 0 }">
+          			${vo.ntitle }
+          			</c:if>
+          			<c:if test = "${vo.nunq != 0 }">
+	          			<a href="nboardDetail.do?unq=${vo.nunq }">
+	          			 ${vo.ntitle }
+	          			 </a>
+	          		</c:if>
+          			</span>
+          		</td>
           	</tr>
 	   </table>
 	 </div>    

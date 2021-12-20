@@ -9,8 +9,8 @@
             <li>회원탈퇴</li>
         </ul>
         <ul class="ul2">
-            <li>이용약관</li>
-            <li>개인정보처리방침</li>
+            <li><a href="termsOfService.do">서비스 이용약관</a></li>
+            <li><a href="PrivacyPolicy.do">개인정보처리방침</a></li>
         </ul>
     </div>
     <div class="ft_info">

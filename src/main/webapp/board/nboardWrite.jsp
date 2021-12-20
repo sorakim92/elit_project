@@ -114,14 +114,15 @@ $(function(){
 			("#content").focus();
 			return false;
 		}
-		
+					
   		var formdata = $("#frm").serialize();
+  		//alert(formdata);
   		$.ajax({
   			type : "post",
   			url  : "nboardWriteSave.do",
   			data : formdata,
   			
-  			datatype : "text",  //성공여부 ( ok )
+  			datatype : "text",  //성공여부 ( ok ) 
   			success : function(data) {
   				
   				if(data == "Nok") {
@@ -181,6 +182,7 @@ $(function(){
                     float:left; margin-top: 10px;">
                     
         <form name="frm" id="frm">
+         
         <table style="width:100%;" class="table table-hover">
             <colgroup>
                 <col width="15%" />
