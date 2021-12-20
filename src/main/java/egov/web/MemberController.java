@@ -138,10 +138,15 @@ public class MemberController {
 	}
 	//로그아웃 화면
 	@RequestMapping("memberlogout.do")
+	@ResponseBody
 	public String memberlogout(HttpSession session) {
 		
+		String msg = "";
 		session.removeAttribute("SessionUserID");
-		return "login/memberlogin";
+		
+		msg = "ok";
+
+		return msg;
 	}
 	
 	//비밀번호 찾기 화면

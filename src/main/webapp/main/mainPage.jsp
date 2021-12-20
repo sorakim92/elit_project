@@ -7,11 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>main</title>
+    	<!-- footer header css -->
+	<link rel="stylesheet" href="css/headFooter.css">
+    
     <!-- 카카오맵 api -->
     <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca0677edae05b7ec94acd37b20938aa7"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca0677edae05b7ec94acd37b20938aa7&libraries=services"></script>
-    
-    
+ 
+ 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     <!--  	부트스트랩 -->
@@ -21,6 +24,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <style>
+
+
 @font-face {
     font-family: "hanna";
     src: url("../fonts/BMHANNAAir_otf.otf");
@@ -61,25 +66,7 @@ nav {
     display: flex;
     margin: auto;
 }
-.logo {
-    width:  300px;
-    height: 50px; 
-    float : left;
-}
-.search {
-    width: 500px;
-    height: 50px;
-    float : left;
-    margin: 20px 0 0 0;
-    text-align: right;
-}
-.login {
-    width: 70px;
-    height: 50px;
-    float: right;
-    margin: 20px 50px 0 0;
-    text-align: right;
-}
+
 .div_addr {
    
     width: 1000px;
@@ -96,14 +83,6 @@ section {
     min-height: 550px;
 }
 
-
-.footer {
-	width:100%;
-    height:100px;
-	background-color:#ccc;
- 
-    clear:both;
-}
 
 .article1 {
     width:1000px;
@@ -164,45 +143,6 @@ section {
 
 }
 
-
-.ft_ul {
-    width:100%;
-    height:50px;
-}
-.ft_info {
-    width:100%;
-    height:50px;
-    text-align: center;
-    font-size:14px;
-    padding-bottom:20px;
-}
-.ul1{
-    float:left;
-    padding-top:7px;
-}
-
-.ul1 li{
-    font-size:14px;
-    list-style:none;
-    float:left;
-    border-left:1px solid #ccc;
-    padding-left:10px;
-    padding-right:10px;
-}
-
-.ul2{
-    float:right;
-    padding-top:7px;
-}
-
-.ul2 li{
-    font-size:14px;
-    list-style:none;
-    float:left;
-    border-left:1px solid #ccc;
-    padding-left:10px;
-    padding-right:10px;
-}
 </style>
 
 <script>
