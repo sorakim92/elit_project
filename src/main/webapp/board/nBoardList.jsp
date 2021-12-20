@@ -189,31 +189,12 @@ $(function(){
         class="btn btn-outline-warning" style="border-color: #f8cacc; color: black;">
         글쓰기</button>
     </div>
-    
+
     
 <!-- 페이징 -->
     <div style=" font-size:10px; " >
-    <nav aria-label="Page navigation example" 
-    class="d-flex justify-content-center"
-    style="display:inline-block;">
-        <ul class="pagination" >
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+		<%@include file = "../include/board_pagination.jsp" %>
       </div>
-
 </div>
     <footer>
        <%@include file = "../include/main_footer.jsp" %>

@@ -17,4 +17,20 @@ public class MainPageController {
 	}
 	
 	
+	
+	@RequestMapping("termsOfService.do")
+	public String termsOfService() throws Exception {
+		
+		
+		return "policy/Terms";
+	}
+	
+	
+	@RequestMapping("PrivacyPolicy.do")
+	public String PrivacyPolicy() throws Exception {
+		
+		
+		return "policy/PrivacyPolicy";
+	}
+	
 }
