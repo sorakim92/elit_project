@@ -218,10 +218,10 @@ $(function() {
     <nav>
         <div class="" >
           
-            <a href><font size="4" color="black">주문내역 | </font></a>
+            <a href="progressorderList.do"><font size="4" color="black">주문내역 | </font></a>
             <a href="BossMemberDetail.do"><font size="4">회원정보수정 |</font></a>
-            <a href><font size="4" color="black">문의내역 |</font></a>
-            <a href><font size="4" color="black">리뷰관리</font></a>
+            <a href=""><font size="4" color="black">문의내역 |</font></a>
+            <a href=""><font size="4" color="black">리뷰관리</font></a>
         </div>
     </nav>
         

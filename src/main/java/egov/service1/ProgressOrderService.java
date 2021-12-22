@@ -11,7 +11,7 @@ public interface ProgressOrderService {
 
 	int resetpreorder(ProgressOrderVO vo) throws Exception;
 
-
+	List<?> selectorderendList(ProgressOrderVO vo) throws Exception;
 
 
 }

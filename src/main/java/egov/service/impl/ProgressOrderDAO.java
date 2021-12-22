@@ -23,5 +23,8 @@ public class ProgressOrderDAO extends EgovAbstractDAO{
 		return (int) delete("progressorderDAO.resetpreorder",vo);
 
 	}
+	public List<?> selectorderendList(ProgressOrderVO vo) {
+		return list("progressorderDAO.selectorderendList",vo);
+	}
 
 }

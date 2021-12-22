@@ -22,6 +22,8 @@ public class NBoardController {
 	public String selectnBoardList(NBoardVO vo, Model model) 
 									throws Exception {
 		
+		
+		
 		//페이징 (페이지 번호로 시작과 끝번호 얻기)
 		
 		// 출력 페이지 번호를 받음. 1pg, 2pg, 3pg ...

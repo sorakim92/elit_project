@@ -17,38 +17,77 @@
 	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     
 <script>
-function fn_bossplus(id){
-	var user = id;
-	$("#userid").val(user);
-	
-	var formdata = $("#bossfrm").serialize();
-	//console.log(formdata);
-	
-	$.ajax({
-		type :"post",
-		data :formdata,
-		url  :"BossPlus.do",
-			
-		datatype :"text",
-		success  : function(data){
-			if(data == "ok"){
-				alert("등록 완료");
-				document.location.reload();				
-			} else if (date == "er1"){
-				alert("업데이트가 제대로 되지 않았습니다.");
-			} else if(date =="er2"){
-				alert("bossmember에 데이터가 입력되지 않았습니다.")
-			}			
-			else {
-				alert("등록 실패");
-			}
-		},
-		error    : function(){
-			alert("시스템오류, 관리자에게 문의하세요.");
-		}	
+
+	/* 	사업자 제거
+ 	*/
+	function fn_bossminus(id){
+		var user = id;
+		$("#userid").val(user);
 		
-	})
-}
+		var formdata = $("#bossfrm").serialize();
+		//console.log(formdata);
+		
+		$.ajax({
+			type : "post",
+			data : formdata,
+			url  : "BossMinus.do",
+			
+			datatype : "text",
+			success  : function(data){
+				if(data == "ok"){
+					alert("등록 완료");
+					document.location.reload();				
+				} else if (date == "er1"){
+					alert("업데이트가 제대로 되지 않았습니다.");
+				} else if(date =="er2"){
+					alert("bossmember에 데이터가 입력되지 않았습니다.")
+				}			
+				else {
+					alert("삭제 실패");
+				}
+			},
+			error    : function(){
+				alert("시스템오류, 관리자에게 문의하세요.");
+			}	
+			
+		})
+	}
+ 	
+ 	
+	/* 사업자 추가
+	 */
+ 	function fn_bossplus(id){
+		var user = id;
+		$("#userid").val(user);
+		
+		var formdata = $("#bossfrm").serialize();
+		//console.log(formdata);
+		
+		$.ajax({
+			type :"post",
+			data :formdata,
+			url  :"BossPlus.do",
+				
+			datatype :"text",
+			success  : function(data){
+				if(data == "ok"){
+					alert("등록 완료");
+					document.location.reload();				
+				} else if (date == "er1"){
+					alert("업데이트가 제대로 되지 않았습니다.");
+				} else if(date =="er2"){
+					alert("bossmember에 데이터가 입력되지 않았습니다.")
+				}			
+				else {
+					alert("등록 실패");
+				}
+			},
+			error    : function(){
+				alert("시스템오류, 관리자에게 문의하세요.");
+			}	
+			
+		})
+	}
 
 
 
@@ -74,7 +113,7 @@ function fn_bossplus(id){
       <ul id='dock'>
         <li class='launcher'>
           <i class='icon-home'></i>
-          <a href="adMain.do">메인화면</a>
+          <a href="AdminMain.do">메인화면</a>
         </li>
         <br><br>
         <li class='launcher'>
@@ -84,7 +123,7 @@ function fn_bossplus(id){
         <br><br>
         <li class='launcher'>
           <i class='icon-envelope'></i>
-          <a href="adInquiry.do">문의내역</a>
+          <a href="#">문의내역</a>
         </li>
         <br><br>
         <li class='active launcher'>
@@ -128,9 +167,10 @@ function fn_bossplus(id){
           </div>
           <div class='panel-body filters'>
             <div class='row'>
+            <!-- 신규사업자 하단 메모장 -->
               <div class='col-md-9'>
-                <p>(회원가입폼 -> 사업자 체크 -> 여기에 표시)</p>
-                기능 해야하는데 판을 너무 키웠어 ...
+                <p></p>
+  
               </div>
               <div class='col-md-3'>
                 <div class='input-group'>
@@ -147,11 +187,13 @@ function fn_bossplus(id){
           <table class='table'>
             <thead>
               <tr>
+              	<th></th>
                 <th>Status</th>
                 <th>User ID</th>
                 <th>Name</th>
                 <th>Number</th>
                 <th>Loc / Store</th>
+                <th>E-mail</th>
                 <th class='actions'>
                   Actions
                 </th>
@@ -160,19 +202,22 @@ function fn_bossplus(id){
             <tbody>
               <c:forEach var="result" items="${list }">
               <tr class='success'>
+             	 <td></td>
                 <td>${result.business }</td>
                 <td>${result.userid }</td> 
                 <td>${result.username}</td> 
                <td>${result.userphone }</td> 
                 <td>[하남]네네치킨</td>
+                <td>${result.email }</td>
                 <td class='action'>
-                  <a class='btn btn-success' data-toggle='tooltip' title='add'
+                  <a class='btn btn-success' data-toggle='tooltip' title='사업자등록'
                   		onclick = "fn_bossplus('${result.userid}')">
                     <i class='icon-zoom-in'></i>
                   </a>
              
                   
-                  <a class='btn btn-danger' data-toggle='tooltip' href='#' title='del'>
+                  <a class='btn btn-danger' data-toggle='tooltip' title='사업자제거'
+                  		onclick = "fn_bossminus('${result.userid}')">
                     <i class='icon-trash'></i>
                   </a>
                 </td>

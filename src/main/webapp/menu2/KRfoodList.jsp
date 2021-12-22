@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<!-- footer header css -->
 	<link rel="stylesheet" href="css/headFooter.css">
-
+	<!-- css -->
+    <link rel="stylesheet" href="css/mainLayout.css">
 </head>
 
 <style>
@@ -29,21 +30,7 @@
     font-family: "jua";
     src: url("fonts/BMJUA_otf.otf");
 }
-html{
-    height: 100%;
-}
-body {
-    font-size: 16px;
-    font-family: hanna;
-    padding-left:100px;
-    height:100%;
-}
-header {
-	width:1000px;
-	height:100px;
-	/*background-color:#ffcc99;*/
-	/*line-height:5.0;*/
-}
+
 nav {
 	width:1000px;
 	height:100px;
@@ -51,66 +38,7 @@ nav {
 	text-align:center;
 	line-height:3.5;
 }
-.wrapper {
-    width: 1000px;
-    min-height: calc(100vh-70px);
-    position: relative;
-    /*background-color: beige;*/
-    padding: 10px;
-    flex-direction: column;
-    display: flex;
-    margin: auto;
-}
 
-.search {
-    width: 500px;
-    height: 50px;
-    float : left;
-    margin: 20px 0 0 0;
-    text-align: right;
-}
-
-
-section {
-	width:1000px;
-	height:auto;
-	/*background-color:#92a8d1;*/
-	text-align:center;
-    min-height: 550px;
-}
-
-
-
-.nav1 {
-    float:left;
-    width:1000px;
-}
-.nav1 li{
-    width:90px;
-    font-size:13px;
-    list-style:none;
-    float:left;
-    border-bottom: 1px solid #ccc;
-    padding-left:10px;
-    padding-right:10px;
-}
-.nav2 {
-    float:left;
-}
-.nav2 li{
-    width:110px;
-    font-size:12px;
-    list-style:none;
-    float:left;
-    padding-left:10px;
-    padding-right:10px;
-    margin-top: -20px;
-}
-.cate_tbl2 td {
-    text-align: left;
-    border-bottom: 1px solid #ccc;
-    padding-top: 20px;
-}
 </style>
 
 <script>
@@ -191,16 +119,14 @@ function fn_like(u,c) {
            		
            		<td>
            		
-               	   <div style="width:120px; height: 120px; border: 1px solid #f8cacc; border-radius: 2em;
-                   margin:5px 20px 10px 20px; text-align: center;
-                   cursor: pointer;" onclick="location.href='menuOrderList.do?storeunq=${result.storeunq}';">
+               	   <div class="cate_tbl2_div1" onclick="location.href='menuOrderList.do?storeunq=${result.storeunq}';">
                        <img src="<c:url value='/img/addpic.png'/>" alt="업체대표사진" width="100" height="100" name="" id="">
                    </div>
                	</td>
                	<td>
-                   <span style="font-weight: bold; cursor: pointer;" onclick="location.href='menuOrderList.do?storeunq=${result.storeunq}';"> ${result.storename }</span>
+                   <span class="cate_tbl2_strname" onclick="location.href='menuOrderList.do?storeunq=${result.storeunq}';"> ${result.storename }</span>
                           
-                       <div style="font-size:12px; text-align: left; padding-left: 10px;">
+                       <div class="cate_tbl2_strinfo1">
                            <span><img src="<c:url value='/img/star.png'/>" style="width:20px; height:20px; ">
                            		${result.storerate }
                            </span>
@@ -223,10 +149,10 @@ function fn_like(u,c) {
                            
                            </span>
                        </div>
-            			<div style="font-size:12px; text-align: left; padding-left: 10px;">
+            			<div class="cate_tbl2_strinfo1">
             				<span style="padding:0 10px 0 0">배달비: ${result.fee }</span>
             			</div>
-	                   <div style="font-size:13px; text-align: left; padding-left: 10px;">
+	                   <div class="cate_tbl2_strinfo1">
 	                       <span>대표메뉴</span><br>
 	                      
 	                   </div>

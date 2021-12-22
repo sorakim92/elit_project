@@ -36,6 +36,12 @@ public class MemberDAO extends EgovAbstractDAO{
 	public int Pop_newuserpw(MemberVO vo) {
 		return update("memberDAO.Pop_newuserpw",vo);
 	}
+	public int selectBusinessMemberCount(MemberVO vo) {
+		return (int) select("memberDAO.selectBusinessMemberCount",vo);
+	}
+	public int selectAdminMemberLogin(MemberVO vo) {
+		return (int) select("memberDAO.selectAdminMemberLogin",vo);
+	}
 	
 	
 	

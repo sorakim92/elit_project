@@ -5,6 +5,8 @@ public class BusinessEnterVO {
 	private String storename;
 	private String region;
 	private String category;
+	private String category2;
+	private String category3;
 	private String phone;
 	private String email;
 	private String address;
@@ -13,6 +15,18 @@ public class BusinessEnterVO {
 	private String rdate;
 	
 	
+	public String getCategory2() {
+		return category2;
+	}
+	public void setCategory2(String category2) {
+		this.category2 = category2;
+	}
+	public String getCategory3() {
+		return category3;
+	}
+	public void setCategory3(String category3) {
+		this.category3 = category3;
+	}
 	public int getOpenindex() {
 		return openindex;
 	}

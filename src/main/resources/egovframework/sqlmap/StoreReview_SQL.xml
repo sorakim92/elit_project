@@ -20,10 +20,12 @@
 
 		FROM orderreview -->
 		select 
-		 menuunq,
-		 price,
-		 menukeyword
-		 from menu
+		 reviewindex,
+		 rate,
+		 userid,
+		 rcontent,
+		 to_char(rdate,'yyyy/mm/dd,hh24:mi/ss')rdate
+		 from orderreview
 		
 		  		
 	</select>

@@ -141,10 +141,10 @@ section {
 <body>
 <div class="wrapper">
     <div class="main" style="min-height: 100%; padding-bottom:100px; flex:1;">
-    <header class="width:100%; height:50px;">
-        <div class="logo">
-            <img src="../img/logo.png" width="200px" height="100px" alt="로고">
-            <h4>사장님광장</h4>
+   <header class="width:100%; height:50px;">
+        <div class="logo" style=" cursor: pointer;" onclick="location.href='mainPage.do';">
+    	<img src="<c:url value='/img/logo.png'/>" width="200px" height="100px" alt="로고"/><br><br>
+        <span style="font-size: 20px;">사장님 광장</span>
         </div>
         <div class="search">
            
@@ -160,22 +160,39 @@ section {
     <nav>
         <div class="">
           
-            <a href><font size="4" >주문관리 |</font></a>
+            <a href="progressorderList.do"><font size="4" >주문관리 |</font></a>
             <a href="menuList.do"><font size="4" color="black" >메뉴관리 |</font></a>
             <a href="adWrite.do"><font size="4" color="black" >광고신청/관리 |</font></a>
             <a href="b_consumerList.do"><font size="4" color="black" >커뮤니티</font></a>
         </div>
     </nav>
         
-    <form name="frm" id="frm" action="" >
+    <form name="frm" id="frm" action="orderendList.do" >
      <section>
         <div style="text-align:left;" >
             <font size="5">주문관리</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <font size="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;접수대기/처리중 주문 |   </font>
-            <font size="4" color="blue">&nbsp;&nbsp;&nbsp; 완료된 주문 조회</font>
-        </div>
+           <a href="progressorderList.do"><font size="4" color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;접수대기/처리중 주문 | </font></a>
+            <a href="orderendList.do"><font size="4" color="blue">&nbsp;&nbsp;&nbsp; 완료된 주문 조회</font></a>
+        </div><br>
+        <div style="text-align:right;">   
+           <font size="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </font>
+            <select name="s_field">
+                <option>선택</option>
+                <option value="menuname"
+                	<c:if test="${s_field=='menuname' }">selected</c:if> 
+                	>메뉴</option>
+                <option value="method" 
+                	<c:if test="${s_field=='method' }">selected</c:if> 
+                	>결제방법</option>
+                <option value="phone" 
+                	<c:if test="${s_field=='phone' }">selected</c:if> 
+                	>연락처</option>
+            </select>
+            <input type="text" name= "s_text" id="s_text" value="${s_text }"
+            placeholder="검색어를 입력하세요"> 
+            <button>검색</button>
+        </div>    
         <br>
-        
         <div style="width:100%; float:left; margin-top:20px; font-size:13px;">
             <table style="width:100%;" class="table table-hover">
                 <colgroup>
@@ -197,14 +214,12 @@ section {
                 
                 <c:forEach var="result" items="${list }">
                 <tr>
-                    <td>
-                    <a href="?orderindex=${result.orderindex }">${result.rdate }
-                    </a></td>
-                    <td>${result.complete }</td> 
-                    <td>${result.menuname }</td>
+                    <td >${result.rdate }</td>
+                    <td></td> 
+                    <td> ${result.menuname } </td>
                     <td>${result.method }</td> 
-                    <td><a href="?userid=${result.addr }">${result.userid}</td> 
-                    <td>${result.comment1 }</td>  
+                    <td>${result.addr }/${result.phone }</td> 
+                    <td>${result.comment1 }${result.comment2 }</td>  
                 </tr>
                 </c:forEach>
             </table>

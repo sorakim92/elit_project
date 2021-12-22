@@ -49,6 +49,21 @@ public class BossMemberImpl implements BossMemberService{
 		return bossmemberDAO.insertBossMember(bvo);
 	}
 
+	@Override
+	public int returnMemberBusiness(MemberVO vo) throws Exception {
+		return bossmemberDAO.returnMemberBusiness(vo);
+	}
+
+	@Override
+	public BossMemberVO selectBossMemberInfo2(MemberVO vo) throws Exception {
+		return bossmemberDAO.selectBossMemberInfo2(vo);
+	}
+
+	@Override
+	public int deleteBossMember(BossMemberVO bvo) throws Exception {
+		return bossmemberDAO.deleteBossMember(bvo);
+	}
+
 	
 
 	

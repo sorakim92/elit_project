@@ -9,12 +9,15 @@
 
 
 	<insert id = "businessenterDAO.insertbusinessEnterWrite">
+		
 		<![CDATA[
 		INSERT INTO businessenter(
 						openindex,
 						storename,
 						region,
 						category,
+						category2,
+						category3,
 						phone,
 						email,
 						address,
@@ -27,6 +30,8 @@
 							'$storename$',
 							'$region$',
 							'$category$',
+							'$category2$',
+							'$category3$',
 							'$phone$',
 							'$email$',
 							'$address$',
@@ -44,6 +49,8 @@
 						storename,
 						region,
 						category,
+						category2,
+						category3,
 						phone,
 						email,
 						address,

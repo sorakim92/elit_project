@@ -209,14 +209,14 @@ $(function() {
             <option>치킨</option>   
         </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         
-        <select name="" id="">&nbsp;&nbsp;&nbsp;&nbsp;
+        <select name="category2" id="category2">&nbsp;&nbsp;&nbsp;&nbsp;
             <option>카테고리 선택</option>
             <option>한식</option>
             <option>치킨</option>
             <option>중식</option>
         </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         
-        <select name="" id="">
+        <select name="category3" id="category3">
             <option>카테고리 선택</option>
             <option>한식</option>
             <option>치킨</option>

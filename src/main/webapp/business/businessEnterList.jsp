@@ -116,7 +116,7 @@ section {
         <tr>
             <td>${result.storename }</td> 
             <td>${result.region }</td>
-            <td>${result.category }</td> 
+            <td>${result.category }${result.category2 }${result.category3 }</td> 
             <td>${result.phone }</td> 
             <td>${result.email }</td> 
             <td>${result.address }</td> 
