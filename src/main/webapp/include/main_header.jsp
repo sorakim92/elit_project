@@ -56,7 +56,7 @@ String ADMINID= (String) session.getAttribute("AdminSessionID");
 %>
 	
 	    <li ><a href="javascript:fn_logout();" class="header_a">로그아웃</a></li>
-		<li ><a href="#" class="header_a">마이페이지</a></li>
+		<li ><a href="myPage.do" class="header_a">마이페이지</a></li>
 	
 <% 
 	} else if(ADMINID != null && !ADMINID.equals("")) {
