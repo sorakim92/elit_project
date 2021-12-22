@@ -166,7 +166,7 @@ section {
     <nav>
         <div class="">
           
-            <a href><font size="4" color="black" >주문관리 |</font></a>
+            <a href="progressorderList.do"><font size="4" color="black" >주문관리 |</font></a>
             <a href="menuList.do"><font size="4" color="black" >메뉴관리 |</font></a>
             <a href ="adWrite.do"><font size="4" color="black" >광고신청/관리 |</font></a>
             <a href ="b_consumerList.do"><font size="4"  >커뮤니티</font></a>

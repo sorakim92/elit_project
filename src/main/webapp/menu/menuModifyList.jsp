@@ -185,7 +185,7 @@ $(function(){
         
     <nav>
         <div class="">
-            <a href><font size="4" color="black">주문관리 |</font></a>
+            <a href="progressorderList.do"><font size="4" color="black">주문관리 |</font></a>
             <a href="menuList.do"><font size="4">메뉴관리 |</font></a>
             <a href="adWrite.do"><font size="4" color="black">광고신청/관리 |</font></a>
             <a href="b_consumerList.do"><font size="4" color="black">커뮤니티</font></a>
@@ -197,12 +197,12 @@ $(function(){
         <div style="text-align:left;" >
             <font size="5">메뉴관리</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <font size="4" color="blue"><a href="menuList.do">메뉴편집 |</a></font>
-            <font size="4">&nbsp;&nbsp; 리뷰관리</font>
+            <a href="storeReviewList.do"><font size="4" color="black">&nbsp;&nbsp; 리뷰관리</font></a>
         </div>
         <br>
         <div class="" >     
             <div style="text-align:right;">
-                    <button type="button" id="btn_menu" name="btn_menu"><a href="menuWrite.do"><h5> 메뉴 추가</h5></a></button><br><br>
+                    <button type="button" id="btn_menu" name="btn_menu"><a href="menuWrite.do"><font size="4" color="black"> 메뉴 추가</font></a></button><br><br>
             </div>
         </div>
         <br>

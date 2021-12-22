@@ -9,11 +9,32 @@
 	
 	<select id="progressorderDAO.selectProgressOrderList"  resultClass="egovMap"  >
 		SELECT 
-				menuunq,	
-				menuname,
-				menukeyword,
-				price 
-		FROM menu 
+				    menuname, 
+					price, 
+					comment1,
+					comment2,
+					phone,
+					to_char(rdate,'hh24:mi/ss')rdate,
+					userid
+		FROM progressorder 
+			where storeunq = '123'
+		
+		  		
+	</select>
+	
+	
+	<select id="progressorderDAO.selectorderendList"  resultClass="egovMap"  >
+		SELECT 
+				    comment1,
+				    comment2, 
+					price, 
+					menuname,
+					method,
+					phone,
+					to_char(rdate,'hh24:mi/ss')rdate,
+					addr
+		FROM progressorder 
+			where storeunq = '123'
 		
 		  		
 	</select>
