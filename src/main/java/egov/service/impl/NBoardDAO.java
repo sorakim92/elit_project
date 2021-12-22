@@ -38,5 +38,13 @@ public class NBoardDAO extends EgovAbstractDAO{
 	public List<?> selectFAQList(NBoardVO vo) {
 		return list("nboardDAO.selectFAQList",vo);
 	}
+
+	public int selectTotalnotice(NBoardVO vo) {
+		return (int) select("nboardDAO.selectTotalnotice",vo);
+	}
+
+	public int selectTotalfaq(NBoardVO vo) {
+		return (int) select("nboardDAO.selectTotalfaq",vo);
+	}
 	
 }

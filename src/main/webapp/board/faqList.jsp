@@ -20,6 +20,8 @@
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<!-- footer header css -->
 	<link rel="stylesheet" href="css/headFooter.css">
+	<!-- css -->
+    <link rel="stylesheet" href="css/mainLayout.css">
 
 </head>
 <style>
@@ -31,59 +33,12 @@
     font-family: "jua";
     src: url("fonts/BMJUA_otf.otf");
 }
-html{
-    height: 100%;
-}
-body {
-    font-size: 16px;
-    font-family: hanna;
-    padding-left:100px;
-    height:100%;
-}
-header {
-	width:1000px;
-	height:100px;
-	/*background-color:#ffcc99;*/
-	/*line-height:5.0;*/
-}
-nav {
-	width:1000px;
-	height:100px;
-	/*background-color:#f8cacc;*/
-	text-align:center;
-	line-height:3.5;
-}
-.wrapper {
-    width: 1000px;
-    min-height: calc(100vh-70px);
-    position: relative;
-    /*background-color: beige;*/
-    padding: 10px;
-    flex-direction: column;
-    display: flex;
-    margin: auto;
-}
-
-
 section {
 	width:1000px;
 	height:auto;
 	min-height: 450px;
 	/*background-color:#92a8d1;*/
 	text-align:center;
-}
-/* sub tab 부분 */
-.article_nav {
-    display: inline-block;
-
-}
-.article_nav li {
-    font-size:16px;
-    list-style:none;
-    float:left;
-    padding-left:10px;
-    padding-right:10px;
-    padding-bottom: -20px;
 }
 
 /* 아코디언 박스부분 클릭시 */
@@ -122,7 +77,7 @@ $(function(){
        <%@include file = "../include/main_header.jsp" %>
     </header>
         
-    <nav>
+    <nav class="board_nav">
         <div style="width:100%; 
                     height:50px; border-bottom: 1px solid #ccc;">
             <%@include file = "../include/board_subTab.jsp" %>
@@ -134,13 +89,12 @@ $(function(){
 
 
     <section >
-        <div style="width:100%; height:auto; padding:10px; margin-top:-40px;">
-            <div style="width:50%; text-align: left; 
-                        font-family: jua; float:left;">
+        <div class="board_sc_top">
+            <div class="board_sc_title">
                 자주묻는질문
             </div>
             <form name="frm" method="post" action="faqList.do">
-            <div style="float:left; width:50%;  text-align:right;">
+            <div class="board_sc_search">
             	 <select name="s_field" style="font-size:15px;">
             	 	<option value="title"
             	 		<c:if test="${s_field=='title' }">selected</c:if> 
@@ -205,40 +159,25 @@ $(function(){
    
   </section>
  <!-- 글쓰기 버튼부분 (관리자)-->
+<%
+	if(ADMINID!=null) {
+%>
 
-    <div class="" style=" width: 100%;
-    height: 50px;
-    margin: 20px 50px 0 0;
-    text-align: right; " >
+    <div class="board_btn_write" >
         <button type="button" id="btn_writefaq" name="btn_writefaq"
         class="btn btn-outline-warning" style="border-color: #f8cacc; color: black; margin-top:20px;">
         글쓰기</button>
     </div>
-    
+ 
+<%
+	}
+%>   
     
 <!-- 페이징 -->
-    <div style=" font-size:10px; " >
-    <nav aria-label="Page navigation example" 
-    class="d-flex justify-content-center"
-    style="display:inline-block;">
-        <ul class="pagination" style="margin-top:30px; " >
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+    <div style=" font-size:10px; margin-top:30px; float:left" >
+		<%@include file = "../include/board_pagination.jsp" %>
       </div>
-
+      
 </div>
     <footer>
        <%@include file = "../include/main_footer.jsp" %>

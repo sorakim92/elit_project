@@ -123,8 +123,12 @@
 					if(data == "ok") {
 						alert(userid+"님이 로그인 되었습니다.");
 						location="mainPage.do";
-					} else {
+					} else if(data=="er1") {
 						 alert("로그인정보를 다시 확인해주세요.");
+						 location.reload();
+					} else {
+						alert("다시확인해주세요.");
+						location.reload();
 					}
 				},
 				error: function() { //장애발생

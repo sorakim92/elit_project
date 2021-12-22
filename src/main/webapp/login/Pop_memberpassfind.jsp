@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>      
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
 <html>
@@ -10,7 +10,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>비밀번호 찾기</title>
-    
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
@@ -32,20 +31,22 @@
 				$("#email").focus();
 				return false;
 			}
+			
+			var formData = $("#pwd_form").serialize();
+			
 			$.ajax ({
 	    		/* 전송 전 셋팅 */
 	    		type : "POST",
 	    		data : formData,
-	    		url  : "memberWriteSave.do",
+	    		url  : "Pop_memberpassfindSave.do",
 	    		dataType : "text",                         //리턴 타입
 
 	    		// 전송 후 셋팅
-	    		success: function(result) {
-					if(result == "ok") {
-						alert("성공.");
+	    		success: function(data) {
+					if(data == "ok") {
 						location="Pop_newuserpw.do";
 					} else {
-						 alert("실패.");
+						 alert("이메일or아이디가 등록된 정보와 일치하지않습니다.");
 					}
 				},
 				error: function() { //장애발생
@@ -67,7 +68,7 @@
             	이메일 : <input type="text" id ="email"  name ="email" placeholder="Enter Your EMAIL">
             <br><br>
             <input type="hidden" value="1" name = "check">
-            <button type="submit" class="" id="btn_submit">다음</button>
+            <button type="button" class="" id="btn_submit">다음</button>
             <br>
         
         </form>

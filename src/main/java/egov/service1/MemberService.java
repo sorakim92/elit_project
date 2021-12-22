@@ -15,10 +15,23 @@ public interface MemberService {
 	public int selectMemberCount(MemberVO vo) throws Exception;
 	
 	//비밀번호 찾기
-	public int Pop_memberpassfind(String email) throws Exception;
+	public MemberVO Pop_memberpassfind(String email) throws Exception;
 	
 	//아이디 찾기
 	public MemberVO Pop_useridfd(MemberVO vo)throws Exception;
+	
+	//비밀번호 찾기(변경화면)
+	public int Pop_newuserpw(MemberVO vo)throws Exception;
+
+	/*
+	 * 사업자일 경우 (소라) 
+	 * */
+	public int selectBusinessMemberCount(MemberVO vo) throws Exception;
+
+	/*
+	 * 관리자 로그인 시도 (소라) 
+	 */
+	public int selectAdminMemberLogin(MemberVO vo) throws Exception;
 
 	
 	

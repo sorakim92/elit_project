@@ -15,4 +15,16 @@ public class AdminDAO extends EgovAbstractDAO{
 		return list("adminDAO.selectadminService",vo);
 	}
 
+	public int adminPlus(AdminVO vo) {
+
+		return (int) update("adminDAO.adminPlus",vo);
+	}
+
+	//emp update section Y -> N
+	public int adminDelete(AdminVO vo) {
+		
+		return (int) update("adminDAO.adminDelete",vo);
+	}
+
+	
 }

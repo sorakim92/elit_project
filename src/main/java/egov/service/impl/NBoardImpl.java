@@ -50,4 +50,14 @@ public class NBoardImpl implements NBoardService{
 		// TODO Auto-generated method stub
 		return nboardDAO.selectFAQList(vo);
 	}
+
+	@Override
+	public int selectTotalnotice(NBoardVO vo) throws Exception {
+		return nboardDAO.selectTotalnotice(vo);
+	}
+
+	@Override
+	public int selectTotalfaq(NBoardVO vo) {
+		return nboardDAO.selectTotalfaq(vo);
+	}
 }

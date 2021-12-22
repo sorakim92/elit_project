@@ -39,7 +39,6 @@
 	    		// 전송 후 셋팅
 	    		success: function(data) {
 					if(data == "ok") {
-						alert("성공.");
 						location="Pop_findselectuserid.do";
 					} else {
 						 alert("이메일과 일치하는 아이디가 존재하지 않습니다. ");

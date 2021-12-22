@@ -34,4 +34,15 @@ public interface NBoardService {
 	 * */
 	List<?> selectFAQList(NBoardVO vo) throws Exception;
 
+	
+	/*
+	 * 공지사항 게시글 총 개수 
+	 * */
+	int selectTotalnotice(NBoardVO vo) throws Exception;
+
+	/*
+	 * 자주묻는질문 게시글 총 개수
+	 * */
+	int selectTotalfaq(NBoardVO vo);
+
 }

@@ -8,7 +8,9 @@ public class MainPageController {
 
 	
 	
-	
+	/*
+  메인페이지 (소라)
+  */
 	@RequestMapping("mainPage.do")
 	public String mainPage() throws Exception {
 		
@@ -17,6 +19,7 @@ public class MainPageController {
 	}
 	
 	
+
 	/*
 	 *  로그인 유저 마이페이지
 	 */
@@ -24,6 +27,26 @@ public class MainPageController {
 	public String myPage() throws Exception {
 		
 		return "mypage/myPage";
+
+	/*
+  이용약관 (소라)
+  */
+	@RequestMapping("termsOfService.do")
+	public String termsOfService() throws Exception {
+		
+		
+		return "policy/Terms";
+	}
+	
+	/*
+  개인정보방침(소라)
+  */
+	@RequestMapping("PrivacyPolicy.do")
+	public String PrivacyPolicy() throws Exception {
+		
+		
+		return "policy/PrivacyPolicy";
+
 	}
 	
 }

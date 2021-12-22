@@ -18,49 +18,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<!-- footer header css -->
 	<link rel="stylesheet" href="css/headFooter.css">
-
+  	<!-- css -->
+    <link rel="stylesheet" href="css/mainLayout.css">
+   
 </head>
 <style>
-@font-face {
-    font-family: "hanna";
-    src: url("fonts/BMHANNAAir_otf.otf");
-}
-@font-face {
-    font-family: "jua";
-    src: url("fonts/BMJUA_otf.otf");
-}
-html{
-    height: 100%;
-}
-body {
-    font-size: 16px;
-    font-family: hanna;
-    padding-left:100px;
-    height:100%;
-}
-header {
-	width:1000px;
-	height:100px;
-	/*background-color:#ffcc99;*/
-	/*line-height:5.0;*/
-}
-nav {
-	width:1000px;
-	height:100px;
-	/*background-color:#f8cacc;*/
-	text-align:center;
-	line-height:3.5;
-}
-.wrapper {
-    width: 1000px;
-    min-height: calc(100vh-70px);
-    position: relative;
-    /*background-color: beige;*/
-    padding: 10px;
-    flex-direction: column;
-    display: flex;
-    margin: auto;
-}
 
 
 section {
@@ -71,20 +33,6 @@ section {
 	text-align:center;
 }
 
-
-
-.article_nav {
-   display: inline-block;
-
-}
-.article_nav li {
-    font-size:16px;
-    list-style:none;
-    float:left;
-    padding-left:10px;
-    padding-right:20px;
-    padding-bottom: -10px;
-}
 </style>
 <script>
 
@@ -106,9 +54,8 @@ $(function(){
        <%@include file = "../include/main_header.jsp" %>
     </header>
         
-    <nav>
-        <div style="width:100%; 
-                    height:50px; border-bottom: 1px solid #ccc;">
+    <nav class="board_nav">
+        <div style="">
            <%@include file = "../include/board_subTab.jsp" %>
        </div>
     </nav>
@@ -118,13 +65,12 @@ $(function(){
 
 
     <section >
-        <div style="width:100%; height:auto; padding:10px; margin-top:-40px;">
-            <div style="width:50%; text-align: left; 
-                        font-family: jua; float:left;">
+        <div class="board_sc_top">
+            <div class="board_sc_title">
                 공지사항
             </div>
             <form name="frm" method="post" action="nBoardList.do">
-            <div style="float:left; width:50%;  text-align:right;">
+            <div class="board_sc_search">
             	 <select name="s_field" style="font-size:15px;">
             	 	<option value="title"
             	 		<c:if test="${s_field=='title' }">selected</c:if> 
@@ -151,7 +97,11 @@ $(function(){
        
 
 
-        <div style="width:100%; float:left; margin-top:20px; font-size:13px;">
+        <div style="width:100%; 
+					float:left; 
+					margin-top:20px; 
+					font-size:13px;"
+					class="bd_tbl_div">
             <table style="width:100%;" class="table table-hover">
                 <colgroup>
                     <col width="*" />
@@ -160,9 +110,9 @@ $(function(){
                   
                 </colgroup>
                  <tr>
-                    <td>제목</td>
-                    <td>등록일</td> 
-                    <td>조회수</td> 
+                    <th>제목</th>
+                    <th>등록일</th> 
+                    <th>조회수</th> 
                 </tr>
                 
                 <c:forEach var="result" items="${list }">
@@ -180,40 +130,25 @@ $(function(){
     </section>
  
  <!-- 글쓰기 버튼부분 (관리자)-->
+<%
+	if(ADMINID!=null) {
+%>
 
-    <div class="" style=" width: 100%;
-    height: 50px;
-    margin: 20px 50px 0 0;
-    text-align: right;">
+
+    <div class="board_btn_write" style="">
         <button type="button" id="btn_write" name="btn_write"
         class="btn btn-outline-warning" style="border-color: #f8cacc; color: black;">
         글쓰기</button>
     </div>
-    
+
+<%
+	}
+%>
     
 <!-- 페이징 -->
     <div style=" font-size:10px; " >
-    <nav aria-label="Page navigation example" 
-    class="d-flex justify-content-center"
-    style="display:inline-block;">
-        <ul class="pagination" >
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+		<%@include file = "../include/board_pagination.jsp" %>
       </div>
-
 </div>
     <footer>
        <%@include file = "../include/main_footer.jsp" %>

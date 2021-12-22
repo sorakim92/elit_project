@@ -14,6 +14,71 @@
     <link href="admin/assets/stylesheets/application-a07755f5.css" rel="stylesheet" type="text/css" /><link href="//netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
    	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+	
+	<script>
+	/* 관리자 권한 박탈 */
+	//emp update section Y -> N
+		function fn_empdelete(id){
+			var empid = id;
+			$("#empid").val(empid);
+			
+			var formdata = $("#empfrm").serialize();
+			$.ajax({
+				type : "post",
+				url  : "AdminDelete.do",
+				data : formdata,
+				
+				datatype  : "text",
+				success   : function(data){
+					if(data == "ok") {
+						document.location.reload();
+						alert("관리자 박탈.");
+					} else{
+						alert("오류, 처리실패(관리자에게 문의해주세요)");
+					}
+				}
+			})
+			
+			
+		}
+	
+	
+	
+		function fn_empupdate(id){
+			var empid = id;
+			
+		//	alert(empid + "아이디를 관리자로 추가합니다.");
+		//  console.log(empid);
+		//제이쿼리 $("#아이디") 아이디를 찾음
+		$("#empid").val(empid);
+		
+		var formdata = $("#empfrm").serialize();
+		// link 밑에 script두 줄 있어야 실행가능
+		$.ajax({
+			type : "post",
+			url  : "AdminPlus.do",
+			data : formdata,
+			
+			datatype : "text",
+			success  : function(data){
+				if(data == "ok") {
+					//새로고침
+					document.location.reload();
+					alert("관리자로 추가되었습니다.");
+				} else{
+					alert("추가 실패");
+				}
+			},
+			error    : function(){
+				alert("오류, 처리실패(관리자에게 문의해주세요)");
+			}
+		})
+		
+		}
+	
+	</script>
+	
+	
     
   </head>
   <body class='main page'>
@@ -33,7 +98,7 @@
         <ul id='dock'>
           <li class='launcher'>
             <i class='icon-home'></i>
-            <a href="dashboard.html">메인화면</a>
+            <a href="AdminMain.do">메인화면</a>
           </li>
           <br><br>
           <li class='launcher'>
@@ -43,7 +108,7 @@
           <br><br>
           <li class='launcher'>
             <i class='icon-envelope'></i>
-            <a href="inquiry.html">문의내역</a>
+            <a href="#">문의내역</a>
           </li>
           <br><br>
           <li class='launcher'>
@@ -103,17 +168,19 @@
 
            
           </div> 
-         
-        
-
+       <!-- 숨겨진 폼을 하나 만들어서 이름값을 설정 이제 위에서 함수 돌려서 이름에 데이터 넣을거임 -->
+        <form id ="empfrm" name="empfrm">
+       		<input type="hidden" id = "empid" name="empid">
+        </form>
+       
           <table class='table'>
             <thead>
               <tr>
-                <th>#</th>
+                <th></th>
                 <th>User ID</th>
                 <th>Name</th>
                 <th>Number</th>
-                <th>Information</th>
+                <th>Position</th>
                 <th class='actions'>
                   Actions
                 </th>
@@ -122,18 +189,20 @@
             <tbody>
             <c:forEach var="result" items="${list }">
               <tr class='warning'>
-                <td>1</td>
+                <td></td>
                 <td>${result.empid }</td>
                 <td>${result.ename }</td>
                 <td>${result.phone }</td>
                 <td>${result.section }</td>
                 <td class='action'>
-                  <a class='btn btn-success' data-toggle='tooltip' href='#' title='add'>
+                  <a class='btn btn-success' data-toggle='tooltip' title='관리자추가'
+                  	onclick ="javascript:fn_empupdate('${result.empid }')">
                     <i class='icon-zoom-in'></i>
                   </a>
               
                   
-                  <a class='btn btn-danger' data-toggle='tooltip' href='#' title='del'>
+                  <a class='btn btn-danger' data-toggle='tooltip' title='관리자삭제'
+                  	onclick ="javascript:fn_empdelete('${result.empid }')">
                     <i class='icon-trash'></i>
                   </a>
                 </td>
