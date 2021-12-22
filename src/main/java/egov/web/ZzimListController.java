@@ -29,6 +29,9 @@ public class ZzimListController {
 		return "mypage/ZzimList";
 	}
 	
+	/*
+	 * 찜하기 (소라)
+	 * */
 	
 	@RequestMapping("zzimlike.do")
 	@ResponseBody
