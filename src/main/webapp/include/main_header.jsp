@@ -63,7 +63,7 @@ String ADMINID= (String) session.getAttribute("AdminSessionID");
 %>
 	
 		 <li ><a href="javascript:fn_logout();" class="header_a">로그아웃</a></li>
-		<li ><a href="#" class="header_a">관리자페이지</a></li>
+		<li ><a href="AdminMain.do" class="header_a">관리자페이지</a></li>
 	
 <%
 	} else if(BOSSUSERID != null && !BOSSUSERID.equals("")) {
