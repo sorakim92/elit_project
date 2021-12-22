@@ -15,13 +15,11 @@ public class ZzimListDAO extends EgovAbstractDAO{
 	}
 
 	public List<?> selectZzimList(ZzimListVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return list("zzimlistDAO.selectZzimList",vo);
 	}
 
 	public int selectZzimListTotal(ZzimListVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return (int) select("zzimlistDAO.selectZzimListTotal",vo);
 	}
 
 	public int LikeInsertChk(ZzimListVO vo) {

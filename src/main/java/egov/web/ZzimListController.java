@@ -1,10 +1,12 @@
 package egov.web;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.Mapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -15,11 +17,16 @@ import egov.service1.ZzimListVO;
 public class ZzimListController {
 	@Resource(name = "zzimlistService")
 	ZzimListService zzimlistService;
-	
-	@RequestMapping(name="ZzimListService")
-	public String mypage_ZzimList(ZzimListVO vo, Model model ) throws Exception {
 		
-		return "mypage_ZzimList";
+	@RequestMapping("ZzimList.do")
+	public String selectZzimList(ZzimListVO vo, Model model ) throws Exception {
+		
+		List<?> list = zzimlistService.selectZzimList(vo);
+		/* int total = zzimlistService.selectZzimListTotal(vo); */
+		
+		model.addAttribute("list",list);
+		
+		return "mypage/ZzimList";
 	}
 	
 	
