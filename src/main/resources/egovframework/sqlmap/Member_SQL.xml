@@ -45,10 +45,12 @@
 	<select id="memberDAO.selectMemberIdCheck" resultClass="java.lang.Integer">
 		SELECT COUNT(*) FROM member WHERE userid = #userid#
 	</select>
+
 	<!-- 비밀번호 찾기 -->
 	<select id="memberDAO.Pop_memberpassfind" resultClass="java.lang.Integer">
-		SELCET userid,email FROM member WHERE email = #email# AND userid = #userid#
+		SELECT COUNT(*) FROM member WHERE email = '$email$' AND userid = '$userid$'
 	</select>
+
 	<!-- 아이디 찾기 -->
 	<select id="memberDAO.Pop_useridfd" resultClass="memberVO">
 		SELECT userid,email FROM member WHERE email = #email#
@@ -76,14 +78,12 @@
 	
 	</select>
 	
-	
-	
-	
-	<update id="memberDAO.Pop_newuserpw">
-		UPDATE member SET userpw = #userpw#,
-						  reuserpw = #reuserpw#
+	<!-- 비밀번호 변경 -->
+	<update id="memberDAO.Pop_newuserpw" >
+		UPDATE member SET userpw = '$userpw$',
+						  reuserpw = '$reuserpw$'
 					WHERE
-							userid = #userid# AND email = #email#
+							userid = '$userid$' AND email = '$email$'
 	</update>
 	
 	

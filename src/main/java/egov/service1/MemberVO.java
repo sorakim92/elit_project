@@ -2,11 +2,11 @@ package egov.service1;
 
 public class MemberVO {
 
-	private String userid;
+	private String userid="";
 	private String userpw;
 	private String reuserpw;
 	private String username;
-	private String email;
+	private String email="";
 	private String userphone;
 	private String useraddr1;
 	private String useraddr2;
