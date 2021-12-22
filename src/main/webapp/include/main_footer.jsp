@@ -5,7 +5,7 @@
         <ul class="ul1">
             <li><a href="nBoardList.do">공지사항</a></li>
             <li><a href="faqList.do">고객센터</a></li>
-            <li><a href="">입점문의</a></li>
+            <li><a href="businessEnterWrite.do">입점문의</a></li>
             <li><a href="">회원탈퇴</a></li>
         </ul>
         <ul class="ul2">
