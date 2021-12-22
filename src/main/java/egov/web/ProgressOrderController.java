@@ -30,7 +30,16 @@ public class ProgressOrderController {
 		
 		return "order/ProgressOrder";
 	}
-
+	
+	@RequestMapping(value="orderendList.do")
+	public String selectorderendList(ProgressOrderVO vo, Model model) throws Exception {
+		List<?> list = progressorderService.selectorderendList(vo);
+		model.addAttribute("list",list);
+		
+		return"order/oderEndList";
+	}
+	
+	
 	
 	@RequestMapping("orderSub.do")
 	@ResponseBody

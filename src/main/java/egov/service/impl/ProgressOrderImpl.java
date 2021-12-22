@@ -30,4 +30,8 @@ public class ProgressOrderImpl implements ProgressOrderService{
 			return progressorderDAO.resetpreorder(vo);
 
 		}
+		@Override
+		public List<?> selectorderendList(ProgressOrderVO vo) throws Exception {
+			return progressorderDAO.selectorderendList(vo);
+		}
 }

@@ -165,7 +165,7 @@ section {
         
     <nav>
         <div class="">
-            <a href><font size="4" color="black">주문관리 |</font></a>
+            <a href="progressorderList.do"><font size="4" color="black">주문관리 |</font></a>
             <a href="menuList.do"><font size="4">메뉴관리 |</font></a>
             <a href="adWrite.do"><font size="4" color="black">광고신청/관리 |</font></a>
             <a href="b_consumerList.do"><font size="4" color="black">커뮤니티</font></a>
@@ -177,13 +177,13 @@ section {
         <div style="text-align:left;" >
             <font size="5">메뉴관리</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            <a href="menuList.do"> <font size="4" color="black" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;메뉴편집 |</font> </a> 
-            <font size="4" >&nbsp;&nbsp;<a href=""> 리뷰관리</a></font>
+            <a href="storeReviewList.do"><font size="4" >&nbsp;&nbsp; 리뷰관리</font></a>
         </div>
         <br>
 
     <div style="width:100%;">
         <div class="" style="text-align:left; float:left; width:25%;">
-            <img src="../img/food1.PNG" width="200px" height="100px" alt="">
+            <img src="../img/food1.PNG" width="200px" height="100px" alt=""/>
         </div>        
         <div style="float:left;  width:25%;">
             <span style=""> 최근 리뷰  *개</span><br>
@@ -204,7 +204,6 @@ section {
 
         <div style="text-align:right; float:left;  width:25%;"  >
                 <img src="../img/stat.PNG" width="200px" height="150px" alt="">
-           
         </div><br>
 
     </div><br><br><br><br><br><br>
@@ -226,16 +225,17 @@ section {
                  <tr>
                     <td>전체</td>
                     <td>미답변</td> 
-                    <td>답변완료</td>
-                    <td>상태</td> 
+                    <td>날짜</td>
+                    <td></td> 
                 </tr>
                   <c:forEach var="result" items="${list }">
                 <tr>
                     
-                    <td><a href="menuModify.do?menuunq=${result.menuunq }">${result.menuname }
+                    <td>
+                    	<a href="OrderReviewDetail.do?reviewindex=${result.reviewindex }">${result.userid }<br>★ = ${result.rate }
                     </a></td>
-	  				<td>${result.price }</td>
-	  				<td>${result.menukeyword }</td>
+	  				<td>${result.rcontent }</td>
+	  				<td>${result.rdate }</td>
                    
                     <td><button type="button" ><a href="popReviewAnsWrite.do">답변하기</a></button></td>  
                 </tr>

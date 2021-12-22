@@ -190,9 +190,9 @@ $(function() {
 <div class="wrapper">
     <div class="main" style="min-height: 100%; padding-bottom:100px; flex:1;">
     <header class="width:100%; height:50px;">
-        <div class="logo">
-            <img src="../img/logo.png" width="200px" height="100px" alt="로고"><br><br>
-            <span style="font-size: 20px;">사장님 광장</span>
+        <div class="logo" style=" cursor: pointer;" onclick="location.href='mainPage.do';">
+    	<img src="<c:url value='/img/logo.png'/>" width="200px" height="100px" alt="로고"/><br><br>
+        <span style="font-size: 20px;">사장님 광장</span>
         </div>
         <div class="search">
             <span style="font-size: 15px;"><a href="">마이페이지</a></span>
@@ -208,7 +208,7 @@ $(function() {
         <div style="margin:30px 0 0 0; width:100%; text-align: center;  
                     border-bottom: 1px solid #ccc; ">
             <ul class="on_nav1">
-                <li><a href="">주문관리</a></li>
+                <li><a href="progressorderList.do">주문관리</a></li>
                 <li><a href="menuList.do">메뉴관리</a></li>
                 <li><a href="adWrite.do">광고신청/관리</a></li>
                 <li><a href="b_consumerList.do">커뮤니티</a></li>
@@ -226,8 +226,8 @@ $(function() {
         height:40px; float:left;
         margin: 10px 0 20px; 0">
             <ul class="on_nav2">
-                <li><font color="blue">접수대기/처리중 주문</font></li>
-                <li>완료된 주문조회</li>
+                <li><a href="progressorderList.do"><font color="blue">접수대기/처리중 주문</font></a></li>
+                <li><a href="orderendList.do"><font color="black">완료된 주문조회</font></a></li>
             </ul>
         </div>
          <!--**** 상연님 여기 추가해주세요 ㅎㅎ 주문부분 !!!!!! -->
@@ -236,60 +236,34 @@ $(function() {
                     display:inline-block;
                     margin-bottom: 10px; ">
             <div style="width:20%; height:180px;float:left; border-right:1px solid #ccc;">
-                <span style="font-size: 40px;">${result.menuunq }</span>
+                <span style="font-size: 20px;">${result.rdate }</span>
             </div>
             <div style="width:40%; height:180px;float:left; text-align: left; 
                         padding-left:10px;">
-               ${result.price } 
+               ${result.menuname } 
                 <span style="display:inline-block; border-radius: 0.5em;
                     background: #ccc; padding: 3px 7px 3px 7px;
                     margin:5px 0 5px 10px;
                     font-family: jua;
                     ">
-                   ${result.menukeyword }
+                   ${result.price }
                 </span>
                 
-                <span style="display:block;">${result.menuname }</span>
-                <span style="display:block;">${result.menuname }</span>
-                <span style="display:block;" >${result.menuname }</span>
-                <span style="display:block;">${result.menukeyword }</span>
+                <span style="display:block;">${result.comment1 }</span>
+                <span style="display:block;">${result.comment2 }</span>
+                <span style="display:block;" >${result.userid }</span>
+                <span style="display:block;">${result.phone }</span>
             </div>       
-            <div style="width:40%; height:180px;float:left; text-align: left;">
-                    <button type="reset" class="btn2" onclick=""><h3>접수</h3></button>
-                    <button type="submit" class="btn3" onclick=""><h3>거부</h3></button>
-            </div>
-            </c:forEach>
-            <!-- 2번째-->
-            <div style="width:20%; height:180px;float:left; border-right:1px solid #ccc;">
-                <span style="font-size: 40px;">13:22</span>
-            </div>
-            <div style="width:40%; height:180px;float:left; text-align: left; 
-                        padding-left:10px;">
-                [메뉴 4개] 
-                <span style="display:inline-block; border-radius: 0.5em;
-                    background: #ccc; padding: 3px 7px 3px 7px;
-                    margin:5px 0 5px 10px;
-                    font-family: jua;
-                    ">
-                    후불/현금
-                </span>
-                
-                <span style="display:block;">A메뉴1개 / B메뉴3개 / C메뉴1개</span>
-                <span style="display:block;">[요청사항] 맵게해주세요</span>
-                <br>
-                <span style="display:block;" >서울 송파구 방이동</span>
-                <span style="display:block;">010-1234-0000</span>
-            </div>       
-            <div style="width:40%; height:180px;float:left; text-align: left;">
-                    <button type="reset" class="btn2" onclick=""><h3>접수</h3></button>
-                    <button type="submit" class="btn3" onclick=""><h3>거부</h3></button>
-            </div>
             
-           
+            <div style="width:40%; height:160px;float:left; text-align: left;">
+                    <button type="button" class="btn2" onclick=""><h3>접수</h3></button>
+                    <button type="reset" class="btn3" onclick="location.href=''"><h3>거부</h3></button>
+            </div> 
         </div>
+          </c:forEach> 
     </section>
 	</form>
-
+	</div>
 
 <!--    사이드 바 부분 ! -->
 
@@ -335,6 +309,7 @@ $(function() {
     <!-- 우측 사이드바 -->
     <aside class="sidebar">
         <!-- 주문접수-->
+        <form>
         <div style="border:1px solid #ccc; width:98%; height:auto;">
             <span style="display:inline-block; border-radius: 0.5em;
                     background: #f8cacc; padding: 5px 10px 5px 10px;
@@ -365,7 +340,8 @@ $(function() {
                 </div>  
             </div>
         </div>
-
+		</form>
+		<form>
         <!-- 주문거부 -->
         <div style="border:1px solid #ccc; width:98%; height:auto;
                     margin:10px 0 10px 0; ">
@@ -396,7 +372,7 @@ $(function() {
              </div>
             </div>    
         <!-- 주문거...? -->
-
+		</form>
         <div style="border:1px solid #ccc; width:98%; height:auto; 
                     margin:10px 0 10px 0;">
             <span style="display:inline-block; border-radius: 0.5em;
