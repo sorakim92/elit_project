@@ -40,17 +40,22 @@
 	    		data : formData,
 	    		url  : "Pop_memberpassfindSave.do",
 	    		dataType : "text",                         //리턴 타입
-
+	    		
 	    		// 전송 후 셋팅
 	    		success: function(data) {
-					if(data == "ok") {
-						location="Pop_newuserpw.do";
+	    			
+	    			//alert(data);
+	    			
+	    			var data_array = data.split(":");
+	    			
+					 if(data_array[0] == "ok") {
+						location="Pop_newuserpw.do?userid="+data_array[1]+"&email="+data_array[2];
 					} else {
 						 alert("이메일or아이디가 등록된 정보와 일치하지않습니다.");
-					}
+					} 
 				},
 				error: function() { //장애발생
-					alert("오류발생")
+					alert("오류발생");
 		
 				}
 	    	});

@@ -45,10 +45,10 @@
 		$("#btn_submit").click(function(){
 			var userid = $("#userid").val();
 			var userpw = $("#userpw").val();
-			var reuserpw = $("reuserpw").val();
-			var name = $("username").val();
+			var reuserpw = $("#reuserpw").val();
+			var username = $("#username").val();
 			var email = $("#email").val();
-			var userphone = $("userphone").val();
+			var userphone = $("#userphone").val();
 			userid = $.trim(userid);
 			userpw = $.trim(userpw);
 			reuserpw = $.trim(reuserpw);
@@ -70,7 +70,7 @@
 				$("#reuserpw").focus();
 				return false;
 			}
-			if(userpw == "") {
+			if(username == "") {
 				alert("이름을 입력해주세요.");
 				$("#username").focus();
 				return false;
@@ -98,12 +98,12 @@
 	    		/* 전송 전 셋팅 */
 	    		type : "POST",
 	    		data : formData,
-	    		url  : "memberWriteSave.do",
+	    		url  : "memberwriteSave.do",
 	    		dataType : "text",                         //리턴 타입
 
 	    		// 전송 후 셋팅
-	    		success: function(result) {
-					if(result == "ok") {
+	    		success: function(data) {
+					if(data == "ok") {
 						alert("회원가입 성공.");
 						location="memberlogin.do";
 					} else {
@@ -111,7 +111,7 @@
 					}
 				},
 				error: function() { //장애발생
-					alert("오류발생")
+					alert("오류발생");
 		
 				}
 	    	});
@@ -126,7 +126,7 @@
     <div class="input-form-backgroud row" style="width:100%; height: 10%;">
       <div class="input-form col-md-12 mx-auto " style="width:100%; height: 10%;">
         <h4 class="mb-3">회원가입</h4>
-        <form name="frm" method="post">
+        <form id="frm" name="frm" method="POST">
           <div>
             <div>
                <input type="button" value="중복확인" 
@@ -206,8 +206,8 @@
           
           	<div style="width:100%; height: 10%;"> &nbsp; </div>
             <div>
-            <button type="submit" class="" id="btn_submit" style="text-align:center">가입 완료</button>
-            <button type="reset" class="" style="text-align:center">취소</button>
+            <button type="button" class="" id="btn_submit" style="text-align:center">가입 완료</button>
+            <button type="reset" class="" id="btn_reset" style="text-align:center">취소</button>
             </div>
           
         </form>

@@ -15,10 +15,10 @@ public interface MemberService {
 	public int selectMemberCount(MemberVO vo) throws Exception;
 	
 	//비밀번호 찾기
-	public MemberVO Pop_memberpassfind(String email) throws Exception;
+	public int Pop_memberpassfind(MemberVO vo) throws Exception;
 	
 	//아이디 찾기
-	public MemberVO Pop_useridfd(MemberVO vo)throws Exception;
+	public int Pop_useridfd(MemberVO vo)throws Exception;
 	
 	//비밀번호 찾기(변경화면)
 	public int Pop_newuserpw(MemberVO vo)throws Exception;
