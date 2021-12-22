@@ -35,5 +35,18 @@ public class BossMemberDAO extends EgovAbstractDAO {
 		return (String) insert("bossmemberDAO.insertBossMember",bvo);
 	}
 
+	public int returnMemberBusiness(MemberVO vo) {
+		return (int) update("bossmemberDAO.returnMemberBusiness",vo);
+	}
+
+	public BossMemberVO selectBossMemberInfo2(MemberVO vo) {
+		return (BossMemberVO) select("bossmemberDAO.selectBossMemberInfo2",vo);
+	}
+
+	public int deleteBossMember(BossMemberVO bvo) {
+		return (int) delete("bossmemberDAO.deleteBossMember",bvo);
+	}
+
+	
 	
 }

@@ -14,7 +14,7 @@
 						username,
 						email,
 						userphone,					
-						business,
+						decode(business,'Y','사장님','P','일반회원') business,
 						rdate						
 				FROM	
 						member
@@ -50,6 +50,23 @@
 				business = 'Y'
 	</select>
 
+	<select id = "bossmemberDAO.selectBossMemberInfo2" resultClass = "BossMemberVO">
+		SELECT userid,
+				userpw,
+				username,
+				email,
+				userphone,
+				business
+		FROM 	
+				member
+		WHERE 	
+				userid = #userid# 
+		AND 	
+				business = 'P'
+	
+	
+	</select>
+	
 	<update id="bossmemberDAO.updatebossmember">
 		UPDATE bossmember
 			SET 
@@ -68,6 +85,15 @@
 		WHERE
 				userid is not null and userid = #userid#
 	
+	</update>
+	
+	<update id ="bossmemberDAO.returnMemberBusiness">
+		UPDATE
+				member				
+		SET
+				business = 'P'
+		WHERE
+				userid is not null and userid = #userid#
 	</update>
 	
 	<insert id ="bossmemberDAO.insertBossMember">
@@ -95,6 +121,13 @@
 					)
 	
 	</insert>
+	
+	<delete id ="bossmemberDAO.deleteBossMember">
+	
+	DELETE FROM bossmember
+	WHERE userid IS NOT NULL AND userid = #userid#
+	
+	</delete>
 				
 
 </sqlMap>

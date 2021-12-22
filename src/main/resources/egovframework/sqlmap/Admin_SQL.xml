@@ -22,12 +22,44 @@
 						empid IS NOT NULL
 				<isNotNull property="ktext">
 					<isNotEmpty property="ktext">
-					and ( empid LIKE '%$ktext$%'
-					OR   ename LIKE '%$ktext$%'
-					OR   phone LIKE '%$ktext$%'
-					OR   section LIKE '%$ktext$%' )
+					and (
+					<!-- 오라클데이터의 Y값이 아닌 한글을 입력해도 검색어에 나오도록하기 -->
+					<isEqual property = "ktext" compareValue="관리">
+						section LIKE 'Y'
+					</isEqual>
+					<isEqual property = "ktext" compareValue="관리자">
+						section LIKE 'Y'
+					</isEqual>
+					<isEqual property = "ktext" compareValue="시스템">
+						section LIKE 'Y'
+					</isEqual>
+					<isEqual property = "ktext" compareValue="시스템관리자">
+						section LIKE 'Y'
+					</isEqual>
+					<isEqual property = "ktext" compareValue="회원">
+						section LIKE 'N'
+					</isEqual>
+					
+					<!-- 위의 단어수 만큼 isnotequal만들어주자 -->
+					<isNotEqual property = "ktext" compareValue="관리">
+					<isNotEqual property = "ktext" compareValue="관리자">
+					<isNotEqual property = "ktext" compareValue="시스템">
+					<isNotEqual property = "ktext" compareValue="시스템관리자">
+					<isNotEqual property = "ktext" compareValue="회원">
+						 empid   LIKE '%$ktext$%'
+					OR   ename   LIKE '%$ktext$%'
+					OR   phone   LIKE '%$ktext$%'
+					OR   section LIKE '%$ktext$%' 
+					</isNotEqual>
+					</isNotEqual>
+					</isNotEqual>
+					</isNotEqual>
+					</isNotEqual>
+					
+					)
 					</isNotEmpty>
 				</isNotNull>
+				
 				ORDER BY hiredate DESC) a )b	
 	</select>
 	
