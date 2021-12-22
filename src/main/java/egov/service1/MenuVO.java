@@ -9,9 +9,16 @@ public class MenuVO {
 	private int price;
 	private int cateunq;
 	private int storeunq;
+	private String userid;
+
 	
 	
-	
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
 	public int getMenuunq() {
 		return menuunq;
 	}

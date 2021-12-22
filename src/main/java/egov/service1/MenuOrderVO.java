@@ -19,8 +19,7 @@ public class MenuOrderVO {
     int pindex;
     int qty =1;
     
-    // 나중에 세션할때 .... 수정하기
-    String userid="test";
+    String userid;
 
     int total =0;
     
@@ -28,18 +27,19 @@ public class MenuOrderVO {
     
     
     
-	public int getTotal() {
-		return total;
-	}
-	public void setTotal(int total) {
-		this.total = total;
-	}
 	public String getUserid() {
 		return userid;
 	}
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
+	}
+
 	public int getPindex() {
 		return pindex;
 	}

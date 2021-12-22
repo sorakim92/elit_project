@@ -9,6 +9,9 @@
     <title>main</title>
     	<!-- footer header css -->
 	<link rel="stylesheet" href="css/headFooter.css">
+    <!-- css -->
+    <link rel="stylesheet" href="css/mainLayout.css">
+    
     
     <!-- 카카오맵 api -->
     <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca0677edae05b7ec94acd37b20938aa7"></script>
@@ -24,124 +27,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <style>
-
-
-@font-face {
-    font-family: "hanna";
-    src: url("../fonts/BMHANNAAir_otf.otf");
-}
-@font-face {
-    font-family: "jua";
-    src: url("../fonts/BMJUA_otf.otf");
-}
-html{
-    height: 100%;
-}
-body {
-    font-size: 16px;
-    font-family: hanna;
-    padding-left:100px;
-    height:100%;
-}
-header {
-	width:1000px;
-	height:100px;
-	/*background-color:#ffcc99;*/
-	/*line-height:5.0;*/
-}
-nav {
-	width:1000px;
-	height:150px;
-	/*background-color:#f8cacc;*/
-	text-align:center;
-	line-height:3.5;
-}
-.wrapper {
-    width: 1000px;
-    min-height: calc(100vh-70px);
-    position: relative;
-    /*background-color: beige;*/
-    padding: 10px;
-    flex-direction: column;
-    display: flex;
-    margin: auto;
-}
-
-.div_addr {
-   
-    width: 1000px;
-    height: 70px;
-    text-align: center;
-    line-height: 3.0;
-}
-
-section {
-	width:1000px;
-	height:auto;
-	/*background-color:#92a8d1;*/
-	text-align:center;
-    min-height: 550px;
-}
-
-
-.article1 {
-    width:1000px;
-	height:auto;
-	/*background-color:#92a8d1;*/
-	text-align:center;
-}
-.article2 {
-    width:1000px;
-	height:300px;
-    border: 1px solid #ccc;
-	/*background-color:#92a8d1;*/
-	text-align:center;
-}
-.article3 {
-    width:1000px;
-    height:300px;
-    border: 1px solid #ccc;
-    margin: 10px 0 10px 0;
-}
-.ldiv{
-    float:left;
-    padding:10px;
-	width:48%;
-	height:300px;
-	border:1px solid #999900;
-	
-}
-.rdiv{
-    float:right;
-    padding:10px;
-	width:48%;
-	height:300px;
-	border:1px solid #1c1f49;
-}
-
-.main_b_tbl{
-    width: 100%;
-    height:200px;
-    border: 1px solid #ccc;
-}
-.cate_tbl {
-    width : 100%;
-}
-.cate_tbl td{
-	line-height:4.0;
-  
-}
-.div_cate {
-	padding:20px;
-}
-.odr_main_table{
-    width:45%;
-}
-.odr_main_table td{
-    text-align: left;
-    border:1px solid #ccc;
-
-}
 
 </style>
 

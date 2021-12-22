@@ -146,12 +146,38 @@ public class MemberController {
 	public String memberlogin(MemberVO vo, HttpSession session) throws Exception {
 		
 		String message = "";
-		int count = memberService.selectMemberCount(vo);
-		if(count == 1) {
-			// session 생성
-			session.setAttribute("SessionUserID", vo.getUserid());
-			//message 처리
+		System.out.println("관리자시도000"+vo.getUserid());
+		//관리자 로그인
+		int a_count = memberService.selectAdminMemberLogin(vo);
+		System.out.println("관리자시도"+vo.getUserid());
+		if(a_count == 1) { //관리자인경우 
+			System.out.println("관리자!"+vo.getUserid());
+			session.setAttribute("AdminSessionID", vo.getUserid());
 			message = "ok";
+			
+		} else if(a_count == 0) { //관리자 아닌경우 
+			System.out.println("관리자시도실패"+vo.getUserid());
+			//사업자로그인
+			int b_count = memberService.selectBusinessMemberCount(vo);
+			
+			if(b_count == 1) { //사업자인경우 
+				session.setAttribute("BossmemberSessionID", vo.getUserid());
+				message = "ok";
+		
+			} else if(b_count == 0) { // 사업자 아닌경우 
+				//일반회원 
+				int count = memberService.selectMemberCount(vo);
+					if(count == 1) {
+						// session 생성
+						session.setAttribute("SessionUserID", vo.getUserid());
+						//message 처리
+						message = "ok";
+					} else {
+						message="er1";
+					}
+			} 
+		} else {
+			message = "er1"; 
 		}
 		return message;
 	}
@@ -162,7 +188,8 @@ public class MemberController {
 		
 		String msg = "";
 		session.removeAttribute("SessionUserID");
-		
+		session.removeAttribute("BossmemberSessionID");
+		session.removeAttribute("AdminSessionID");
 		msg = "ok";
 
 		return msg;

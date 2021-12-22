@@ -41,29 +41,48 @@
 <%
 
 String USERID = (String) session.getAttribute("SessionUserID");
-
+String BOSSUSERID = (String) session.getAttribute("BossmemberSessionID");
+String ADMINID= (String) session.getAttribute("AdminSessionID");
 %>
-
-<div class="logo" style=" cursor: pointer;" onclick="location.href='mainPage.do';">
-    <img src="<c:url value='/img/logo.png'/>" width="200px" height="100px" alt="로고"/>
-</div>
+<div class="login">
+	<ul class="login_ul">
 
 <!-- 기능: 로그아웃상태에서는 로그인 버튼,  로그인상태에서는 마이페이지 | 로그아웃 -->
-<div class="login">
-<ul>
+
 <%
-	if(USERID == null || USERID.equals("") ) {
+
+	
+	if(USERID != null && !USERID.equals("") ) {
 %>
 	
-    <li class="btn btn-outline-warning" style="border-color: #f8cacc; color: black; float: right">
-    	<a href="memberlogin.do" style="color:black">로그인</a></li>
+	    <li ><a href="javascript:fn_logout();" class="header_a">로그아웃</a></li>
+		<li ><a href="#" class="header_a">마이페이지</a></li>
+	
 <% 
+	} else if(ADMINID != null && !ADMINID.equals("")) {
+%>
+	
+		 <li ><a href="javascript:fn_logout();" class="header_a">로그아웃</a></li>
+		<li ><a href="#" class="header_a">관리자페이지</a></li>
+	
+<%
+	} else if(BOSSUSERID != null && !BOSSUSERID.equals("")) {
+%>	
+	
+		<li ><a href="javascript:fn_logout();" class="header_a">로그아웃</a></li>
+		<li ><a href="BossMemberDetail.do" class="header_a">사업자페이지</a></li>
+		
+<%
 	} else {
 %>
-	 <li class="btn btn-outline-warning" style="border-color: #f8cacc; color: black; float: right">
-	 	<a href="javascript:fn_logout();">로그아웃</a></li>
-<%
-	} 
-%>	
-</ul>
+	
+    	<li><a href="memberlogin.do" class="header_a">로그인</a></li>
+    	<li><a href="memberwrite.do" class="header_a">회원가입</a></li>
+<% 
+	}
+%>
+	</ul>
+	</div>
+<div class="logo" style=" cursor: pointer;" onclick="location.href='mainPage.do';">
+    <img src="<c:url value='/img/logo.png'/>" width="200px" height="100px" alt="로고"/>
 </div>

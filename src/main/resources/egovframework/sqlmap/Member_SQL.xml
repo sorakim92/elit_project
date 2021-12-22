@@ -54,6 +54,30 @@
 		SELECT userid,email FROM member WHERE email = #email#
 	</select>
 	
+	<!-- 사업자 로그인(소라) -->
+	<select id="memberDAO.selectBusinessMemberCount" resultClass="java.lang.Integer">
+		SELECT 
+				count(*)
+		 FROM 
+		 		member 
+		 WHERE
+		 		 userid=#userid# AND userpw =#userpw# AND UPPER(business)='Y'
+
+	</select>
+	
+	<!--  관리자 로그인 (소라) -->
+	<select id="memberDAO.selectAdminMemberLogin" resultClass="java.lang.Integer">
+		SELECT
+				 count(*) 
+		FROM	
+				 emp 
+		WHERE 
+				empid = #userid# AND passwd =#userpw# AND UPPER(section) = 'Y'
+	
+	</select>
+	
+	
+	
 	
 	<update id="memberDAO.Pop_newuserpw">
 		UPDATE member SET userpw = #userpw#,

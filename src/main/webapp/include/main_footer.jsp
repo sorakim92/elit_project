@@ -4,9 +4,9 @@
     <div class="ft_ul">
         <ul class="ul1">
             <li><a href="nBoardList.do">공지사항</a></li>
-            <li>고객센터</li>
-            <li>입점문의</li>
-            <li>회원탈퇴</li>
+            <li><a href="faqList.do">고객센터</a></li>
+            <li><a href="">입점문의</a></li>
+            <li><a href="">회원탈퇴</a></li>
         </ul>
         <ul class="ul2">
             <li><a href="termsOfService.do">서비스 이용약관</a></li>

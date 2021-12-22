@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<!-- footer header css -->
 	<link rel="stylesheet" href="css/headFooter.css">
-
+	<!-- css -->
+    <link rel="stylesheet" href="css/mainLayout.css">
 </head>
 <style>
 @font-face {
@@ -26,74 +27,6 @@
     font-family: "jua";
     src: url("fonts/BMJUA_otf.otf")format("opentype");
 }
-html{
-    height: 100%;
-}
-body {
-    font-size: 16px;
-    font-family: hanna;
-    padding-left:100px;
-    height:100%;
-}
-header {
-	width:1000px;
-	height:100px;
-	/*background-color:#ffcc99;*/
-	/*line-height:5.0;*/
-}
-nav {
-	width:1000px;
-	height:100px;
-	/*background-color:#f8cacc;*/
-	text-align:center;
-	line-height:3.5;
-}
-.wrapper {
-    width: 1000px;
-    min-height: calc(100vh-70px);
-    position: relative;
-    /*background-color: beige;*/
-    padding: 10px;
-    flex-direction: column;
-    display: flex;
-    margin: auto;
-}
-
-
-
-section {
-	width:1000px;
-	height:auto;
-	/*background-color:#92a8d1;*/
-	text-align:center;
-    min-height: 550px;
-}
-
-
-
-.article_nav {
-    display: inline-block;
-}
-.article_nav li {
-    font-size:16px;
-    list-style:none;
-    float:left;
-    padding-left:10px;
-    padding-right:10px;
-    padding-bottom: -20px;
-}
-
-
-/* input 상자 크기, textarea 높이 등 */
-.bd_input1 {
-    width:90%;
-} 
-.bd_textarea {
-    width: 90%;
-    height: auto;
-    min-height: 300px;
-}
-
 
 </style>
 
@@ -159,21 +92,15 @@ $(function(){
        <%@include file = "../include/main_header.jsp" %>
     </header>
         
-    <nav>
-        <div style="width:100%; 
-                    height:50px; border-bottom: 1px solid #ccc;">
+    <nav class="board_nav">
+        <div >
             <%@include file="../include/board_subTab.jsp" %>
        </div>
     </nav>
-        
-
-
-
-
+ 
     <section >
-        <div style="width:100%; height:auto; padding:10px;  margin: -40px;">
-            <div style="width:70%; text-align: left; margin-left:40px;
-                        font-family: jua; float:left;">
+        <div class="board_sc_top">
+            <div class="board_sc_title">
                 공지사항 글쓰기
             </div>
         </div>
@@ -223,16 +150,15 @@ $(function(){
     </section>
     <!-- 글쓰기 버튼부분 (관리자)-->
 
-    <div class="" style=" width: 100%;
-    height: 50px;
-    margin: 20px 50px 0 0;
-    text-align: right;">
-        <button type="button" class="btn btn-outline-warning" 
+    <div class="board_btn_write">
+        <button type="button" 
+        		class="btn btn-outline-warning" 
                 style="border-color: #f8cacc; color: black;"
                 onclick="location.href='nBoardList.do'";
                 >
             목록</button>
-        <button type="button" class="btn btn-outline-warning" 
+        <button type="button" 
+        		class="btn btn-outline-warning" 
         		id="btn_save" 
                 style="border-color: #f8cacc;background-color: #f8cacc; color: black;">
             저장</button>

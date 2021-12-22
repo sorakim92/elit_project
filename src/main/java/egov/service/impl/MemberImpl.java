@@ -48,6 +48,15 @@ public class MemberImpl implements MemberService{
 		return memberDAO.Pop_newuserpw(vo);
 	}
 	
+	@Override
+	public int selectBusinessMemberCount(MemberVO vo) throws Exception {
+		return memberDAO.selectBusinessMemberCount(vo);
+	}
+	@Override
+	public int selectAdminMemberLogin(MemberVO vo) throws Exception {
+		return memberDAO.selectAdminMemberLogin(vo);
+	}
+	
 	
 	
 	

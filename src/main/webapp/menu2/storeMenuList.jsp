@@ -18,6 +18,8 @@
 	
 	<!-- footer header css -->
 	<link rel="stylesheet" href="css/headFooter.css">
+	<!-- css -->
+    <link rel="stylesheet" href="css/mainLayout.css">
 </head>
 <style>
 @font-face {
@@ -28,21 +30,7 @@
     font-family: "jua";
     src: url("fonts/BsMJUA_otf.otf");
 }
-html{
-    height: 100%;
-}
-body {
-    font-size: 16px;
-    font-family: hanna;
-    padding-left:100px;
-    height:100%;
-}
-header {
-	width:1000px;
-	height:100px;
-	/*background-color:#ffcc99;*/
-	/*line-height:5.0;*/
-}
+
 nav {
 	width:1000px;
 	height:100px;
@@ -50,56 +38,8 @@ nav {
 	text-align:center;
 	line-height:3.5;
 }
-.wrapper {
-    width: 1000px;
-    min-height: calc(100vh-70px);
-    position: relative;
-    /*background-color: beige;*/
-    padding: 10px;
-    flex-direction: column;
-    display: flex;
-    margin: auto;
-}
-
-.search {
-    width: 500px;
-    height: 50px;
-    float : left;
-    margin: 20px 0 0 0;
-    text-align: right;
-}
-
-section {
-	width:1000px;
-	height:auto;
-	/*background-color:#92a8d1;*/
-	text-align:center;
-    min-height: 550px;
-}
 
 
-
-.sub_kw_tab {
-    width:100%;
-    padding: 10px;
-    float:left;
-
-}
-.sub_kw_tab li {
-    font-size:14px;
-    list-style:none;
-    float:left;
-    padding-left:10px;
-    padding-right:10px;
-} 
-
-.sidebar{
-    float:right;
-   
-    width:40%; 
-    height:auto;
-    padding: 10px 10px 10px 10px;
-} 
 </style>
 
 <script>
@@ -134,7 +74,11 @@ function fn_pay() {
  			if(data == "ok") {
  				document.location.reload();
  				alert("주문이 전송되었습니다. [ 주문접수 대기중 ]");
+ 			} else if(date=="er1" ) {
+ 				alert("로그인해주세요.");
+ 				location.href="memberlogin.do";
  			} else {
+ 			
  				alert("시스템 오류입니다. 다시 시도해주세요.");
  			}
  		},
@@ -265,21 +209,14 @@ function fn_addOrder(u) {
       
     </nav>
     <div>    
-    <section class="content" style="border-right:1px solid #ccc; width:60%; float:left;"
-            >
+    <section class="content" >
         <!-- 가게 소개 & 리뷰 -->
-        <div style="border:1px solid #ccc; width:98%; height:210px; padding:10px 30px 10px 30px;">
+        <div class="str_div_info1">
             <!-- 가게이름 -->
-            <div style=" text-align:left; 
-                        font-size: 20px; font-family:JUA;  
-                        width:45%; height:40px;
-                        line-height: 2.0;
-                        float:left; margin-right:20px;">
+            <div class="str_div_info2">
                 ${vo.storename } (${vo.storerate })</div>
             <!-- 가게 주문시 유의정보 -->
-            <div style=" text-align:right; 
-                font-size: 15px; font-family:hanna;  width:50%; 
-                float:left;">
+            <div class="str_div_info3">
                 <table style="width:100%;">
                     <tr>
                         <td>최소주문</td>
@@ -296,34 +233,17 @@ function fn_addOrder(u) {
                 </table>
             </div>
             <!-- 리뷰부분 시작 -->
-            <div style=" width:100%; height:20px; 
-                        float:left; margin:10px 0 5px 0;">
-                <span style="display:block; width:50%; text-align: left; float:left; 
-                                font-size:12px;">리뷰(${reviewTot }건)</span>
-                <span style="display:block; width:50%; text-align: right; float:left;
-                                font-size: 12px;">더보기></span>
+            <div class="str_div_info4">
+                <span class="str_sp_info1" style="text-align:left;">리뷰(${reviewTot }건)</span>
+                <span class="str_sp_info1" >더보기></span>
             </div>
-            <div style=" width:100%; height:85px; 
-                        float:left; margin:5px 0 10px 0; padding:5px;">
+            <div class="str_div_info5">
             <div>
                 <table>
                     <tr>
                         <td>
                             <img src="/img/addpic.png" 
-                                style="width:70px; height:70px; 
-                                    border:1px solid #ccc; padding:5px; margin-right:5px;" 
-                                alt="리뷰사진">
-                        </td>
-                        <td>
-                            <img src="/img/addpic.png" 
-                                style="width:70px; height:70px; 
-                                    border:1px solid #ccc; padding:5px; margin-right:5px;" 
-                                alt="리뷰사진">
-                        </td>
-                        <td>
-                            <img src="/img/addpic.png" 
-                                style="width:70px; height:70px; 
-                                    border:1px solid #ccc; padding:5px; margin-right:5px;" 
+                                class="str_img_reviewtype1"
                                 alt="리뷰사진">
                         </td>
                     </tr>
@@ -332,8 +252,7 @@ function fn_addOrder(u) {
         </div>
         </div>
         <!-- 검색/키워드탭-->
-        <div style="width:100%; 
-                    height:40px; border-bottom: 1px solid #ccc;">
+        <div class="str_keyword" >
             <ul class="sub_kw_tab">
                 <li><img src="/img/mag.png" style="width:12px; height:12px;">검색</li>
                 <li>인기메뉴</li>

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,16 +26,19 @@ public class MenuOrderController {
 	MenuOrderService menuorderService;
 	
 	@RequestMapping("menuOrderList.do")
-	public String selectStoreMenuList(MenuOrderVO vo,MemberVO mvo, Model model) 
+	public String selectStoreMenuList(MenuOrderVO vo,MemberVO mvo, Model model, HttpSession session) 
 											throws Exception {
 		
 		
 		//가게정보
 		vo = menuorderService.selectStoreinfo(vo);
 		
-		//로그인 세션가지고 오기 일단 임의로 변수설정. 
-		String userid = "test1";
+		//로그인 세션가지고 오기 
 		
+		String userid = (String) session.getAttribute("SessionUserID");
+		vo.setUserid(userid);
+		mvo.setUserid(userid);
+		//System.out.println("======"+userid);
 		//고객정보
 		mvo = menuorderService.selectMemberInfo(userid);
 		
@@ -46,7 +50,7 @@ public class MenuOrderController {
 		
 		Map<String,String> map = new HashMap<String, String>();
 		
-		userid = vo.getUserid();
+		
 		int storeunq = vo.getStoreunq();
 		
 		map.put("userid", userid);
@@ -69,36 +73,46 @@ public class MenuOrderController {
 	
 	@RequestMapping("addOrderMenu.do")	
 	@ResponseBody
-	public String insertAddOrder(MenuOrderVO vo, Model model) throws Exception {
+	public String insertAddOrder(MenuOrderVO vo, Model model, HttpSession session) throws Exception {
+		
 		
 		// 주문표에 들어갈 내역 + unq 조회 
 		vo = menuorderService.selectmenudetail(vo);
 		
+		//로그인 세션가지고 오기 
+		
+		String userid = (String) session.getAttribute("SessionUserID");
+		vo.setUserid(userid);
+		System.out.println("======"+userid);
+				
 		String msg = "";
-		
-		// 같은 메뉴가 주문표에 있는지 확인
-		int cnt_order = menuorderService.countMenuunq(vo);
-		//int p_menuunq = vo.getMenuunq();
-		
-		if(cnt_order == 1) {
-			// 해당메뉴 qty증가  
-			//menuorderService.updateqty(vo);
-			
-			msg="focus_orderlist";
-			
-		} else if(cnt_order == 0) {
-		
-			//오더하기 전 주문표에 들어갈 내역 preorder 테이블에 insert 
-			String result =  menuorderService.insertAddOrder(vo);
-		
-			if(result == null){
-				System.out.println("인서트 성공");
-				msg="ok";
-			}
+		if(userid==null || userid.equals("")) {
+			msg = "er1";
 		} else {
-			msg = "error";
+			// 같은 메뉴가 주문표에 있는지 확인
+			//System.out.println("======22222"+vo.getUserid());
+			int cnt_order = menuorderService.countMenuunq(vo);
+			//int p_menuunq = vo.getMenuunq();
+			
+			if(cnt_order == 1) {
+				// 해당메뉴 qty증가  
+				//menuorderService.updateqty(vo);
+				
+				msg="focus_orderlist";
+				
+			} else if(cnt_order == 0) {
+			
+				//오더하기 전 주문표에 들어갈 내역 preorder 테이블에 insert 
+				String result =  menuorderService.insertAddOrder(vo);
+			
+				if(result == null){
+					System.out.println("인서트 성공");
+					msg="ok";
+				}
+			} else {
+				msg = "error";
+			}
 		}
-		
 		
 		
 		return msg;
