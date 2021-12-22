@@ -18,6 +18,9 @@ public class BossMemberController {
 	@Resource(name = "bossmemberService")
 	BossMemberService bossmemberService;
 	
+	/*
+	 * 사업자추가 페이지 List (강성모)
+	 * 	 */
 	@RequestMapping("BossMemberList.do")
 	public String selectbossmemeberlist( BossMemberVO vo, Model model ) throws Exception{
 		
@@ -30,6 +33,10 @@ public class BossMemberController {
 		return "admin/BossMemberList";
 	}
 	
+	
+	/*
+	 * 사업자 권한 추가 (강성모)
+	 * 	 */
 	@RequestMapping("BossPlus.do")
 	@ResponseBody
 	public String bossMemberPlus(MemberVO vo, BossMemberVO bvo)
@@ -58,8 +65,30 @@ public class BossMemberController {
 		return msg;
 	}
 	
-	
-	
+	/*
+	 * 사업자 권한 삭제 (강성모)
+	 * 	 */
+	@RequestMapping("BossMinus.do")
+	@ResponseBody
+	public String bossmemberMinus(MemberVO vo, BossMemberVO bvo)
+										throws Exception{
+		String msg = "";
+		int resultUpdate = bossmemberService.returnMemberBusiness(vo);
+		if(resultUpdate != 1) {
+			msg = "er1";
+		} else {
+			bvo = bossmemberService.selectBossMemberInfo2(vo);
+			int resultDelete = bossmemberService.deleteBossMember(bvo);
+			if(resultDelete == 0 ) {
+				//이거는 실패! 니까 메세지 실패!
+				msg = "er2";
+				}  else if(resultDelete > 0 ) {
+				  // 이거는 성공! 
+				 msg = "ok";
+				}
+		}
+		return msg;
+	}
 	
 	
 	

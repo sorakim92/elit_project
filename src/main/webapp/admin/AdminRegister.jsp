@@ -16,6 +16,7 @@
 	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 	
 	<script>
+	/* 관리자 권한 박탈 */
 	//emp update section Y -> N
 		function fn_empdelete(id){
 			var empid = id;
@@ -97,7 +98,7 @@
         <ul id='dock'>
           <li class='launcher'>
             <i class='icon-home'></i>
-            <a href="dashboard.html">메인화면</a>
+            <a href="AdminMain.do">메인화면</a>
           </li>
           <br><br>
           <li class='launcher'>
@@ -107,7 +108,7 @@
           <br><br>
           <li class='launcher'>
             <i class='icon-envelope'></i>
-            <a href="inquiry.html">문의내역</a>
+            <a href="#">문의내역</a>
           </li>
           <br><br>
           <li class='launcher'>
@@ -175,11 +176,11 @@
           <table class='table'>
             <thead>
               <tr>
-                <th>#</th>
+                <th></th>
                 <th>User ID</th>
                 <th>Name</th>
                 <th>Number</th>
-                <th>Information</th>
+                <th>Position</th>
                 <th class='actions'>
                   Actions
                 </th>
@@ -188,7 +189,7 @@
             <tbody>
             <c:forEach var="result" items="${list }">
               <tr class='warning'>
-                <td>1</td>
+                <td></td>
                 <td>${result.empid }</td>
                 <td>${result.ename }</td>
                 <td>${result.phone }</td>
