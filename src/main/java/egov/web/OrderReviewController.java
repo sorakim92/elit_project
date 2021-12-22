@@ -132,14 +132,8 @@ public class OrderReviewController {
 			msg = "ok";
 		}
 
-		return "msg";		
+		return msg;		
 		
 	}
 
-
-	
-	
-
-		 
-		
 }

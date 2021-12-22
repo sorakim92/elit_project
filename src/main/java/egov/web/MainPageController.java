@@ -17,4 +17,13 @@ public class MainPageController {
 	}
 	
 	
+	/*
+	 *  로그인 유저 마이페이지
+	 */
+	@RequestMapping("myPage.do")
+	public String myPage() throws Exception {
+		
+		return "mypage/myPage";
+	}
+	
 }

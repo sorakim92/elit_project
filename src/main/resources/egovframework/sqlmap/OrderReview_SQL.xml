@@ -53,7 +53,7 @@
 	
 	<select id="orderreviewDAO.selectBoardDetail" resultClass="OrderReviewVO">
 	
-		SELECT 		
+		SELECT 		reviewindex,
 					storeunq,
 					rate,
 					rcontent,
@@ -73,11 +73,11 @@
 		
 		UPDATE orderreview
 				SET					
-					userid = '$userid$',
+					userid = 'test1',
 					rdate =  sysdate,					
 					rcontent = '$rcontent$'
 			WHERE
-					reviewindex = #reviewindex#
+					reviewindex = '$reviewindex$'
 	</update>
 	
 	<update id="orderreviewDAO.updateBoardHits">

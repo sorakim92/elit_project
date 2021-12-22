@@ -10,8 +10,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sample</title>
-    <link rel="stylesheet" href="../css/css.css">
+    <title>마이페이지</title>
+    <link rel="stylesheet" href="css/css.css">
    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -61,6 +61,8 @@
   border: 1px solid #ccc;
   width: 100%;
   height: 100px;
+  text-align: center;
+  margin-top: 20px;
 
 }
 .box2 {
@@ -71,33 +73,27 @@
 
 <body>
 
-<div class="wrapper">   
-  <header class="width:100%; height:50px;">
+<div class="wrapper">
+    <div class="main" style="min-height: 100%; padding-bottom:100px; flex:1;">
+    <header class="width:100%; height:50px;">
        <%@include file = "../include/main_header.jsp" %>
-  </header>
- 
-<nav class="navbar">
-    <div>
-        <ul class="gnb">
-            <li><a href="#">마이페이지</a></li>
-            <li><a href="#">주문내역</a></li>
-            <li><a href="#">회원정보수정</a></li>
-            <li><a href="#">문의내역</a></li>
-            <li><a href="#">찜목록</a></li>
-            <li><a href="#">리뷰관리</a></li>
-            <li><a href="#">ADMIN</a></li>
-        </ul>
-    </div>
-</nav>
+    </header>
+        
+    <nav>
+        <div style="width:100%; 
+                    height:100px;">
+           <%@include file = "../include/topmenu.jsp" %>
+       </div>
+    </nav>
 
    
  <!-- 마이페이지 부분 시작 -->   
 
 <section>
     <div class="lmage">
-        <div class="box">
+        <div class="box" >
             <p class="nail">
-                <img src="../img/id.png"  alt="이미지">
+                <img src="../img/id.png"  alt="이미지" >
                 
                 ELIT을 이용해 주셔서 고맙습니다."
             </p>
@@ -129,8 +125,8 @@
                             <th scope="col">사용가능 기간</th>
                         </tr>
                     </colgroup>                        
-                        <tr style="height: 100px;">
-                            <td colspan="8" class="message">보유하고 계신 쿠폰 내역이 없습니다</td>
+                        <tr style="height: 100px; text-align: center;">
+                            <td colspan="8" class="message" >보유하고 계신 쿠폰 내역이 없습니다</td>
                         </tr>                        
                 </table>
 			</div>
@@ -146,25 +142,33 @@
                 <col width="15%"/>
                 <col width="35%"/>
             </colgroup>
-    <td>
-        <div style="width:120px; height: 120px; border: 1px solid #f8cacc; border-radius: 2em;
-        margin:5px 20px 10px 20px; text-align: center;">
-            <img src="/img/addpic.png" alt="업체대표사진" width="100" height="100" name="" id="">
-        </div>
-    </td>
-    <td style="text-align: left; ">
-        <span style="font-weight: bold;">가게이름</span>
-            <button type="button" style="float: right;" value="주문상세">주문상세</button>
-               
+         <c:forEach var="result" items="${list }">
+         <tr>
+		    <td>
+		        <div style="width:120px; height: 120px; border: 1px solid #f8cacc; border-radius: 2em;
+		        margin:5px 20px 10px 20px; text-align: center;">
+		            <img src="/img/addpic.png" alt="업체대표사진" width="100" height="100" name="" id="">
+		        </div>
+		    </td>
+		 
+		    <td style="text-align: left; ">
+		        <span style="font-weight: bold;">가게이름</span>
+		            <button type="button" style="float: right;" value="주문상세">주문상세</button>
+		               
             <div style="font-size:13px; text-align: left; padding-left: 0px;">                       
                 <span>주문상품</span>
             </div>
-        </div>
+        
         <div style="font-size:13px; text-align: left; padding-left: 0px;">
             <span>갯수 가격</span><br>
             <span><img src="/img/star.png" style="width:20px; height:20px; ">5.0</span>
         </div>
-    </table>     
+        
+       </td>
+       </tr>
+      </c:forEach>
+    </table>
+     </div>     
     <!--주문내역-->
 
 
@@ -175,6 +179,7 @@
           <%@include file = "../include/main_footer.jsp" %>
     </footer>
     </div>
+</div>
 
 </body>
 </html>

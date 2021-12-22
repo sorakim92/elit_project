@@ -93,7 +93,7 @@ $(function(){
   			success : function(data) {
   				
   				if(data == "ok") {
-  					alert("수정저장성공");
+  					alert("수정성공");
   					location="OrderReviewList.do";
   				}else {
   					alert("수정실패");
@@ -123,19 +123,12 @@ $(function(){
        <%@include file = "../include/main_header.jsp" %>
     </header>
         
-      <nav class="navbar">
-	    <div>
-	        <ul class="gnb">
-	            <li><a href="#">마이페이지</a></li>
-	            <li><a href="#">주문내역</a></li>
-	            <li><a href="#">회원정보수정</a></li>
-	            <li><a href="#">문의내역</a></li>
-	            <li><a href="#">찜목록</a></li>
-	            <li><a href="#">리뷰관리</a></li>
-	            <li><a href="#">ADMIN</a></li>
-	        </ul>
-	    </div>
-	</nav>
+    <nav>
+        <div style="width:100%; 
+                    height:100px;">
+           <%@include file = "../include/topmenu.jsp" %>
+       </div>
+    </nav>
 
 
 
