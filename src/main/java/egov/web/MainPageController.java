@@ -27,7 +27,7 @@ public class MainPageController {
 	public String myPage() throws Exception {
 		
 		return "mypage/myPage";
-
+	}
 	/*
   이용약관 (소라)
   */
