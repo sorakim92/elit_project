@@ -464,7 +464,7 @@ function fn_addOrder(u) {
                   			 margin:5px; text-align: center;
                    			cursor: pointer;" 
                    			onclick="">
-	                       <img src="<c:url value='/img/kakaopay.png'/>" alt="카카오페이" width="90" name="" id="">
+	                       <img src="<c:url value='/img/kakaopay.png'/>" alt="카카오페이" width="80" name="" id="">
 	                   		
 	                   		</div>
                         
@@ -474,7 +474,7 @@ function fn_addOrder(u) {
                   			 margin:5px; text-align: center;
                    			cursor: pointer;" 
                    			onclick="">
-	                       <img src="<c:url value='/img/npay.png'/>" alt="네이버페이" width="90" name="" id="">
+	                       <img src="<c:url value='/img/nPay.png'/>" alt="네이버페이" style="border-radius: 1em;"width="80" name="" id="">
 	                   		
 	                   		</div>
                         

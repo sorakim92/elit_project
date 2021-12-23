@@ -112,7 +112,7 @@ $(function(){
                     </td>
                     <td>
                     	<div style=" cursor: pointer;" onclick="location.href='#';">
-	                    	<img src="<c:url value='/img/mChicken.jpg'/>" width="200" height="150" alt="사진">
+	                    	<img src="<c:url value='/img/mChicken.png'/>" width="200" height="150" alt="사진">
 	                		<br>치킨
                         </div>
                     </td>
