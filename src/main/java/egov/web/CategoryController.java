@@ -21,6 +21,9 @@ public class CategoryController {
 	@Resource(name ="categoryService" )
 	CategoryService categoryService;
 	
+	/*
+	 * 한식부분 카테고리 등록 (소라)
+	 * */
 	@RequestMapping("KRfoodList.do")
 	public String selectKRfoodList(CategoryVO vo, ZzimListVO zvo, Model model) 
 									throws Exception {

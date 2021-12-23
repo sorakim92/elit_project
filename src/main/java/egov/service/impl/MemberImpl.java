@@ -9,8 +9,10 @@ import egov.service1.MemberVO;
 
 @Service("memberService")
 public class MemberImpl implements MemberService{
+	
 	@Resource(name = "memberDAO")
 	MemberDAO memberDAO;
+	
 	//회원가입 처리
 	@Override //다형성 (오버라이딩,오버로딩)
 	public String insertMember(MemberVO vo) throws Exception {
@@ -34,12 +36,12 @@ public class MemberImpl implements MemberService{
 	}
 	//비밀번호 찾기
 	@Override
-	public MemberVO Pop_memberpassfind(String email) throws Exception {
-		return memberDAO.Pop_memberpassfind(email);
+	public int Pop_memberpassfind(MemberVO vo) throws Exception {
+		return memberDAO.Pop_memberpassfind(vo);
 	}
 	//아이디 찾기
 	@Override
-	public MemberVO Pop_useridfd(MemberVO vo) throws Exception {
+	public int Pop_useridfd(MemberVO vo) throws Exception {
 		return memberDAO.Pop_useridfd(vo);
 	}
 	//비밀번호 찾기 화면(비밀번호 변경)
@@ -56,6 +58,7 @@ public class MemberImpl implements MemberService{
 	public int selectAdminMemberLogin(MemberVO vo) throws Exception {
 		return memberDAO.selectAdminMemberLogin(vo);
 	}
+	
 	
 	
 	

@@ -39,6 +39,7 @@ public class MemberController {
 	
 	//회원가입 저장소스
 	@RequestMapping("memberwriteSave.do")
+	@ResponseBody
 	public String insertmember(MemberVO vo) throws Exception {
 		
 		String message = "";
@@ -87,6 +88,7 @@ public class MemberController {
 	}
 	
 
+	
 	//아이디 찾기
 	@RequestMapping("Pop_useridfd.do")
 	public String Pop_useridfd() throws Exception {
@@ -100,14 +102,14 @@ public class MemberController {
 	public String Pop_useridfdSave(MemberVO vo, Model model) throws Exception{
 		
 		//System.out.println("============"+vo.getUserid());
-		vo = memberService.Pop_useridfd(vo);
+		int result = memberService.Pop_useridfd(vo);
 		String msg = "";
 		//System.out.println(vo);
 		//System.out.println("=========222======="+vo.getUserid());
 		String userid= vo.getUserid();
 		
 		//System.out.println(userid);
-		if(userid != null) {
+		if(result == 1) {
 			msg="ok";
 		} else {
 			msg = "fail";
@@ -127,11 +129,11 @@ public class MemberController {
 	@ResponseBody
 	public String Pop_findselectuseridSave(MemberVO vo, Model model) throws Exception {
 		
-		vo = memberService.Pop_useridfd(vo);
+		int result = memberService.Pop_useridfd(vo);
 		
 		String msg = "";
 		String userid= vo.getUserid();
-		if(userid != null) {
+		if(result == 1) {
 			msg="ok";
 		} else {
 			msg = "fail";
@@ -140,6 +142,7 @@ public class MemberController {
 		//System.out.println(msg);
 		return msg;
 	}
+
 	// 로그인 서브 처리창
 	@RequestMapping("memberloginSub.do")
 	@ResponseBody
@@ -194,6 +197,7 @@ public class MemberController {
 
 		return msg;
 	}
+
 	
 	//비밀번호 찾기 화면
 	@RequestMapping("Pop_memberpassfind.do")
@@ -206,15 +210,50 @@ public class MemberController {
 	@ResponseBody
 	public String Pop_memberpassfind(MemberVO vo ,Model model) throws Exception {
 		
+		int result = memberService.Pop_memberpassfind(vo);
 		
-		
-		vo = memberService.Pop_useridfd(vo);
-		String msg = "";
-		String userid= vo.getUserid();
+		String userid = vo.getUserid();
 		String email = vo.getEmail();
 		
-		if(userid != null && email != null) {
-			msg="ok";
+		
+		String msg = "";
+		
+		System.out.println(userid);
+		System.out.println(email);
+		
+		if(result == 1) {
+			msg="ok:"+userid+":"+email;
+		}  else  {
+			msg = "fail";
+		}
+//		model.addAttribute("userid",userid); 이건 필요없는 소스
+//		model.addAttribute("email",email);
+		
+		return msg;
+		
+	}
+	//비밀번호 재설정 화면
+	@RequestMapping("Pop_newuserpw.do")
+	public String Pop_newuserpw(String userid, String email, Model model) throws Exception {
+		
+		model.addAttribute("userid",userid);
+		model.addAttribute("email",email);
+//		System.out.println(userid);
+//		System.out.println(email);
+		return "login/Pop_newuserpw";
+	}
+	
+	//비밀번호변경처리
+	@RequestMapping("Pop_newuserpwSave.do")
+	@ResponseBody
+	public String Pop_newuserpwSave(MemberVO vo) throws Exception {
+		
+		int result = memberService.Pop_newuserpw(vo);
+		
+		String msg = "";
+		System.out.println(result);
+		if(result == 1) {
+			msg = "ok";
 		} else {
 			msg = "fail";
 		}
@@ -222,11 +261,4 @@ public class MemberController {
 		return msg;
 		
 	}
-	//비밀번호 재설정 화면
-	@RequestMapping("Pop_newuserpw.do")
-	public String Pop_newuserpw() throws Exception {
-		
-		return "login/Pop_newuserpw";
-	}
-
 }

@@ -40,7 +40,9 @@ public class ProgressOrderController {
 	}
 	
 	
-	
+	/*
+	 * 주문한내역 넘기기 (소라)
+	 * */
 	@RequestMapping("orderSub.do")
 	@ResponseBody
 	public String insertProgressOrder(ProgressOrderVO vo, MenuOrderVO mvo)

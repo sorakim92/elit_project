@@ -48,7 +48,7 @@ $("#id_input").click(function() {
 			}
 		},
 		error: function() { //장애발생
-			alert("오류발생")
+			alert("오류발생");
 
 		}
 	});
@@ -73,7 +73,7 @@ $("#id_input").click(function() {
 	                <button value="button" id="id_input" name="id_input" >중복확인</button>
 	            </div>
 	             <div>
-	            	<button type="button" id="p_btn_submit" name="p_btn_submit">
+	            	<button type="submit" id="p_btn_submit" name="p_btn_submit">
 	            		확인
 	            	</button>
 	            </div> 

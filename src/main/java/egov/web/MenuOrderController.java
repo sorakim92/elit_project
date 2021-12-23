@@ -25,6 +25,9 @@ public class MenuOrderController {
 	@Resource(name="menuorderService")
 	MenuOrderService menuorderService;
 	
+	/*
+	 * 주문하기 리스트 (소라)
+	 * */
 	@RequestMapping("menuOrderList.do")
 	public String selectStoreMenuList(MenuOrderVO vo,MemberVO mvo, Model model, HttpSession session) 
 											throws Exception {
@@ -71,6 +74,9 @@ public class MenuOrderController {
 		return "menu2/storeMenuList";
 	}
 	
+	/*
+	 * 메뉴추가하기 (소라)
+	 * */
 	@RequestMapping("addOrderMenu.do")	
 	@ResponseBody
 	public String insertAddOrder(MenuOrderVO vo, Model model, HttpSession session) throws Exception {
@@ -118,6 +124,9 @@ public class MenuOrderController {
 		return msg;
 	}
 	
+	/*
+	 * 주문하고 그 이후로 메뉴 지우기 (소라) 
+	 * */
 	@RequestMapping("deleteOrderMenu.do")
 	@ResponseBody
 	public String deleteOrderMenu(MenuOrderVO vo) 
