@@ -5,7 +5,48 @@
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="categoryVO" type="egov.service1.CategoryVO"/>
 
+	<!-- 오늘 뭐먹지 (소라) -->
+	<select id="categoryDAO.selecttodayTopList" resultClass="egovMap">
+		SELECT  a.* FROM
+			(SELECT  
+					p.storeunq||'' storeunq,
+					count(*)cnt, 
+					s.storename,
+					s.fee, 
+					decode(s.storerate,'0','리뷰없음',to_char(s.storerate,'fm9.0')||'') storerate,
+					decode(s.storeimage,null,'사진없음',s.storeimage) storeimage,
+					s.cateunq
+			FROM
+					progressorder p, store s
+			WHERE 
+					to_char(p.rdate,'yyyy/mm/dd') = to_char(sysdate,'yyyy/mm/dd') 
+			AND 
+					s.storeunq = p.storeunq
+			GROUP BY 
+						p.storeunq, 
+						s.storename, 
+						s.fee,
+						storerate,
+						storeimage,
+						cateunq)a 
+		ORDER BY 
+					cnt DESC
+	</select>
+	<!-- 오늘뭐먹지 찜(소라) -->
+	<select id="categoryDAO.selectZZIMlikeTodaylist" resultClass="egovMap">
+		select 
+				
+				storeunq||'' storeunq, 
+			
+				likechk
+		from 	
+				zzimlist
+		where 	
+				userid = #userid# 
+		
+	</select>
 
+	<!-- 공통(소라) -->
 	<select id="categoryDAO.selectKRfoodList" resultClass="egovMap">
 		
 		SELECT b.* FROM (
@@ -19,15 +60,16 @@
 						storeclosedays,
 						storephone,
 						storeaddr,
-						to_char(storerate,'fm9.0')||'' storerate,
-						decode(fee,'0','무료',fee||'원') fee
+						decode(storerate,'0','리뷰없음',to_char(storerate,'fm9.0')||'') storerate,
+						decode(fee,'0','무료',fee||'원') fee,
+						decode(storeimage,null,'사진없음',storeimage) storeimage
 				FROM 	store
-				WHERE 	cateunq = '111'
+				WHERE 	cateunq = #cateunq#
 				ORDER BY	storerate DESC )a) b
 				
 			
 	</select>
-
+	<!-- 공통 찜(소라) -->
 	<select id="categoryDAO.selectZZIMlike" resultClass="egovMap">
 		select 
 				

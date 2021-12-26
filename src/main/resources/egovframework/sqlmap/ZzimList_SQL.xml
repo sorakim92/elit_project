@@ -50,10 +50,13 @@
 			
 	</select>
 	
+	
+	<!-- 소라 -->
 	<select id = "zimlistDAO.LikeInsertChk" resultClass ="java.lang.Integer">
 		select count(*) from zzimlist where userid = #userid# and storeunq = #storeunq# and cateunq = #cateunq#
 	</select>
 	
+	<!-- 소라 -->
 	<select id="zimlistDAO.selectLikeChk" resultClass = "java.lang.String" >
 		select 
 				likechk 
@@ -63,7 +66,7 @@
 				userid = #userid# and storeunq = #storeunq# and cateunq = #cateunq#
 	</select>
 	
-	
+	<!-- 소라 -->
 	<insert id="zimlistDAO.insertZzimlike">
 	
 		INSERT INTO zzimlist(
@@ -83,6 +86,7 @@
 			
 	</insert>
 	
+	<!-- 소라 -->
 	<update id="zimlistDAO.addzzimlike">
 	
 		UPDATE  
@@ -93,6 +97,7 @@
 				userid= #userid# and storeunq = #storeunq# and cateunq = #cateunq#
 	</update>
 	
+	<!-- 소라 -->
 	<update id="zimlistDAO.cancelzzimlike">
 			UPDATE  
 				zzimlist 

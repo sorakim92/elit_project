@@ -11,6 +11,7 @@ import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
 @Repository("categoryDAO")
 public class CategoryDAO extends EgovAbstractDAO{
 
+	
 	public List<?> selectKRfoodList(CategoryVO vo) {
 		return list("categoryDAO.selectKRfoodList",vo);
 	}
@@ -18,5 +19,14 @@ public class CategoryDAO extends EgovAbstractDAO{
 	public List<?> selectZZIMlike(Map<String, String> map) {
 		return list("categoryDAO.selectZZIMlike",map);
 	}
+
+	public List<?> selecttodayTopList(CategoryVO vo) {
+		return list("categoryDAO.selecttodayTopList",vo);
+	}
+
+	public List<?> selectZZIMlikeTodaylist(String userid) {
+		return list("categoryDAO.selectZZIMlikeTodaylist",userid);
+	}
+
 
 }

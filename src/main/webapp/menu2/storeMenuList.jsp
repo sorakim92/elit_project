@@ -270,7 +270,6 @@ function fn_addOrder(u) {
                     <col width="*" />
                 </colgroup>
                
-             	
                 <c:forEach var="result" items="${list }">
 				
                 <tr>
@@ -296,8 +295,9 @@ function fn_addOrder(u) {
                 
                 
 				</c:forEach>
-				
-				
+				<c:if test="${empty list }">
+				메뉴 준비중입니다. 
+				</c:if>
             </table>
              <form name="frm" id="frm">
                <input type="hidden" name="userid" id="userid" value="${vo.userid }">
