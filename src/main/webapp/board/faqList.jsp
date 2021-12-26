@@ -123,18 +123,7 @@ $(function(){
         <div style="width:100%; float:left; margin-top:20px; font-size:13px;">
           
           <div class="accordion" id="accordionExample" >
-			  <div class="accordion-item" >
-			    <h2 class="accordion-header" id="headingOne" >
-			      <button class="accordion-button"  type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-					자주묻는질문1 
-			      </button>
-			    </h2>
-			    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-			      <div class="accordion-body">
-			        자주묻는 질문에 대한 ....대다다ㅏ다다답... 
-			      </div>
-			    </div>
-			  </div>
+
 			  
 			  
 			<c:forEach var="result" items="${list }">

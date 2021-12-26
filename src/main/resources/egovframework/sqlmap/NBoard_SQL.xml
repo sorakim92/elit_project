@@ -5,15 +5,15 @@
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="nboardVO" type="egov.service1.NBoardVO"/>
 
-
+	<!-- 공지사항 게시글 개수(소라) -->
 	<select id="nboardDAO.selectTotalnotice" resultClass = "java.lang.Integer">
 		SELECT count(*) FROM nboard WHERE sort = 'N'
 	</select>
-
+	<!-- 자주묻는 질문 게시글 개수 (소라) -->
 	<select id="nboardDAO.selectTotalfaq" resultClass="java.lang.Integer">
 		SELECT count(*) FROM nboard WHERE sort = 'F'
 	</select>
-	
+	<!--  공지사항 리스트 (소라) -->
 	<select id="nboardDAO.selectNboardList" resultClass="egovMap">
 		SELECT 
 			lead(unq,1,'0') over(order by rn) punq,
@@ -37,7 +37,7 @@
 			WHERE
 					rn BETWEEN $s_no$ and $e_no$
 	</select>
-	
+	<!-- 공지사항 게시글 세부내역 및 이전글 다음글 (소라) -->
 	<select id="nboardDAO.selectnboardDetail" resultClass="NBoardVO">
 		SELECT c.* FROM(
 			SELECT lead(unq,1,'0') over(order by rn) punq,
@@ -62,7 +62,7 @@
 					       			ORDER BY udate DESC)a)b)c 
 				WHERE unq = #unq#
 	</select>
-	
+	<!-- 자주묻는질문 리스트 (소라) -->
 	<select id="nboardDAO.selectFAQList" resultClass="egovMap">
 		SELECT 
 			lead(unq,1,'0') over(order by rn) punq,
@@ -94,7 +94,7 @@
 	
 	
 	
-	
+	<!-- 게시글 쓰기 (소라) -->
 	
 	<insert id="nboardDAO.insertnboardWrite">
 		INSERT INTO nboard(	unq,
@@ -113,7 +113,7 @@
 
 	</insert>
 
-
+	<!--   게시글내용 수정 (소라) -->
 	<update id="nboardDAO.updatenboard">
 		UPDATE nboard 
 			SET 
@@ -122,14 +122,14 @@
 				udate = sysdate
 		WHERE unq = #unq#
 	</update>
-	
+	<!-- 공지사항 게시글 조회수 증가 (소라) -->
 	<update id="nboardDAO.updatenboardHits">
 		UPDATE nboard
 			SET hits= hits+1
 		WHERE unq = #unq#
 	
 	</update>
-	
+	<!-- 게시글 삭제 (소라) -->
 	<delete id="nboardDAO.deletenboard">
 	
 		DELETE FROM nboard WHERE unq = #unq#
