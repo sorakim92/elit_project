@@ -19,6 +19,12 @@
 	
   
 </head>
+<script>
+function fn_reply(reviewindex) {
+	var url = "popReviewAnsWrite.do";
+	window.open(url,"popup","width=500,height=450");
+}
+</script>
 <style>
 @font-face {
     font-family: "hanna";
@@ -146,6 +152,7 @@ section {
 }
 
 </style>
+
 <body>
 <div class="wrapper">
     <div class="main" style="min-height: 100%; padding-bottom:100px; flex:1;">
@@ -155,12 +162,9 @@ section {
             <h4>사장님광장</h4>
         </div>
         <div class="search">
-            <a href=""><font size="4" color="black">마이페이지</font></a>
-            <a href=""><font size="4">사장님 광장</font></a>
+            <%@include file = "../include/main_header2.jsp" %>
         </div> 
-        <div class="login">
-            <button type="button" class="btn btn-outline-warning" style="border-color: #f8cacc; color: black;">로그인</button>
-        </div>
+       
     </header>
         
     <nav>
@@ -183,7 +187,7 @@ section {
 
     <div style="width:100%;">
         <div class="" style="text-align:left; float:left; width:25%;">
-            <img src="../img/food1.PNG" width="200px" height="100px" alt=""/>
+            <img src="<c:url value='/img/nud.png'/>"  width="200px" height="100px" alt=""/>
         </div>        
         <div style="float:left;  width:25%;">
             <span style=""> 최근 리뷰  *개</span><br>
@@ -202,13 +206,13 @@ section {
                    1점<br>
         </div>
 
-        <div style="text-align:right; float:left;  width:25%;"  >
+        <!--  <div style="text-align:right; float:left;  width:25%;"  >
                 <img src="../img/stat.PNG" width="200px" height="150px" alt="">
-        </div><br>
+        		</div><br>-->
 
-    </div><br><br><br><br><br><br>
+    </div><br><br><br><br><br><br><br>
 		
-        <div style="text-align:left;">
+        <div style="text-align:right;">
             <input type="text" value="">
             <button> 조회</button>
         </div><br><br><br><br>
@@ -232,12 +236,12 @@ section {
                 <tr>
                     
                     <td>
-                    	<a href="OrderReviewDetail.do?reviewindex=${result.reviewindex }">${result.userid }<br>★ = ${result.rate }
+                    	<a href="OrderReviewDetail.do?reviewindex=${result.reviewindex }">${result.userid }<br> '별점' = ${result.rate }
                     </a></td>
 	  				<td>${result.rcontent }</td>
 	  				<td>${result.rdate }</td>
                    
-                    <td><button type="button" ><a href="popReviewAnsWrite.do">답변하기</a></button></td>  
+                    <td><button type="button" onclick="fn_reply('${result.reviewindex}')" >답변하기</button></td>  
                 </tr>
                 </c:forEach>
             </table>

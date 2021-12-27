@@ -30,8 +30,12 @@
 				email,
 				storeaddr
 				
-		FROM bossmember
-		WHERE userid = 'test1'
+		FROM 
+				bossmember
+		WHERE 
+				userid = #userid#
+		
+		
 	
 	</select>
 
