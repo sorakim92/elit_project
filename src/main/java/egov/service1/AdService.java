@@ -6,7 +6,7 @@ public interface AdService {
 
 	String  insertAd(AdVO vo) throws Exception;
 
-	List<?> selectadService(AdVO vo) throws Exception;
+	
 	
 	
 	

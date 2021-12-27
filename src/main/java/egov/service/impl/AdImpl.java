@@ -21,11 +21,5 @@ public class AdImpl implements AdService{
 			return adDAO.insertAd(vo);
 		}
 
-		@Override
-		public List<?> selectadService(AdVO vo) throws Exception {
-
-			
-			return adDAO.selectadService(vo);
-		}
-	
+		
 }

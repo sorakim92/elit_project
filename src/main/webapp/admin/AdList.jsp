@@ -57,7 +57,7 @@
         <ul id='dock'>
           <li class='launcher'>
             <i class='icon-home'></i>
-            <a href="dashboard.html">메인화면</a>
+            <a href="AdminMain.do">메인화면</a>
           </li>
           <br><br>
           <li class='active launcher'>
@@ -67,7 +67,7 @@
           <br><br>
           <li class='launcher'>
             <i class='icon-envelope'></i>
-            <a href="inquiry.html">문의내역</a>
+            <a href="#">문의내역</a>
           </li>
           <br><br>
           <li class='launcher'>
@@ -105,13 +105,13 @@
             <!-- jquery -->
           <c:forEach var="result" items="${list }">
             <div id="accordion">
-              <h3>${result.title }</h3>
+              <h3>aa</h3>
               <div>
                 <p style="text-align:center;">
                 <img src="/assets/images/addpic.png" class="img-fluid" alt="..." style="height:200px;" >
                 </p>
                 <p>
-             ${result.ment }
+             sdfsadf
                 </p>
                 <p style="text-align:center;">
                   <button type="button" class="btn btn-success">설정</button>

@@ -10,8 +10,14 @@ public class BossMemberVO {
 	private String business;
 	private String rdate;
 	private int storeunq;
+	String k2text;
 	
-	
+	public String getK2text() {
+		return k2text;
+	}
+	public void setK2text(String k2text) {
+		this.k2text = k2text;
+	}
 	public String getuserid() {
 		return userid;
 	}

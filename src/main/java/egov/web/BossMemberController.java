@@ -28,7 +28,7 @@ public class BossMemberController {
 		
 		model.addAttribute("vo",vo);
 		model.addAttribute("list",list);
-		
+		model.addAttribute("k2text",vo.getK2text());
 		
 		return "admin/BossMemberList";
 	}
