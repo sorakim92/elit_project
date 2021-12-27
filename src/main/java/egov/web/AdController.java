@@ -18,14 +18,11 @@ public class AdController {
 	@Resource(name = "adService")
 	AdService adService;
 	
-	
+	/*
+	 * 광고 페이지  강성모 (에러 해결중 건들X)
+	 * 	 */
 	@RequestMapping("AdList.do")
-	public String selectadlist( AdVO vo, Model model ) throws Exception{
-		
-		List<?> list = adService.selectadService(vo);
-		
-		model.addAttribute("vo",vo);
-		model.addAttribute("list",list);
+	public String selectadlist( AdVO vo ) throws Exception{
 		
 		return "admin/AdList";
 	}

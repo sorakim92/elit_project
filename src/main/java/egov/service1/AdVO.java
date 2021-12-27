@@ -14,6 +14,8 @@ public class AdVO {
 	private String b_userid;
 	private String email;
 	private String phone;
+	
+	
 	public int getAdindex() {
 		return adindex;
 	}
