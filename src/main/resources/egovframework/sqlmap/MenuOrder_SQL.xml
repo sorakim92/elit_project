@@ -44,7 +44,7 @@
 	</select>
 	
 	<!-- 메뉴 상세항목(소라) -->
-	<select id="menuorderDAO.selectmenudetail" resultClass="menuorderVO" >S
+	<select id="menuorderDAO.selectmenudetail" resultClass="menuorderVO" >
 		select menuunq, menuname, price, storeunq from menu where menuunq= #menuunq#
 	
 	
