@@ -145,6 +145,15 @@ section {
     
 }
 </style>
+<script>
+function fn_write(BossmemberSessionID) {
+	var url = "b_ConsumerListWrite.do";
+	window.open(url,"popup","width=600,height=350");
+	
+}
+</script>
+
+
 <body>
 <div class="wrapper">
     <div class="main" style="min-height: 100%; padding-bottom:100px; flex:1;">
@@ -154,13 +163,10 @@ section {
 	    <h4>사장님광장</h4>
 	    </div>
         <div class="search">
-            <a href><font color="black">마이페이지</font></a>
-            <a href>사장님 광장</a>
+            <%@include file = "../include/main_header2.jsp" %>
         </div> 
         <!-- 기능: 로그아웃상태에서는 로그인 버튼,  로그인상태에서는 마이페이지 | 로그아웃 -->
-        <div class="login">
-            <button type="button" class="btn btn-outline-warning" style="border-color: #f8cacc; color: black;">로그인</button>
-        </div>
+        
     </header>
         
     <nav>
@@ -249,7 +255,7 @@ section {
     </div>
     
     <div style="text-align:right;" >
-    <button type="button" class="btn3" style="background-color:orange" ><a href="b_ConsumerListWrite.do">글쓰기</a></button>
+    <button type="button" class="btn3" style="background-color:orange" onclick="fn_write('${(BossmemberSessionID) }')">글쓰기</button>
     </div>
 	
     <footer>

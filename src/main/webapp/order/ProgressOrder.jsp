@@ -195,13 +195,10 @@ $(function() {
         <span style="font-size: 20px;">사장님 광장</span>
         </div>
         <div class="search">
-            <span style="font-size: 15px;"><a href="">마이페이지</a></span>
-            <span style="font-size: 15px;"><a href="">사장님 광장</a></span>
+            <%@include file = "../include/main_header2.jsp" %>
         </div> 
         <!-- 기능: 로그아웃상태에서는 로그인 버튼,  로그인상태에서는 마이페이지 | 로그아웃 -->
-        <div class="login">
-            <button type="button" class="btn btn-outline-warning" style="border-color: #f8cacc; color: black;">로그인</button>
-        </div>
+        
     </header>
         
     
@@ -209,9 +206,9 @@ $(function() {
                     border-bottom: 1px solid #ccc; ">
             <ul class="on_nav1">
                 <li><a href="progressorderList.do">주문관리</a></li>
-                <li><a href="menuList.do">메뉴관리</a></li>
-                <li><a href="adWrite.do">광고신청/관리</a></li>
-                <li><a href="b_consumerList.do">커뮤니티</a></li>
+                <li><a href="menuList.do"><font color="black">메뉴관리</font></a></li>
+                <li><a href="adWrite.do"><font color="black">광고신청/관리</font></a></li>
+                <li><a href="b_consumerList.do"><font color="black">커뮤니티</font></a></li>
             </ul>
        </div>
     
@@ -256,8 +253,8 @@ $(function() {
             </div>       
             
             <div style="width:40%; height:160px;float:left; text-align: left;">
-                    <button type="button" class="btn2" onclick=""><h3>접수</h3></button>
-                    <button type="reset" class="btn3" onclick="location.href=''"><h3>거부</h3></button>
+                    <button type="button" class="btn2" onclick="f1(1)"><h3>접수</h3></button>
+                    <button type="reset" class="btn3" onclick="f2(1)"><h3>거부</h3></button>
             </div> 
         </div>
           </c:forEach> 
@@ -306,11 +303,30 @@ $(function() {
 
 }
 </style>
+<script>
+function f1(v) {
+	if(v==1) {
+		document.getElementById('acctime').style.display="block";
+	} else {
+		document.getElementById('acctime').style.display="none";
+	}
+}
+function f2(v) {
+	if(v==1) {
+		document.getElementById('dctime').style.display="block";
+	} else {
+		document.getElementById('dctime').style.display="none";
+	}
+}
+
+
+
+</script>
     <!-- 우측 사이드바 -->
     <aside class="sidebar">
         <!-- 주문접수-->
-        <form>
-        <div style="border:1px solid #ccc; width:98%; height:auto;">
+       <form>
+        <div style="border:1px solid #ccc; width:98%; height:auto; display:none;" class="acctime" id="acctime" >
             <span style="display:inline-block; border-radius: 0.5em;
                     background: #f8cacc; padding: 5px 10px 5px 10px;
                     margin:5px 0 10px 10px;
@@ -322,14 +338,14 @@ $(function() {
                 <div style="width:100%; margin-bottom:10px;">
                     <div style="text-align:center; margin-bottom:10px;">배달 시간을 선택해주세요</div>
                     <div style="text-align:center; margin-bottom:10px;">
-                        <button type="" class="on_btn3">20분</button>
-                        <button type="" class="on_btn3">30분</button>
-                        <button class="on_btn3">40분</button>
+                        <button type="button" class="on_btn3">20분</button>
+                        <button type="button" class="on_btn3">30분</button>
+                        <button type="button" class="on_btn3">40분</button>
                     </div>
                     <div style="text-align:center;">  
-                        <button class="on_btn3">50분</button>
-                        <button class="on_btn3">60분</button>
-                        <button class="on_btn3">90분</button>
+                        <button type="button" class="on_btn3">50분</button>
+                        <button type="button" class="on_btn3">60분</button>
+                        <button type="button" class="on_btn3">90분</button>
                     </div>
                 </div>
                 <div style="text-align:center;">
@@ -341,10 +357,11 @@ $(function() {
             </div>
         </div>
 		</form>
+		
 		<form>
         <!-- 주문거부 -->
         <div style="border:1px solid #ccc; width:98%; height:auto;
-                    margin:10px 0 10px 0; ">
+                    margin:10px 0 10px 0; display:none;  " class="dctime" id="dctime"  >
             <span style="display:inline-block; border-radius: 0.5em;
                     background: #f8cacc; padding: 5px 10px 5px 10px;
                     margin:5px 0 10px 10px;
@@ -370,9 +387,10 @@ $(function() {
                     <button type="button" onclick="window.close();" class="on_btn4">확인</button>
                 </div>     
              </div>
-            </div>    
+        </div>
+        </form>    
         <!-- 주문거...? -->
-		</form>
+		<!--  
         <div style="border:1px solid #ccc; width:98%; height:auto; 
                     margin:10px 0 10px 0;">
             <span style="display:inline-block; border-radius: 0.5em;
@@ -401,7 +419,7 @@ $(function() {
                 </div>  
 
             </div>
-        </div>
+        </div>-->
     </aside>
 
     </div>

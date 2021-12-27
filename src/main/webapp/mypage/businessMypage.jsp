@@ -204,29 +204,23 @@ $(function() {
     		<img src="<c:url value='/img/logo.png'/>" width="200px" height="100px" alt="로고"/>
             <h4>사장님 마이페이지</h4>
         </div>
-        <div class="search">
-            <a href>마이페이지</a>
-             <a href><font color="black">사장님 광장</font></a>
-          
+        <div class="search" >
+          	<%@include file = "../include/main_header2.jsp" %>
         </div> 
-        <!-- 기능: 로그아웃상태에서는 로그인 버튼,  로그인상태에서는 마이페이지 | 로그아웃 -->
-        <div class="login">
-            <button type="button" class="btn btn-outline-warning" style="border-color: #f8cacc; color: black;">로그인</button>
-        </div>
+        
+        
     </header>
         
     <nav>
         <div class="" >
-          
+           <a href="BossMemberDetail.do"><font size="4">회원정보수정 |</font></a>
             <a href="progressorderList.do"><font size="4" color="black">주문내역 | </font></a>
-            <a href="BossMemberDetail.do"><font size="4">회원정보수정 |</font></a>
-            <a href=""><font size="4" color="black">문의내역 |</font></a>
-            <a href=""><font size="4" color="black">리뷰관리</font></a>
+           
         </div>
     </nav>
         
     
-    <form name="frm" id="frm"> 
+    <form name="frm" id="frm" > 
    
     <div style="">
         아이디&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="userid" id="userid" placeholder="${vo.userid}" readonly><br>

@@ -3,6 +3,7 @@ package egov.web;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -93,15 +94,18 @@ public class BossMemberController {
 	
 	
 	@RequestMapping("BossMemberDetail.do")
-	public String selectbossmemberDetail(BossMemberVO vo, Model model) 
+	public String selectbossmemberDetail(BossMemberVO vo, Model model, HttpSession session) 
 									throws Exception {
 		// 상세보기 서비스
-		vo = bossmemberService.selectbossmemberDetail(vo);
-		String userid = "test1";
+		String userid = (String) session.getAttribute("BossmemberSessionID");
 		vo.setuserid(userid);
 		
 		
 		
+		vo = bossmemberService.selectbossmemberDetail(vo);
+		
+		
+			
 		model.addAttribute("vo",vo);
 		
 		
