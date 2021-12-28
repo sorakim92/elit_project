@@ -76,15 +76,19 @@ section {
 .article3 {
     width:1000px;
     height:300px;
-    border: 1px solid #ccc;
+    /*border: 1px solid #ccc;*/
     margin: 10px 0 10px 0;
+}
+.article3_tbl_cap {
+	color:#000; 
+	caption-side: top;
+	font-family: jua;
 }
 .ldiv{
     float:left;
     padding:10px;
 	width:48%;
 	height:300px;
-	border:1px solid #999900;
 	
 }
 .rdiv{
@@ -92,7 +96,6 @@ section {
     padding:10px;
 	width:48%;
 	height:300px;
-	border:1px solid #1c1f49;
 }
 
 .main_b_tbl{
@@ -100,6 +103,7 @@ section {
     height:200px;
     border: 1px solid #ccc;
 }
+
 .cate_tbl {
     width : 100%;
 }

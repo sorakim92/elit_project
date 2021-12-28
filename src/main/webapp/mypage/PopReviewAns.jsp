@@ -8,12 +8,12 @@
 </head>
 <style>
 .review.title {
-    float: center;
+    float: left;
 }
 .contents {
-    width: 800px;
+    width: 500px;
     height: 300px;
-    text-align: center;
+    text-align: left;
 }
 .btn_submit {
     width:100px;
@@ -60,7 +60,8 @@
 				success : function(data) {
 					if (data == "ok") {
 						alert("저장완료");
-						location="storeReviewList.do";
+						opener.document.location="storeReviewList.do";
+  						self.close();
 					} else {
 						alert("저장실패");
 					}
@@ -89,7 +90,7 @@
 
         <br><br>
         <div class="win_btn" align="center">
-            <input type="submit" value="답변등록" id="btn_submit" class="btn_submit" >
+            <button type="button"  id="btn_submit" class="btn_submit"  >답변등록</button>
             
             <button type="reset" class="btn1_submit" onclick="window.close();">취소</button>
         </div>

@@ -40,7 +40,7 @@
 	</select>
 
 
-
+	<!--  주문내역 progressorder 테이블로 저장 (소라) -->
 	<insert id = "progressorderDAO.insertProgressOrder" >
 		INSERT INTO progressorder 
 					(orderindex, 
@@ -70,7 +70,7 @@
 					#userid#)
 	
 	</insert>
-	
+	<!-- 주문완료시 preorder 정보 지우기 (소라) -->
 	<delete id="progressorderDAO.resetpreorder" >
 		DELETE FROM preorder 
 				WHERE  userid = #userid# and storeunq = #storeunq#

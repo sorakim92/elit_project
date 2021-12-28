@@ -25,6 +25,15 @@
             </list>
         </property>
     </bean>
+	    <!-- json (mapper) s -->
+   <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"> 
+         <property name="contentType" value="application/json;charset=UTF-8" /> 
+   </bean> 
+   <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"> 
+         <property name="order" value="1"> </property>
+   </bean>
+    <!-- json (mapper) e -->    
+	    
 	    
 	    <!-- 업로드 설정 S  -->
 	<bean id="spring.RegularCommonsMultipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -53,7 +62,7 @@
         </property>
     </bean>
 
-    <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="1"
+    <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="2"
 	    p:viewClass="org.springframework.web.servlet.view.JstlView"
 	    p:prefix="/" p:suffix=".jsp"/>
 

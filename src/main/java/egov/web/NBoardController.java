@@ -18,6 +18,7 @@ public class NBoardController {
 	@Resource(name = "nboardService")
 	NBoardService nboardService;
 	
+	/*공지사항 리스트 (소라)*/
 	@RequestMapping("nBoardList.do")
 	public String selectnBoardList(NBoardVO vo, Model model) 
 									throws Exception {
@@ -82,12 +83,14 @@ public class NBoardController {
 		return "board/nBoardList";
 	}
 	
+	/* 글쓰기 화면 (소라)*/
 	@RequestMapping("nboardWrite.do")
 	public String nboardWrite() throws Exception {
 
 		return "board/nboardWrite";
 	}
 	
+	/*글쓰기 저장 (소라)*/
 	@RequestMapping("nboardWriteSave.do")
 	@ResponseBody
 	public String insertnboardWrite(NBoardVO vo) 
@@ -112,6 +115,7 @@ public class NBoardController {
 		return msg;
 	}
 	
+	/* 글 내용 보기 (소라)*/
 	@RequestMapping("nboardDetail.do")
 	public String selectnboardDetail(NBoardVO vo, Model model) 
 									throws Exception {
@@ -135,6 +139,7 @@ public class NBoardController {
 		return "board/nboardDetail";
 	}
 	
+	/* 글 수정하기 (소라)*/
 	@RequestMapping("nboardModify.do")
 	public String selectnboardModify(NBoardVO vo, Model model) 
 									throws Exception {
@@ -147,6 +152,7 @@ public class NBoardController {
 		return "board/nboardModify";
 	}
 	
+	/* 글 수정저장 (소라)*/
 	@RequestMapping("nboardModifySave.do")
 	@ResponseBody
 	public String updatenboard(NBoardVO vo) 
@@ -166,6 +172,7 @@ public class NBoardController {
 		return msg;
 	}
 	
+	/* 게시글 삭제 (소라)*/
 	@RequestMapping("nBoardDelete.do")
 	@ResponseBody
 	public String deletenboard(NBoardVO vo) 
@@ -185,7 +192,7 @@ public class NBoardController {
 		return msg;
 	}
 	
-	
+	/* 자주묻는 질문 게시글 리스트 (소라) */
 	@RequestMapping("faqList.do")
 	public String selectFAQList(NBoardVO vo, Model model) 
 									throws Exception {
@@ -249,11 +256,6 @@ public class NBoardController {
 		return "board/faqList";
 	}
 	
-	@RequestMapping("faqWrite.do")
-	public String faqWrite() throws Exception {
-		
-		return "board/faqWrite";
-	}
 
 	
 	

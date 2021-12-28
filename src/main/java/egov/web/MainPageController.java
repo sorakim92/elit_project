@@ -1,20 +1,43 @@
 package egov.web;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import egov.service1.NBoardService;
+import egov.service1.NBoardVO;
 
 @Controller
 public class MainPageController {
 
+	@Resource(name = "nboardService")
+	NBoardService nboardService;
 	
 	
 	/*
   메인페이지 (소라)
   */
 	@RequestMapping("mainPage.do")
-	public String mainPage() throws Exception {
+	public String mainPage(NBoardVO vo, Model model) throws Exception {
 		
+		//메인페이지 하단 공지사항, 자주묻는질문 보이기 
 		
+		List<?> list = nboardService.selectNboardList(vo);
+		
+		List<?> flist = nboardService.selectFAQList(vo);
+
+		
+		model.addAttribute("list",list);
+		model.addAttribute("flist",flist);
+
 		return "main/mainPage";
 	}
 	
@@ -48,5 +71,10 @@ public class MainPageController {
 		return "policy/PrivacyPolicy";
 
 	}
+	
+	
+	
+	
+	
 	
 }

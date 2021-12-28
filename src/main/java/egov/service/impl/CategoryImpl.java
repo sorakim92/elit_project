@@ -25,4 +25,16 @@ public class CategoryImpl implements CategoryService{
 		return categoryDAO.selectZZIMlike(map);
 	}
 
+	@Override
+	public List<?> selecttodayTopList(CategoryVO vo) throws Exception {
+		return categoryDAO.selecttodayTopList(vo);
+	}
+
+	@Override
+	public List<?> selectZZIMlikeTodaylist(String userid) throws Exception {
+		return categoryDAO.selectZZIMlikeTodaylist(userid);
+	}
+
+	
+
 }

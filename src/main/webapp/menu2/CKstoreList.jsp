@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>한식</title>
+    <title>치킨</title>
 
  	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
@@ -168,7 +168,7 @@ function fn_like(u,c) {
                	</c:forEach>
            </tr>
         </table>
-    
+       
         <form id="frm" name="frm">
         <input type="hidden" name="userid" id="userid" value=<%=USERID%>>
         <input type="hidden" name="storeunq" id="storeunq" value="0">

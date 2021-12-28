@@ -173,14 +173,20 @@
   
               </div>
               <div class='col-md-3'>
+              
+              <form name="frm" method="post" action="BossMemberList.do">
                 <div class='input-group'>
-                  <input class='form-control' placeholder='Quick search...' type='text'>
+                  <input class='form-control' name = "k2text"  id = "k2text" 
+                  value = "${k2text }"
+                  placeholder='Quick search...' type='text'>
                   <span class='input-group-btn'>
-                    <button class='btn' type='button'>
+                    <button class='btn'>
                       <i class='icon-search'></i>
                     </button>
                   </span>
                 </div>
+                </form>    
+                
               </div>
             </div>
           </div>

@@ -97,7 +97,8 @@
   				success : function(data) {
   					if (data == "ok") {
   						alert("저장완료");
-  						location="b_consumerList.do";
+  						opener.document.location="b_consumerList.do";
+  						self.close();
   					} else {
   						alert("저장실패");
   					}
@@ -108,7 +109,10 @@
   			});
   		});
   	});
- </script>
+</script>
+
+
+
 <form name="frm" id="frm">    
 <fieldset>
 
@@ -145,8 +149,8 @@
     </div>  <br><br> 
 
     <div class="button1">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" id="btn1" class="btn1">등록</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;<button type="reset" class="btn2">취소</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" id="btn1" class="btn1" >등록</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;<button type="reset" class="btn2" onclick="window.close();">취소</button>
     </div>
     </form>
 </fieldset>

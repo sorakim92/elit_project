@@ -249,13 +249,10 @@ section {
 	    <h4>사장님광장</h4>
 	    </div>
         <div class="search">
-            <a href>마이페이지</a>
-            <a href>사장님 광장</a>
+            <%@include file = "../include/main_header2.jsp" %>
         </div> 
        
-        <div class="login">
-            <button type="button" class="btn btn-outline-warning" style="border-color: #f8cacc; color: black;">로그인</button>
-        </div>
+        
     </header>
     
         

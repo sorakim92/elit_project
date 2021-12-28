@@ -147,14 +147,10 @@ section {
         <span style="font-size: 20px;">사장님 광장</span>
         </div>
         <div class="search">
-           
-            <a href><font size="4" color="black">마이페이지</font></a>
-            <a href><font size="4" >사장님 광장</font></a>
+           <%@include file = "../include/main_header2.jsp" %>
         </div> 
         <!-- 기능: 로그아웃상태에서는 로그인 버튼,  로그인상태에서는 마이페이지 | 로그아웃 -->
-        <div class="login">
-            <button type="button" class="btn btn-outline-warning" style="border-color: #f8cacc; color: black;">로그인</button>
-        </div>
+        
     </header>
         
     <nav>

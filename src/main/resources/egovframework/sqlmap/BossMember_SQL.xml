@@ -20,8 +20,47 @@
 						member
 				WHERE	
 						userid IS NOT NULL 
-				AND		business = 'P'
-				OR 		business = 'Y'
+				AND		(business = 'P'
+				OR 		business = 'Y')
+				
+				<isNotNull property="k2text">
+					<isNotEmpty property="k2text">
+					and (
+					<!-- 오라클데이터의 Y값이 아닌 한글을 입력해도 검색어에 나오도록하기 -->
+					<isEqual property = "k2text" compareValue="사장">
+						business LIKE 'Y'
+					</isEqual>
+					<isEqual property = "k2text" compareValue="사장님">
+						business LIKE 'Y'
+					</isEqual>
+					<isEqual property = "k2text" compareValue="일반">
+						business LIKE 'P'
+					</isEqual>
+					<isEqual property = "k2text" compareValue="일반회원">
+						business LIKE 'P'
+					</isEqual>
+					
+					<!-- 위의 단어수 만큼 isnotequal만들어주자 -->
+					<isNotEqual property = "k2text" compareValue="사장">
+					<isNotEqual property = "k2text" compareValue="사장님">
+					<isNotEqual property = "k2text" compareValue="일반">
+					<isNotEqual property = "k2text" compareValue="일반회원">
+					
+						 business   LIKE '%$k2text$%'
+					OR   userid     LIKE '%$k2text$%'
+					OR   username   LIKE '%$k2text$%'
+					OR   userphone  LIKE '%$k2text$%' 
+					OR   email  LIKE '%$k2text$%' 
+					</isNotEqual>
+					</isNotEqual>
+					</isNotEqual>
+					</isNotEqual>
+				
+					
+					)
+					</isNotEmpty>
+				</isNotNull>
+				
 				ORDER BY rdate DESC) a )b
 	</select>
 	<select id="bossmemberDAO.selectbossmemberDetail" resultClass="BossMemberVO">
@@ -30,8 +69,12 @@
 				email,
 				storeaddr
 				
-		FROM bossmember
-		WHERE userid = 'test1'
+		FROM 
+				bossmember
+		WHERE 
+				userid = #userid#
+		
+		
 	
 	</select>
 
