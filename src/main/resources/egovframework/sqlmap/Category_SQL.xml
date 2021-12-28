@@ -37,7 +37,7 @@
 		from 	
 				zzimlist
 		where 	
-				cateunq = #cateunq# and userid = #userid# 
+				cateunq = '$cateunq$' and userid = '$userid$' 
 		
 	</select>
 	
