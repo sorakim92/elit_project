@@ -14,8 +14,9 @@
         </ul>
     </div>
     <div class="ft_info">
-        (주) 이릿딜리버리...? 사업자등록번호 131-0000-0000<br>
-         주소 서울송파구 ********************* <br>
-        COPYRIGHT ~~~~~~~~~ ALL RIGHT RESERVED
+        <span class="ft_info_sp1">(주) 이릿딜리버리 </span> 
+        <span class="ft_info_sp1">사업자등록번호 131-0000-0000 </span>
+        <span class="ft_info_sp1"> 주소 서울송파구 이릿로23 이릿빌딩 15F</span><br>
+        @&nbsp;COPYRIGHT ELIT ALL RIGHT RESERVED
     </div>
 </div>
