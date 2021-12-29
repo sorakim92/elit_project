@@ -73,7 +73,7 @@
                     
                     <c:forEach var="result" items="${list }">
                  	<tr>
-                 			                    
+                 		      
 	                    	<td>${result.zzimindex }</td> 
 	                    	<td>${result.storeunq }</td>
 	                     

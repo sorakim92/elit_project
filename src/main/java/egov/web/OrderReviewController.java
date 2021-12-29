@@ -14,11 +14,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import egov.service1.OrderReviewService;
 import egov.service1.OrderReviewVO;
 
+/*
+  음식 리뷰 (상혁)
+*/
+
 @Controller
 public class OrderReviewController {
 	@Resource(name = "orderreviewService")
 	OrderReviewService orderreviewService;
 	
+	// 주문리뷰(상혁)
 	@RequestMapping("OrderReviewList.do")
 	public String selectOrderReviewList(OrderReviewVO vo, Model model) throws Exception {
 	
@@ -50,12 +55,14 @@ public class OrderReviewController {
 	
 	}
 	
+	 // 리뷰쓰기(상혁)
 	@RequestMapping("OrderReviewWrite.do")
 	public String OrderReviewWrite( OrderReviewVO vo) throws Exception {
 		
 		return "mypage/OrderReviewWrite";
 	}
 	
+	// 리뷰저장(상혁)
 	@RequestMapping("OrderReviewWriteSave.do")
 	@ResponseBody
 	public String OrderReviewWriteSave( OrderReviewVO vo) throws Exception {
@@ -75,6 +82,7 @@ public class OrderReviewController {
 		return msg;
 	}
 	
+	// 리뷰 내용(상혁)
 	@RequestMapping("OrderReviewDetail.do")
 	public String selectBoardDetail( OrderReviewVO vo, Model model) throws Exception {
 		
@@ -91,6 +99,7 @@ public class OrderReviewController {
 		return "mypage/OrderReviewDetail";
 	}
 	
+	// 리뷰 수정(상혁)
 	@RequestMapping("OrderReviewModify.do")
 	public String OrderReviewModify( OrderReviewVO vo, Model model) throws Exception {
 		
@@ -102,6 +111,7 @@ public class OrderReviewController {
 		return "mypage/OrderReviewModify";
 	}
 	
+	// 리뷰 수정저장(상혁)
 	@RequestMapping("OrderReviewModifySave.do")
 	@ResponseBody
 	public String OrderReviewModifySave(OrderReviewVO vo) throws Exception {
@@ -119,6 +129,7 @@ public class OrderReviewController {
 		return msg;
 	}
 	
+	// 리뷰 삭제(상혁)
 	@RequestMapping("OrderReviewDelete.do")
 	@ResponseBody
 	public String OrderReviewDelete(OrderReviewVO vo) throws Exception {

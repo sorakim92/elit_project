@@ -73,7 +73,7 @@
 		
 		UPDATE orderreview
 				SET					
-					userid = 'test1',
+					userid = 'userid',
 					rdate =  sysdate,					
 					rcontent = '$rcontent$'
 			WHERE
