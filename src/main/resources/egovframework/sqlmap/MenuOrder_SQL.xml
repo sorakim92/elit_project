@@ -22,7 +22,7 @@
 		from 	store s, menu m
 			where s.storeunq=m.storeunq and m.storeunq = #storeunq#
 
-	
+	 
 	</select>
 	
 	<!-- 가게정보(소라) -->

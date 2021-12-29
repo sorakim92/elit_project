@@ -290,7 +290,7 @@ function fn_addOrder(u) {
                     <td>${result.price }</td>
                 </tr>
                 <tr >
-                    <td style="padding-bottom:10px;">한줄평~~~</td>
+                    <td style="padding-bottom:10px;"></td>
                 </tr>
                 
                 
