@@ -31,13 +31,13 @@ public class MemberController {
 	@Resource(name = "memberService")
 	MemberService memberService;
 	
-  //회원가입화면담당
+ 	//회원가입화면담당 (경석)
 	@RequestMapping("memberwrite.do")
 	public String memberSignin() {
 		return "login/memberSignin";
 	}
 	
-	//회원가입 저장소스
+	//회원가입 저장소스 (경석)
 	@RequestMapping("memberwriteSave.do")
 	@ResponseBody
 	public String insertmember(MemberVO vo) throws Exception {
@@ -51,8 +51,8 @@ public class MemberController {
 		}
 		return message;
 	}
-  //아이디 중복체크
-  @RequestMapping("Pop_doubleCheck.do")
+	//아이디 중복체크 (경석)
+	@RequestMapping("Pop_doubleCheck.do")
 	public String popidckwrite(String userid, Model model) throws Exception {
 		
 		model.addAttribute("userid1",userid);
@@ -60,7 +60,7 @@ public class MemberController {
 		return "login/Pop_doubleCheck";
 	}
 	
-	//회원가입 아이디 중복체크화면
+	//회원가입 아이디 중복체크화면 (경석)
 	@RequestMapping("Pop_doubleCheckSave.do")
 	@ResponseBody
 	public String popidck(String userid, Model model) throws Exception{
@@ -81,66 +81,16 @@ public class MemberController {
 		return msg;
 	}
 	
-	//로그인 화면 담당
+	//회원가입 주소 (경석)
+	@RequestMapping("Pop_addr.do")
+	public String Pop_addr() throws Exception {
+		return "login/Pop_addr";
+	}
+	
+	//로그인 화면 담당 (경석)
 	@RequestMapping("memberlogin.do")
 	public String memberlogin() {
 		return "login/memberlogin";
-	}
-	
-
-	
-	//아이디 찾기
-	@RequestMapping("Pop_useridfd.do")
-	public String Pop_useridfd() throws Exception {
-		
-		return "login/Pop_useridfd";
-	}
-	
-	//아이디 찾기 세이브
-	@RequestMapping("Pop_useridfdSave.do")
-	@ResponseBody
-	public String Pop_useridfdSave(MemberVO vo, Model model) throws Exception{
-		
-		//System.out.println("============"+vo.getUserid());
-		int result = memberService.Pop_useridfd(vo);
-		String msg = "";
-		//System.out.println(vo);
-		//System.out.println("=========222======="+vo.getUserid());
-		String userid= vo.getUserid();
-		
-		//System.out.println(userid);
-		if(result == 1) {
-			msg="ok";
-		} else {
-			msg = "fail";
-		}
-		
-		//System.out.println(msg);
-		return msg;
-	}
-	//아이디 찾기 결과 팝업창
-	@RequestMapping("Pop_findselectuserid.do")
-	public String Pop_findselectuserid() throws Exception {
-		return "login/Pop_findselectuserid";
-	}
-	
-	//아이디찾기 결과 팝업창 메세지 출력
-	@RequestMapping("Pop_findselectuseridSave.do")
-	@ResponseBody
-	public String Pop_findselectuseridSave(MemberVO vo, Model model) throws Exception {
-		
-		int result = memberService.Pop_useridfd(vo);
-		
-		String msg = "";
-		String userid= vo.getUserid();
-		if(result == 1) {
-			msg="ok";
-		} else {
-			msg = "fail";
-		}
-		
-		//System.out.println(msg);
-		return msg;
 	}
 
 	// 로그인 서브 처리창
@@ -197,15 +147,48 @@ public class MemberController {
 
 		return msg;
 	}
-
+	//아이디 찾기 (경석)
+	@RequestMapping("Pop_useridfd.do")
+	public String Pop_useridfd() throws Exception {
+		
+		return "login/Pop_useridfd";
+	}
 	
-	//비밀번호 찾기 화면
+	//아이디 찾기 세이브 (경석)
+	@RequestMapping("Pop_useridfdSave.do")
+	@ResponseBody
+	public String Pop_useridfdSave(MemberVO vo, Model model) throws Exception{
+		
+		//System.out.println("============"+vo.getUserid());
+		String result = memberService.Pop_useridfd(vo);
+		String msg = "";
+		
+		
+		
+		if(result == null) {
+			msg="fail";
+		} else {
+			msg = result;
+		}
+		
+		return msg;
+	}
+	//아이디 찾기 결과 팝업창 (경석)
+	@RequestMapping("Pop_findselectuserid.do")
+	public String Pop_findselectuserid(MemberVO vo, Model model) throws Exception {
+		
+		model.addAttribute("userid",vo.getUserid());
+		
+		return "login/Pop_findselectuserid";
+	}
+	
+	//비밀번호 찾기 화면 (경석)
 	@RequestMapping("Pop_memberpassfind.do")
 	public String Pop_memberpassfind() throws Exception {
 		
 		return "login/Pop_memberpassfind";
 	}
-	// 비밀번호 세이브 찾기
+	// 비밀번호 세이브 찾기 (경석)
 	@RequestMapping("Pop_memberpassfindSave.do")
 	@ResponseBody
 	public String Pop_memberpassfind(MemberVO vo ,Model model) throws Exception {
@@ -232,7 +215,7 @@ public class MemberController {
 		return msg;
 		
 	}
-	//비밀번호 재설정 화면
+	//비밀번호 재설정 화면 (경석)
 	@RequestMapping("Pop_newuserpw.do")
 	public String Pop_newuserpw(String userid, String email, Model model) throws Exception {
 		
@@ -243,7 +226,7 @@ public class MemberController {
 		return "login/Pop_newuserpw";
 	}
 	
-	//비밀번호변경처리
+	//비밀번호변경처리 (경석)
 	@RequestMapping("Pop_newuserpwSave.do")
 	@ResponseBody
 	public String Pop_newuserpwSave(MemberVO vo) throws Exception {
@@ -260,5 +243,34 @@ public class MemberController {
 		
 		return msg;
 		
+	}
+	
+	//회원탈퇴 팝업창화면(경석)
+	@RequestMapping("Pop_member_Withdraw.do")
+	public String Pop_member_Withdraw() throws Exception {
+		return "login/Pop_member_Withdraw";
+	}
+	
+	//회원탈퇴Save(경석)
+	@RequestMapping("Pop_member_WithdrawSave.do")
+	@ResponseBody
+	public String Pop_member_WithdrawSave(MemberVO vo) throws Exception {
+		
+		String msg = "";
+		int result = memberService.deletememberuser(vo);
+		
+		String userid = vo.getUserid();
+		String userpw = vo.getUserpw();
+		
+		System.out.println(userid);
+		System.out.println(userpw);
+		
+		if(result != 0) {
+			msg = "ok";
+		} else {
+			msg = "fail";
+		}
+		
+		return msg;
 	}
 }

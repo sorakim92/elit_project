@@ -39,6 +39,11 @@
 		window.open("Pop_doubleCheck.do","_blank","width=500px,height=500px,toolbars=no,scrollbars=no");
 	});
 });
+  $(function() {
+	  $("#useraddr1").click(function(){
+		window.open("Pop_addr.do","_blank","width=500px,height=772px,toolbars=no,scrollbars=no");
+	});
+});
 
   $(function() {
 	  
@@ -186,7 +191,7 @@
             
             <div class="" style="width:40%">
               <label for="address">우편번호</label>
-              <input type="text" class="form-control" id="useraddr1" value="1234" name="useraddr1" placeholder="우편번호" required; onClick="window.open('addr2.html','addr2','width=500px,height=500px,toolbars=no,scrollbars=no');return false;">
+              <input type="text" class="form-control" id="useraddr1" value="1234" name="useraddr1" placeholder="우편번호" required;>
               <div class="invalid-feedback">
                 주소를 입력해주세요.
               </div>

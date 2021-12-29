@@ -34,14 +34,16 @@
 	    		data : formData,
 	    		url  : "Pop_useridfdSave.do",
 	    		dataType : "text",                         //리턴 타입
-
-
+	    		
 	    		// 전송 후 셋팅
 	    		success: function(data) {
-					if(data == "ok") {
-						location="Pop_findselectuserid.do";
+	    			alert(data);
+					if(data == "fail") {
+						alert("이메일과 일치하는 아이디가 존재하지 않습니다. ");
 					} else {
-						 alert("이메일과 일치하는 아이디가 존재하지 않습니다. ");
+						//location="Pop_findselectuserid.do?userid="+data;
+						opener.document.frm.userid.value=data;
+						self.close();
 					}
 				},
 				error: function() { //장애발생

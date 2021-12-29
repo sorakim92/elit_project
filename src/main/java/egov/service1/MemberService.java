@@ -18,7 +18,7 @@ public interface MemberService {
 	public int Pop_memberpassfind(MemberVO vo) throws Exception;
 	
 	//아이디 찾기
-	public int Pop_useridfd(MemberVO vo)throws Exception;
+	public String Pop_useridfd(MemberVO vo)throws Exception;
 	
 	//비밀번호 찾기(변경화면)
 	public int Pop_newuserpw(MemberVO vo)throws Exception;
@@ -33,12 +33,6 @@ public interface MemberService {
 	 */
 	public int selectAdminMemberLogin(MemberVO vo) throws Exception;
 
-	
-	
-	
-	
-	
-	
-	
-	
+	// 회원탈퇴Save (경석)
+	public int deletememberuser(MemberVO vo) throws Exception;
 }
