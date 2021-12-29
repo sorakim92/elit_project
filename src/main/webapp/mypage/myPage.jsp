@@ -22,6 +22,17 @@
 </head>
 
 <style>
+
+@font-face {
+  font-family: "hanna";
+  src: url("fonts/BMHANNAAir_otf.otf");
+}
+
+@font-face {
+  font-family: "jua";
+  src: url("fonts/BMJUA_otf.otf");
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -124,7 +135,7 @@
                             <th scope="col">사용여부</th>
                             <th scope="col">사용가능 기간</th>
                         </tr>
-                    </colgroup>                        
+                    <colgroup>                        
                         <tr style="height: 100px; text-align: center;">
                             <td colspan="8" class="message" >보유하고 계신 쿠폰 내역이 없습니다</td>
                         </tr>                        
@@ -144,27 +155,27 @@
             </colgroup>
          <c:forEach var="result" items="${list }">
          <tr>
-		    <td>
+		    <!--  <td>
 		        <div style="width:120px; height: 120px; border: 1px solid #f8cacc; border-radius: 2em;
 		        margin:5px 20px 10px 20px; text-align: center;">
 		            <img src="/img/addpic.png" alt="업체대표사진" width="100" height="100" name="" id="">
 		        </div>
-		    </td>
+		    </td> --> 
 		 
 		    <td style="text-align: left; ">
-		        <span style="font-weight: bold;">가게이름</span>
+		        <span style="font-weight: bold;">${result.storeunq }</span>
 		            <button type="button" style="float: right;" value="주문상세">주문상세</button>
 		               
             <div style="font-size:13px; text-align: left; padding-left: 0px;">                       
-                <span>주문상품</span>
+                <span>${result.menuname }</span>
             </div>
         
         <div style="font-size:13px; text-align: left; padding-left: 0px;">
-            <span>갯수 가격</span><br>
-            <span><img src="/img/star.png" style="width:20px; height:20px; ">5.0</span>
+            <span>${result.price }</span><br>
+            
         </div>
         
-       </td>
+       
        </tr>
       </c:forEach>
     </table>

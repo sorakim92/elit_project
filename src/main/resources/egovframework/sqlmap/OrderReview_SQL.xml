@@ -23,7 +23,7 @@
 									'$rcontent$',
 									'$rimage$',
 									sysdate,
-									'$userid$',
+									'test1',
 									'$oderindex$' )
 	]]>
 	</insert>	
@@ -73,7 +73,7 @@
 		
 		UPDATE orderreview
 				SET					
-					userid = '$userid$',
+					userid = 'userid',
 					rdate =  sysdate,					
 					rcontent = '$rcontent$'
 			WHERE

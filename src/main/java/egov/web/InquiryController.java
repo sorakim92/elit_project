@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,16 +15,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import egov.service1.InquiryService;
 import egov.service1.InquiryVO;
 
+
+// 1:1 문의 사항(상혁)
 @Controller
 public class InquiryController {
 
 		@Resource(name = "inquiryService")
 		InquiryService inquiryService;
+		private HttpSession session;
 		
 		@RequestMapping("InquiryList.do")
 		public String selectInquiryList(InquiryVO vo, Model model) throws Exception {
-						
 			
+			/*
+			  String userid = (String) session.getAttribute("userid");
+			  vo.setUserid(userid);
+			 */
+			
+			// 페이지번호
 			  int page_no = vo.getPage_no(); // 1->1 ;; 2->11 ;; 3->21 
 			  int s_no = (page_no -1)*10 + 1;
 			  int e_no = s_no + (10-1);
@@ -53,12 +63,15 @@ public class InquiryController {
 			return "mypage/InquiryList";
 		}
 		
+		// 문의 글쓰기(상혁)
 		@RequestMapping("InquiryWrite.do")
 		public String mypage_InquiryWrite( InquiryVO vo ) throws Exception{
-
+				
+			
 			return "mypage/InquiryWrite";
 		}
 		
+		// 글쓰기 저장(상혁)
 		@RequestMapping("InquiryWriteSave.do")
 		@ResponseBody
 		public String mypage_InquiryWriteSave(InquiryVO vo) throws Exception {
@@ -73,6 +86,7 @@ public class InquiryController {
 			return message;			
 		}
 		
+		// 글 내용(상혁)
 		@RequestMapping("InquiryDetail.do")
 		public String selectBoardDetail(InquiryVO vo, Model model ) throws Exception {
 			
@@ -93,7 +107,8 @@ public class InquiryController {
 					
 			return "mypage/InquiryDetail";
 		}
-				
+		
+		// 글 수정(상혁)
 		@RequestMapping("InquiryModify.do")
 		public String mypage_InquiryModify( InquiryVO vo, Model model ) throws Exception {
 			
@@ -140,6 +155,7 @@ public class InquiryController {
 			return "mypage/InquiryModify";
 		}
 		
+		// 글 수정 저장(상혁)
 		@RequestMapping("InquiryModifySave.do")
 		@ResponseBody
 		public String InquiryModifySave( InquiryVO vo) throws Exception {
@@ -157,6 +173,7 @@ public class InquiryController {
 			
 		}
 		
+		// 글 삭제(상혁)
 		@RequestMapping("InquiryDelete.do")
 		@ResponseBody
 		public String InquiryDelete(InquiryVO vo) throws Exception {

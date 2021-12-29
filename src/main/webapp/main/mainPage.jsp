@@ -197,13 +197,13 @@ $(function(){
                         </div>
                     </td>
                     <td>
-                    	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do';">
+                    	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do?cateunq=111';">
 	                    	<img src="<c:url value='/img/mKRfood.jpg'/>" width="200" height="150" alt="사진">
 	                		<br>한식
                         </div>
                     </td>
                     <td>
-                    	<div style=" cursor: pointer;" onclick="location.href='CKstoreList.do';">
+                    	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do?cateunq=222';">
 	                    	<img src="<c:url value='/img/mChicken.png'/>" width="200" height="150" alt="사진">
 	                		<br>치킨
                         </div>
@@ -211,19 +211,19 @@ $(function(){
                 </tr>
                 <tr>
                     <td>
-                    	<div style=" cursor: pointer;" onclick="location.href='JPstoreList.do';">
+                    	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do?cateunq=333';">
 	                    	<img src="<c:url value='/img/mJPfood.jpg'/>" width="200" height="150" alt="사진">
 	                		<br>일식
                         </div>
                     </td>
                     <td>
-                    	<div style=" cursor: pointer;" onclick="location.href='WSstoreList.do';">
+                    	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do?cateunq=444';">
 	                    	<img src="<c:url value='/img/mWestern.jpg'/>" width="200" height="150" alt="사진">
 	                		<br>양식
                         </div>
                     </td>
                     <td>
-                    	<div style=" cursor: pointer;" onclick="location.href='CNstoreList.do';">
+                    	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do?cateunq=555';">
 	                    	<img src="<c:url value='/img/mCNfood.jpg'/>" width="200" height="150" alt="사진">
 	                		<br>중식
                         </div>
@@ -231,19 +231,19 @@ $(function(){
                 </tr>
                 <tr>
                     <td>
-                    	<div style=" cursor: pointer;" onclick="location.href='SSstoreList.do';">
+                    	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do?cateunq=666';">
 	                    	<img src="<c:url value='/img/mSalad.jpg'/>" width="200" height="150" alt="사진">
 	                		<br>샐러드/샌드위치
                         </div>
                     </td>
                     <td>
-                    	<div style=" cursor: pointer;" onclick="location.href='BSstoreList.do';">
+                    	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do?cateunq=777';">
 	                    	<img src="<c:url value='/img/mBunsik.jpg'/>" width="200" height="150" alt="사진">
 	                		<br>분식
                         </div>
                     </td>
                     <td>
-                    	<div style=" cursor: pointer;" onclick="location.href='CDstoreList.do';">
+                    	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do?cateunq=888';">
 	                    	<img src="<c:url value='/img/mCoffee.jpg'/>" width="200" height="150" alt="사진">
 	                		<br>카페/디저트
                         </div>
