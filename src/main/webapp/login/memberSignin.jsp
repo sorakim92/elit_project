@@ -33,15 +33,7 @@
   </style>
   
   <script>
-  /* $(function() {
-	 if(document.frm.b_ck.checked==false) {
-		 $("#b_ck").val("N");
-		 
-	 }else {
-		 $("#b_ck").val("P");
-	 }
-	
-}); */
+   
   $(function() {
 	  $("#btn_popupid").click(function(){
 		var userid = $("#userid").val();
@@ -57,6 +49,7 @@
   $(function() {
 	  
 		$("#btn_submit").click(function(){
+						
 			var userid = $("#userid").val();
 			var userpw = $("#userpw").val();
 			var reuserpw = $("#reuserpw").val();
@@ -99,21 +92,20 @@
 				$("#userphone").focus();
 				return false;
 			}
+			
 			if(userpw != reuserpw) {
 				alert("비밀번호와 재확인비밀번호가 같지 않습니다.");
 				$("#userpw").focus();
 				return false;
 			}
-			
-			$("#userid").val(userid);
-			$("#userpw").val(userpw);
-			$("#reuserpw").val(reuserpw);
-			$("#username").val(username);
-			$("#email").val(email);
-			$("#userphone").val(userphone);
-			
+			if($("#business").is(":checked") {
+				 alert("트루");
+			 } else {
+				alert("펄스");
+			 }
+						
 			var formData = $("#frm").serialize();
-			
+			alert(formData);
 			$.ajax ({
 	    		/* 전송 전 셋팅 */
 	    		type : "POST",
@@ -241,7 +233,7 @@
               <div style="float:left; width: 50%;">&nbsp;</div>
               <div class="" style="float:left;width: 45%; margin-left: 10px; margin-top:15px; ">
                 사업자체크
-                <input type="checkbox" value="" id="b_ck" name="b_ck">
+                <input type="checkbox" id="business" name="business" value="N">
               </div>
               
             <div class="" style="float:left;width: 100%;">
@@ -262,7 +254,7 @@
             
             <div class="" style="width:40%">
               <label for="address">우편번호</label>
-              <input type="text" class="form-control" onclick="sample4_execDaumPostcode()" id="sample4_postcode" value="1234" name="useraddr1" placeholder="우편번호" required;>
+              <input type="text" class="form-control" onclick="sample4_execDaumPostcode()" id="sample4_postcode" value="" name="useraddr1" placeholder="우편번호" required;>
               <div class="invalid-feedback">
                 주소를 입력해주세요.
               </div>

@@ -175,14 +175,7 @@
         <div style="width:100%">&nbsp;</div>
         
         </div>
-        <div class="row">
-            <div class="col-sm-6 col-sm-6 col-sm-6">
-              <a href="#" class="btn btn-lg btn-success btn-block" text-align="center">네이버</a>
-            </div>
-            <div class="col-sm-6 col-sm-6 col-sm-6">
-              <a href="#" class="btn btn-lg btn-warning btn-block" text-align="center">카카오</a>
-            </div>
-        </div>
+       
         </form>
       </div>
       </div>

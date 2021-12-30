@@ -113,10 +113,12 @@ $(function(){
 		};
 		geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
 		
-	})
+	});
+	
+	
 
 	   
-})
+});
 
 </script>
 <script>
