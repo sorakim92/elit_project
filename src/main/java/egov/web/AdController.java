@@ -19,15 +19,32 @@ public class AdController {
 	AdService adService;
 	
 	/*
-	 * 광고 페이지  강성모 (에러 해결중 건들X)
+	 * 광고 페이지  강성모 
 	 * 	 */
 	@RequestMapping("AdList.do")
-	public String selectadlist( AdVO vo ) throws Exception{
+	public String selectadlist( AdVO vo, Model model ) 
+												throws Exception{
 		
+	List<?> list = adService.selectadService(vo);
+	
+	model.addAttribute("vo",vo);
+	model.addAttribute("list",list);
+	
 		return "admin/AdList";
 	}
 	
-	
+	/*
+	 * 광고승인/거절페이지(강성모)
+	 * 	 */
+	@RequestMapping("AdDetail.do")
+	public String selectadDetail( AdVO vo, Model model)
+													throws Exception{
+	List<?> list = adService.selectadDetailService(vo);
+		
+	model.addAttribute("vo",vo);
+	model.addAttribute("list",list);
+		return "admin/AdDetail";
+	}
 	
 	
 	

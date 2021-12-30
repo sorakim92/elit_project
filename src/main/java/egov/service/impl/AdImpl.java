@@ -20,6 +20,18 @@ public class AdImpl implements AdService{
 			
 			return adDAO.insertAd(vo);
 		}
+		//강
+		@Override
+		public List<?> selectadService(AdVO vo) throws Exception {
+			
+			return adDAO.selectadService(vo);
+		}
+		//강
+		@Override
+		public List<?> selectadDetailService(AdVO vo) throws Exception {
+
+			return adDAO.selectadDetailService(vo);
+		}
 
 		
 }
