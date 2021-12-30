@@ -35,4 +35,7 @@ public interface MemberService {
 
 	// 회원탈퇴Save (경석)
 	public int deletememberuser(MemberVO vo) throws Exception;
+	
+	//회원정보 변경 (경석)
+	public MemberVO selectmemberuser(MemberVO vo) throws Exception;
 }

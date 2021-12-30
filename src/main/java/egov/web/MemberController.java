@@ -82,10 +82,10 @@ public class MemberController {
 	}
 	
 	//회원가입 주소 (경석)
-	@RequestMapping("Pop_addr.do")
-	public String Pop_addr() throws Exception {
-		return "login/Pop_addr";
-	}
+	/*
+	 * @RequestMapping("Pop_addr.do") public String Pop_addr() throws Exception {
+	 * return "login/Pop_addr"; }
+	 */
 	
 	//로그인 화면 담당 (경석)
 	@RequestMapping("memberlogin.do")
@@ -272,5 +272,17 @@ public class MemberController {
 		}
 		
 		return msg;
+	}
+	
+	//회원정보 수정 (경석)
+	@RequestMapping("membermypage.do")
+	public String membermypage( MemberVO vo, Model model, HttpSession session) throws Exception {
+		
+		String userid = (String) session.getAttribute("MEMBER_SESSION_ID");
+		vo.setUserid(userid);
+		vo = memberService.selectmemberuser(vo);
+		
+		model.addAttribute("vo",vo);
+		return "login/Mypage";
 	}
 }

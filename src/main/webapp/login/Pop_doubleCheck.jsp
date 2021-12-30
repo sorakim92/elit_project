@@ -63,7 +63,6 @@ $("#id_input").click(function() {
 </script>
 
 <body>
-    <img src="img\logo.png" style="width:30%;">
         <div class="wrap">
             <form id="idck" method="post">
 	            <div>

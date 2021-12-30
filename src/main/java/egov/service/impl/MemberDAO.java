@@ -46,6 +46,10 @@ public class MemberDAO extends EgovAbstractDAO{
 	public int deletememberuser(MemberVO vo) {
 		return delete("memberDAO.deletememberuser",vo);
 	}
+	//회원정보 수정
+	public MemberVO selectmemberuser(MemberVO vo) {
+		return (MemberVO) select("memberDAO.selectmemberuser",vo);
+	}
 	
 	
 	

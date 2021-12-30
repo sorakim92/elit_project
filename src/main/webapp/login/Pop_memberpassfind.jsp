@@ -65,7 +65,6 @@
     
 </head>
 <body>
-<img src="img\logo.png" style="width:30%;">
     <div style="text-align:center">
         <form id = "pwd_form" method="POST">
       			아이디 : <input type="text" id ="userid"  name ="userid" placeholder="Enter Your ID">      

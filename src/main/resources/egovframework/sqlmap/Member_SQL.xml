@@ -86,6 +86,23 @@
 							userid = '$userid$' AND email = '$email$'
 	</update>
 	
+		<!-- 회원정보 수정 -->
+	<select id="memberDAO.selectmemberuser" resultClass="memberVO">
+		select  userid,
+				userpw,
+				reuserpw,
+				email,
+				phone,
+				useraddr1,
+				useraddr2,
+				useraddr3
+			FROM member
+			WHERE userid = '$userid$'
+							
+	</select>
+	
+	
+	
 	<!-- 회원탈퇴 (경석) -->
 	<delete id="memberDAO.deletememberuser">
 		delete from member where userid = '$userid$' and userpw = '$userpw$'
