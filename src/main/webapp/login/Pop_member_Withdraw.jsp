@@ -74,7 +74,7 @@ $(function() {
 </head>
 <body>
     <div style="width:100%">
-        <div style="width:50%;  margin-left: 35%; margin-top:5%">
+        <div style="width:50%;  margin-left: 27%; margin-top:5%">
             <h3>회원탈퇴</h3>
             
             <textarea readonly="readonly" rows="5" cols="66">제 1 조 (목적)
