@@ -36,6 +36,20 @@ section {
 </style>
 <script>
 
+$(document).ready(function(){
+
+	$('ul.article_nav li').click(function(){
+		var tab_id = $(this).attr('data-tab');
+		
+		$('ul.article_nav li').removeClass('current');
+		$(this).addClass('current');
+		$("#"+tab_id).addClass('current');
+	})
+	
+	
+})
+
+
 $(function(){
 	
 	$("#btn_write").click(function(){

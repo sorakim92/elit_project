@@ -45,6 +45,8 @@ public class MenuOrderController {
 		//고객정보
 		mvo = menuorderService.selectMemberInfo(userid);
 		
+		//System.out.println("==============="+mvo.getAddr());
+		
 		// 리뷰 개수 
 		int reviewTot = menuorderService.selectStoreReviewTotalCount(vo);
 		
@@ -60,7 +62,7 @@ public class MenuOrderController {
 		map.put("storeunq", storeunq+"");
 		List<?> preList = menuorderService.selectPreOrderList(map);
 		
-		int total =menuorderService.selectTotPrice(vo);
+		int total = menuorderService.selectTotPrice(vo);
 		
 		vo.setTotal(total);
 		

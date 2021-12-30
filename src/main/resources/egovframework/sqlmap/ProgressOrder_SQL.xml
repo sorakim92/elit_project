@@ -38,7 +38,32 @@
 		
 		  		
 	</select>
-
+	
+	<!-- 메인페이지에 아이디로 로그인시 진행중인 메뉴 조회  -->
+	
+	<select id="progressorderDAO.selectMainProOrder" resultClass="egovMap">
+		SELECT 
+		        orderindex,
+		        menuname,
+		        map,
+		        addr, 
+		        userid, 
+		        phone, 
+		        storeunq,
+		        acctime
+		FROM 
+		        progressorder 
+		WHERE 
+		        userid=#userid#
+		AND 
+		        accept='Y' 
+		AND 
+		        receive='P'
+	
+	</select>
+	
+	
+	
 
 	<!--  주문내역 progressorder 테이블로 저장 (소라) -->
 	<insert id = "progressorderDAO.insertProgressOrder" >

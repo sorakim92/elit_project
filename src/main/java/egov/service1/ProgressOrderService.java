@@ -18,5 +18,10 @@ public interface ProgressOrderService {
 
 	List<?> selectorderendList(ProgressOrderVO vo) throws Exception;
 
+	/*
+	 * 유저아이디로 현재 진행중인 오더리스트 불러오기 (for main pg) 
+	 * */
+	List<?> selectMainProOrder(String userid) throws Exception;
+
 
 }
