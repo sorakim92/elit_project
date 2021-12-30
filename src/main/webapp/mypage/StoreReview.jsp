@@ -215,20 +215,22 @@ section {
         <div style="text-align:right;">
             <input type="text" value="">
             <button> 조회</button>
-        </div><br><br><br><br>
+        </div><br>
     
         
          <div style="width:100%; float:left; margin-top:20px; font-size:13px;">
             <table style="width:100%;" class="table table-hover">
                 <colgroup>
+                    <col width="15%" />
+                    <col width="15%" />
+                    <col width="5%" />
                     <col width="20%" />
-                    <col width="*" />
-                    <col width="20%" />
-                  	<col width="20%" />
+                  	<col width="15%" />
                 </colgroup>
                  <tr>
                     <td>전체</td>
-                    <td>미답변</td> 
+                    <td>리뷰내용</td>
+                    <td>답변여부</td> 
                     <td>날짜</td>
                     <td></td> 
                 </tr>
@@ -236,11 +238,11 @@ section {
                 <tr>
                     
                     <td>
-                    	<a href="OrderReviewDetail.do?reviewindex=${result.reviewindex }">${result.userid }<br> '별점' = ${result.rate }
+                    	<a href="OrderReviewDetail.do?reviewindex=${result.reviewindex }">${result.userid }<br>
                     </a></td>
 	  				<td>${result.rcontent }</td>
+	  				<td>N</td>
 	  				<td>${result.rdate }</td>
-                   
                     <td><button type="button" onclick="fn_reply('${result.reviewindex}')" >답변하기</button></td>  
                 </tr>
                 </c:forEach>
@@ -255,7 +257,7 @@ section {
     
        
     </div>
-  
+  	
     
    <footer>
       <%@ include file = "../include/main_footer.jsp" %>

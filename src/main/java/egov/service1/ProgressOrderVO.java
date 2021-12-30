@@ -18,10 +18,28 @@ public class ProgressOrderVO {
 	private int storeunq;
 	private String userid;
 	private String phone;
+	private String acctime;
+	private String dctime;
 	
 	
-	
-	
+	public String getDctime() {
+		return dctime;
+	}
+	public void setDctime(String dctime) {
+		this.dctime = dctime;
+	}
+	public String getREVEIVE() {
+		return REVEIVE;
+	}
+	public void setREVEIVE(String rEVEIVE) {
+		REVEIVE = rEVEIVE;
+	}
+	public String getAcctime() {
+		return acctime;
+	}
+	public void setAcctime(String acctime) {
+		this.acctime = acctime;
+	}
 	public int getOrderindex() {
 		return orderindex;
 	}

@@ -38,6 +38,27 @@ public class ProgressOrderController {
 		
 		return"order/oderEndList";
 	}
+	/*
+	 * 주문한내역 업데이트 (상연)
+	 * */
+	@RequestMapping("orderSave.do")
+	@ResponseBody
+	public String updateProgressOrder(ProgressOrderVO vo)
+											throws Exception {
+		
+		int result = progressorderService.updateProgressOrder(vo);
+		System.out.println(result);
+		
+		System.out.println("====="+vo.getAcctime());
+		System.out.println("====="+vo.getDctime());
+		String msg = "";
+		if(result == 1) {
+			
+			msg = "ok";
+		}
+				
+		return msg;
+	}
 	
 	
 	/*
@@ -65,6 +86,7 @@ public class ProgressOrderController {
 				
 		return msg;
 	}
+	
 	
 	
 

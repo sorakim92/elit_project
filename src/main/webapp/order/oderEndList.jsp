@@ -194,14 +194,16 @@ section {
                 <colgroup>
                     <col width="*" />
                     <col width="10%" />
+                     <col width="10%" />
                     <col width="30%" />
                   	<col width="5%" />
-                  	<col width="25%" />
+                  	<col width="20%" />
                   	<col width="10%" />
                 </colgroup>
                  <tr>
                     <td>주문접수</td>
-                    <td>배달완료</td> 
+                    <td>배달완료</td>
+                    <td>배달거부</td> 
                     <td>메뉴</td>
                     <td>결제구분</td>
                     <td>배달지/연락처</td>
@@ -211,7 +213,8 @@ section {
                 <c:forEach var="result" items="${list }">
                 <tr>
                     <td >${result.rdate }</td>
-                    <td></td> 
+                    <td>${result.acctime }</td>
+                     <td>${result.dctime }</td>  
                     <td> ${result.menuname } </td>
                     <td>${result.method }</td> 
                     <td>${result.addr }/${result.phone }</td> 

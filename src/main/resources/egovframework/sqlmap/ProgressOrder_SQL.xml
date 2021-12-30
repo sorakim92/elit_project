@@ -14,14 +14,13 @@
 					comment1,
 					comment2,
 					phone,
-					to_char(rdate,'hh24:mi/ss')rdate,
+					acctime,
+					orderindex,
+					to_char(rdate,'YYYY-MM-DD hh24:mi')rdate,
 					userid
 		FROM progressorder 
-			where storeunq = '123'
-		
-		  		
+			where storeunq = '123'  		
 	</select>
-	
 	
 	<select id="progressorderDAO.selectorderendList"  resultClass="egovMap"  >
 		SELECT 
@@ -29,9 +28,12 @@
 				    comment2, 
 					price, 
 					menuname,
+					orderindex,
+					to_char(rdate+acctime/(24*60),'YYYY-MM-DD hh24:mi')acctime,
+					dctime,
 					method,
 					phone,
-					to_char(rdate,'hh24:mi/ss')rdate,
+					to_char(rdate, 'YYYY-MM-DD hh24:mi')rdate,
 					addr
 		FROM progressorder 
 			where storeunq = '123'
@@ -70,6 +72,16 @@
 					#userid#)
 	
 	</insert>
+	<!-- 상연 -->
+	<update id="progressorderDAO.updateProgressOrder">
+		UPDATE progressorder 
+			SET 
+				acctime= '$acctime$',
+				dctime= '$dctime$'
+				
+		WHERE orderindex = '$orderindex$'
+	</update>
+	
 	<!-- 주문완료시 preorder 정보 지우기 (소라) -->
 	<delete id="progressorderDAO.resetpreorder" >
 		DELETE FROM preorder 

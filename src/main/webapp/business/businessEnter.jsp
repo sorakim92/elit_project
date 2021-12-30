@@ -77,9 +77,9 @@ $(function() {
 				$("#phone_op").focus();
 				return false;
 			}
-			if( $("#phone").val() == "" ) {
+			if( $("#phone1").val() == "" ) {
 				alert("핸드폰 번호을 입력해주세요.");
-				$("#phone").focus();
+				$("#phone1").focus();
 				return false;
 			}
 			if( $("#email").val() == "" ) {
@@ -97,12 +97,12 @@ $(function() {
 				$("#name").focus();
 				return false;
 			}
-			if( $("#inquire").val() == "" ) {
-				alert("문의사항  입력해주세요.");
-				$("#inquire").focus();
-				return false;
-			}
 			
+			
+			var ph1 = $("#phone_op").val();
+			var ph2 = $("#phone1").val();
+			
+			$("#phone").val(ph1+"-"+ph2+"");
 			
 			var formdata = $("#frm").serialize();
 			$.ajax({
@@ -141,7 +141,7 @@ $(function() {
 
 <body>
  <form name="frm" id="frm">
-	
+	<input type="hidden" name="phone" id="phone" value="">
     <font size="4"><b>입점문의</b></font><br>
     <div class="text-align:left" >
    
@@ -197,7 +197,7 @@ $(function() {
             <option value="" >지역선택</option>
             <option>강남</option>
             <option>홍대</option>
-
+            <option>이태원</option>
         </select>
     </div><br>
     <div>
@@ -231,7 +231,7 @@ $(function() {
             <option>011</option>
             <option>017</option>
         </select>
-        <input type="text" size="48" name="phone" id="phone">
+        <input type="text" size="48" name="phone1" id="phone1">
     </div><br>
     <div>
         6. 이메일 알려주세요.*

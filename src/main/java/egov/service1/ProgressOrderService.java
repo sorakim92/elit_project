@@ -6,7 +6,7 @@ public interface ProgressOrderService {
 
 
 	List<?> selectProgressOrderList(ProgressOrderVO vo) throws Exception;
-
+	int updateProgressOrder(ProgressOrderVO vo) throws Exception;
 	/*
 	 * 주문한내역 넘기기 (소라)
 	 * */

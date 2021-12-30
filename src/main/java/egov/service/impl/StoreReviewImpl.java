@@ -18,4 +18,9 @@ public class StoreReviewImpl implements StoreReviewService {
 	public List<?> selectstoreReviewList(StoreReviewVO vo) throws Exception {
 		return storereviewDAO.selectstoreReviewList(vo);
 	}
+
+	@Override
+	public String insertstoreReviewWrite(StoreReviewVO vo) throws Exception {
+		return storereviewDAO.insertstoreReviewWrite(vo);
+	}
 }

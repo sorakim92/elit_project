@@ -13,8 +13,9 @@
 							userid,
 							phone,	
 							service,
-							ment
-								
+							ment,
+							rdate,
+							status	
 							       )  
 					VALUES  ( ad_seq.nextval,
 								'$email$',
@@ -22,9 +23,28 @@
 								'$userid$',
 								'$phone$',
 								'$service$',
+								'$ment$',
+								sysdate	,	
+								'P'			
+								)
+			   <!--  INSERT INTO ad( adindex,
+							email,
+							name,
+							userid,
+							phone,	
+							service,
+							ment
+								
+							       )  
+					VALUES  ( ad_seq.nextval,
+								'$email$',
+								'$name$',
+								'$userid$',
+								'$phonef$',
+								'$service$',
 								'$ment$'
 													
-								)
+								)-->
 			
 	
 	</insert>
