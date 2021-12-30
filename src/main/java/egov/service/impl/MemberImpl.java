@@ -63,6 +63,11 @@ public class MemberImpl implements MemberService{
 	public int deletememberuser(MemberVO vo) throws Exception {
 		return memberDAO.deletememberuser(vo);
 	}
+	//회원정보 수정
+	@Override
+	public MemberVO selectmemberuser(MemberVO vo) throws Exception {
+		return memberDAO.selectmemberuser(vo);
+	}
 	
 	
 	

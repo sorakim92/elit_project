@@ -55,7 +55,6 @@ $(function() {
 
     		// 전송 후 셋팅
     		success: function(data) {
-    			alert(data);
 				if(data == "ok") {
 					alert("회원탈퇴 성공.");
 					self.close();
@@ -74,7 +73,6 @@ $(function() {
 
 </head>
 <body>
-    <img src="img\logo.png" style="width:20%;">
     <div style="width:100%">
         <div style="width:50%;  margin-left: 35%; margin-top:5%">
             <h3>회원탈퇴</h3>
