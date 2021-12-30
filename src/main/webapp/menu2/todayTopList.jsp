@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>분식</title>
+    <title>오늘의 주문 순위</title>
 
  	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
@@ -118,10 +118,20 @@ function fn_like(u,c) {
            		<c:forEach var="result" items="${list }" varStatus="status">
            		
            		<td>
-           		
-               	   <div class="cate_tbl2_div1" onclick="location.href='menuOrderList.do?storeunq=${result.storeunq}';">
-                       <img src="<c:url value='/img/addpic.png'/>" alt="업체대표사진" width="100" height="100" name="" id="">
-                   </div>
+           		 <c:choose>
+                   		<c:when test="${result.storeimage.equals('사진') }">
+                   		   	<div class="cate_tbl2_div1" style="line-height:120px;"
+                   		   		onclick="location.href='menuOrderList.do?storeunq=${result.storeunq}';">
+                    			 이미지 준비중
+                   			 </div>
+                   		</c:when>
+                   		<c:otherwise>
+                   		    <div class="" onclick="location.href='menuOrderList.do?storeunq=${result.storeunq}';">
+                   		    <img class="cate_tbl2_div1"
+                   		    	src="<c:url value='/upload/store/${result.storeimage }'/>">
+                  		    </div>
+                   		</c:otherwise>
+                    </c:choose>
                	</td>
                	<td>
                    <span class="cate_tbl2_strname" onclick="location.href='menuOrderList.do?storeunq=${result.storeunq}';"> ${result.storename }</span>

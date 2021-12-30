@@ -14,6 +14,15 @@ public class AdDAO extends EgovAbstractDAO {
 		
 		return (String) insert("adDAO.insertAd",vo);
 	}
+	//강
+	public List<?> selectadService(AdVO vo) {
+		
+		return list("adDAO.selectadService",vo);
+	}
+	//강
+	public List<?> selectadDetailService(AdVO vo) {
+		return list("adDAO.selectadDetailService",vo);
+	}
 
 	
 

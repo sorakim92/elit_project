@@ -41,7 +41,7 @@ public class MemberImpl implements MemberService{
 	}
 	//아이디 찾기
 	@Override
-	public int Pop_useridfd(MemberVO vo) throws Exception {
+	public String Pop_useridfd(MemberVO vo) throws Exception {
 		return memberDAO.Pop_useridfd(vo);
 	}
 	//비밀번호 찾기 화면(비밀번호 변경)
@@ -57,6 +57,11 @@ public class MemberImpl implements MemberService{
 	@Override
 	public int selectAdminMemberLogin(MemberVO vo) throws Exception {
 		return memberDAO.selectAdminMemberLogin(vo);
+	}
+	//회원탈퇴Save
+	@Override
+	public int deletememberuser(MemberVO vo) throws Exception {
+		return memberDAO.deletememberuser(vo);
 	}
 	
 	

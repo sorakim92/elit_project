@@ -27,51 +27,54 @@
 								sysdate	,	
 								'P'			
 								)
-			   <!--  INSERT INTO ad( adindex,
-							email,
-							name,
-							userid,
-							phone,	
-							service,
-							ment
-								
-							       )  
-					VALUES  ( ad_seq.nextval,
-								'$email$',
-								'$name$',
-								'$userid$',
-								'$phonef$',
-								'$service$',
-								'$ment$'
-													
-								)-->
-			
-	
-	</insert>
 
+	</insert>
+	
+<!-- 	광고페이지 List 강성모-->
 	<select id="adDAO.selectadService" resultClass = "egovMap">
 		SELECT b.* FROM (
 			SELECT rownum rn, a.* from (	
-				SELECT  ADINDEX
-						USERID
-						SERVICE
-						MENT
-						SDATE
-						EDATE
-						RDATE
-						BANNER
-						STATUS
-						EMAIL
-						PHONE
-						NAME
+				SELECT  adindex,
+						userid,
+						service,
+						ment,
+						sdate,
+						edate,
+						to_char(rdate,'yyyy/mm/dd') rdate,
+						banner,
+						status,
+						email,
+						phone,
+						name				
 				FROM	
-						AD
+						ad
 				WHERE	
-						ADINDEX IS NOT NULL
-				ORDER BY RDATE DESC) a )b
+						userid IS NOT NULL
+				ORDER BY rdate DESC) a )b
 	</select>
 
-
+<!-- 광고 DETAIL 강성모 -->
+	<select id="adDAO.selectadDetailService" resultClass = "egovMap">
+		SELECT b.* FROM (
+			SELECT rownum rn, a.* from (	
+				SELECT  adindex,
+						userid,
+						service,
+						ment,
+						sdate,
+						edate,
+						to_char(rdate,'yyyy/mm/dd') rdate,
+						banner,
+						status,
+						email,
+						phone,
+						name				
+				FROM	
+						ad
+				WHERE	
+						adindex = #adindex#
+				ORDER BY rdate DESC) a )b
+	</select>
 
 
 

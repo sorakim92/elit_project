@@ -18,6 +18,7 @@ public class ZzimListController {
 	@Resource(name = "zzimlistService")
 	ZzimListService zzimlistService;
 		
+	// 찜 리스트(상혁)
 	@RequestMapping("ZzimList.do")
 	public String selectZzimList(ZzimListVO vo, Model model ) throws Exception {
 		

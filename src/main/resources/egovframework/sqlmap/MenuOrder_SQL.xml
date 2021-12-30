@@ -22,7 +22,7 @@
 		from 	store s, menu m
 			where s.storeunq=m.storeunq and m.storeunq = #storeunq#
 
-	
+	 
 	</select>
 	
 	<!-- 가게정보(소라) -->
@@ -96,11 +96,11 @@
 		SELECT userid,
 				username,
 				userphone,
-				useraddr1,
-				useraddr2,
-				useraddr3
-		FROM	member
-		WHERE userid = #userid#
+				useraddr2||' '||useraddr3 addr
+		FROM	
+				member
+		WHERE 
+				userid = #userid#
 	
 	
 	</select>

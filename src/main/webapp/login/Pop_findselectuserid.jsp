@@ -13,17 +13,20 @@
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 </head>
 <script>
-
+$(function() {
+	$("#btn_submit").click(function() {
+		self.close();
+	});
+});
 </script>
 <body>
 <img src="img\logo.png" style="width:30%;">
     <div style="text-align:center">
-        <form id = "frm_uesrid" method="POST">
+        <form id = "frm_uesrid" name="frm_uesrid" method="POST">
             <br><br>
-            	아이디 : <input type="text" id ="userid"  name ="userid" value="${userid}">
+            	아이디 : <input type="text" id ="userid"  name ="userid" value="${Userid}">
             <br><br>
-            <input type="hidden" value="1" name = "check">
-            <button type="button" class="" id="btn_submit">다음</button>
+            <button type="button" class="" id="btn_submit">확인</button>
             <br>
         
         </form>

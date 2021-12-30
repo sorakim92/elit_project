@@ -6,7 +6,7 @@
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="memberVO" type="egov.service1.MemberVO"/>
 	
-	<!-- 회원가입 화면  -->
+	<!-- 회원가입 화면 (경석)  -->
 	<insert id="memberDAO.insertMember">
 		INSERT INTO member (
 			userid,
@@ -32,12 +32,12 @@
 			)
 	</insert>
 	
-	<!-- 로그인화면  -->
+	<!-- 로그인화면 (경석)  -->
 	<select id="memberDAO.selectMemberCount" resultClass="java.lang.Integer">
 		SELECT COUNT(*) FROM member
 			 WHERE userid = '$userid$' AND userpw = '$userpw$'
 	</select>
-	<!-- 아이디 중복체크 -->
+	<!-- 아이디 중복체크 (경석) -->
 	<select id="memberDAO.popidck" resultClass="java.lang.Integer">
 		SELECT COUNT(*) FROM member WHERE userid = #userid#
 	</select>
@@ -46,14 +46,14 @@
 		SELECT COUNT(*) FROM member WHERE userid = #userid#
 	</select>
 
-	<!-- 비밀번호 찾기 -->
+	<!-- 비밀번호 찾기 (경석) -->
 	<select id="memberDAO.Pop_memberpassfind" resultClass="java.lang.Integer">
 		SELECT COUNT(*) FROM member WHERE email = '$email$' AND userid = '$userid$'
 	</select>
 
-	<!-- 아이디 찾기 -->
-	<select id="memberDAO.Pop_useridfd" resultClass="memberVO">
-		SELECT userid,email FROM member WHERE email = #email#
+	<!-- 아이디 찾기 (경석) -->
+	<select id="memberDAO.Pop_useridfd" resultClass="java.lang.String">
+		SELECT userid FROM member WHERE email = #email#
 	</select>
 	
 	<!-- 사업자 로그인(소라) -->
@@ -78,7 +78,7 @@
 	
 	</select>
 	
-	<!-- 비밀번호 변경 -->
+	<!-- 비밀번호 변경 (경석) -->
 	<update id="memberDAO.Pop_newuserpw" >
 		UPDATE member SET userpw = '$userpw$',
 						  reuserpw = '$reuserpw$'
@@ -86,5 +86,9 @@
 							userid = '$userid$' AND email = '$email$'
 	</update>
 	
+	<!-- 회원탈퇴 (경석) -->
+	<delete id="memberDAO.deletememberuser">
+		delete from member where userid = '$userid$' and userpw = '$userpw$'
+	</delete>
 	
 </sqlMap>

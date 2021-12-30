@@ -14,7 +14,7 @@
 					s.storename,
 					s.fee, 
 					decode(s.storerate,'0','리뷰없음',to_char(s.storerate,'fm9.0')||'') storerate,
-					decode(s.storeimage,null,'사진없음',s.storeimage) storeimage,
+					decode(s.storeimage,null,'사진',s.storeimage) storeimage,
 					s.cateunq
 			FROM
 					progressorder p, store s
@@ -62,7 +62,7 @@
 						storeaddr,
 						decode(storerate,'0','리뷰없음',to_char(storerate,'fm9.0')||'') storerate,
 						decode(fee,'0','무료',fee||'원') fee,
-						decode(storeimage,null,'사진없음',storeimage) storeimage
+						decode(storeimage,null,'사진',storeimage) storeimage
 				FROM 	store
 				WHERE 	cateunq = #cateunq#
 				ORDER BY	storerate DESC )a) b
@@ -79,7 +79,7 @@
 		from 	
 				zzimlist
 		where 	
-				cateunq = #cateunq# and userid = #userid# 
+				cateunq = '$cateunq$' and userid = '$userid$' 
 		
 	</select>
 	

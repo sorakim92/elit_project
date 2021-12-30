@@ -35,6 +35,7 @@
 <style>
 body {
 	font-family : hanna;
+	font-size : 18px;
 }
 @font-face {
     font-family: "hanna";
@@ -66,6 +67,12 @@ a:hover, .cap:hover{
 	color: #7a7a7a;
 	text-decoration: none;
 }
+.btn {
+	background: #f8cacc; 
+	color: black; 
+	border-color:#f8cacc
+}
+
 </style>
 
 <script>
@@ -179,8 +186,8 @@ $(function(){
             <!-- 주소검색 -->
             <input type="text" name="addr" id="addr" class="" style="width:400px; height:30px;"> 
           	<button type="button" id="btn_addr_search"
-          				class="btn btn-outline-warning" 
-          				style="border-color: #f8cacc; color: black;"
+          				class="btn" 
+          				style=""
           				onclick="sample6_execDaumPostcode()">검색</button>
 		</div>
 
@@ -197,13 +204,13 @@ $(function(){
                         </div>
                     </td>
                     <td>
-                    	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do';">
+                    	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do?cateunq=111';">
 	                    	<img src="<c:url value='/img/mKRfood.jpg'/>" width="200" height="150" alt="사진">
 	                		<br>한식
                         </div>
                     </td>
                     <td>
-                    	<div style=" cursor: pointer;" onclick="location.href='CKstoreList.do';">
+                    	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do?cateunq=222';">
 	                    	<img src="<c:url value='/img/mChicken.png'/>" width="200" height="150" alt="사진">
 	                		<br>치킨
                         </div>
@@ -211,19 +218,19 @@ $(function(){
                 </tr>
                 <tr>
                     <td>
-                    	<div style=" cursor: pointer;" onclick="location.href='JPstoreList.do';">
+                    	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do?cateunq=333';">
 	                    	<img src="<c:url value='/img/mJPfood.jpg'/>" width="200" height="150" alt="사진">
 	                		<br>일식
                         </div>
                     </td>
                     <td>
-                    	<div style=" cursor: pointer;" onclick="location.href='WSstoreList.do';">
+                    	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do?cateunq=444';">
 	                    	<img src="<c:url value='/img/mWestern.jpg'/>" width="200" height="150" alt="사진">
 	                		<br>양식
                         </div>
                     </td>
                     <td>
-                    	<div style=" cursor: pointer;" onclick="location.href='CNstoreList.do';">
+                    	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do?cateunq=555';">
 	                    	<img src="<c:url value='/img/mCNfood.jpg'/>" width="200" height="150" alt="사진">
 	                		<br>중식
                         </div>
@@ -231,19 +238,19 @@ $(function(){
                 </tr>
                 <tr>
                     <td>
-                    	<div style=" cursor: pointer;" onclick="location.href='SSstoreList.do';">
+                    	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do?cateunq=666';">
 	                    	<img src="<c:url value='/img/mSalad.jpg'/>" width="200" height="150" alt="사진">
 	                		<br>샐러드/샌드위치
                         </div>
                     </td>
                     <td>
-                    	<div style=" cursor: pointer;" onclick="location.href='BSstoreList.do';">
+                    	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do?cateunq=777';">
 	                    	<img src="<c:url value='/img/mBunsik.jpg'/>" width="200" height="150" alt="사진">
 	                		<br>분식
                         </div>
                     </td>
                     <td>
-                    	<div style=" cursor: pointer;" onclick="location.href='CDstoreList.do';">
+                    	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do?cateunq=888';">
 	                    	<img src="<c:url value='/img/mCoffee.jpg'/>" width="200" height="150" alt="사진">
 	                		<br>카페/디저트
                         </div>
@@ -256,41 +263,52 @@ $(function(){
         </div>
     </article>
 
-<!--  현재진행중인 주문이 있으면 띄우기 !  -->
+
+<!--  현재진행중인 주문이 있으면 띄우기 ! -->
+<c:if test = "${!empty plist}">
+  <c:forEach var="result" items="${plist }">
+
     <article class="article2">
-        <img src="" width="300px" height="300px" style="float:left" alt="배달상황지도API">
+        <img src="" width="300px" height="300px" style="float:left; line-height:290px;" alt="배달상황지도API">
         <div class="order_detail">
-            <table class="odr_main_table">
+            <table 	class="table table-hover" 
+            		style="width:65%; float:right; margin-top:30px;">
                 <colgroup>
                     <col width="30%" />
                     <col width="*" />
                 </colgroup>
+               
                 <tr>
                     <td>주문내용</td>
-                    <td></td>
+                    <td>${result.menuname }</td>
+                 
                 </tr>
+              
                 <tr>
                     <td>예상도착시간</td>
-                    <td></td>
+                    <td> 예상도착시간이 어떤 컬럼인지 물어봐야됨 ! </td>
                 </tr>
                 <tr>
                     <td>배달주소</td>
-                    <td></td>
+                    <td>${result.addr }</td>
                 </tr>
                 <tr>
-                    <td>연락처</td>
-                    <td></td>
+                    <td>주문자 연락처</td>
+                    <td>${result.phone }</td>
                 </tr>
-                <tr>
-                    <td colspan="2">
-                        <div style="text-align: right;">
-                            <button type="button" name="" id="">주문문의</button>            
-                        </div>
-                    </td>
-                </tr>
+                
             </table>
+            <div style="text-align: right; padding-right:20px;">
+             	<button type="button" 
+            		class="btn"
+             	name="" id="">주문문의</button>            
+            </div>
         </div>
     </article>
+    
+    </c:forEach>
+ </c:if>   
+  
     <article class="article3">
         <div class="ldiv">
             <table class="main_b_tbl">

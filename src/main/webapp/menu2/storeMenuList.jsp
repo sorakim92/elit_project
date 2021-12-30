@@ -129,9 +129,13 @@ function fn_update(a,p,i) {
 	qty = Number(qty);
 	if(a == '+') {
 		qty++;
+		if(qty>10){ 
+			qty=10;
+			alert("더 많은 수량을 주문하시려면 가게로 연락주세요."); 
+			}
 	} else if (a == '-') {
 		qty--;
-		if(qty<0) qty=0;
+		if(qty<1) qty=1;
 	}
 	$("input[name='qty_"+i+"']").val(qty);
 	
@@ -290,7 +294,7 @@ function fn_addOrder(u) {
                     <td>${result.price }</td>
                 </tr>
                 <tr >
-                    <td style="padding-bottom:10px;">한줄평~~~</td>
+                    <td style="padding-bottom:10px;"></td>
                 </tr>
                 
                 
@@ -407,7 +411,7 @@ function fn_addOrder(u) {
             <input type="hidden" id="price" name="price" value="${vo.total + vo.fee} ">
           	<input type="hidden" id="menuname" name="menuname" value="">
         	<input type="hidden" id="phone" name="phone" value="${mvo.userphone }">
-            <input type="hidden" id="addr" name="addr" value="${mvo.useraddr1 }">
+            <input type="hidden" id="addr" name="addr" value="${mvo.addr }">
             
             
             <div style="width:100%; height:auto; ">
@@ -418,7 +422,7 @@ function fn_addOrder(u) {
                         <col width="*" />
                     </colgroup>
                     <tr>
-                        <td colspan="3">${mvo.useraddr1 }</td>
+                        <td colspan="3">${mvo.addr}</td>
                     </tr>
                     <tr>
                         <td colspan="3"><span style="font-size:14px;">${mvo.userphone }</span></td>

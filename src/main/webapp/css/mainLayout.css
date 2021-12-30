@@ -69,15 +69,17 @@ section {
 .article2 {
     width:1000px;
 	height:300px;
-    border: 1px solid #ccc;
+    border: 1px solid #eee;
 	/*background-color:#92a8d1;*/
 	text-align:center;
+	margin-bottom:10px;
 }
 .article3 {
     width:1000px;
     height:300px;
     /*border: 1px solid #ccc;*/
-    margin: 10px 0 10px 0;
+    margin: 5px 0 10px 0;
+    clear: both;
 }
 .article3_tbl_cap {
 	color:#000; 
@@ -86,22 +88,23 @@ section {
 }
 .ldiv{
     float:left;
-    padding:10px;
-	width:48%;
+   
+	width:49%;
 	height:300px;
+	font-size:16px;
 	
 }
 .rdiv{
     float:right;
-    padding:10px;
-	width:48%;
+	width:49%;
 	height:300px;
+	font-size:16px;
 }
 
 .main_b_tbl{
     width: 100%;
     height:200px;
-    border: 1px solid #ccc;
+    border: 1px solid #eee;
 }
 
 .cate_tbl {
@@ -128,7 +131,7 @@ section {
 /* sub tab 부분 */
 .article_nav {
    display: inline-block;
-}
+}S
 .article_nav li {
     font-size:16px;
     list-style:none;
@@ -137,7 +140,10 @@ section {
     padding-right:20px;
     padding-bottom: -10px;
 }
-
+ul.article_nav li.current{
+	background: #pink;
+	color: #222;
+}
 
 /*
    게시판 부분  
@@ -182,7 +188,7 @@ section {
 	/* 게시판 테이블 th*/
 .bd_tbl_div th {
 	font-size:15px;
-	background : #e8e3e3;
+	background : #eee;
 }
 
 
@@ -216,12 +222,17 @@ section {
 }
 .nav2 li{
     width:110px;
-    font-size:12px;
+    font-size:14px;
     list-style:none;
     float:left;
     padding-left:10px;
     padding-right:10px;
     margin-top: -20px;
+}
+
+.cate_tbl2_strinfo1 span {
+	font-size:14px;
+	
 }
 .cate_tbl2 td {
     text-align: left;
@@ -230,8 +241,8 @@ section {
 }
 
 .cate_tbl2_div1 {
-	width:120px; 
-	height: 120px; 
+	width:140px; 
+	height: 140px; 
 	border: 1px solid #f8cacc; 
 	border-radius: 2em;
   	margin:5px 20px 10px 20px; 
