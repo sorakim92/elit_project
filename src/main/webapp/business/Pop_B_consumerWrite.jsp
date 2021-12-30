@@ -54,6 +54,10 @@
     background-color: white;
     color:black;
 }
+
+.ment_form label {
+	margin-top: 10px;
+}
 </style>
 
 <script>
@@ -119,7 +123,7 @@
     <div class="total">
 		
         <div class="">
-            <font class="field_title">*분류</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <font class="field_title">분류*</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <select name="b_group" id="b_group" class= "field_cho" >
                 <option value="" class="">분류선택</option>
                 <option value="리뷰테러">리뷰테러</option>
@@ -130,19 +134,17 @@
         </div><br>
 
         <div class="">
-            <label class="field_title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*작성일</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label class="field_title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;작성일*</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="text" class="field_bl" id="rdate" name="rdate" title="rdate" maxlength="16">
         </div><br>
 
         <div class="">
-            <label class="field_title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*유저 아이디</label>&nbsp;&nbsp;&nbsp;
+            <label class="field_title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;유저 아이디*</label>&nbsp;&nbsp;&nbsp;
             <input type="text" class="field_bl" id="userid" name="userid" title="">
         </div><br>
 
-        
-
-        <div class="">
-            <label class="field_title" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*이유</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="ment_form" id="ment_form">
+            <label class="field_title"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;한줄평*</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <textarea class="field_area" name="ment" id="ment" ></textarea>   
         </div>
         

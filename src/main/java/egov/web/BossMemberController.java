@@ -102,12 +102,8 @@ public class BossMemberController {
 		
 		
 		
-		vo = bossmemberService.selectbossmemberDetail(vo);
-		
-		
-			
+		vo = bossmemberService.selectbossmemberDetail(vo);	
 		model.addAttribute("vo",vo);
-		
 		
 		return "mypage/businessMypage";
 	}

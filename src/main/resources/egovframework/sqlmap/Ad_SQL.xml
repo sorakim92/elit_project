@@ -27,8 +27,7 @@
 								sysdate	,	
 								'P'			
 								)
-			
-	
+
 	</insert>
 	
 <!-- 	광고페이지 List 강성모-->

@@ -153,9 +153,9 @@ $(function() {
 				$("#phonecode").focus();
 				return false;
 			}
-			if( $("#phone").val() == "" ) {
+			if( $("#phone1").val() == "" ) {
 				alert("핸드폰 번호을 입력해주세요.");
-				$("#phone").focus();
+				$("#phone1").focus();
 				return false;
 			}
 			if( $("#serviceop").val() == "" ) {
@@ -163,6 +163,12 @@ $(function() {
 				$("#serviceop").focus();
 				return false;
 			}
+			
+			
+			var ph1 = $("#phonecode").val();
+			var ph2 = $("#phone1").val();
+			
+			$("#phone").val(ph1+"-"+ph2+"");
 			
 			
 			var formdata = $("#frm").serialize();
@@ -239,12 +245,13 @@ $(function() {
    
                     
 <form name="frm" id="frm">
+	<input type="hidden" name="phone" id="phone" value="">
             <article class="text-align:left" >
                 <font size="3">ELIT 이용약관과 개인정보 수집 및 동의 페이지입니다. (ELIT’s Terms and Privacy Policy)</font><br>
                 <textarea  class="article_text"   readonly>
                 제 1 장 총 칙
                 제 1 조 (목적) 
-                이 이용약관(이하 약관이라 합니다)은 제주렌터카 (상호명 : 제주허브닷컴, 이하 회사라 합니다)와 이용 고객(이하 회원이라 합니다)간에 회사가 제공하는 서비스의 가입조건 및 이용에 관한 제반 사항과 기타 필요한 사항을 구체적으로 규정함을 목적으로 합니다.
+                이 이용약관(이하 약관이라 합니다)은 ELIT (상호명 : ELIT, 이하 회사라 합니다)와 이용 고객(이하 회원이라 합니다)간에 회사가 제공하는 서비스의 가입조건 및 이용에 관한 제반 사항과 기타 필요한 사항을 구체적으로 규정함을 목적으로 합니다.
                 
                 제 2 조 (용어의 정의) 
                 (1) 이 약관에서 사용하는 용어의 정의는 다음과 같습니다. 
@@ -307,13 +314,14 @@ $(function() {
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label class="fieldTitle" for="last_name">휴대폰</label><br>
-                        <select name="phonecode" id="phonecode" class=" phonecode">
+                          <select name="phonecode" id="phonecode" class=" phonecode">
                         	<option value="">  선택 </option>
                             <option value="010">  010 </option>
                             <option value="011">  011 </option>
                             <option value="017">  017 </option>
-                            <option value="019">  019 </option></select>
-                            <input type="text" class="phone1" name="phone" id="phone" value="" >    
+                            <option value="019">  019 </option>
+                          </select>
+                            <input type="text" class="phone1" name="phone1" id="phone1" value="" >    
                       
                     </div>
                 </div>
@@ -327,8 +335,8 @@ $(function() {
                             <select class="form-control" name="service" id="service">
                                     
                                     <option value="">서비스 선택하세요</option>
-                                    <option value="메인상단">메인  상단</option>
-                                    <option value="메인하단">메인  하단</option>
+                                    <option value="u">메인  상단</option>
+                                    <option value="l">메인  하단</option>
                             </select>
 
 

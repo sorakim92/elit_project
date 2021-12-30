@@ -14,4 +14,8 @@ public class StoreReviewDAO extends EgovAbstractDAO{
 		return list("storereviewDAO.selectstoreReviewList",vo);
 	}
 
+	public String insertstoreReviewWrite(StoreReviewVO vo) {
+		return (String) insert("storereviewDAO.insertstoreReviewWrite",vo);
+	}
+
 }

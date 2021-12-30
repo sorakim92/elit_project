@@ -22,6 +22,7 @@
 		select 
 		 reviewindex,
 		 rate,
+		 
 		 userid,
 		 rcontent,
 		 to_char(rdate,'yyyy/mm/dd,hh24:mi/ss')rdate
@@ -30,6 +31,25 @@
 		  		
 	</select>
 	
+	<insert id="storereviewDAO.insertstoreReviewWrite">
+		  
+		  <![CDATA[
+		   INSERT INTO storereview (	
+		 					b_reviewindex,
+		 					reviewindex,
+							rcontent,
+							b_userid,
+							rdate,
+							storeunq
+							) 
+					VALUES(	storereview_seq.nextval,
+							orderreview_seq.nextval,
+							#rcontent#,
+							'test1',
+							sysdate,
+							'$storeunq$',
+							) ]]> 
+	</insert>
 	
 	
 </sqlMap>
