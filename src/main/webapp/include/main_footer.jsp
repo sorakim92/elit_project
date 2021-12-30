@@ -6,7 +6,7 @@
             <li><a href="nBoardList.do">공지사항</a></li>
             <li><a href="faqList.do">고객센터</a></li>
             <li><a href="businessEnterList.do">입점문의</a></li>
-            <li><a href="">회원탈퇴</a></li>
+            <li><a href="Pop_member_Withdraw.do">회원탈퇴</a></li>
         </ul>
         <ul class="ul2">
             <li><a href="termsOfService.do">서비스 이용약관</a></li>
