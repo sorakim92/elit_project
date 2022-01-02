@@ -34,11 +34,15 @@ public class MainPageController {
 	@RequestMapping("mainPage.do")
 	public String mainPage(NBoardVO vo,	ProgressOrderVO pvo, Model model, HttpSession session) throws Exception {
 		
+		// 주소입력시 멤버테이블로 업데이트 
+		
+		
 		/* 현재진행중인 주문내영보기 (로그인시 , 주문있을 시) */
 		    // 1. 로그인 인증은 jsp 내에서 session 있는지 확인해보기 ! 
 			// 2. 현재주문있는지 확인 
 		String userid = (String) session.getAttribute("SessionUserID");
 		//System.out.println("===========아이디!!!"+userid);
+		
 		if(userid != null ) {
 			List<?> plist = progressorderService.selectMainProOrder(userid);
 			model.addAttribute("plist",plist);
