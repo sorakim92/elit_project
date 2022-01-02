@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sample</title>
+    <title>회원정보수정</title>
   	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
@@ -141,59 +141,6 @@ section {
 
 <script>
 
-$(function() {
-		$("#btn3").click(function(){ 	
-			
-			
-			if( $("#userpw").val() == "" ) {
-				alert("암호을 입력해주세요.");
-				$("#userpw").focus();
-				return false;
-			}
-			if( $("#userpw2").val() == "" ) {
-				alert("암호 확인를 입력해주세요.");
-				$("#userpw2").focus();
-				return false;
-			}
-			if( $("#userpw2").val() != $("#userpw").val() ) {
-				alert("암호확인를 확인해주세요.");
-				$("#userpw2").focus();
-				return false;
-			}
-			if( $("#userphone").val() == "" ) {
-				alert("핸드폰 번호를 입력 해주세요.");
-				$("#userphone").focus();
-				return false;
-			}
-			if( $("#email").val() == "" ) {
-				alert("이메일을 입력해주세요.");
-				$("#email").focus();
-				return false;
-			}
-			
-			
-			var formdata = $("#frm").serialize();
-			$.ajax({
-				type : "post",
-				url  : "",
-				data : formdata,
-				
-				datatype : "text",  // 성공여부 (ok)
-				success : function(data) {
-					if (data == "ok") {
-						alert("저장완료");
-						location="";
-					} else {
-						alert("저장실패");
-					}
-				},	
-				error : function() {
-					alert("오류발생");
-				}
-			});
-		});
-	});
-
 //다음 주소 펑션
 function sample4_execDaumPostcode() {
 	    new daum.Postcode({
@@ -250,6 +197,62 @@ function sample4_execDaumPostcode() {
 	    }).open();
 	}
 
+$(function() {
+		$("#btn3").click(function(){ 	
+			
+			
+			if( $("#userpw").val() == "" ) {
+				alert("암호을 입력해주세요.");
+				$("#userpw").focus();
+				return false;
+			}
+			if( $("#reuserpw").val() == "" ) {
+				alert("암호 확인를 입력해주세요.");
+				$("#reuserpw").focus();
+				return false;
+			}
+			if( $("#reuserpw").val() != $("#userpw").val() ) {
+				alert("암호확인를 확인해주세요.");
+				$("#userpw").focus();
+				return false;
+			}
+			if( $("#userphone").val() == "" ) {
+				alert("핸드폰 번호를 입력 해주세요.");
+				$("#userphone").focus();
+				return false;
+			}
+			if( $("#email").val() == "" ) {
+				alert("이메일을 입력해주세요.");
+				$("#email").focus();
+				return false;
+			}
+			
+			
+			var formData = $("#frm").serialize();
+			$.ajax({
+				type : "post",
+				url  : "memberMypageSave.do",
+				data : formData,
+				dataType : "text",  // 성공여부 (ok)
+				
+				
+				success : function(data) {
+					if (data == "ok") {
+						alert("저장완료");
+						location="memberMypage.do";
+					} else {
+						alert("저장실패");
+					}
+				},	
+				error : function() {
+					alert("오류발생");
+				}
+			});
+		});
+	});
+
+
+
 </script>
 <body>
 <div class="wrapper">
@@ -260,8 +263,7 @@ function sample4_execDaumPostcode() {
             <h4>마이페이지</h4>
         </div>
         <div class="search">
-            <a href>마이페이지</a>
-             <a href><font color="black">사장님 광장</font></a>
+            
           
         </div> 
         <!-- 기능: 로그아웃상태에서는 로그인 버튼,  로그인상태에서는 마이페이지 | 로그아웃 -->
@@ -274,9 +276,9 @@ function sample4_execDaumPostcode() {
         <div class="" >
           
             <a href="progressorderList.do"><font size="4" color="black">주문내역 | </font></a>
-            <a href="BossMemberDetail.do"><font size="4">회원정보수정 |</font></a>
+            <a href="membermypage.do"><font size="4">회원정보수정 |</font></a>
             <a href=""><font size="4" color="black">문의내역 |</font></a>
-            <a href=""><font size="4" color="black">리뷰관리</font></a>
+            
         </div>
     </nav>
         
@@ -284,21 +286,21 @@ function sample4_execDaumPostcode() {
     <form name="frm" id="frm"> 
    
     <div style="">
-        아이디&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="userid" id="userid" placeholder="${vo.userid}" readonly><br>
-        새로운 암호 <input type="text" name="userpw" id="userpw">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        비밀번호 확인 <input type="text" name="userpw2" id="userpw2" > <br>
-        핸드폰 번호 <input type="text" id="userphone" name="userphone" value="${vo.userphone}"> <br>
+        아이디&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="userid" id="userid" placeholder="${vo.userid}"value="${vo.userid}" readonly><br>
+        새로운 암호 <input type="password" name="userpw" id="userpw" value="" style="font-family: monospace;"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        비밀번호 확인 <input type="password" name="reuserpw" id="reuserpw" value="" style="font-family: monospace;"/> <br>
+        핸드폰 번호 <input type="text" name="userphone" id="userphone" value="${vo.userphone}"> <br>
         이메일 주소 
         <input type="email" name="email" id="email" value="${vo.email}"> <br>
         <br>주소 <br>
-        <input type="text" name="useraddr1" id="sample4_postcode" placeholder="우편번호" value="${vo.storeaddr}"> 
+        <input type="text" name="useraddr1" id="sample4_postcode" placeholder="우편번호" value="${vo.useraddr1}"> 
         <button type="button" onclick="sample4_execDaumPostcode()" >검색</button>
         <br>
         <div>
-            <input type="text" class="form-control" placeholder="기본주소" id="sample4_roadAddress" name="useraddr2" value="">
+            <input type="text" class="form-control" placeholder="기본주소" id="sample4_roadAddress" name="useraddr2" value="${vo.useraddr2}">
         </div>
         <div>
-            <input type="text" class="form-control" placeholder="상세주소" id="sample4_detailAddress" name="useraddr3" value="">
+            <input type="text" class="form-control" placeholder="상세주소" id="sample4_detailAddress" name="useraddr3" value="${vo.useraddr3}">
         </div>
         <div>
         	<input type="hidden" id="sample4_jibunAddress"  placeholder="지번주소">
