@@ -22,6 +22,8 @@ public class ProgressOrderVO {
 	private String dctime;
 	
 	
+	
+
 	public String getDctime() {
 		return dctime;
 	}

@@ -73,12 +73,19 @@ public class MemberImpl implements MemberService{
 	public MemberVO selectmemberuser(MemberVO vo) throws Exception {
 		return memberDAO.selectmemberuser(vo);
 	}
+
 	//회원정보 수정
 	@Override
 	public int updatemember(MemberVO vo) throws Exception {
 		return memberDAO.updatemember(vo);
 	}
 	
+
+	@Override
+	public int mainPageDeliveryAddr(MemberVO vo) throws Exception {
+		return memberDAO.mainPageDeliveryAddr(vo);
+	}
+
 	
 	
 	

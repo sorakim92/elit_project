@@ -28,9 +28,22 @@ public class AdImpl implements AdService{
 		}
 		//강
 		@Override
-		public List<?> selectadDetailService(AdVO vo) throws Exception {
+		public AdVO selectadDetailService(AdVO vo) throws Exception {
 
 			return adDAO.selectadDetailService(vo);
+		}
+		@Override
+		public int adApproveService(AdVO vo) throws Exception {
+			
+			return adDAO.adApproveService(vo);
+		}
+		@Override
+		public int selectcount(AdVO vo) throws Exception {
+			return adDAO.selectcount(vo);
+		}
+		@Override
+		public int selectAdTotal(AdVO vo) throws Exception {
+			return adDAO.selectAdTotal(vo);
 		}
 
 		

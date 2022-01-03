@@ -41,7 +41,15 @@ public interface MemberService {
 	
 	// 회원정보 화면 (경석)
 	public MemberVO selectmemberuser(MemberVO vo) throws Exception;
+
 	
 	// 회원정보 수정 (경석)
 	public int updatemember(MemberVO vo) throws Exception;
+
+
+	/*
+	 * 메인에서 주소 검색시 배달주소 설정 (소라) 
+	 */
+	public int mainPageDeliveryAddr(MemberVO vo) throws Exception;
+
 }

@@ -54,12 +54,17 @@ public class MemberDAO extends EgovAbstractDAO{
 	public MemberVO selectmemberuser(MemberVO vo) {
 		return (MemberVO) select("memberDAO.selectmemberuser",vo);
 	}
+
 	//회원정보 수정
 	public int updatemember(MemberVO vo) {
 		return update("memberDAO.updatemember",vo);
 	}
 	
-	
+
+	public int mainPageDeliveryAddr(MemberVO vo) {
+		return (int) update("memberDAO.mainPageDeliveryAddr",vo);
+	}
+
 	
 	
 

@@ -27,7 +27,7 @@ public class BossMemberController {
 		
 		List<?> list = bossmemberService.selectbossmemberService(vo);
 		
-		model.addAttribute("vo",vo);
+		
 		model.addAttribute("list",list);
 		model.addAttribute("k2text",vo.getK2text());
 		
