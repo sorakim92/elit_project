@@ -32,7 +32,19 @@ public class CategoryController {
 		
 		String url = "";
 		String userid = (String) session.getAttribute("SessionUserID");
-		
+		if(userid == null || userid.trim().equals("")) {
+			userid = (String) session.getAttribute("BossmemberSessionID");
+		}
+		if(userid == null || userid.trim().equals("")) {
+			userid = (String) session.getAttribute("AdminSessionID");
+		}
+		if(userid == null ||
+				userid.trim().equals("") ) {
+			url = "etc/alert";
+			model.addAttribute("msg", "로그인후 이용해주세요.");
+			model.addAttribute("url","memberlogin.do");
+		}
+//		
 		if(userid == null || userid.trim().equals("")) {
 			url = "etc/alert";
 			model.addAttribute("msg", "로그인후 이용해주세요.");
@@ -47,7 +59,7 @@ public class CategoryController {
 		
 		//로그인 세션가지고 오기 
 		
-		//String userid = (String) session.getAttribute("SessionUserID");
+//		String userid = (String) session.getAttribute("SessionUserID");
 			
 		//System.out.println("1111111"+userid);
 		List<?> zlist = categoryService.selectZZIMlikeTodaylist(userid);
@@ -87,7 +99,7 @@ public class CategoryController {
 		model.addAttribute("list",list);
 		model.addAttribute("zlist",zlist);
 
-		return url;
+		return "menu2/todayTopList";
 	}
 	
 	
@@ -100,7 +112,19 @@ public class CategoryController {
 		
 		String url = "";
 		String userid = (String) session.getAttribute("SessionUserID");
-		
+		if(userid == null || userid.trim().equals("")) {
+			userid = (String) session.getAttribute("BossmemberSessionID");
+		}
+		if(userid == null || userid.trim().equals("")) {
+			userid = (String) session.getAttribute("AdminSessionID");
+		}
+		if(userid == null ||
+				userid.trim().equals("") ) {
+			url = "etc/alert";
+			model.addAttribute("msg", "로그인후 이용해주세요.");
+			model.addAttribute("url","memberlogin.do");
+		}
+
 		if(userid == null || userid.trim().equals("")) {
 			url = "etc/alert";
 			model.addAttribute("msg", "로그인후 이용해주세요.");
@@ -158,7 +182,7 @@ public class CategoryController {
 		model.addAttribute("list",list);
 		model.addAttribute("zlist",zlist);
 
-		return url;
+		return "menu2/storeList";
 	}
 	
 }

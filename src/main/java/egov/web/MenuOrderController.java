@@ -37,8 +37,14 @@ public class MenuOrderController {
 		String menukeyword = vo.getMenukeyword();
 		String url = "";
 		String userid = (String) session.getAttribute("SessionUserID");
-		
 		if(userid == null || userid.trim().equals("")) {
+			userid = (String) session.getAttribute("BossmemberSessionID");
+		}
+		if(userid == null || userid.trim().equals("")) {
+			userid = (String) session.getAttribute("AdminSessionID");
+		}
+		if(userid == null ||
+				userid.trim().equals("") ) {
 			url = "etc/alert";
 			model.addAttribute("msg", "로그인후 이용해주세요.");
 			model.addAttribute("url","memberlogin.do");
