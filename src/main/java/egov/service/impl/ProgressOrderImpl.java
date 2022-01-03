@@ -34,4 +34,17 @@ public class ProgressOrderImpl implements ProgressOrderService{
 		public List<?> selectorderendList(ProgressOrderVO vo) throws Exception {
 			return progressorderDAO.selectorderendList(vo);
 		}
+		@Override
+
+		public int updateProgressOrder(ProgressOrderVO vo) throws Exception {
+			return progressorderDAO.updateProgressOrder(vo);
+    }
+		public List<?> selectMainProOrder(String userid) throws Exception {
+			return progressorderDAO.selectMainProOrder(userid);
+
+		}
+		@Override
+		public List<?> selectMyOrderlist(ProgressOrderVO vo) {
+			return progressorderDAO.selectMyOrderlist(vo);
+		}
 }

@@ -253,8 +253,8 @@ $(function() {
             </div>       
             
             <div style="width:40%; height:160px;float:left; text-align: left;">
-                    <button type="button" class="btn2" onclick="f1(1)"><h3>접수</h3></button>
-                    <button type="reset" class="btn3" onclick="f2(1)"><h3>거부</h3></button>
+                    <button type="button" class="btn2" onclick="f1('${result.orderindex }')"><h3>접수</h3></button>
+                    <button type="reset" class="btn3" onclick="f2('${result.orderindex }')"><h3>거부</h3></button>
             </div> 
         </div>
           </c:forEach> 
@@ -305,18 +305,114 @@ $(function() {
 </style>
 <script>
 function f1(v) {
-	if(v==1) {
-		document.getElementById('acctime').style.display="block";
+	if(v!= "") {
+		document.getElementById('acctime_div').style.display="block";
+		$("#orderindex").val(v);
 	} else {
-		document.getElementById('acctime').style.display="none";
+		document.getElementById('acctime_div').style.display="none";
+		$("#orderindex").val("");
 	}
 }
 function f2(v) {
-	if(v==1) {
-		document.getElementById('dctime').style.display="block";
+	if(v!= "") {
+		document.getElementById('dctime_div').style.display="block";
+		$("#orderindex").val(v);
 	} else {
-		document.getElementById('dctime').style.display="none";
+		document.getElementById('dctime_div').style.display="none";
+		$("#orderindex").val("");
 	}
+}
+function fn_time(time) {
+	$("#acctime").val(time);
+}
+function fn_msg(msg) {
+	$("#dctime").val(msg);
+}
+
+</script>
+<script>
+
+
+
+function fn_timesave() {
+	
+	if( $.trim( $("#orderindex").val() ) == "" ) {
+		alert("접수 선택해주세요.");
+		return false;
+	}
+	if( $.trim( $("#acctime").val() ) == "" ) {
+		alert("배달시간 선택 해주세요.");
+		return false;	
+	}
+	if(!confirm($("#acctime").val() + "분 진행할까요?")) {
+		return false;
+	}
+	
+	var formdata = $("#orderform").serialize();
+	$.ajax({
+			type : "post",
+			url  : "orderSave.do",
+			data : formdata,
+			
+			//processData : false,
+			//contentType : false,
+			
+			datatype : "text",  // 성공여부 (ok)
+			success : function(data) {
+				if (data == "ok") {
+					alert("저장완료");
+					location="orderendList.do";
+				} else {
+					alert("저장실패");
+				}
+			},	
+			error : function() {
+				alert("오류발생");
+			}
+	});
+}
+
+
+
+</script>
+<script>
+function fn_msgsave() {
+	
+	if( $.trim( $("#orderindex").val() ) == "" ) {
+		alert("접수 선택해주세요.");
+		return false;
+	}
+	if( $.trim( $("#dctime").val() ) == "" ) {
+		alert("거부사유 선택 해주세요.");
+		return false;	
+	}
+	
+	if(!confirm($("#dctime").val() + "로 진행할까요?")) {
+		return false;
+	}
+	
+	var formdata = $("#orderform").serialize();
+	$.ajax({
+			type : "post",
+			url  : "orderSave.do",
+			data : formdata,
+			
+			//processData : false,
+			//contentType : false,
+			
+			datatype : "text",  // 성공여부 (ok)
+			success : function(data) {
+				if (data == "ok") {
+					alert("저장완료");
+					location="orderendList.do";
+				} else {
+					alert("저장실패");
+				}
+			},	
+			error : function() {
+				alert("오류발생");
+			}
+	});
 }
 
 
@@ -326,7 +422,7 @@ function f2(v) {
     <aside class="sidebar">
         <!-- 주문접수-->
        <form>
-        <div style="border:1px solid #ccc; width:98%; height:auto; display:none;" class="acctime" id="acctime" >
+        <div style="border:1px solid #ccc; width:98%; height:auto; display:none;" class="acctime" id="acctime_div" >
             <span style="display:inline-block; border-radius: 0.5em;
                     background: #f8cacc; padding: 5px 10px 5px 10px;
                     margin:5px 0 10px 10px;
@@ -336,23 +432,24 @@ function f2(v) {
             </span>
             <div style="width:100%; height:auto; ">
                 <div style="width:100%; margin-bottom:10px;">
-                    <div style="text-align:center; margin-bottom:10px;">배달 시간을 선택해주세요</div>
+                    <div style="text-align:center; margin-bottom:10px;"> 배달 시간을 선택해주세요</div>
+                    
                     <div style="text-align:center; margin-bottom:10px;">
-                        <button type="button" class="on_btn3">20분</button>
-                        <button type="button" class="on_btn3">30분</button>
-                        <button type="button" class="on_btn3">40분</button>
+                        <button type="button" class="on_btn3" onclick="fn_time('20')">20분</button>
+                        <button type="button" class="on_btn3" onclick="fn_time('30')">30분</button>
+                        <button type="button" class="on_btn3" onclick="fn_time('40')">40분</button>
                     </div>
                     <div style="text-align:center;">  
-                        <button type="button" class="on_btn3">50분</button>
-                        <button type="button" class="on_btn3">60분</button>
-                        <button type="button" class="on_btn3">90분</button>
+                        <button type="button" class="on_btn3" onclick="fn_time('50')">50분</button>
+                        <button type="button" class="on_btn3" onclick="fn_time('60')">60분</button>
+                        <button type="button" class="on_btn3" onclick="fn_time('90')">90분</button>
                     </div>
                 </div>
-                <div style="text-align:center;">
-                    <textarea placeholder="원하는 시간이 없는 경우 직접 입력해주세요" class="bd_textarea" name="" id=""></textarea>
-                </div> 
+                <!-- <div style="text-align:center;">
+                    <textarea placeholder="원하는 시간이 없는 경우 직접 입력해주세요"  class="bd_textarea" name="" id=""></textarea>
+                </div> --> 
                 <div style="text-align:center; margin-bottom:10px;" >
-                    <button type="button" onclick="window.close();" class="on_btn4">접수완료</button>
+                    <button type="button" onclick="fn_timesave()" class="on_btn4" id="timesave" name="timesave">접수완료</button>
                 </div>  
             </div>
         </div>
@@ -361,7 +458,7 @@ function f2(v) {
 		<form>
         <!-- 주문거부 -->
         <div style="border:1px solid #ccc; width:98%; height:auto;
-                    margin:10px 0 10px 0; display:none;  " class="dctime" id="dctime"  >
+                    margin:10px 0 10px 0; display:none;  " class="dctime" id="dctime_div"  >
             <span style="display:inline-block; border-radius: 0.5em;
                     background: #f8cacc; padding: 5px 10px 5px 10px;
                     margin:5px 0 10px 10px;
@@ -372,19 +469,19 @@ function f2(v) {
             <div style="width:100%; height:auto; ">
                 <div style="text-align:center; margin-bottom:10px;">거부 사유 선택해주세요</div>
                 <div style="text-align:center; margin-bottom:10px; width:100%;">
-                    <button type="" class="on_btn5" style="width:150px;">배달불가지역</button>
-                    <button type="" class="on_btn5">메뉴 및 업소정보 다름</button>
+                    <button type="button" class="on_btn5" style="width:150px;" onclick="fn_msg('배달불가지역')">배달불가지역</button>
+                    <button type="button" class="on_btn5" onclick="fn_msg('메뉴 및 업소정보 다름')">메뉴 및 업소정보 다름</button>
                 </div>
                 <div style="text-align:center; margin-bottom:10px; width:100%;">  
-                    <button class="on_btn5">재료소진</button>
-                    <button class="on_btn5">배달지연</button>
+                    <button type="button"class="on_btn5" onclick="fn_msg('재료소진')">재료소진</button>
+                    <button type="button"class="on_btn5" onclick="fn_msg('배달지연')">배달지연</button>
                 </div>
                 <div style="text-align:center; margin-bottom:10px; width:100%;">
-                    <button class="on_btn5">고객정보부정확</button>
-                    <button class="on_btn5">기타</button>
+                    <button type="button" class="on_btn5" onclick="fn_msg('고객정보부정확')">고객정보부정확</button>
+                    <button type="button"class="on_btn5" onclick="fn_msg('기타')">기타</button>
                 </div>
                 <div style="text-align:center; margin-bottom:10px;" >
-                    <button type="button" onclick="window.close();" class="on_btn4">확인</button>
+                    <button type="button" onclick="fn_msgsave()" class="on_btn4">확인</button>
                 </div>     
              </div>
         </div>
@@ -421,7 +518,11 @@ function f2(v) {
             </div>
         </div>-->
     </aside>
-
+	<form id="orderform" name="orderform" >
+		<input type="hidden" name="orderindex" id="orderindex">
+		<input type="hidden" name="acctime" id="acctime">
+		<input type="hidden" name="dctime" id="dctime">  
+	</form>
     </div>
     <footer>
       <%@ include file = "../include/main_footer.jsp" %>

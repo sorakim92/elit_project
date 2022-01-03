@@ -120,7 +120,7 @@ function fn_like(u,c) {
            		<td>
                     <c:choose>
                    		<c:when test="${result.storeimage.equals('사진') }">
-                   		   	<div class="cate_tbl2_div1" style="line-height:120px;"
+                   		   	<div class="cate_tbl2_div1" style="line-height:140px;"
                    		   		onclick="location.href='menuOrderList.do?storeunq=${result.storeunq}';">
                     			 이미지 준비중
                    			 </div>
@@ -135,7 +135,9 @@ function fn_like(u,c) {
                    
                	</td>
                	<td>
-                   <span class="cate_tbl2_strname" onclick="location.href='menuOrderList.do?storeunq=${result.storeunq}';"> ${result.storename }</span>
+                   <span class="cate_tbl2_strname" 
+                   			style="padding-left:5px;"
+                   		onclick="location.href='menuOrderList.do?storeunq=${result.storeunq}';"> ${result.storename }</span>
                           
                        <div class="cate_tbl2_strinfo1">
                            <span><img src="<c:url value='/img/star.png'/>" style="width:20px; height:20px; ">
@@ -163,10 +165,10 @@ function fn_like(u,c) {
             			<div class="cate_tbl2_strinfo1">
             				<span style="padding:0 10px 0 0">배달비: ${result.fee }</span>
             			</div>
-	                   <div class="cate_tbl2_strinfo1">
+	                   <!-- <div class="cate_tbl2_strinfo1">
 	                       <span>대표메뉴</span><br>
 	                      
-	                   </div>
+	                   </div>-->
              	 </td>
              	 
 	             	 <c:if test="${number%2 == 0 }">

@@ -27,4 +27,15 @@ public class ProgressOrderDAO extends EgovAbstractDAO{
 		return list("progressorderDAO.selectorderendList",vo);
 	}
 
+	public int updateProgressOrder(ProgressOrderVO vo) {
+		return (int) update("progressorderDAO.updateProgressOrder",vo);
+  }
+	public List<?> selectMainProOrder(String userid) {
+		return list("progressorderDAO.selectMainProOrder",userid);
+
+	}
+	public List<?> selectMyOrderlist(ProgressOrderVO vo) {
+		return list("progressorderDAO.selectMyOrderlist",vo);
+	}
+
 }

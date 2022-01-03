@@ -14,11 +14,14 @@ public interface MemberService {
 	//로그인 처리
 	public int selectMemberCount(MemberVO vo) throws Exception;
 	
+	//로그인 인증
+	public MemberVO selectMemberCerify(MemberVO vo) throws Exception;
+	
 	//비밀번호 찾기
 	public int Pop_memberpassfind(MemberVO vo) throws Exception;
 	
 	//아이디 찾기
-	public int Pop_useridfd(MemberVO vo)throws Exception;
+	public String Pop_useridfd(MemberVO vo)throws Exception;
 	
 	//비밀번호 찾기(변경화면)
 	public int Pop_newuserpw(MemberVO vo)throws Exception;
@@ -33,12 +36,20 @@ public interface MemberService {
 	 */
 	public int selectAdminMemberLogin(MemberVO vo) throws Exception;
 
+	// 회원탈퇴Save (경석)
+	public int deletememberuser(MemberVO vo) throws Exception;
 	
+	// 회원정보 화면 (경석)
+	public MemberVO selectmemberuser(MemberVO vo) throws Exception;
+
 	
-	
-	
-	
-	
-	
-	
+	// 회원정보 수정 (경석)
+	public int updatemember(MemberVO vo) throws Exception;
+
+
+	/*
+	 * 메인에서 주소 검색시 배달주소 설정 (소라) 
+	 */
+	public int mainPageDeliveryAddr(MemberVO vo) throws Exception;
+
 }

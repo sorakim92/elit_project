@@ -35,7 +35,7 @@
 			datatype : "text",
 			success  : function(data){
 				if(data == "ok"){
-					alert("등록 완료");
+					alert("삭제 완료");
 					document.location.reload();				
 				} else if (date == "er1"){
 					alert("업데이트가 제대로 되지 않았습니다.");
@@ -93,7 +93,11 @@
 
 
 </script>
-    
+    <style>
+    body {
+    font-size: 16px;
+}
+    </style>
     
   </head>
   <body class='main page'>
@@ -123,7 +127,7 @@
         <br><br>
         <li class='launcher'>
           <i class='icon-envelope'></i>
-          <a href="#">문의내역</a>
+          <a href="#">입점문의</a>
         </li>
         <br><br>
         <li class='active launcher'>
@@ -138,7 +142,7 @@
         <br><br>
         <li class='launcher'>
           <i class='icon-cog'></i>
-          <a href='AdminRegister.do'>관리자관리</a>
+          <a href='AdminRegister.do'>직원 관리</a>
         </li>
       </ul>
     </section>

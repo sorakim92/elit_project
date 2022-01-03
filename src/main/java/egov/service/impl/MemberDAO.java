@@ -24,13 +24,17 @@ public class MemberDAO extends EgovAbstractDAO{
 	public int selectMemberCount(MemberVO vo) {
 		return (int) select("memberDAO.selectMemberCount",vo);
 	}
+	//로그인 세션 처리용
+	public MemberVO selectMemberCerify(MemberVO vo) {
+		return (MemberVO) select("memberDAO.selectMemberCerify",vo);
+	}
 	//비밀번호 찾기
 	public int Pop_memberpassfind(MemberVO vo) {
 		return (int) select("memberDAO.Pop_memberpassfind",vo);
 	}
 	//아이디 찾기
-	public int Pop_useridfd(MemberVO vo) {
-		return (int) select("memberDAO.Pop_useridfd",vo);
+	public String Pop_useridfd(MemberVO vo) {
+		return (String) select("memberDAO.Pop_useridfd",vo);
 	}
 	//비밀번호 찾기 (재설정)
 	public int Pop_newuserpw(MemberVO vo) {
@@ -42,7 +46,25 @@ public class MemberDAO extends EgovAbstractDAO{
 	public int selectAdminMemberLogin(MemberVO vo) {
 		return (int) select("memberDAO.selectAdminMemberLogin",vo);
 	}
+	//회원탈퇴(save)
+	public int deletememberuser(MemberVO vo) {
+		return delete("memberDAO.deletememberuser",vo);
+	}
+	//회원정보 화면
+	public MemberVO selectmemberuser(MemberVO vo) {
+		return (MemberVO) select("memberDAO.selectmemberuser",vo);
+	}
+
+	//회원정보 수정
+	public int updatemember(MemberVO vo) {
+		return update("memberDAO.updatemember",vo);
+	}
 	
+
+	public int mainPageDeliveryAddr(MemberVO vo) {
+		return (int) update("memberDAO.mainPageDeliveryAddr",vo);
+	}
+
 	
 	
 

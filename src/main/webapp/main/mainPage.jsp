@@ -35,6 +35,7 @@
 <style>
 body {
 	font-family : hanna;
+	font-size : 18px;
 }
 @font-face {
     font-family: "hanna";
@@ -66,8 +67,109 @@ a:hover, .cap:hover{
 	color: #7a7a7a;
 	text-decoration: none;
 }
-</style>
+.btn {
+	background: #f8cacc; 
+	color: black; 
+	border-color:#f8cacc
+}
+.main_cate_img {
+	border-radius: 2em;
+	width:200px;
+	height:150px;
+}
+.slider_nav {
+	width:1000px;
+	height:160px;
+/* 	background-color:#f8cacc; */
+ 	line-height:160px;
+/* 	justify-content: center; */
+/* 	display: inline-block;  */
+/* 	align-items: center; */
+}
+.banner_btn_a {
+	display:inline-block; 
+/* 	background:pink;  */
+	float:left; 
+	line-height:140px;
+}
+.rolling_panel { 
+	position: relative; 
+	width: 970px; 
+	height: 140px;
+ 	margin: 0; 
+ 	padding: 0; 
+ 	justify-content: center; 
+ 	overflow: hidden; 
+ 	float:left;
+ }
+ .rolling_panel ul {
+  	position: absolute; 
+  	margin: 5px; 
+  	padding: 0; 
+  	list-style: none; 
+ }
+ .rolling_panel ul li { 
+ 	float: left; 
+ 	width: 98%; 
+ 	height: 140px;
+ }
+ .rolling_panel ul li img {
+ 	width: 970px;
+ 	height: 140px;
+ }
 
+/* 배너부분끝  */
+</style>
+<script>
+$(function(){
+	$("#btn_addr_search").click(function(){
+		var formdata = $("#search_frm").serialize();	
+		var userid = $("#userid").val();
+	
+		if(userid == null || userid == "" || userid == "null") {
+			userid = $("#bossid").val();
+		} 
+		if(userid == null || userid == "" || userid == "null"){
+			userid = $("#adminid").val();
+		}
+		
+		if(userid == null || userid == "" || userid == "null"){
+			alert("로그인을 하셔야 주문이 가능합니다. ");
+			location.href="memberlogin.do";
+			return false;
+		}
+		$("#userid").val(userid);
+		
+		var addr = $("#addr").val();
+		if( addr == null || addr == "") {
+			sample6_execDaumPostcode();
+			return false;
+		}
+		
+			$.ajax({
+				type : "post",
+				url  : "deliveryAddrUpdate.do",
+				data : formdata,
+			
+				datatype : "json",
+				success : function(data) {
+					if(data.msg == "ok" ) {
+						alert("카테고리를 선택해주세요. ");
+					} else {
+						alert(" 실패 ");
+					}
+				},
+				error : function() {
+					alert("오류 ! ");
+				}
+			})
+		
+		
+	})
+	
+})
+
+</script>
 <script>
 
 $(function(){
@@ -106,10 +208,12 @@ $(function(){
 		};
 		geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
 		
-	})
+	});
+	
+	
 
 	   
-})
+});
 
 </script>
 <script>
@@ -153,7 +257,9 @@ $(function(){
                 }
 				addr = addr+' '+extraAddr;
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                //document.getElementById('sample6_postcode').value = data.zonecode;
+                document.getElementById('useraddr4').value = data.zonecode;
+                document.getElementById("useraddr5").value = addr;
+
                 document.getElementById("addr").value = addr;
                 // 커서를 상세주소 필드로 이동한다.
                 document.getElementById("addr").focus();
@@ -161,27 +267,136 @@ $(function(){
         }).open();
     }
 </script>
+<script>
+$(document).ready(function() {
+	 
+    var $panel = $(".rolling_panel").find("ul");
+
+    var itemWidth = $panel.children().outerWidth(); // 아이템 가로 길이
+//     var itemLength = $panel.children().length;      // 아이템 수
+
+    // Auto 롤링 아이디
+    var rollingId;
+
+    auto();
+
+    // 배너 마우스 오버 이벤트
+    $panel.mouseover(function() {
+        clearInterval(rollingId);
+    });
+
+    // 배너 마우스 아웃 이벤트
+    $panel.mouseout(function() {
+        auto();
+    });
+
+    // 이전 이벤트
+    $("#prev").on("click", prev);
+
+    $("#prev").mouseover(function(e) {
+        clearInterval(rollingId);
+    });
+
+    $("#prev").mouseout(auto);
+
+    // 다음 이벤트
+    $("#next").on("click", next);
+
+    $("#next").mouseover(function(e) {
+        clearInterval(rollingId);
+    });
+
+    $("#next").mouseout(auto);
+
+    function auto() {
+
+        // 2초마다 start 호출
+        rollingId = setInterval(function() {
+            start();
+        }, 2000);
+    }
+
+    function start() {
+        $panel.css("width", itemWidth);
+        $panel.animate({"left": - itemWidth + "px"}, function() {
+
+            // 첫번째 아이템을 마지막에 추가하기
+            $(this).append("<li>" + $(this).find("li:first").html() + "</li>");
+
+            // 첫번째 아이템을 삭제하기
+            $(this).find("li:first").remove();
+
+            // 좌측 패널 수치 초기화
+            $(this).css("left", 0);
+        });
+    }
+
+    // 이전 이벤트 실행
+    function prev(e) {
+        $panel.css("left", - itemWidth);
+        $panel.prepend("<li>" + $panel.find("li:last").html() + "</li>");
+        $panel.animate({"left": "0px"}, function() {
+            $(this).find("li:last").remove();
+        });
+    }
+
+    // 다음 이벤트 실행
+    function next(e) {
+        $panel.animate({"left": - itemWidth + "px"}, function() {
+            $(this).append("<li>" + $(this).find("li:first").html() + "</li>");
+            $(this).find("li:first").remove();
+            $(this).css("left", 0);
+        });
+    }
+});
+</script>
 <body>
 <div class="wrapper">
     <div class="main" style="min-height: 100%; padding-bottom:100px; flex:1;">
     <header class="width:100%; height:50px;">
               <%@include file = "../include/main_header.jsp" %>
     </header>
+        <!--  배너  -->
         
-    <nav>
-        서브탭(...nav, banner....???????????)
+    <nav class="slider_nav">
+      <div class="banner_btn_a">
+             <a href="javascript:void(0)" id="prev"><img src="img/prev.png" style="width:10px;"></a>
+      		 </div>
+      		 
+      <div class="rolling_panel">
+           
+            <ul>
+                <li> 
+                	<img src="<c:url value='/img/b1.png'/> ">
+                </li>
+                <li>
+               		<img src="img/b2.png" >
+                </li>
+                <li>
+             		<img src="img/b3.png" >
+                </li>
+            </ul>
+        </div>
+        <div class="banner_btn_a" style="margin-left:5px;">
+      		 <a href="javascript:void(0)" id="next"><img src="img/next.png" style="width:10px;"></a>
+      		</div>
+       
     </nav>
     <!-- 주소 검색창 -->
     <section style="height:auto;">
-     
+    	<!--  검색시 우편번호, 주소 (상세주소제외) member 배송지 주소컬럼인 addr4,addr5,addr6의 4,5로 update -->
+	    <form name="search_frm" id="search_frm">
+	     	<input type="hidden" id="useraddr4" name="useraddr4" >
+	     	<input type="hidden" id="useraddr5" name="useraddr5"  >
+	     	<input type="hidden" id="userid" name="userid" value=<%=USERID %>  >
+	     	<input type="hidden" id="bossid" name="bossid" value=<%=BOSSUSERID %>>
+	     	<input type="hidden" id="adminid" name="adminid" value=<%=ADMINID %> >
+     	</form>
         <div class="div_addr" style="height:auto;">
             <img id="current_loc" src="<c:url value='/img/currentLoc.png'/>" width="20px" height="20px" alt="위치설정아이콘">
             <!-- 주소검색 -->
-            <input type="text" name="addr" id="addr" class="" style="width:400px; height:30px;"> 
-          	<button type="button" id="btn_addr_search"
-          				class="btn btn-outline-warning" 
-          				style="border-color: #f8cacc; color: black;"
-          				onclick="sample6_execDaumPostcode()">검색</button>
+            <input type="text" name="addr" id="addr" onclick="sample6_execDaumPostcode()" class="" style="width:400px; height:30px;"> 
+          	<button type="button" id="btn_addr_search" class="btn" >검색</button>
 		</div>
 
 		
@@ -192,19 +407,19 @@ $(function(){
                 <tr>
                     <td>
                     	<div  style=" cursor: pointer;" onclick="location.href='todayTopList.do';">
-	                		 <img src="<c:url value='/img/todayRank.png'/>" width="150" height="150" alt="사진">
+	                		 <img src="<c:url value='/img/todayRank.png'/>" class="main_cate_img" alt="사진">
 	                		 <br>오늘뭐먹지
                         </div>
                     </td>
                     <td>
                     	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do?cateunq=111';">
-	                    	<img src="<c:url value='/img/mKRfood.jpg'/>" width="200" height="150" alt="사진">
+	                    	<img src="<c:url value='/img/mKRfood.jpg'/>"  class="main_cate_img"  alt="사진">
 	                		<br>한식
                         </div>
                     </td>
                     <td>
                     	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do?cateunq=222';">
-	                    	<img src="<c:url value='/img/mChicken.png'/>" width="200" height="150" alt="사진">
+	                    	<img src="<c:url value='/img/mChicken.png'/>" class="main_cate_img"  alt="사진">
 	                		<br>치킨
                         </div>
                     </td>
@@ -212,19 +427,19 @@ $(function(){
                 <tr>
                     <td>
                     	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do?cateunq=333';">
-	                    	<img src="<c:url value='/img/mJPfood.jpg'/>" width="200" height="150" alt="사진">
+	                    	<img src="<c:url value='/img/mJPfood.jpg'/>"class="main_cate_img"  alt="사진">
 	                		<br>일식
                         </div>
                     </td>
                     <td>
                     	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do?cateunq=444';">
-	                    	<img src="<c:url value='/img/mWestern.jpg'/>" width="200" height="150" alt="사진">
+	                    	<img src="<c:url value='/img/mWestern.jpg'/>" class="main_cate_img"  alt="사진">
 	                		<br>양식
                         </div>
                     </td>
                     <td>
                     	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do?cateunq=555';">
-	                    	<img src="<c:url value='/img/mCNfood.jpg'/>" width="200" height="150" alt="사진">
+	                    	<img src="<c:url value='/img/mCNfood.jpg'/>" class="main_cate_img"  alt="사진">
 	                		<br>중식
                         </div>
                     </td>
@@ -232,65 +447,99 @@ $(function(){
                 <tr>
                     <td>
                     	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do?cateunq=666';">
-	                    	<img src="<c:url value='/img/mSalad.jpg'/>" width="200" height="150" alt="사진">
+	                    	<img src="<c:url value='/img/mSalad.jpg'/>" class="main_cate_img"  alt="사진">
 	                		<br>샐러드/샌드위치
                         </div>
                     </td>
                     <td>
                     	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do?cateunq=777';">
-	                    	<img src="<c:url value='/img/mBunsik.jpg'/>" width="200" height="150" alt="사진">
+	                    	<img src="<c:url value='/img/mBunsik.jpg'/>" class="main_cate_img" alt="사진">
 	                		<br>분식
                         </div>
                     </td>
                     <td>
                     	<div style=" cursor: pointer;" onclick="location.href='KRfoodList.do?cateunq=888';">
-	                    	<img src="<c:url value='/img/mCoffee.jpg'/>" width="200" height="150" alt="사진">
+	                    	<img src="<c:url value='/img/mCoffee.jpg'/>" class="main_cate_img"  alt="사진">
 	                		<br>카페/디저트
                         </div>
                     </td>
                 </tr>
            </table>
         </div>
-        <div style="border:1px solid #ccc; width:100%; height:150px; margin:10px 0 10px 0; ">
-            배너
-        </div>
+      
+            <nav class="slider_nav">
+		      <div class="banner_btn_a">
+		             <a href="javascript:void(0)" id="prev"><img src="img/prev.png" style="width:10px;"></a>
+		      		 </div>
+		      		 
+		      <div class="rolling_panel">
+		           
+		            <ul>
+		                <li> 
+		                	<img src="img/b3.png" >
+		                	
+		                </li>
+		                <li>
+		               		<img src="img/b2.png" >
+		                </li>
+		                <li>
+		             		<img src="<c:url value='/img/b1.png'/> ">
+		                </li>
+		            </ul>
+		        </div>
+		        <div class="banner_btn_a" style="margin-left:5px;">
+		      		 <a href="javascript:void(0)" id="next"><img src="img/next.png" style="width:10px;"></a>
+		      		</div>
+       
+    		</nav>
+        
     </article>
 
-<!--  현재진행중인 주문이 있으면 띄우기 !  -->
+
+<!--  현재진행중인 주문이 있으면 띄우기 ! -->
+<c:if test = "${!empty plist}">
+  <c:forEach var="result" items="${plist }">
+
     <article class="article2">
-        <img src="" width="300px" height="300px" style="float:left" alt="배달상황지도API">
+        <img src="" width="300px" height="300px" style="float:left; line-height:290px;" alt="배달상황지도API">
         <div class="order_detail">
-            <table class="odr_main_table">
+            <table 	class="table table-hover" 
+            		style="width:65%; float:right; margin-top:30px;">
                 <colgroup>
                     <col width="30%" />
                     <col width="*" />
                 </colgroup>
+               
                 <tr>
                     <td>주문내용</td>
-                    <td></td>
+                    <td>${result.menuname }</td>
+                 
                 </tr>
+              
                 <tr>
                     <td>예상도착시간</td>
-                    <td></td>
+                    <td> ${result.acctime } </td>
                 </tr>
                 <tr>
                     <td>배달주소</td>
-                    <td></td>
+                    <td>${result.addr }</td>
                 </tr>
                 <tr>
-                    <td>연락처</td>
-                    <td></td>
+                    <td>주문자 연락처</td>
+                    <td>${result.phone }</td>
                 </tr>
-                <tr>
-                    <td colspan="2">
-                        <div style="text-align: right;">
-                            <button type="button" name="" id="">주문문의</button>            
-                        </div>
-                    </td>
-                </tr>
+                
             </table>
+            <div style="text-align: right; padding-right:20px;">
+             	<button type="button" 
+            		class="btn" name="" id="">주문상세</button>            
+            </div>
         </div>
     </article>
+    
+    </c:forEach>
+ </c:if>   
+  
     <article class="article3">
         <div class="ldiv">
             <table class="main_b_tbl">

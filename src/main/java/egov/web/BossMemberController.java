@@ -27,7 +27,7 @@ public class BossMemberController {
 		
 		List<?> list = bossmemberService.selectbossmemberService(vo);
 		
-		model.addAttribute("vo",vo);
+		
 		model.addAttribute("list",list);
 		model.addAttribute("k2text",vo.getK2text());
 		
@@ -102,20 +102,20 @@ public class BossMemberController {
 		
 		
 		
-		vo = bossmemberService.selectbossmemberDetail(vo);
-		
-		
-			
+		vo = bossmemberService.selectbossmemberDetail(vo);	
 		model.addAttribute("vo",vo);
-		
 		
 		return "mypage/businessMypage";
 	}
 	
 	@RequestMapping("BossMemberModifySave.do")
 	@ResponseBody
-	public String updatebossmember(BossMemberVO vo) 
+	public String updatebossmember(BossMemberVO vo, HttpSession session) 
 									throws Exception {
+		
+		String userid = (String) session.getAttribute("BossmemberSessionID");
+		
+		vo.setuserid(userid);
 		
 		int result = bossmemberService.updatebossmember(vo);
 		

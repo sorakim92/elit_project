@@ -21,6 +21,18 @@ public class MemberVO {
 	private String storelatitude;
 	private String business;
 	private String rdate;
+	
+	private String addr; 
+	
+	
+	
+	
+	public String getAddr() {
+		return addr;
+	}
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
 	public String getUserid() {
 		return userid;
 	}

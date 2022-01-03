@@ -24,7 +24,7 @@
 
     	// @breif 업로드 파일 읽기
 
-    	let fileInfo = document.getElementById("file1").files[0];
+    	let fileInfo = document.getElementById("uploadfile").files[0];
 
     	let reader = new FileReader();
 		
@@ -35,7 +35,7 @@
 
             // @details 파일의 URL을 Base64 형태로 가져온다.
 
-            document.getElementById("thumbnailImg").src = reader.result;
+            document.getElementById("filename").src = reader.result;
 
         };
 	
@@ -75,16 +75,20 @@
   				$("#menukeyword").focus();
   				return false;
   			}
-  			
+  			if( $("#uploadfile").val() == "" ) {
+  				alert("사진 입력해주세요.");
+  				$("#uploadfile").focus();
+  				return false;
+  			}
 	
-  			var formdata = $("#frm").serialize();
+  			var form = new FormData(document.getElementById('frm'));
   			$.ajax({
   				type : "post",
-  				url  : "menuWriteSave.do",
-  				data : formdata,
+  				url  : "uploadWriteSave.do",
+  				data : form,
   				
-  				//processData : false,
-  				//contentType : false,
+  				processData : false,
+  				contentType : false,
   				
   				datatype : "text",  // 성공여부 (ok)
   				success : function(data) {
@@ -266,12 +270,11 @@ section {
         </div>
     </nav>
         
-    <form name="frm" id="frm" enctype="miltipart/form-data"  > 
+    <form name="frm" id="frm" method="post" action="uploadWriteSave.do" enctype="multipart/form-data"  > 
      <section>
      	
         <div style="text-align:left;" >
-            <font size="5">메뉴추가</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           
+            <font size="5">메뉴추가</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
         </div>
         <br>
         <div class=""  margin:0 auto; width:800px;>
@@ -293,13 +296,24 @@ section {
             <input type="text" class="emailField form-control" name="menuname" id="menuname" >
             </div>
         </div>
+         <div class="col-sm-6">
+            <div class="form-group">
+                <label class="fieldTitle" for="'first_name">소개글</label>
+                <input type="text" placeholder="" value="" class="emailField form-control"  id="menuinfo" name="menuinfo">
+            </div>
+        </div>
     </div>
 
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
-                <label class="fieldTitle" for="'first_name">소개글</label>
-                <input type="text" placeholder="" value="" class="emailField form-control"  id="menuinfo" name="menuinfo">
+                <label class="fieldTitle" for="'phone1">구분</label>
+				<select type="text" name="menukeyword"   id="menukeyword" class="form-control country-code">
+                            <option value="">키워드선택</option>
+                            <option value="추천메뉴">추천메뉴</option>
+                            <option value="인기메뉴">인기메뉴</option>
+                            <option value="음료">음료</option>
+               </select>
             </div>
         </div>
         <div class="col-sm-6">
@@ -310,12 +324,12 @@ section {
         </div>
     </div>
 
-    <div class="row">
+     <div class="row">
         <div class="col-sm-6">
-            <div class="row">
+           <!--  <div class="row">
                 <div class="col-sm-12">
                     <label class="fieldTitle" for="phone1">구분</label>
-                </div>
+                </div> 
 
                         
         <div class="col-sm-12">
@@ -327,14 +341,14 @@ section {
                             <option value="음료">음료</option>
                         </select>
                         
-              </div> 
+              </div> -->
               <div class="col-sm-12">
             <div class="form-group" >
                   <label class="fieldTitle" for="last_name">이미지 넣기</label><br><br>
-                  <input  type="file"   name="file1" id="file1" onChange="uploadImgPreview();"  accept="image/*" ></input>
+                  <input  type="file"   name="uploadfile" id="uploadfile" onChange="uploadImgPreview();"  accept="image/*" ></input>
            </div>
                        
-                  <img id="thumbnailImg" name="thumbnailImg"  style="width:400px; height:300px;">
+                  <img id="filename" name="filename"  style="width:400px; height:300px;">
                   <br/>						
                         
         </div><br> <br><br><br><br>  
@@ -347,7 +361,7 @@ section {
     
 </section>
 <div style="text-align:center;" >
-    <button type="button" id="btn_save">적용</button>
+    <button type="button" id="btn_save" >적용</button>
     <button type="reset">취소</button>
 </div>   
  </form>  

@@ -136,12 +136,84 @@ section {
 }
 </style>
 
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+    function sample4_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var roadAddr = data.roadAddress; // 도로명 주소 변수
+                var extraRoadAddr = ''; // 참고 항목 변수
+
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraRoadAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraRoadAddr !== ''){
+                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample4_postcode').value = data.zonecode;
+                document.getElementById("sample4_roadAddress").value = roadAddr;
+                document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
+                
+                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+                if(roadAddr !== ''){
+                    document.getElementById("sample4_extraAddress").value = extraRoadAddr;
+                } else {
+                    document.getElementById("sample4_extraAddress").value = '';
+                }
+
+                var guideTextBox = document.getElementById("guide");
+                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+                if(data.autoRoadAddress) {
+                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+                    guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+                    guideTextBox.style.display = 'block';
+
+                } else if(data.autoJibunAddress) {
+                    var expJibunAddr = data.autoJibunAddress;
+                    guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+                    guideTextBox.style.display = 'block';
+                } else {
+                    guideTextBox.innerHTML = '';
+                    guideTextBox.style.display = 'none';
+                }
+            }
+        }).open();
+    }
+</script>
 
 
 
 <script>
 
 $(function() {
+	
+		var storeaddr = $.trim("${vo.storeaddr}");  // 12345 서울시 강남구 1111
+		var storeaddr_len = storeaddr.length;
+		var array;
+		var post;
+		if( storeaddr_len > 5 ) {
+			array=storeaddr.split(" ");
+			post = array[0];
+			storeaddr = storeaddr.replace(post+" ","");
+			$("#sample4_postcode").val(post);
+			$("#sample4_roadAddress").val(storeaddr);
+		}
+	
+	
 		$("#btn3").click(function(){ 	
 			
 			
@@ -170,7 +242,16 @@ $(function() {
 				$("#email").focus();
 				return false;
 			}
+			if( $("#sample4_roadAddress").val() == "" ) {
+				alert("주소을 입력해주세요.");
+				$("#sample4_roadAddress").focus();
+				return false;
+			}
+			var post = $("#sample4_postcode").val();
+			var addr1 = $("#sample4_roadAddress").val();
+			var addr2 = $("#sample4_detailAddress").val();
 			
+			$("#storeaddr").val(post+" "+addr1+" "+addr2);
 			
 			var formdata = $("#frm").serialize();
 			$.ajax({
@@ -221,27 +302,28 @@ $(function() {
         
     
     <form name="frm" id="frm" > 
-   
+   		<input type="hidden" name="storeaddr" id="storeaddr" value="">
+   		
     <div style="">
         아이디&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="userid" id="userid" placeholder="${vo.userid}" readonly><br>
-        새로운 암호 <input type="text" name="userpw" id="userpw">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        비밀번호 확인 <input type="text" name="userpw2" id="userpw2" > <br>
+        새로운 암호 <input type="password" name="userpw" id="userpw" style="font-family:monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        비밀번호 확인 <input type="password" name="userpw2" id="userpw2" style="font-family:monospace;"> <br>
         핸드폰 번호 <input type="text" id="userphone" name="userphone" value="${vo.userphone}"> <br>
         이메일 주소 
         <input type="email" name="email" id="email" value="${vo.email}"> <br>
-        <br>주소 <br>
-        <input type="text" name="storeaddr" id="storeaddr" placeholder="우편번호" value="${vo.storeaddr}" > 
-        <button type="button" >검색</button>
+ <br>주소 <br>
+        <input type="text"  id="sample4_postcode" placeholder="우편번호">
+		<input type="button"  onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
+        <!-- <input type="text" name="storeaddr" id="storeaddr" placeholder="우편번호" value="${vo.storeaddr}" >  -->
         <br>
         <div>
-            <input type="text" class="form-control" placeholder="기본주소" id="" name="">
+        	<input type="text"  class="form-control"id="sample4_roadAddress" placeholder="도로명주소" style="width:70%;">
+			<input type="hidden" id="sample4_jibunAddress" placeholder="지번주소">
+			<span id="guide" style="color:#999;display:none"></span>	
+        	<input type="text" class="form-control" id="sample4_detailAddress" placeholder="상세주소" style="width:70%;">
+			<input type="hidden" id="sample4_extraAddress" placeholder="참고항목">
         </div>
-        <div>
-            <input type="text" class="form-control" placeholder="상세주소" id="" name="" value="">
-        </div>
-        <div>
-            <input type="text" class="form-control" placeholder="참고항목" id="" name="">
-        </div><br>
+       <br>
         
     </div> 
         <br>

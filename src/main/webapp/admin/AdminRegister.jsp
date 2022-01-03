@@ -78,7 +78,11 @@
 	
 	</script>
 	
-	
+	<style>
+	body {
+    font-size: 16px;
+}
+	</style>
     
   </head>
   <body class='main page'>
@@ -108,7 +112,7 @@
           <br><br>
           <li class='launcher'>
             <i class='icon-envelope'></i>
-            <a href="#">문의내역</a>
+            <a href="#">입점문의</a>
           </li>
           <br><br>
           <li class='launcher'>
@@ -123,7 +127,7 @@
           <br><br>
           <li class='active launcher'>
             <i class='icon-cog'></i>
-            <a href='AdminRegister.do'>관리자설정</a>
+            <a href='AdminRegister.do'>직원 관리</a>
           </li>
         </ul>
       </section>

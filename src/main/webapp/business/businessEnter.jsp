@@ -56,7 +56,11 @@ $(function() {
 				alert("동의 체크 해주세요.");
 				return false;
 			}	
-				
+			if( $("#userid").val() == "" ) {
+				alert("아이디을 입력해주세요.");
+				$("#userid").focus();
+				return false;
+			}	
 			if( $("#storename").val() == "" ) {
 				alert("매장이름을 입력해주세요.");
 				$("#storename").focus();
@@ -77,9 +81,9 @@ $(function() {
 				$("#phone_op").focus();
 				return false;
 			}
-			if( $("#phone").val() == "" ) {
+			if( $("#phone1").val() == "" ) {
 				alert("핸드폰 번호을 입력해주세요.");
-				$("#phone").focus();
+				$("#phone1").focus();
 				return false;
 			}
 			if( $("#email").val() == "" ) {
@@ -97,12 +101,12 @@ $(function() {
 				$("#name").focus();
 				return false;
 			}
-			if( $("#inquire").val() == "" ) {
-				alert("문의사항  입력해주세요.");
-				$("#inquire").focus();
-				return false;
-			}
 			
+			
+			var ph1 = $("#phone_op").val();
+			var ph2 = $("#phone1").val();
+			
+			$("#phone").val(ph1+"-"+ph2+"");
 			
 			var formdata = $("#frm").serialize();
 			$.ajax({
@@ -114,7 +118,7 @@ $(function() {
 				success : function(data) {
 					if (data == "ok") {
 						alert("저장완료");
-						location="businessEnterWrite.do";
+						location="businessEnterList.do";
 					} else {
 						alert("저장실패");
 					}
@@ -131,17 +135,15 @@ $(function() {
 
 
 
-
-<header>
-   <div class="logo">
-    <img src="<c:url value='/img/logo.png'/>" width="200px" height="100px" alt="로고"/>
-   </div>
-</header><br><br><br><br><br>
-
+<header class="width:100%; height:50px;">
+        <div class="logo" style=" cursor: pointer;" onclick="location.href='mainPage.do';">
+    	<img src="<c:url value='/img/logo.png'/>" width="200px" height="100px" alt="로고"/>  
+	    </div>      
+</header><br><br><br><br><br><br>
 
 <body>
  <form name="frm" id="frm">
-	
+	<input type="hidden" name="phone" id="phone" value="">
     <font size="4"><b>입점문의</b></font><br>
     <div class="text-align:left" >
    
@@ -149,7 +151,7 @@ $(function() {
     <textarea  class="article_text"   readonly>
     제 1 장 총 칙
     제 1 조 (목적) 
-    이 이용약관(이하 약관이라 합니다)은 제주렌터카 (상호명 : 제주허브닷컴, 이하 회사라 합니다)와 이용 고객(이하 회원이라 합니다)간에 회사가 제공하는 서비스의 가입조건 및 이용에 관한 제반 사항과 기타 필요한 사항을 구체적으로 규정함을 목적으로 합니다.
+    이 이용약관(이하 약관이라 합니다)은 ELIT (상호명 : ELIT, 이하 회사라 합니다)와 이용 고객(이하 회원이라 합니다)간에 회사가 제공하는 서비스의 가입조건 및 이용에 관한 제반 사항과 기타 필요한 사항을 구체적으로 규정함을 목적으로 합니다.
     
     제 2 조 (용어의 정의) 
     (1) 이 약관에서 사용하는 용어의 정의는 다음과 같습니다. 
@@ -186,10 +188,13 @@ $(function() {
         <span>회원가입약관의 내용에 동의합니다.</span>
         <input type="checkbox" name="agree" id ="agree" value="t1">
     </div><br>
-
+	<div>
+        1. 유저 아이디 알려주세요.*
+        <input type="text" size="54" name="userid" id="userid">
+    </div><br>
     <div>
         2. 매장 이름을 알려주세요.*
-        <input type="text" size="53" name="storename" id="storename">
+        <input type="text" size="54" name="storename" id="storename">
     </div><br>
     <div>
         3. 신청 지역을 선택주세요.*
@@ -197,7 +202,7 @@ $(function() {
             <option value="" >지역선택</option>
             <option>강남</option>
             <option>홍대</option>
-
+            <option>이태원</option>
         </select>
     </div><br>
     <div>
@@ -210,14 +215,14 @@ $(function() {
         </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         
         <select name="category2" id="category2">&nbsp;&nbsp;&nbsp;&nbsp;
-            <option>카테고리 선택</option>
+            <option value="">카테고리 선택</option>
             <option>한식</option>
             <option>치킨</option>
             <option>중식</option>
         </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         
         <select name="category3" id="category3">
-            <option>카테고리 선택</option>
+            <option value="">카테고리 선택</option>
             <option>한식</option>
             <option>치킨</option>
             <option>중식</option>
@@ -231,23 +236,23 @@ $(function() {
             <option>011</option>
             <option>017</option>
         </select>
-        <input type="text" size="48" name="phone" id="phone">
+        <input type="text" size="48" name="phone1" id="phone1" placeholder="0000-0000">
     </div><br>
     <div>
         6. 이메일 알려주세요.*
-        <input type="email" size="57"  name="email" id="email">
+        <input type="email" size="60"  name="email" id="email">
     </div><br>
     <div>
         7. 매장 주소 알려주세요.*
-        <input type="text" size="54" name="address" id="address">
+        <input type="text" size="57" name="address" id="address">
     </div><br>
     <div>
         8. 문의자 이름 알려주세요.*
-        <input type="text" size="53"  name="name" id="name">
+        <input type="text" size="55"  name="name" id="name">
     </div><br>
     <div>
-        9. 기타사항 알려주세요.*<br>
-        <input type="text" size="145" name="inquire" id="inquire">
+        9. 기타사항 알려주세요.<br>
+        <input type="text" size="84" name="inquire" id="inquire">
     </div>
 
 <br><br>

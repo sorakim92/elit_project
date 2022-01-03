@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
     <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
+        <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,6 +49,11 @@ nav {
 
 function fn_pay() {
 
+	var addr1 = $("#addr1").val();
+	var addr2 = $("#useraddr6").val();
+	var addr = addr1 + ' ' +addr2;
+	$("#addr").val(addr);
+	
 	var len = $(".menunames").length;
 	
 	var menulist = new Array(len);
@@ -129,9 +137,13 @@ function fn_update(a,p,i) {
 	qty = Number(qty);
 	if(a == '+') {
 		qty++;
+		if(qty>10){ 
+			qty=10;
+			alert("더 많은 수량을 주문하시려면 가게로 연락주세요."); 
+			}
 	} else if (a == '-') {
 		qty--;
-		if(qty<0) qty=0;
+		if(qty<1) qty=1;
 	}
 	$("input[name='qty_"+i+"']").val(qty);
 	
@@ -198,20 +210,24 @@ function fn_addOrder(u) {
 	
 }
 </script>
+<script>
+function fn_keyword(key) {
+	var keyword = key;
+	$("#menukeyword").val(keyword);
+	$("#sfrm").submit();
+}
+</script>
 <body>
 <div class="wrapper">
     <div class="main" style="min-height: 100%; padding-bottom:100px; flex:1;">
     <header class="width:100%; height:50px;">
         <%@include file = "../include/main_header.jsp" %>
     </header>
-        
-    <nav>
-      
-    </nav>
-    <div>    
+
+    <div style="margin-top:15px;">    
     <section class="content" >
         <!-- 가게 소개 & 리뷰 -->
-        <div class="str_div_info1">
+        <div class="str_div_info1" style="margin-top:10px;">
             <!-- 가게이름 -->
             <div class="str_div_info2">
                 ${vo.storename } (${vo.storerate })</div>
@@ -220,20 +236,21 @@ function fn_addOrder(u) {
                 <table style="width:100%;">
                     <tr>
                         <td>최소주문</td>
-                        <td>가격...!</td>
+                        <td>
+                        <fmt:formatNumber value="${vo.minprice }"/>
+                        </td>
                     </tr>
                     <tr>
                         <td>배달비</td>
-                        <td>${vo.fee }</td>
+                        <td>
+                        <fmt:formatNumber value="${vo.fee }"/>
+                        </td>
                     </tr>
-                    <tr>
-                        <td>배달소요시간</td>
-                        <td></td>
-                    </tr>
+                   
                 </table>
             </div>
             <!-- 리뷰부분 시작 -->
-            <div class="str_div_info4">
+            <div class="str_div_info4" style="margin-top:20px;">
                 <span class="str_sp_info1" style="text-align:left;">리뷰(${reviewTot }건)</span>
                 <span class="str_sp_info1" >더보기></span>
             </div>
@@ -253,13 +270,18 @@ function fn_addOrder(u) {
         </div>
         <!-- 검색/키워드탭-->
         <div class="str_keyword" >
+         <form name="sfrm" id="sfrm" action="menuOrderList.do">
+               <input type="hidden" id="menukeyword" name="menukeyword" value="${menukeyword }" >
             <ul class="sub_kw_tab">
-                <li><img src="/img/mag.png" style="width:12px; height:12px;">검색</li>
-                <li>인기메뉴</li>
-                <li>추천메뉴</li>
-                <li>키워드</li>
-                <li>키워드</li>
+                <li><a href="javascript:fn_keyword('인기메뉴')">인기메뉴</a></li>
+                <li><a href="javascript:fn_keyword('추천메뉴')">사장님 추천메뉴</a></li>
+                <li style="float:right;">
+                	<input type="text" id="s_text" name="s_text" value="${s_text }" class="input_kw_search" placeholder="검색어를 입력해주세요.">
+                	<input type="hidden" id="storeunq" name="storeunq" value="${vo.storeunq }">
+                	<input type="image" src="<c:url value='/img/mag.png'/>" style="width:12px; height:12px;">
+                </li>
             </ul>
+            </form>
         </div>
          <!--메뉴-->
          <div style="width:100%;">
@@ -274,13 +296,24 @@ function fn_addOrder(u) {
 				
                 <tr>
                     <td rowspan="4">
-                        <div style="width:130px; height: 130px; border: 1px solid #f8cacc; 
-                                    border-radius: 2em;
-                        margin:5px 20px 10px 20px; text-align: center;">
-                            <img src="/img/addpic.png" alt="업체대표사진" width="100" height="100" name="" id="">
-                        </div>
+                  
+                        
+                        <c:choose>
+                   		<c:when test="${result.menuimage.equals('사진') }">
+                   		   	<div class="cate_tbl2_div1" style="line-height:140px;">
+                    			 이미지 준비중
+                   			 </div>
+                   		</c:when>
+                   		<c:otherwise>
+                   		    <div class="" >
+                   		    <img class="cate_tbl2_div1"
+                   		    	src="<c:url value='/upload/menu/${result.menuimage }'/>">
+                  		    </div>
+                   		</c:otherwise>
+                    </c:choose>
+                        
                     </td>
-                    <td style="font-weight: bold; font-size:16px;"><span>${result.menuname}</span></td>
+                    <td style="font-family:jua; font-size:18px;"><span>${result.menuname}</span></td>
                     <td><span style="font-size:25px; font-weight: bold; cursor: pointer;" onclick="fn_addOrder('${result.menuunq }')">+</span></td>
                 </tr>
                 <tr>
@@ -335,7 +368,7 @@ function fn_addOrder(u) {
                         style="text-align:right; width:15px; height:15px;" />
                     </div>
                     <div style="padding:0 10px 5px 10px; width:60%; float:left;">
-                        ${p.price }  
+                        <fmt:formatNumber value="${p.price }"/>
                     </div>
                     <div style="width:35%; float:right; font-size: 14px;"> 
                         
@@ -377,12 +410,13 @@ function fn_addOrder(u) {
                     </colgroup>
                     <tr>
                         <td>배달비</td>
-                        <td>${vo.fee }</td>
+                        <td><fmt:formatNumber value="${vo.fee }"/></td>
                     </tr>
                     
                     <tr>
                         <td>총주문금액(배달비 포함)</td>
-                        <td><span id="totalPrice">${vo.total + vo.fee}</span></td>
+                        <td><span id="totalPrice">
+                        ${vo.total + vo.fee}</span></td>
                     </tr>
                 </table>
                 
@@ -407,7 +441,9 @@ function fn_addOrder(u) {
             <input type="hidden" id="price" name="price" value="${vo.total + vo.fee} ">
           	<input type="hidden" id="menuname" name="menuname" value="">
         	<input type="hidden" id="phone" name="phone" value="${mvo.userphone }">
-            <input type="hidden" id="addr" name="addr" value="${mvo.useraddr1 }">
+            <input type="hidden" id="addr1" name="addr1" value="${mvo.addr }">
+            <input type="hidden" id="addr" name="addr">
+            
             
             
             <div style="width:100%; height:auto; ">
@@ -418,7 +454,16 @@ function fn_addOrder(u) {
                         <col width="*" />
                     </colgroup>
                     <tr>
-                        <td colspan="3">${mvo.useraddr1 }</td>
+                        <td colspan="3">${mvo.addr}</td>
+                    </tr> 
+                    <tr>
+                        <td colspan="3">
+							<input type="text" 
+									value="${mvo.useraddr6 }" 
+									name="useraddr6"
+									id="useraddr6"
+									placeholder="상세주소를 입력해주세요.">
+						</td>
                     </tr>
                     <tr>
                         <td colspan="3"><span style="font-size:14px;">${mvo.userphone }</span></td>

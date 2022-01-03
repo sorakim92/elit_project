@@ -13,8 +13,9 @@
 							userid,
 							phone,	
 							service,
-							ment
-								
+							ment,
+							rdate,
+							status	
 							       )  
 					VALUES  ( ad_seq.nextval,
 								'$email$',
@@ -22,37 +23,82 @@
 								'$userid$',
 								'$phone$',
 								'$service$',
-								'$ment$'
-													
+								'$ment$',
+								sysdate	,	
+								'P'			
 								)
-			
-	
-	</insert>
 
+	</insert>
+	
+<!-- 	광고페이지 List 강성모-->
 	<select id="adDAO.selectadService" resultClass = "egovMap">
 		SELECT b.* FROM (
 			SELECT rownum rn, a.* from (	
-				SELECT  ADINDEX
-						USERID
-						SERVICE
-						MENT
-						SDATE
-						EDATE
-						RDATE
-						BANNER
-						STATUS
-						EMAIL
-						PHONE
-						NAME
+				SELECT  adindex,
+						userid,
+						service,
+						ment,
+						sdate,
+						edate,
+						to_char(rdate,'yyyy/mm/dd') rdate,
+						banner,
+						DECODE(status,'P','대기','N','거절','Y','완료') status,
+						email,
+						phone,
+						name				
 				FROM	
-						AD
+						ad
 				WHERE	
-						ADINDEX IS NOT NULL
-				ORDER BY RDATE DESC) a )b
+						userid IS NOT NULL
+				ORDER BY rdate DESC) a )b
+			WHERE
+				rn between $s_no$ and $e_no$
+	</select>
+
+<!-- 광고 DETAIL 강성모 -->
+	<select id="adDAO.selectadDetailService" resultClass = "adVO">
+		SELECT b.* FROM (
+			SELECT rownum rn, a.* from (	
+				SELECT  adindex,
+						userid,
+						service,
+						ment,
+						sdate,
+						edate,
+						to_char(rdate,'yyyy/mm/dd') rdate,
+						banner,
+						status,
+						email,
+						phone,
+						name				
+				FROM	
+						ad
+				WHERE	
+						adindex = #adindex#
+				ORDER BY rdate DESC) a )b
+	</select>
+
+<!-- 	광고 승인대기 list 개수-->
+	<select id = "adDAO.selectcount" resultClass = "java.lang.Integer">
+	
+		SELECT count(*) from ad where status = 'P'
+	
+	
+	</select>
+
+<!-- 광고 신청 토탈 데이터개수 -->
+	<select id ="adDAO.selectAdTotal" resultClass="java.lang.Integer">		
+		SELECT count(*) FROM ad	
 	</select>
 
 
+	<update id = "adDAO.adApproveService">
+		UPDATE ad
+				SET    banner = #banner#
+				WHERE adindex = #adindex#
+	</update>
 
 
+	
 
 </sqlMap>

@@ -36,6 +36,20 @@ section {
 </style>
 <script>
 
+$(document).ready(function(){
+
+	$('ul.article_nav li').click(function(){
+		var tab_id = $(this).attr('data-tab');
+		
+		$('ul.article_nav li').removeClass('current');
+		$(this).addClass('current');
+		$("#"+tab_id).addClass('current');
+	})
+	
+	
+})
+
+
 $(function(){
 	
 	$("#btn_write").click(function(){
@@ -70,7 +84,7 @@ $(function(){
                 공지사항
             </div>
             <form name="frm" method="post" action="nBoardList.do">
-            <div class="board_sc_search">
+            <div class="bwnansoard_sc_search">
             	 <select name="s_field" style="font-size:15px;">
             	 	<option value="title"
             	 		<c:if test="${s_field=='title' }">selected</c:if> 

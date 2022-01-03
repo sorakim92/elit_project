@@ -18,9 +18,21 @@
                 m.menuname,
                 m.menukeyword,
                 m.menuinfo,
-                m.price
+                to_char(m.price,'FM9,999,999') price,
+                decode(m.menuimage,null,'사진',m.menuimage) menuimage
 		from 	store s, menu m
 			where s.storeunq=m.storeunq and m.storeunq = #storeunq#
+			<isNotNull property="s_text">
+				<isNotEmpty property="s_text">
+				and m.menuname LIKE '%$s_text$%'
+				</isNotEmpty>
+			</isNotNull>
+			<isNotNull property="menukeyword">
+				<isNotEmpty property="menukeyword">
+					and m.menukeyword like '$menukeyword$'
+				</isNotEmpty>
+			</isNotNull>
+			
 
 	 
 	</select>
@@ -30,7 +42,8 @@
 		SELECT 	storeunq, 
 				storename,
 				decode(storerate,null,'0',storerate) storerate, 
-				decode(fee,0,'무료',fee) fee
+				decode(fee,0,'무료',fee) fee,
+				minprice
 				
 		from 	store
 			where storeunq = #storeunq#
@@ -96,11 +109,12 @@
 		SELECT userid,
 				username,
 				userphone,
-				useraddr1,
-				useraddr2,
-				useraddr3
-		FROM	member
-		WHERE userid = #userid#
+				'('||useraddr4||') '||useraddr5 addr,
+				decode(useraddr6,null,'',useraddr6) useraddr6 
+		FROM	
+				member
+		WHERE 
+				userid = #userid#
 	
 	
 	</select>
