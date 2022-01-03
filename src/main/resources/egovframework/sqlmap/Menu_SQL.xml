@@ -6,21 +6,23 @@
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="menuVO" type="egov.service1.MenuVO"/>
 	
-	<insert id = "menuDAO.insertMenu">
-	<![CDATA[
+	<insert id = "menuDAO.insertMenu" >
+		<![CDATA[
 	
 		INSERT INTO menu(
 						menuunq,
 						menuname,
 						menukeyword,
 						menuinfo,
-						price
+						price,
+						menuimage
 						       )  
 				VALUES  ( menu_seq.nextval,
 							'$menuname$',
 							'$menukeyword$',
 							'$menuinfo$',
-							'$price$'						
+							'$price$',
+							'$filename$'					
 							)
 		]]>
 
@@ -31,6 +33,7 @@
 				menuname='$menuname$',
 				menuinfo='$menuinfo$',
 				price = '$price$',
+				menuimage = '$filename$'
 				menukeyword = '$menukeyword$'
 		WHERE menuunq = '$menuunq$'
 	</update>
@@ -44,6 +47,7 @@
 		SELECT 
 				menuunq,	
 				menuname,
+				menuimage,
 				menukeyword,
 				price 
 		FROM menu 
@@ -55,6 +59,7 @@
 		SELECT 	menuunq, 
 				menuname,
 				menuinfo,
+				menuimage,
 				price,
 				menukeyword
 				

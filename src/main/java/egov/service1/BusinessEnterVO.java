@@ -13,8 +13,15 @@ public class BusinessEnterVO {
 	private String name;
 	private String inquire;
 	private String rdate;
+	private String userid;
 	
 	
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
 	public String getCategory2() {
 		return category2;
 	}

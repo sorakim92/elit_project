@@ -19,7 +19,7 @@
 					to_char(rdate,'YYYY-MM-DD hh24:mi')rdate,
 					userid
 		FROM progressorder 
-			where storeunq = '123'  		
+			where storeunq between 234 and 241 		
 	</select>
 	
 	<select id="progressorderDAO.selectorderendList"  resultClass="egovMap"  >
@@ -36,7 +36,7 @@
 					to_char(rdate, 'YYYY-MM-DD hh24:mi')rdate,
 					addr
 		FROM progressorder 
-			where storeunq = '123'
+			where storeunq  between 234 and 241 
 		
 		  		
 	</select>
@@ -91,7 +91,7 @@
 					#phone#,
 					null,
 					#addr#,
-					'k',
+					'K',
 					sysdate,
 					#storeunq#,
 					#userid#)

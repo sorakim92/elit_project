@@ -115,9 +115,10 @@
 			SET 
 				userpw=#userpw#,		
 				email=#email#,
+				userphone=#userphone#,
 				storeaddr=#storeaddr#
 				
-		WHERE userid = 'test1'
+		WHERE userid = '$userid$'
 	</update>
 	
 	<update id ="bossmemberDAO.updateMemberBusiness">
