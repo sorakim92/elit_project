@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
     
-    <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
 <html lang="en">
@@ -22,10 +22,35 @@
     
 </head>
 
-<script>
+<style>
+@font-face {
+  font-family: "hanna";
+  src: url("fonts/BMHANNAAir_otf.otf");
+}
+
+@font-face {
+  font-family: "jua";
+  src: url("fonts/BMJUA_otf.otf");
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html{
+    height: 100%;
+}
+
+body {
+    font-size: 16px;
+    font-family: hanna;
+    padding-left: 100px;
+    height: 100%;
+}
 
 
-</script>
+</style>
 
 <body>
 <div class="wrapper">   
@@ -50,13 +75,15 @@
             <div class="board_list">
                 <div class="top"> 
                     <div class=num>번호</div>
+                    <!-- <div>분류</div> -->
                     <div class="title">제목</div>
                     <div class="writer">글쓴이</div>
                     <div class="date">작성일</div>
-                    <div class="count">조회</div>
+                    <div class="count">조회수</div>
                     
                   <c:forEach  var="result" items="${list }">                  
                   	<div class=num>${result.inquiryindex }</div>
+                  	<%-- <div>${result.option }</div> --%>
                     <div class="title">
                    		 <a href="InquiryDetail.do?inquiryindex=${result.inquiryindex }">${result.title } </a> </div>
                     <div class="writer">${result.userid }</div>
@@ -67,21 +94,7 @@
                 </div>
                 
             </div>
-            <div class="board_page">
-                <a href="#" class="bt first"><<</a>
-                <a href="#" class="bt prev"><</a>
-                <a href="#" class="num on">1</a>
-            <!--<a href="#" class="num">2</a>
-                <a href="#" class="num">3</a>
-                <a href="#" class="num">4</a>
-                <a href="#" class="num">5</a> -->
-                <a href="#" class="bt next">></a>
-                <a href="#" class="bt last">>></a>
 
-
-
-
-            </div>
             <div class="bt_wrap">
                 <a href="InquiryWrite.do" class="on">등록</a>
                
@@ -90,7 +103,30 @@
         </div>
     </div>
       </section>
-    
+<!-- 페이징 -->
+    <div style=" font-size:10px; " >
+    <nav aria-label="Page navigation example" 
+    class="d-flex justify-content-center"
+    style="display:inline-block;">
+        <ul class="pagination" >
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      </div>
+
+</div>    
     
     <footer>
           <%@include file = "../include/main_footer.jsp" %>

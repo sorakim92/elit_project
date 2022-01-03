@@ -15,6 +15,7 @@
             <li><a href="InquiryList.do">문의내역</a></li>
             <li><a href="ZzimList.do">찜목록</a></li>
             <li><a href="OrderReviewList.do">리뷰관리</a></li>
+
         </ul>
     </div>
 

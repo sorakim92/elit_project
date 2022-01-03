@@ -5,6 +5,7 @@ package egov.web;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -65,9 +66,12 @@ public class OrderReviewController {
 	// 리뷰저장(상혁)
 	@RequestMapping("OrderReviewWriteSave.do")
 	@ResponseBody
-	public String OrderReviewWriteSave( OrderReviewVO vo) throws Exception {
+	public String OrderReviewWriteSave( OrderReviewVO vo, HttpSession session) throws Exception {
 		
 		/* System.out.println("========rate====="+vo.getRdate()); */
+		
+		String userid = (String) session.getAttribute("UserID");			
+		vo.setUserid(userid);
 		
 		String result = orderreviewService.insertBoard(vo);
 		
@@ -84,7 +88,9 @@ public class OrderReviewController {
 	
 	// 리뷰 내용(상혁)
 	@RequestMapping("OrderReviewDetail.do")
-	public String selectBoardDetail( OrderReviewVO vo, Model model) throws Exception {
+	public String selectBoardDetail( OrderReviewVO vo, Model model, HttpSession session) throws Exception {
+	
+		
 		
 		vo = orderreviewService.selectBoardDetail(vo);
 		

@@ -84,52 +84,40 @@ $(function(){
            
             <div class="s_review">
                 <!-- 상위 추천메뉴 이외에 -->
-                <form name="frm" id="frm">
-                <table style="margin-top: 10px; width:100%;"> 
-                	<colgroup>
-		                <col width="20%" />
-		                <col width="*" />
-		            </colgroup>
-               		<tr>
-	               		<td>
-		                    <div style="width:120px; height: 120px; border: 1px solid #f8cacc; border-radius: 2em;
-					                /* margin:5px 20px 10px 20px; */ text-align: center;">
-					                    <img src="/img/addpic.png" alt="업체대표사진" width="100" height="100" name="rimage" id="rimage">
-					        </div>
-				                
-				        </td>
-			         </tr>
-			         <tr>
-			            <td style="text-align: left; ">
-			                <span style="font-weight: bold;">가게이름</span> 
+                <form name="frm" id="frm">               
+              
+		             <div style="width:120px; height: 120px; border: 1px solid #f8cacc; border-radius: 2em;
+					                text-align: center; margin-top: 20px;">
+					       <img src="img/addpic.png" alt="업체대표사진" width="120px;" height="120px;" name="" id="">
+					        
+				     </div>    
+				    
+					 <span style="font-weight: bold; margin-bottom: ;padding-left: 150px;">${result.rdate }</span> 
 			                       
-	                  <div style="font-size:13px; text-align: left; padding-left: 0px;">                       
-	                     	<span>주문상품</span>
+	                  <div style="font-size:13px; text-align: left; padding-left: 150px;">                       
+	                     	<span> ${result.menuname } </span>
 	                       	
 	                  </div>
-	                    </td>
-                	</tr>
-                	<tr>
-                		<td>
-                			<div style="font-size:13px; text-align: left; padding-left: 0px;">
-			                    <span>갯수 가격</span><br>
-			                    <span><img src="/img/star.png" style="width:20px; height:20px; ">5.0</span>
-                			</div>
-                		</td>
-                	</tr>
-           
-           			<tr>
-           				<td>
-				            <div style="font-size:16px; ; margin-left: 30px;  text-align: left;">
-				              <textarea name="rcontent" id="rcontent" cols="90" rows="10" placeholder="음식의 맛, 양, 포장 상태 등 음식에 대한 솔직한 리뷰를 남겨주세요."></textarea>
+	                  
+                	  <div style="font-size:13px; text-align: left; padding-left: 150px;">
+			                    <span>${result.price }</span><br>
+			                   
+                  	 </div>
+
+				     <div style="font-size:16px; ; margin-left: 15%;  text-align: left; ">
+				        <textarea name="rcontent" id="rcontent" cols="90" rows="10" placeholder="음식의 맛, 양, 포장 상태 등 음식에 대한 솔직한 리뷰를 남겨주세요."></textarea>
 				  	       
-				            </div>  
-				        </td>
-				    </tr>
-			</table>
+				     </div>  
+				   
+				    
+		
             </form>
             </div>
-            <button type="button" id="btn_save">등록</button>
+                        
+            <div class="bt_wrap">
+                <a href="" id="btn_save"> 등록 </a>
+                <a href="OrderReviewList.do">취소</a> 
+            </div>
              
             
 
