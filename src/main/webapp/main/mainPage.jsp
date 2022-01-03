@@ -472,7 +472,7 @@ $(document).ready(function() {
               
                 <tr>
                     <td>예상도착시간</td>
-                    <td> 예상도착시간이 어떤 컬럼인지 물어봐야됨 ! </td>
+                    <td> ${result.acctime } </td>
                 </tr>
                 <tr>
                     <td>배달주소</td>
@@ -486,8 +486,7 @@ $(document).ready(function() {
             </table>
             <div style="text-align: right; padding-right:20px;">
              	<button type="button" 
-            		class="btn"
-             	name="" id="">주문문의</button>            
+            		class="btn" name="" id="">주문상세</button>            
             </div>
         </div>
     </article>

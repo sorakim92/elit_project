@@ -84,7 +84,7 @@ $(function(){
                 공지사항
             </div>
             <form name="frm" method="post" action="nBoardList.do">
-            <div class="board_sc_search">
+            <div class="bwnansoard_sc_search">
             	 <select name="s_field" style="font-size:15px;">
             	 	<option value="title"
             	 		<c:if test="${s_field=='title' }">selected</c:if> 

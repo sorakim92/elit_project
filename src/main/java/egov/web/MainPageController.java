@@ -35,7 +35,7 @@ public class MainPageController {
 	MemberService memberService;
 	
 	/*
-	 * 주소 입력시 멤버테이블 ... 배달지 설정 
+	 * 주소 입력시 멤버테이블 ... 배달지 설정 (소라)
 	 * */
 	
 	@RequestMapping("deliveryAddrUpdate.do")
