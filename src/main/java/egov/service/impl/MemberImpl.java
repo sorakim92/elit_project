@@ -68,6 +68,10 @@ public class MemberImpl implements MemberService{
 	public MemberVO selectmemberuser(MemberVO vo) throws Exception {
 		return memberDAO.selectmemberuser(vo);
 	}
+	@Override
+	public int mainPageDeliveryAddr(MemberVO vo) throws Exception {
+		return memberDAO.mainPageDeliveryAddr(vo);
+	}
 	
 	
 	

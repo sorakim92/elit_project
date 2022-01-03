@@ -50,6 +50,9 @@ public class MemberDAO extends EgovAbstractDAO{
 	public MemberVO selectmemberuser(MemberVO vo) {
 		return (MemberVO) select("memberDAO.selectmemberuser",vo);
 	}
+	public int mainPageDeliveryAddr(MemberVO vo) {
+		return (int) update("memberDAO.mainPageDeliveryAddr",vo);
+	}
 	
 	
 	

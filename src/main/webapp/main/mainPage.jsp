@@ -87,6 +87,12 @@ $(function(){
 			
 		} 
 		
+		var addr = $("#addr").val();
+		if( addr == null || addr == "") {
+			sample6_execDaumPostcode();
+			return false;
+		}
+		
 			$.ajax({
 				type : "post",
 				url  : "deliveryAddrUpdate.do",
@@ -95,7 +101,7 @@ $(function(){
 				datatype : "json",
 				success : function(data) {
 					if(data.msg == "ok" ) {
-						alert("주소업겟 ");
+						alert("카테고리를 선택해주세요. ");
 					} else {
 						alert(" 실패 ");
 					}
@@ -198,8 +204,8 @@ $(function(){
                 }
 				addr = addr+' '+extraAddr;
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('addr4').value = data.zonecode;
-                document.getElementById("addr5").value = addr;
+                document.getElementById('useraddr4').value = data.zonecode;
+                document.getElementById("useraddr5").value = addr;
 
                 document.getElementById("addr").value = addr;
                 // 커서를 상세주소 필드로 이동한다.
@@ -327,8 +333,8 @@ $(document).ready(function() {
     <section style="height:auto;">
     	<!--  검색시 우편번호, 주소 (상세주소제외) member 배송지 주소컬럼인 addr4,addr5,addr6의 4,5로 update -->
 	    <form name="search_frm" id="search_frm">
-	     	<input type="hidden" id="addr4" name="addr4" >
-	     	<input type="hidden" id="addr5" name="addr5"  >
+	     	<input type="hidden" id="useraddr4" name="useraddr4" >
+	     	<input type="hidden" id="useraddr5" name="useraddr5"  >
 	     	<input type="hidden" id="userid" name="userid" value=<%=USERID %>  >
      	</form>
         <div class="div_addr" style="height:auto;">

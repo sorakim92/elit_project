@@ -30,13 +30,24 @@ public class CategoryController {
 	public String selecttodayTopList(CategoryVO vo, ZzimListVO zvo, Model model, HttpSession session) 
 									throws Exception {
 		
+		String url = "";
+		String userid = (String) session.getAttribute("SessionUserID");
+		
+		if(userid == null || userid.trim().equals("")) {
+			url = "etc/alert";
+			model.addAttribute("msg", "로그인후 이용해주세요.");
+			model.addAttribute("url","memberlogin.do");
+		} else {
+			url =  "menu2/todayTopList";
+		}
+		
 		/*progressorder, store table 조인 ! */
 		List<?> list = categoryService.selecttodayTopList(vo);
 		
 		
 		//로그인 세션가지고 오기 
 		
-		String userid = (String) session.getAttribute("SessionUserID");
+		//String userid = (String) session.getAttribute("SessionUserID");
 			
 		//System.out.println("1111111"+userid);
 		List<?> zlist = categoryService.selectZZIMlikeTodaylist(userid);
@@ -76,7 +87,7 @@ public class CategoryController {
 		model.addAttribute("list",list);
 		model.addAttribute("zlist",zlist);
 
-		return "menu2/todayTopList";
+		return url;
 	}
 	
 	
@@ -87,7 +98,16 @@ public class CategoryController {
 	public String selectKRfoodList(CategoryVO vo, ZzimListVO zvo, Model model,HttpSession session) 
 									throws Exception {
 		
+		String url = "";
+		String userid = (String) session.getAttribute("SessionUserID");
 		
+		if(userid == null || userid.trim().equals("")) {
+			url = "etc/alert";
+			model.addAttribute("msg", "로그인후 이용해주세요.");
+			model.addAttribute("url","memberlogin.do");
+		} else {
+			url =  "menu2/storeList";
+		}
 	
 		//System.out.println(vo.getCateunq());
 		List<?> list = categoryService.selectKRfoodList(vo);
@@ -97,7 +117,7 @@ public class CategoryController {
 		
 		//로그인 세션가지고 오기 
 		
-		String userid = (String) session.getAttribute("SessionUserID");
+//		String userid = (String) session.getAttribute("SessionUserID");
 
 		map.put("cateunq", cateunq+"");
 		map.put("userid", userid);
@@ -138,7 +158,7 @@ public class CategoryController {
 		model.addAttribute("list",list);
 		model.addAttribute("zlist",zlist);
 
-		return "menu2/storeList";
+		return url;
 	}
 	
 }

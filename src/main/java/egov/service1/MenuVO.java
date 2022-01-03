@@ -11,8 +11,6 @@ public class MenuVO {
 	private int storeunq;
 	private String userid;
 
-	
-	
 	public String getUserid() {
 		return userid;
 	}

@@ -316,13 +316,17 @@ ul.article_nav li.current{
 
 }
 .sub_kw_tab li {
-    font-size:14px;
+    font-size:15px;
     list-style:none;
     float:left;
     padding-left:10px;
     padding-right:10px;
 } 
-
+.input_kw_search {
+	width:150px;
+	height:22px;
+	font-size:15px;
+}
 .sidebar{
     float:right;
    
@@ -384,7 +388,7 @@ ul.article_nav li.current{
 	width:50%; 
 	text-align: right; 
 	float:left;
-	font-size: 12px;
+	font-size: 14px;
 }
 
 .str_img_reviewtype1 {

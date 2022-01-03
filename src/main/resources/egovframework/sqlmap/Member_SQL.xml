@@ -78,6 +78,17 @@
 	
 	</select>
 	
+	<!-- 메인페이지 배달 주소 입력 시 멤버테이블 addr4,5 업데이트  -->
+	<update id="memberDAO.mainPageDeliveryAddr">
+		UPDATE
+				member
+		SET
+				useraddr4 = #useraddr4#,
+				useraddr5 = #useraddr5#
+		WHERE
+				userid = #userid#
+	
+	</update>
 	<!-- 비밀번호 변경 (경석) -->
 	<update id="memberDAO.Pop_newuserpw" >
 		UPDATE member SET userpw = '$userpw$',

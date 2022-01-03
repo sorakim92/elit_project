@@ -22,11 +22,27 @@ public class MenuOrderVO {
     String userid;
 
     int total =0;
+    int minprice;
+    
+    String s_text;
     
     
     
+  	public String getS_text() {
+  		return s_text;
+  	}
+  	public void setS_text(String s_text) {
+  		this.s_text = s_text;
+  	}
     
     
+    
+	public int getMinprice() {
+		return minprice;
+	}
+	public void setMinprice(int minprice) {
+		this.minprice = minprice;
+	}
 	public String getUserid() {
 		return userid;
 	}
