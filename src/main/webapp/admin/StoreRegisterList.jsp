@@ -18,6 +18,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     
+    <style>
+    body {
+    font-size: 16px;
+}
+    </style>
+    
   </head>
   <body class='main page'>
     <!-- Navbar -->
@@ -45,7 +51,7 @@
           <br><br>
           <li class='active launcher'>
             <i class='icon-envelope'></i>
-            <a href="#">문의내역</a>
+            <a href="#">입점문의</a>
           </li>
           <br><br>
           <li class='launcher'>
@@ -60,7 +66,7 @@
           <br><br>
           <li class='launcher'>
             <i class='icon-cog'></i>
-            <a href='AdminRegister.do'>관리자설정</a>
+            <a href='AdminRegister.do'>직원 관리</a>
           </li>
         </ul>
       </section>
@@ -69,7 +75,7 @@
       <!-- Tools -->
       <section id='tools'>
         <ul class='breadcrumb' id='breadcrumb'>
-          <li class='title'>문의내역</li>         
+          <li class='title'>입점문의</li>         
         </ul>       
       </section>
 
