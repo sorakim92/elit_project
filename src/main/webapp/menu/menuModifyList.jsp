@@ -193,7 +193,7 @@ $(function(){
      <section>
         <div style="text-align:left;" >
             <font size="5">메뉴관리</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <font size="4" color="blue"><a href="menuList.do">메뉴편집 |</a></font>
+            <a href="menuList.do"><font size="4" color="blue">메뉴편집 |</font></a>
             <a href="storeReviewList.do"><font size="4" color="black">&nbsp;&nbsp; 리뷰관리</font></a>
         </div>
         <br>
@@ -205,13 +205,13 @@ $(function(){
         <br>
         <div style="text-align:left;" >  
           
-            <table style="width:700px; text-align:center;">
+            <table style="width:1200px; height:500px; text-align:center;">
 	  		<colgroup>
-	  			<col width="15%"/>
-	  			<col width="40%"/>
-	  			<col width="30%"/>
+	  			<col width="5%"/>
+	  			<col width="50%"/>
+	  			<col width="20%"/>
 	  			<col width="10%" />
-	  			<col width="5%" />
+	  			<col width="*" />
 	  						
 	  		</colgroup>
 	  		<tr>
@@ -225,7 +225,7 @@ $(function(){
         <c:forEach  var="result" items="${list }">
 	  		<tr>
 	  			<td>${result.menuunq }</td>
-	  			<td>${result.menuimage }</td>
+	  			<td><img src="<c:url value='/upload/menu/${result.menuimage }'/>" width="100px" height="120px" alt="로고"/></td>
 	  			<td><a href="menuModify.do?menuunq=${result.menuunq }">${result.menuname }
                     </a></td>
 	  			<td>${result.price }</td>

@@ -72,19 +72,19 @@ section {
 
 
 <body>
-<div class="wrapper">
-
-<header>
-   <div class="logo">
-    <img src="<c:url value='/img/logo.png'/>" width="200px" height="100px" alt="로고"/>
-   </div>
-</header><br><br><br><br><br>
-
+<div class="wrapper"><br> 
+    <header class="width:200%; height:80px;">
+        <div class="logo" style=" cursor: pointer;" onclick="location.href='mainPage.do';">
+    	<img src="<c:url value='/img/logo.png'/>" width="200px" height="80px" alt="로고"/>  
+	    </div>      
+    </header>
+        
 
 
  <form name="frm" method="post" action="businessEnterList.do">
- 
-<section>	
+ <br><br>
+
+<section><br>	
     <font size="4"><b>입점신청내역</b></font><br>
   <div class="text-align:left" >
    
@@ -119,7 +119,7 @@ section {
             <td>${result.category }${result.category2 }${result.category3 }</td> 
             <td>${result.phone }</td> 
             <td>${result.email }</td> 
-            <td>${result.address }</td> 
+            <td>${result.address }</td>
             <td>${result.name }</td> 
             <td>${result.inquire }</td>  
         </tr>
@@ -130,11 +130,11 @@ section {
 </section>
     
 
-<br><br>
+<br><br><br>
 <div class="btnloc">
     <button type="button"class="btn3" id="btn3"><a href="businessEnterWrite.do">입점문의 </a></button>
 </div>
-</form> 
+</form> <br><br>
 <footer>
       <%@ include file = "../include/main_footer.jsp" %>
 </footer>

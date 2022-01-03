@@ -18,12 +18,12 @@
   	
 <script type="text/javascript">
     function uploadImgPreview() {
-    	let fileInfo = document.getElementById("menuimage").files[0];
+    	let fileInfo = document.getElementById("uploadfile").files[0];
     	let reader = new FileReader();
 		
         reader.onload = function() {
 
-            document.getElementById("thumbnailImg").src = reader.result;
+            document.getElementById("filename").src = reader.result;
 
         };
 	
@@ -221,13 +221,18 @@ $(function(){
 			("#menukeyword").focus();
 			return false;
 		}
-		
-  		var formdata = $("#frm").serialize();
+		if( $("#uploadfile").val() == "" ) {
+				alert("사진 입력해주세요.");
+				$("#uploadfile").focus();
+				return false;
+		}
+		var form = new FormData(document.getElementById('frm'));
   		$.ajax({
   			type : "post",
-  			url  : "menuModifySave.do",
+  			url  : "uploadModifySave.do",
   			data : formdata,
-  			
+  			processData : false,
+			contentType : false,
   			datatype : "text",  //성공여부 ( ok )
   			success : function(data) {
   				
@@ -274,7 +279,7 @@ $(function(){
     <nav>
         <div class="">
           
-            <a href><font size="4" color="black">주문관리 |</font></a>
+            <a href="progressorderList.do"><font size="4" color="black">주문관리 |</font></a>
             <a href ="menuList.do"><font size="4">메뉴관리 |</font></a>
             <a href ="adWrite.do"><font size="4" color="black">광고신청/관리 |</font></a>
             <a href ="b_consumerList.do"><font size="4" color="black">커뮤니티</font></a>
@@ -283,7 +288,7 @@ $(function(){
         
     
      <section>
-     <form name="frm" id="frm" >
+     <form name="frm" id="frm" action="uploadModifySave.do" method="post" enctype="multipart/form-data" >
      <input type="hidden" name="menuunq" id="menuunq" value="${vo.menuunq }" >	
         <div style="text-align:left;" >
             <font size="5">메뉴수정</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -305,13 +310,30 @@ $(function(){
             <input type="text" class="emailField form-control" name="menuname" id="menuname" value="${vo.menuname }" >
             </div>
         </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="fieldTitle" for="'first_name">소개글</label>
+                <input type="text" placeholder="" value="${vo.menuinfo }" class="emailField form-control"  id="menuinfo" name="menuinfo">
+            </div>
+        </div>
     </div>
 
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
-                <label class="fieldTitle" for="'first_name">소개글</label>
-                <input type="text" placeholder="" value="${vo.menuinfo }" class="emailField form-control"  id="menuinfo" name="menuinfo">
+                <label class="fieldTitle" for="phone1">구분</label>
+                <select type="text" name="menukeyword"   id="menukeyword"  class="form-control country-code" >
+                            <option value="추천메뉴" 
+                            <c:if test="${vo.menukeyword=='추천메뉴' }">selected</c:if>
+							>추천메뉴</option>	
+                            <option value="인기메뉴" 
+                            <c:if test="${vo.menukeyword=='인기메뉴' }">selected</c:if>
+							>인기메뉴</option>	
+                            <option value="음료" 
+                            <c:if test="${vo.menukeyword=='음료' }">selected</c:if>
+							>음료</option>	
+                         
+                </select>
             </div>
         </div>
         <div class="col-sm-6">
@@ -324,35 +346,15 @@ $(function(){
 
     <div class="row">
         <div class="col-sm-6">
-            <div class="row">
-                <div class="col-sm-12">
-                    <label class="fieldTitle" for="phone1">구분</label>
-                </div>
+           
 
-                        
-        <div class="col-sm-12">
-             <div class="form-group">   
-                        <select type="text" name="menukeyword"   id="menukeyword"  class="form-control country-code" >
-                            <option value="" 
-                            <c:if test="${vo.menukeyword=='추천메뉴' }">selected</c:if>
-							>추천메뉴</option>	
-                            <option value="인기메뉴" 
-                            <c:if test="${vo.menukeyword=='인기메뉴' }">selected</c:if>
-							>인기메뉴</option>	
-                            <option value="음료" 
-                            <c:if test="${vo.menukeyword=='음료' }">selected</c:if>
-							>음료</option>	
-                         
-                        </select>
-                        
-              </div> 
               <div class="col-sm-12">
             <div class="form-group" >
                   <label class="fieldTitle" for="last_name">이미지 넣기</label><br><br>
-                  <input  type="file"   name="file1" id="file1" onChange="uploadImgPreview();"  accept="image/*" ></input>
+                  <input  type="file"   name="uploadfile"  id="uploadfile" onChange="uploadImgPreview();"  accept="image/*" ></input>
            </div>
                        
-                  <img id="thumbnailImg" name="thumbnailImg"  style="width:400px; height:300px;">
+                  <img id="filename" name="filename" src="<c:url value='/upload/menu/${vo.menuimage }'/>"  alt="로고"  style="width:400px; height:300px;">
                   <br/>						
                         
         </div><br> <br><br><br><br>  

@@ -110,8 +110,12 @@ public class BossMemberController {
 	
 	@RequestMapping("BossMemberModifySave.do")
 	@ResponseBody
-	public String updatebossmember(BossMemberVO vo) 
+	public String updatebossmember(BossMemberVO vo, HttpSession session) 
 									throws Exception {
+		
+		String userid = (String) session.getAttribute("BossmemberSessionID");
+		
+		vo.setuserid(userid);
 		
 		int result = bossmemberService.updatebossmember(vo);
 		

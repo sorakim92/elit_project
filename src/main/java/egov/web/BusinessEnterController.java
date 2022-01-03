@@ -3,6 +3,7 @@ package egov.web;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,14 +44,18 @@ public class BusinessEnterController {
 	
 	
 	@RequestMapping("businessEnterList.do")
-	public String selectbusinessEnterList(BusinessEnterVO vo, Model model) 
+	public String selectbusinessEnterList(BusinessEnterVO vo, Model model , 
+			HttpSession session) 
 									throws Exception {
 		
+		String userid = (String) session.getAttribute("BossmemberSessionID");
+		vo.setUserid(userid);
 		
 		List<?> list = businessenterService.selectbusinessEnterList(vo);
 		
 		
 		model.addAttribute("list",list);
+		model.addAttribute("vo",vo);
 		return "business/businessEnterList";
 	}
 	

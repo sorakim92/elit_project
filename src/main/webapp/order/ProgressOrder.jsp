@@ -445,9 +445,9 @@ function fn_msgsave() {
                         <button type="button" class="on_btn3" onclick="fn_time('90')">90분</button>
                     </div>
                 </div>
-                <div style="text-align:center;">
-                    <textarea placeholder="원하는 시간이 없는 경우 직접 입력해주세요" class="bd_textarea" name="" id=""></textarea>
-                </div> 
+                <!-- <div style="text-align:center;">
+                    <textarea placeholder="원하는 시간이 없는 경우 직접 입력해주세요"  class="bd_textarea" name="" id=""></textarea>
+                </div> --> 
                 <div style="text-align:center; margin-bottom:10px;" >
                     <button type="button" onclick="fn_timesave()" class="on_btn4" id="timesave" name="timesave">접수완료</button>
                 </div>  
