@@ -125,7 +125,7 @@
 					margin-top:20px; 
 					font-size:13px;"
 					class="bd_tbl_div">
-            <table style="width:100%; font-size : 16px; font-weight : bold; color : grey;" class="table table-hover">
+            <table style="width:100%; font-size : 16px; color : grey;" class="table table-hover">
                 <colgroup>
                     <col width="6.5%" />
                     <col width="*" />
@@ -134,7 +134,7 @@
                     <col width="10%" />
                   
                 </colgroup>
-                 <tr>
+                 <tr style="font-weight : bold; color:black;" >
                  	<th>승인여부</th>
                     <th>제목</th>
                     <th>광고위치</th>

@@ -141,6 +141,7 @@
 	</update>
 	
 	<insert id ="bossmemberDAO.insertBossMember">
+		
 		INSERT INTO bossmember(
 								    userid,
 								    userpw,
@@ -158,11 +159,15 @@
 									#username#,
 									#email#,
 									#userphone#,
-									(SELECT CONCAT(useraddr2,useraddr3)storeaddr FROM member WHERE userid=#userid#),
+									(SELECT storeaddr
+									        FROM store
+									        WHERE userid = #userid#),									     
 									#business#,
 									sysdate,									
 									(SELECT storeunq FROM store WHERE userid=#userid#)
 					)
+	
+		
 	
 	</insert>
 	
