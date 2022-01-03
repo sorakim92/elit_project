@@ -13,6 +13,7 @@
 
 .bt_wrap {
   margin-top: 30px;
+  margin-bottom: 20px;
   text-align: center;
   font-size: 0;
 }
@@ -45,27 +46,28 @@
   border-bottom: 1px solid #ddd;
 }
 
-.board_list > div.top {
-  /* margin-left: 100px; */
-  border-bottom: 1px solid #999;
+.top {
+  margin-left: 10%; 
+  
 }
 
-.board_list > div:last-child {
+/* .board_list > div:last-child {
   border-bottom: 1px solid #000;
-}
+} */
 
 .board_list > div > div {
   display: inline-block;
   padding: 15px 0;  
   font-size: 1.2rem;
-}
-
-.board_list .num {
   width: 10%;
 }
 
+.board_list .num {
+  width: 15%;
+}
+
 .board_list .title {
-  width: 50%;
+  width: 40%;
   text-align: center;
 }
 
@@ -74,15 +76,16 @@
 }
 
 .board_list .write {
-  width: 10%;
+  width: 15%;
 }
 
 .board_list .date {
-  width: 10%;
+  width: 15%;
 }
 
 .board_list .count {
   width: 20%;
+  padding-left: 60px;
 }
 
 .board_page {

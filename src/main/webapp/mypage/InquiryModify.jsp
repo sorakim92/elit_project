@@ -75,7 +75,7 @@ $(function(){
   			success : function(data) {
   				
   				if(data == "ok") {
-  					alert("수정저장성공");
+  					alert("수정성공");
   					location="InquiryList.do";
   				}else {
   					alert("수정실패");

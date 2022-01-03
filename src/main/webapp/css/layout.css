@@ -20,8 +20,8 @@ html{
 body {
     font-size: 16px;
     font-family: hanna;
-    padding-left:100px;
-    height:100%;
+    padding-left: 100px;
+    height: 100%;
 }
 
 header {
@@ -73,7 +73,8 @@ li {
 .navbar_menu {
   display: flex;
   list-style: none;  
-  padding-left: 30px;
+  padding-left: 70px;
+  margin-top: 10px;
 }
 
 .navbar_menu li {

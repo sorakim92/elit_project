@@ -16,10 +16,9 @@
 					VALUES  ( inquiry_seq.nextval,
 								 #title#,
 								 #content#,
-								 
-							     0,
+								 0,
 								 sysdate,
-								 'test1' )
+								 '$userid$' )
 		]]>
 	</insert>
 	

@@ -3,7 +3,6 @@ package egov.web;
 import java.util.List;
 
 import javax.annotation.Resource;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -22,15 +21,12 @@ public class InquiryController {
 
 		@Resource(name = "inquiryService")
 		InquiryService inquiryService;
-		private HttpSession session;
+		
 		
 		@RequestMapping("InquiryList.do")
 		public String selectInquiryList(InquiryVO vo, Model model) throws Exception {
 			
-			/*
-			  String userid = (String) session.getAttribute("userid");
-			  vo.setUserid(userid);
-			 */
+			
 			
 			// 페이지번호
 			  int page_no = vo.getPage_no(); // 1->1 ;; 2->11 ;; 3->21 
@@ -88,9 +84,14 @@ public class InquiryController {
 		
 		// 글 내용(상혁)
 		@RequestMapping("InquiryDetail.do")
-		public String selectBoardDetail(InquiryVO vo, Model model ) throws Exception {
+		public String selectBoardDetail(InquiryVO vo, Model model, HttpSession session ) throws Exception {
 			
 			// 상세 보기 서비스
+			
+			  
+			String userid = (String) session.getAttribute("UserID");			
+			vo.setUserid(userid);
+			 
 			vo = inquiryService.selectBoardDetail(vo);
 			
 			// 조회수 증가
