@@ -1,5 +1,6 @@
 package egov.web;
 
+import java.awt.Menu;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,13 +33,30 @@ public class MenuOrderController {
 	public String selectStoreMenuList(MenuOrderVO vo,MemberVO mvo, Model model, HttpSession session) 
 											throws Exception {
 		
-		
+		String s_text = vo.getS_text();
+		String menukeyword = vo.getMenukeyword();
+		String url = "";
+		String userid = (String) session.getAttribute("SessionUserID");
+		if(userid == null || userid.trim().equals("")) {
+			userid = (String) session.getAttribute("BossmemberSessionID");
+		}
+		if(userid == null || userid.trim().equals("")) {
+			userid = (String) session.getAttribute("AdminSessionID");
+		}
+		if(userid == null ||
+				userid.trim().equals("") ) {
+			url = "etc/alert";
+			model.addAttribute("msg", "로그인후 이용해주세요.");
+			model.addAttribute("url","memberlogin.do");
+		} else {
+			url =  "menu2/storeMenuList";
+		}
 		//가게정보
 		vo = menuorderService.selectStoreinfo(vo);
 		
 		//로그인 세션가지고 오기 
 		
-		String userid = (String) session.getAttribute("SessionUserID");
+//		String userid = (String) session.getAttribute("SessionUserID");
 		vo.setUserid(userid);
 		mvo.setUserid(userid);
 		//System.out.println("======"+userid);
@@ -50,6 +68,9 @@ public class MenuOrderController {
 		// 리뷰 개수 
 		int reviewTot = menuorderService.selectStoreReviewTotalCount(vo);
 		
+		vo.setS_text(s_text);
+		vo.setMenukeyword(menukeyword);
+
 		//메뉴리스트 
 		List<?> list = menuorderService.selectStoreMenuList(vo);
 		
@@ -64,8 +85,11 @@ public class MenuOrderController {
 		
 		int total = menuorderService.selectTotPrice(vo);
 		
-		vo.setTotal(total);
 		
+		vo.setTotal(total);
+
+		model.addAttribute("s_text",s_text);
+		model.addAttribute("menykeyword",menukeyword);
 		model.addAttribute("reviewTot",reviewTot);
 		//model.addAttribute("total",total);
 		model.addAttribute("vo",vo);
@@ -73,7 +97,7 @@ public class MenuOrderController {
 		model.addAttribute("list",list);
 		model.addAttribute("preList",preList);
 				
-		return "menu2/storeMenuList";
+		return url;
 	}
 	
 	/*

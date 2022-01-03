@@ -24,6 +24,7 @@
 				if(data == "ok") {
 					alert("로그아웃되었습니다.");
 					location = "mainPage.do";
+					location.reload();
 				} else {
 					alert("로그아웃을 다시 시도해주세요.");
 				}

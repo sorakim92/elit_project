@@ -20,7 +20,6 @@ $(function() {
 });
 </script>
 <body>
-<img src="img\logo.png" style="width:30%;">
     <div style="text-align:center">
         <form id = "frm_uesrid" name="frm_uesrid" method="POST">
             <br><br>

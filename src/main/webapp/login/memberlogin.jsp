@@ -163,26 +163,19 @@
           <input type="password" class="form-control" id="userpw" name="userpw">
         </div>
         <div class="checkbox pull-right" style="width:100%;">
-          <label>
-            <input type="checkbox">자동로그인
+          <label style="float: right;">
+          <a href="memberwrite.do">회원가입</a>
           </label>
         </div>
         <div style="width:100%; text-align:center;">
-        <button type="button" class="btn btn btn-primary" id="btn_submit" >
+        <button type="button" class="btn btn btn-primary" id="btn_submit" style="width:70%; margin-top:5px;" >
           로그인
         </button>
         <!-- 로그인버튼과 sns로그인 공간 확보용 -->
         <div style="width:100%">&nbsp;</div>
         
         </div>
-        <div class="row">
-            <div class="col-sm-6 col-sm-6 col-sm-6">
-              <a href="#" class="btn btn-lg btn-success btn-block" text-align="center">네이버</a>
-            </div>
-            <div class="col-sm-6 col-sm-6 col-sm-6">
-              <a href="#" class="btn btn-lg btn-warning btn-block" text-align="center">카카오</a>
-            </div>
-        </div>
+       
         </form>
       </div>
       </div>

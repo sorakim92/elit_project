@@ -37,7 +37,6 @@
 	    		
 	    		// 전송 후 셋팅
 	    		success: function(data) {
-	    			alert(data);
 					if(data == "fail") {
 						alert("이메일과 일치하는 아이디가 존재하지 않습니다. ");
 					} else {
@@ -57,7 +56,6 @@
     
 </head>
 <body>
-<img src="img\logo.png" style="width:30%;">
     <div style="text-align:center">
         <form id = "frm_uesrid" method="POST">
             <br><br>

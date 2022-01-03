@@ -19,7 +19,9 @@
 					to_char(rdate,'YYYY-MM-DD hh24:mi')rdate,
 					userid
 		FROM progressorder 
+
 			where storeunq between 234 and 241 		
+
 	</select>
 	
 	<select id="progressorderDAO.selectorderendList"  resultClass="egovMap"  >
@@ -36,7 +38,9 @@
 					to_char(rdate, 'YYYY-MM-DD hh24:mi')rdate,
 					addr
 		FROM progressorder 
+
 			where storeunq  between 234 and 241 
+
 		
 		  		
 	</select>
@@ -52,7 +56,8 @@
 		        userid, 
 		        phone, 
 		        storeunq,
-		        acctime
+		        decode(acctime,null,'승인대기중',to_char(rdate+acctime/(24*60),'YYYY-MM-DD hh24:mi')) acctime
+
 		FROM 
 		        progressorder 
 		WHERE 
@@ -64,7 +69,28 @@
 	
 	</select>
 	
+	<!--  마이페이지 오더리스트 불러오기  -->
+	<select id="progressorderDAO.selectMyOrderlist" resultClass="egovMap">
+		SELECT 
+		        p.userid,
+		        p.orderindex, 
+		        p.menuname, 
+		        p.price, 
+		        decode(p.receive,'P','배달중','Y','배달완료') receive,
+		        decode(p.acctime,null,'승인대기중',to_char(p.rdate+p.acctime/(24*60),'YYYY-MM-DD hh24:mi')) acctime,
+		        p.storeunq,
+		        s.storename,
+		        decode(s.storeimage,null,'사진',s.storeimage) storeimage,
+		     	to_char(s.rdate,'yy/mm/dd (dy)') rdate
+
+		FROM 
+	       		 progressorder p, store s 
+		WHERE  
+					p.storeunq = s.storeunq AND p.userid=#userid#
+		ORDER BY 
+					rdate DESC
 	
+	</select>
 	
 
 	<!--  주문내역 progressorder 테이블로 저장 (소라) -->

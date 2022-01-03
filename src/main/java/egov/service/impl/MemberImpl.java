@@ -34,6 +34,11 @@ public class MemberImpl implements MemberService{
 	public int selectMemberCount(MemberVO vo) throws Exception {
 		return memberDAO.selectMemberCount(vo);
 	}
+	//로그인세션처리용
+	@Override
+	public MemberVO selectMemberCerify(MemberVO vo) throws Exception {
+		return memberDAO.selectMemberCerify(vo);
+	}
 	//비밀번호 찾기
 	@Override
 	public int Pop_memberpassfind(MemberVO vo) throws Exception {
@@ -63,6 +68,24 @@ public class MemberImpl implements MemberService{
 	public int deletememberuser(MemberVO vo) throws Exception {
 		return memberDAO.deletememberuser(vo);
 	}
+	//회원정보 화면
+	@Override
+	public MemberVO selectmemberuser(MemberVO vo) throws Exception {
+		return memberDAO.selectmemberuser(vo);
+	}
+
+	//회원정보 수정
+	@Override
+	public int updatemember(MemberVO vo) throws Exception {
+		return memberDAO.updatemember(vo);
+	}
+	
+
+	@Override
+	public int mainPageDeliveryAddr(MemberVO vo) throws Exception {
+		return memberDAO.mainPageDeliveryAddr(vo);
+	}
+
 	
 	
 	

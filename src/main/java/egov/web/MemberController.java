@@ -44,6 +44,8 @@ public class MemberController {
 		
 		String message = "";
 		
+//		System.out.println("======================>>>"+vo.getBusiness());
+		
 		String result = memberService.insertMember(vo);
 		// String result = null; (성공)
 		if(result == null) {
@@ -82,10 +84,10 @@ public class MemberController {
 	}
 	
 	//회원가입 주소 (경석)
-	@RequestMapping("Pop_addr.do")
-	public String Pop_addr() throws Exception {
-		return "login/Pop_addr";
-	}
+	/*
+	 * @RequestMapping("Pop_addr.do") public String Pop_addr() throws Exception {
+	 * return "login/Pop_addr"; }
+	 */
 	
 	//로그인 화면 담당 (경석)
 	@RequestMapping("memberlogin.do")
@@ -162,8 +164,6 @@ public class MemberController {
 		//System.out.println("============"+vo.getUserid());
 		String result = memberService.Pop_useridfd(vo);
 		String msg = "";
-		
-		
 		
 		if(result == null) {
 			msg="fail";
@@ -271,6 +271,35 @@ public class MemberController {
 			msg = "fail";
 		}
 		
+		return msg;
+	}
+	
+	//회원정보 수정 (경석)
+	@RequestMapping("memberMypage.do")
+	public String membermypage( MemberVO vo, Model model, HttpSession session ) throws Exception {
+		
+		String userid = (String) session.getAttribute("SessionUserID");
+		vo.setUserid(userid);
+//		
+		vo = memberService.selectmemberuser(vo);
+//		
+		model.addAttribute("vo",vo);
+		
+		return "login/Mypage";
+	}
+	
+	@RequestMapping("memberMypageSave.do")
+	@ResponseBody
+	public String updatemember(MemberVO vo, HttpSession session) throws Exception {
+		System.out.println("테스트"+vo.getUserpw());
+		
+		String msg = "";
+		int result = memberService.updatemember(vo);
+		if(result == 0) {
+			msg = "modify_fail";
+		} else {
+			msg = "ok";
+		}
 		return msg;
 	}
 }

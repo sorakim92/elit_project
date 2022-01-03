@@ -43,4 +43,8 @@ public class ProgressOrderImpl implements ProgressOrderService{
 			return progressorderDAO.selectMainProOrder(userid);
 
 		}
+		@Override
+		public List<?> selectMyOrderlist(ProgressOrderVO vo) {
+			return progressorderDAO.selectMyOrderlist(vo);
+		}
 }

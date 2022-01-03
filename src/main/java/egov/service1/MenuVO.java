@@ -16,6 +16,7 @@ public class MenuVO {
 	private MultipartFile uploadFile;
 
 
+
 	
 	
 	
@@ -32,6 +33,7 @@ public class MenuVO {
 	public void setUploadFile(MultipartFile uploadFile) {
 		this.uploadFile = uploadFile;
 	}
+
 	public String getUserid() {
 		return userid;
 	}

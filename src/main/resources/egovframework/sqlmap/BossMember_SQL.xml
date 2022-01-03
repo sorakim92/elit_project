@@ -6,6 +6,7 @@
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="bossmemberVO" type="egov.service1.BossMemberVO"/>
 	
+<!-- 	사업자 등록페이지 List (강성모) -->
 	<select id="bossmemberDAO.selectbossmemberService" resultClass = "egovMap">
 		SELECT b.* FROM (
 			SELECT rownum rn, a.* from (	
@@ -141,6 +142,7 @@
 	</update>
 	
 	<insert id ="bossmemberDAO.insertBossMember">
+		
 		INSERT INTO bossmember(
 								    userid,
 								    userpw,
@@ -158,11 +160,15 @@
 									#username#,
 									#email#,
 									#userphone#,
-									#storeaddr#,
+									(SELECT storeaddr
+									        FROM store
+									        WHERE userid = #userid#),									     
 									#business#,
 									sysdate,									
-									store_seq.nextval
+									(SELECT storeunq FROM store WHERE userid=#userid#)
 					)
+	
+		
 	
 	</insert>
 	
