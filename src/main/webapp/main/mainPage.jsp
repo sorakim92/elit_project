@@ -81,11 +81,18 @@ $(function(){
 		var userid = $("#userid").val();
 	
 		if(userid == null || userid == "" || userid == "null") {
+			userid = $("#bossid").val();
+		} 
+		if(userid == null || userid == "" || userid == "null"){
+			userid = $("#adminid").val();
+		}
+		
+		if(userid == null || userid == "" || userid == "null"){
 			alert("로그인을 하셔야 주문이 가능합니다. ");
 			location.href="memberlogin.do";
 			return false;
-			
-		} 
+		}
+		$("#userid").val(userid);
 		
 		var addr = $("#addr").val();
 		if( addr == null || addr == "") {
@@ -336,6 +343,8 @@ $(document).ready(function() {
 	     	<input type="hidden" id="useraddr4" name="useraddr4" >
 	     	<input type="hidden" id="useraddr5" name="useraddr5"  >
 	     	<input type="hidden" id="userid" name="userid" value=<%=USERID %>  >
+	     	<input type="hidden" id="bossid" name="bossid" value=<%=BOSSUSERID %>>
+	     	<input type="hidden" id="adminid" name="adminid" value=<%=ADMINID %> >
      	</form>
         <div class="div_addr" style="height:auto;">
             <img id="current_loc" src="<c:url value='/img/currentLoc.png'/>" width="20px" height="20px" alt="위치설정아이콘">
