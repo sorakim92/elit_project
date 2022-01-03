@@ -72,7 +72,53 @@ a:hover, .cap:hover{
 	color: black; 
 	border-color:#f8cacc
 }
+.main_cate_img {
+	border-radius: 2em;
+	width:200px;
+	height:150px;
+}
+.slider_nav {
+	width:1000px;
+	height:160px;
+/* 	background-color:#f8cacc; */
+ 	line-height:160px;
+/* 	justify-content: center; */
+/* 	display: inline-block;  */
+/* 	align-items: center; */
+}
+.banner_btn_a {
+	display:inline-block; 
+/* 	background:pink;  */
+	float:left; 
+	line-height:140px;
+}
+.rolling_panel { 
+	position: relative; 
+	width: 970px; 
+	height: 140px;
+ 	margin: 0; 
+ 	padding: 0; 
+ 	justify-content: center; 
+ 	overflow: hidden; 
+ 	float:left;
+ }
+ .rolling_panel ul {
+  	position: absolute; 
+  	margin: 5px; 
+  	padding: 0; 
+  	list-style: none; 
+ }
+ .rolling_panel ul li { 
+ 	float: left; 
+ 	width: 98%; 
+ 	height: 140px;
+ }
+ .rolling_panel ul li img {
+ 	width: 970px;
+ 	height: 140px;
+ }
 
+/* 배너부분끝  */
 </style>
 <script>
 $(function(){
