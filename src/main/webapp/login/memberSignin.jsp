@@ -33,7 +33,7 @@
   </style>
   
   <script>
-   
+  
   $(function() {
 	  $("#btn_popupid").click(function(){
 		var userid = $("#userid").val();
@@ -49,7 +49,15 @@
   $(function() {
 	  
 		$("#btn_submit").click(function(){
-						
+				
+			
+			 if($("#business1").is(":checked")) {
+		         $("#business").val("P");
+		         
+		      } else {
+		         $("#business").val("N");
+		      }
+			
 			var userid = $("#userid").val();
 			var userpw = $("#userpw").val();
 			var reuserpw = $("#reuserpw").val();
@@ -98,12 +106,9 @@
 				$("#userpw").focus();
 				return false;
 			}
-			if($("#business").is(":checked") {
-				 alert("트루");
-			 } else {
-				alert("펄스");
-			 }
-						
+			
+//			alert($("#business").val());
+			
 			var formData = $("#frm").serialize();
 			alert(formData);
 			$.ajax ({
@@ -195,6 +200,9 @@
       <div class="input-form col-md-12 mx-auto " style="width:100%; height: 10%;">
         <h4 class="mb-3">회원가입</h4>
         <form id="frm" name="frm" method="POST">
+        
+          <input type="hidden" name="business" id="business">
+        
           <div>
             <div>
                <input type="button" value="중복확인" 
@@ -233,7 +241,7 @@
               <div style="float:left; width: 50%;">&nbsp;</div>
               <div class="" style="float:left;width: 45%; margin-left: 10px; margin-top:15px; ">
                 사업자체크
-                <input type="checkbox" id="business" name="business" value="N">
+                <input type="checkbox" id="business1" name="business1" value="N">
               </div>
               
             <div class="" style="float:left;width: 100%;">
