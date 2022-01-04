@@ -179,7 +179,6 @@
             
           </div>
         </div>  
-        <br><br>
         <div class='panel panel-default'>
           <div class='panel-heading'>           
            <b> Detail..</b>           
@@ -214,7 +213,7 @@
                   <input class='form-control' disabled placeholder='Inquire'
                   value = "${vo.inquire }">
                 </div>
-                <br>
+          
                  <div class='form-group row'>
                   <div class='col-lg-3'>
                     <label class='control-label'>CATEGORY</label>
