@@ -138,7 +138,7 @@ public class AdController {
 		vo.setBanner(banner);
 		//System.out.println(banner + "====3.랜덤 파일명");
 		
-		//업데이트 서비스 실행(sdate,edate,거절사유,banner(filrname))
+		//업데이트 서비스 실행(sdate,edate,거절사유,banner(filename))
 		int result = adService.adApproveService(vo);
 		
 		if(result == 1) {

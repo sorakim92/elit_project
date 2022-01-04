@@ -88,15 +88,6 @@
           </div>
           <div class='panel-body filters'>
           
-            <div class='input-body'>제목 : ~~~</div>   
-            <br>  
-            <div class='input-body'>내용 : ~~~</div>   
-         
-          </div>              
-        </div>
-
-        <div class='panel panel-default grid'>        
-          <div class='panel-body'>
             <div class='col-md-9'>               
             </div>
             <div class='col-md-3'>
@@ -112,47 +103,41 @@
 
             <table class='table'>
               <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Loc/Store</th>
-                  <th>State</th>
+                <tr>                
+<!--                   <th>Status</th>	 -->
+                  <th>지역</th>
+                  <th style="padding-right:80px; text-align:center;">가게이름</th>                 
+                  <th>가게번호</th>                 
+                  <th>신청자이름</th>
+                  <th>이메일</th>
+                  <th>아이디</th>
                   <th>Rdate</th>
-                  <th class='actions'>
+                  <th class='actions'  style="text-align:center;">
                     Actions
                   </th>
                 </tr>
               </thead>
               <tbody>
+              <c:forEach var="result" items="${list }">
                 <tr>
-                  <td>장난하냐</td>
-                  <td>[하남시]하남돼지집</td>
-                  <td><font color="red">미답변</font></td>
-                  <td>21-11-03</td>
-                  <td class='action'>
-
-                    <a class='btn btn-success' data-toggle='tooltip' href='#' title='detail'>
-                      <i class='icon-zoom-in'></i>
-                    </a>
-                    <a class='btn btn-info' data-toggle='tooltip' href='#' title='write'>
+<!--                   <td><font color="red">미답변</font></td> -->
+                  <td>${result.region }</td>
+                  <td style="padding-right:80px; text-align:center;">
+                 	 <a href="StoreRegisterList.do?openindex=${result.openindex }">
+                 	 ${result.storename }
+                 	 </a>
+                  </td>
+                  <td>${result.phone }</td>
+                  <td>${result.name }</td>
+               	  <td>${result.email }</td>
+                  <td>${result.userid }</td>
+                  <td>${result.rdate }</td>                 
+                  <td class='action'  style="text-align:center;">
+                    <a class='btn btn-info' data-toggle='tooltip' href='BossMemberList.do?k2text=${result.userid }' title='사업자등록'>
                       <i class='icon-edit'></i>
                     </a>     
-
-                </tr>
-                <tr>
-                  <td>장난하냐</td>
-                  <td>[하남시]하남돼지집</td>
-                  <td><font color="red">미답변</font></td>
-                  <td>21-11-03</td>
-                  <td class='action'>
-
-                    <a class='btn btn-success' data-toggle='tooltip' href='#' title='detail'>
-                      <i class='icon-zoom-in'></i>
-                    </a>
-                    <a class='btn btn-info' data-toggle='tooltip' href='#' title='write'>
-                      <i class='icon-edit'></i>
-                    </a>     
-
-                </tr>
+                </tr> 
+                </c:forEach>              
               </tbody>
             </table>
           </div>
@@ -193,12 +178,84 @@
             </ul>
             
           </div>
-        </div>
-        
-      </div>
-    </div>
-      
+        </div>  
+        <br><br>
+        <div class='panel panel-default'>
+          <div class='panel-heading'>           
+           <b> Detail..</b>           
+          </div>
+          <div class='panel-body'>
+         
+		<form id = "frm2" name ="frm2" >
 
+            <input type ="hidden" id = "openindex" name ="openindex" value = "${vo.openindex }">
+<!--         그리고 jquery에 넘길때는 id값이 편함   sql로   값을 넘길때 name으로 넘기기때문에 name값이 중요 -->
+              <fieldset>
+                <div class='form-group row'>
+                  <div class='col-lg-2'>
+                    <label class='control-label'>STORENAME</label>
+                    <input class='form-control' placeholder='I D' disabled 
+                    value = "${vo.storename }">
+                  </div>
+                  <div class='col-lg-3'>
+                    <label class='control-label'>STOREPHONE</label>
+                    <input class='form-control' placeholder='Phone' disabled 
+                    value = "${vo.phone }">
+                  </div>
+                  <div class='col-lg-7'>
+                    <label class='control-label'>STOREADDR</label>
+                    <input class='form-control' placeholder='Addr' disabled 
+                    value = "${vo.address }">
+                  </div>
+                  
+                </div>
+                 <div class='form-group'>
+                  <label class='control-label'>INQUIRE</label>
+                  <input class='form-control' disabled placeholder='Inquire'
+                  value = "${vo.inquire }">
+                </div>
+                <br>
+                 <div class='form-group row'>
+                  <div class='col-lg-3'>
+                    <label class='control-label'>CATEGORY</label>
+                    <input class='form-control' placeholder='Category' disabled 
+                    value = "${vo.category }">
+                  </div>
+                  <div class='col-lg-3'>
+                    <label class='control-label'>FEE(배달비)</label>
+                    <input class='form-control' placeholder='Fee' 
+                    value = "3000">
+                  </div>
+                  <div class='col-lg-3'>
+                    <label class='control-label'>MINPRICE(주문최소금액)	</label>
+                    <input class='form-control' placeholder='Minprice'  
+                    value = "10000">
+                  </div>
+
+                </div>
+               
+
+              </fieldset>
+           <div class='form-actions'>
+                <button class='btn btn-default' id ="btn_save"  style ="margin-right : 30px;" type='button'>저장하기</button>
+                <button class='btn btn-default' style ="margin-right : 30px;" type='button'> 거절 </button>
+                
+              </div>
+            </form>
+
+
+
+
+          </div>
+        </div>
+           
+      </div>        
+          </div>              
+      
+        
+        
+        
+  
 
     <!-- Footer -->
     <!-- Javascripts -->

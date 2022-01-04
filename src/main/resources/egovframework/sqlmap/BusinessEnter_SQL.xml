@@ -24,7 +24,8 @@
 						address,
 						name,
 						inquire,
-						rdate
+						rdate,
+						status
 									
 						       )  
 				VALUES  ( businessenter_seq.nextval,
@@ -39,7 +40,8 @@
 							'$address$',
 							'$name$',
 							'$inquire$',
-							sysdate				
+							sysdate,
+							'P'				
 							)
 		 ]]>
 

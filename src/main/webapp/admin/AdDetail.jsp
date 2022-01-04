@@ -116,7 +116,7 @@
           <br><br>
           <li class='launcher'>
             <i class='icon-envelope'></i>
-            <a href="#">입점문의</a>
+            <a href="StoreRegisterList.do">입점문의</a>
           </li>
           <br><br>
           <li class='launcher'>

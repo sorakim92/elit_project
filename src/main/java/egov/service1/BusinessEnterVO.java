@@ -14,8 +14,15 @@ public class BusinessEnterVO {
 	private String inquire;
 	private String rdate;
 	private String userid;
+	private String status;
 	
 	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public String getUserid() {
 		return userid;
 	}
