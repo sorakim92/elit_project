@@ -45,7 +45,7 @@
 		  		
 	</select>
 	
-	<!-- 메인페이지에 아이디로 로그인시 진행중인 메뉴 조회  -->
+	<!-- 메인페이지에 아이디로 로그인시 진행중인 메뉴 조회(소라) -->
 	
 	<select id="progressorderDAO.selectMainProOrder" resultClass="egovMap">
 		SELECT 
@@ -63,13 +63,11 @@
 		WHERE 
 		        userid=#userid#
 		AND 
-		        accept='Y' 
-		AND 
 		        receive='P'
 	
 	</select>
 	
-	<!--  마이페이지 오더리스트 불러오기  -->
+	<!--  마이페이지 오더리스트 불러오기(소라)  -->
 	<select id="progressorderDAO.selectMyOrderlist" resultClass="egovMap">
 		SELECT 
 		        p.userid,
@@ -81,7 +79,9 @@
 		        p.storeunq,
 		        s.storename,
 		        decode(s.storeimage,null,'사진',s.storeimage) storeimage,
-		     	to_char(s.rdate,'yy/mm/dd (dy)') rdate
+		     	to_char(s.rdate,'yy/mm/dd (dy)') rdate,
+		     	ecode(p.map,null,'사진',p.map) map
+		     	
 
 		FROM 
 	       		 progressorder p, store s 
@@ -90,6 +90,31 @@
 		ORDER BY 
 					rdate DESC
 	
+	</select>
+	
+	<!-- 마이페이지 주문상세내역 (소라) -->
+	<select id="progressorderDAO.selectMyorderDetail" resultClass="progressorderVO">
+		<![CDATA[
+		 select 
+			  p.userid,
+			  p.orderindex, 
+			  p.storeunq,
+			  decode(p.acctime,null,'승인대기중',to_char(p.rdate+p.acctime/(24*60),'MM/DD am hh:mi')) acctime,
+			  s.storename,
+			  p.menuname,
+			  to_char(p.rdate,'YYYY"년 "MM" 월"DD" 일" am hh:mi') rdate,
+			  p.price, 
+			  decode(upper(p.method),'K','카카오페이','N','네이버페이','C','카드결제') method,
+			  p.addr,
+			  p.phone,
+			  decode(p.comment1,null,'요청사항 없음.',p.comment1) comment1,
+			  decode(p.comment2,null,'요청사항 없음.',p.comment2) comment2,
+			  s.storephone,
+			decode(p.map,null,'사진',p.map) map
+			from
+			        progressorder p, store s
+			    where p.storeunq = s.storeunq and p.userid=#userid# and p.orderindex=#orderindex#
+		]]>
 	</select>
 	
 

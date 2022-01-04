@@ -124,8 +124,14 @@ public class ProgressOrderController {
 	 * 마이페이지 주문내역리스트 주문상세 (소라)
 	 * */
 	@RequestMapping("myorderDetail.do")
-	public String selectMyorderDetail()
+	public String selectMyorderDetail(ProgressOrderVO vo, Model model)
 										throws Exception {
+		String userid = vo.getUserid();
+		int orderindex = vo.getOrderindex();
+		
+		vo = progressorderService.selectMyorderDetail(vo);
+		
+		model.addAttribute("vo",vo);
 		
 		return "mypage/myOrderDetail";
 	}

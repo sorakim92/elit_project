@@ -20,10 +20,27 @@ public class ProgressOrderVO {
 	private String phone;
 	private String acctime;
 	private String dctime;
+	private String storename;
+	private String storephone;
+	
+	
+	
 	
 	
 	
 
+	public String getStorephone() {
+		return storephone;
+	}
+	public void setStorephone(String storephone) {
+		this.storephone = storephone;
+	}
+	public String getStorename() {
+		return storename;
+	}
+	public void setStorename(String storename) {
+		this.storename = storename;
+	}
 	public String getDctime() {
 		return dctime;
 	}

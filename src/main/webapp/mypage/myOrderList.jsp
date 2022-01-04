@@ -95,7 +95,28 @@
 }
 
 </style>
+<script>
+function fn_detail(id,unq) {
+	var userid = id;
+	var orderindex = unq;
 
+	$("#userid").val(userid);
+	$("#orderindex").val(orderindex);
+	
+	var popWidth = window.screen.width/2 - 550;
+	var popHeight = window.screen.height/2 - 400;
+	
+	var pop_title = "detailPopup";
+	window.open("",pop_title,"status=no, width=1100, height=800, left="+popWidth+", top="+popHeight);
+	
+	var frm = document.frm_detail;
+	frm.target = pop_title;
+	frm.action = "myorderDetail.do";
+	
+	frm.submit();
+
+}
+</script>
 <body>
 
 <div class="wrapper">
@@ -134,7 +155,10 @@
 
   
     <!--주문내역-->
-
+	<form id="frm_detail" name="frm_detail" method="post" >
+		<input type="hidden" id="userid" name="userid">
+	 	<input type="hidden" id="orderindex" name="orderindex">                
+	</form>
         <div style="width:100%; 
 					float:left; 
 					margin-top:20px; 
@@ -172,7 +196,10 @@
                     	
                     </td>
                     <td>${result.storename }</td> 
-                    <td rowspan="3" style="vertical-align:middle; text-align:center"><button type="button" class="btn" name="" id="">주문상세</button> </td> 
+                    <td rowspan="3" style="vertical-align:middle; text-align:center">
+                    	<button type="button" class="btn" onclick="javascript:fn_detail('${result.userid}','${result.orderindex }')">주문상세</button> 
+	             
+                    </td> 
                 </tr>
                 <tr >
                     <td>${result.menuname }</td> 

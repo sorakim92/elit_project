@@ -283,6 +283,7 @@ $(function() {
     <header class="width:100%; height:50px;">
          <div class="logo" style=" cursor: pointer;" onclick="location.href='mainPage.do';">
     		<img src="<c:url value='/img/logo.png'/>" width="200px" height="100px" alt="로고"/>
+    		<br><br>
             <h4>사장님 마이페이지</h4>
         </div>
         <div class="search" >
@@ -293,7 +294,7 @@ $(function() {
     </header>
         
     <nav>
-        <div class="" >
+        <div class="" style="margin-top:15px;" >
            <a href="BossMemberDetail.do"><font size="4">회원정보수정 |</font></a>
             <a href="progressorderList.do"><font size="4" color="black">주문내역 | </font></a>
            

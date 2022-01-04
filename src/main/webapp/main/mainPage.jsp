@@ -350,6 +350,28 @@ $(document).ready(function() {
     }
 });
 </script>
+<script>
+function fn_detail(id,unq) {
+	var userid = id;
+	var orderindex = unq;
+
+	$("#userid").val(userid);
+	$("#orderindex").val(orderindex);
+	
+	var popWidth = window.screen.width/2 - 550;
+	var popHeight = window.screen.height/2 - 400;
+	
+	var pop_title = "detailPopup";
+	window.open("",pop_title,"status=no, width=1100, height=800, left="+popWidth+", top="+popHeight);
+	
+	var frm = document.frm_detail;
+	frm.target = pop_title;
+	frm.action = "myorderDetail.do";
+	
+	frm.submit();
+
+}
+</script>
 <body>
 <div class="wrapper">
     <div class="main" style="min-height: 100%; padding-bottom:100px; flex:1;">
@@ -497,6 +519,10 @@ $(document).ready(function() {
 
 
 <!--  현재진행중인 주문이 있으면 띄우기 ! -->
+<form id="frm_detail" name="frm_detail" method="post" >
+	<input type="hidden" id="userid" name="userid">
+ 	<input type="hidden" id="orderindex" name="orderindex">                
+</form>
 <c:if test = "${!empty plist}">
   <c:forEach var="result" items="${plist }">
 
@@ -531,8 +557,7 @@ $(document).ready(function() {
                 
             </table>
             <div style="text-align: right; padding-right:20px;">
-             	<button type="button" 
-            		class="btn" name="" id="">주문상세</button>            
+                 <button type="button" class="btn" onclick="javascript:fn_detail('${result.userid}','${result.orderindex }')">주문상세</button>           
             </div>
         </div>
     </article>

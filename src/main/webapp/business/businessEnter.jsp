@@ -184,7 +184,8 @@ $(function() {
     - 회원의 법령 또는 약관의 위반을 포함하여 부정행위 확인 등의 정보보호 업무를 위해 필요한 경우
     - 기타 법률에 의해 요구되는 경우 
     </textarea><br></div><br><br><br><br><br>
-    <div class="mw_agree1">
+    <div class="mw_agree1" >
+        <br>
         <span>회원가입약관의 내용에 동의합니다.</span>
         <input type="checkbox" name="agree" id ="agree" value="t1">
     </div><br>
@@ -209,23 +210,38 @@ $(function() {
         4. 매뉴 카테고리를 선택해주세요.*<br>(최대 3개선택가능) &nbsp;&nbsp;&nbsp;&nbsp;
         <select name="category" id="category">
             <option value="">카테고리 선택</option>
-            <option>한식</option>
-            <option>중식</option>
-            <option>치킨</option>   
+            <option value="111">한식</option>
+            <option value="222">치킨</option>
+            <option value="333">일식</option>   
+            <option value="444">양식</option>  
+            <option value="555">중식</option>  
+            <option value="666">샐러드/샌드위치</option>  
+            <option value="777">분식</option>  
+            <option value="888">카페/디저트</option>  
         </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         
         <select name="category2" id="category2">&nbsp;&nbsp;&nbsp;&nbsp;
             <option value="">카테고리 선택</option>
-            <option>한식</option>
-            <option>치킨</option>
-            <option>중식</option>
+            <option value="111">한식</option>
+            <option value="222">치킨</option>
+            <option value="333">일식</option>   
+            <option value="444">양식</option>  
+            <option value="555">중식</option>  
+            <option value="666">샐러드/샌드위치</option>  
+            <option value="777">분식</option>  
+            <option value="888">카페/디저트</option>  
         </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         
         <select name="category3" id="category3">
             <option value="">카테고리 선택</option>
-            <option>한식</option>
-            <option>치킨</option>
-            <option>중식</option>
+            <option value="111">한식</option>
+            <option value="222">치킨</option>
+            <option value="333">일식</option>   
+            <option value="444">양식</option>  
+            <option value="555">중식</option>  
+            <option value="666">샐러드/샌드위치</option>  
+            <option value="777">분식</option>  
+            <option value="888">카페/디저트</option>  
         </select>
     </div><br>
     <div>
