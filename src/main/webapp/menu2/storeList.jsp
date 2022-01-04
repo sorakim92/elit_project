@@ -81,6 +81,18 @@ function fn_like(u,c) {
 }
 
 </script>
+<script>
+function fn_ord(ody,od) {
+	var orderby = ody;
+	var ord = od;
+	
+	$("#orderby").val(orderby);
+	$("#ord").val(ord);
+	console.log($("#frm").serialize());
+	$("#frm").attr("action","KRfoodList.do").submit();
+}
+
+</script>
 <body>
 <div class="wrapper">
     <div class="main" style="min-height: 100%; padding-bottom:100px; flex:1;">
@@ -94,15 +106,13 @@ function fn_like(u,c) {
        </div>
        <div style="margin:0 0 10px 0;">
         <ul class="nav2">
-            <li>추천순</li>
-            <li>가까운순</li>
-            <li>찜많은순</li>
-            <li>*</li>
-            <li>*</li>
+            <li><a href="javascript:fn_ord('storerate','desc')">추천순</a></li>
+            <li><a href="javascript:fn_ord('cnt','desc')">찜많은순</a></li>
+            <li><a href="javascript:fn_ord('fee','asc')">배달비 낮은순 </a></li>
         </ul>
         </div>
     </nav>
-      				
+      
   	<section>
   	<article class="">	
     	<table style="margin-top: 10px; width:100%; " class="cate_tbl2"> 
@@ -182,11 +192,12 @@ function fn_like(u,c) {
            </tr>
         </table>
     
-        <form id="frm" name="frm">
-        <input type="hidden" name="userid" id="userid" value=<%=USERID%>>
+        <form id="frm" name="frm" method="post" >
+<%--         <input type="hidden" name="userid" id="userid" value=<%=USERID%>> --%>
         <input type="hidden" name="storeunq" id="storeunq" value="0">
-      	<input type="hidden" name="cateunq" id="cateunq" value="0">
-        
+      	<input type="hidden" name="cateunq" id="cateunq" value="${vo.cateunq }">
+        <input type="hidden" name="orderby" id="orderby" >
+        <input type="hidden" name="ord" id="ord">
         </form>
         
     </article>

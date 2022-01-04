@@ -4,6 +4,26 @@ public class CategoryVO {
 	private int cateunq;
 	private String catename;
 	private String cateicon;
+	private String orderby = "storerate";
+	private String ord = "desc";
+	
+	
+	
+	
+	
+	
+	public String getOrderby() {
+		return orderby;
+	}
+	public void setOrderby(String orderby) {
+		this.orderby = orderby;
+	}
+	public String getOrd() {
+		return ord;
+	}
+	public void setOrd(String ord) {
+		this.ord = ord;
+	}
 	public int getCateunq() {
 		return cateunq;
 	}

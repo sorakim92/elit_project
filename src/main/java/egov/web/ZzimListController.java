@@ -3,6 +3,7 @@ package egov.web;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,9 +37,18 @@ public class ZzimListController {
 	
 	@RequestMapping("zzimlike.do")
 	@ResponseBody
-	public String likeStatus(ZzimListVO vo, Model model) throws Exception{
+	public String likeStatus(ZzimListVO vo, Model model, HttpSession session) throws Exception{
 		
 		String msg = "";
+		
+		String userid = (String) session.getAttribute("SessionUserID");
+		if(userid == null || userid.trim().equals("")) {
+			userid = (String) session.getAttribute("BossmemberSessionID");
+		}
+		if(userid == null || userid.trim().equals("")) {
+			userid = (String) session.getAttribute("AdminSessionID");
+		}
+		vo.setUserid(userid);
 		
 		int insert_chk = zzimlistService.LikeInsertChk(vo);
 		String likechk = zzimlistService.selectLikeChk(vo);

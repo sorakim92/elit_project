@@ -61,6 +61,11 @@ public interface MenuOrderService {
 	 * */
 	int deleteOrderMenu(MenuOrderVO vo) throws Exception ;
 
+	/*
+	 * 해당 가게 리뷰 불러오기 
+	 * */
+	List<?> selectStorereview(MenuOrderVO vo) throws Exception;
+
 	
 	
 	

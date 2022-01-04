@@ -258,11 +258,21 @@ function fn_keyword(key) {
             <div>
                 <table>
                     <tr>
+					<c:if test = "${empty slist}">	    
+              		   	<div class="str_img_reviewtype1" style=" width:500px;line-height:70px;">
+                   			 아직 작성된 리뷰가 없습니다.
+            			</div>
+					</c:if>                
+                       <c:forEach var="result" items="${slist }" begin="1" end="5">
+                   		    <img class="str_img_reviewtype1"
+                   		    	src="<c:url value='/upload/review/${result.rimage }'/>">
                         <td>
                             <img src="/img/addpic.png" 
                                 class="str_img_reviewtype1"
                                 alt="리뷰사진">
                         </td>
+                        </c:forEach>
+                       
                     </tr>
                 </table>
             </div>
@@ -300,7 +310,7 @@ function fn_keyword(key) {
                         
                         <c:choose>
                    		<c:when test="${result.menuimage.equals('사진') }">
-                   		   	<div class="cate_tbl2_div1" style="line-height:140px;">
+                   		   	<div class="cate_tbl2_div1" style="line-height:150px;">
                     			 이미지 준비중
                    			 </div>
                    		</c:when>
@@ -313,8 +323,16 @@ function fn_keyword(key) {
                     </c:choose>
                         
                     </td>
-                    <td style="font-family:jua; font-size:18px;"><span>${result.menuname}</span></td>
+                    <td style="font-family:jua; font-size:18px;"><span>${result.menuname}</span> 
+                    </td>
                     <td><span style="font-size:25px; font-weight: bold; cursor: pointer;" onclick="fn_addOrder('${result.menuunq }')">+</span></td>
+                </tr>
+                <tr>
+                	<td>
+						<div style="display:inline-block; border-radius:1em; border:1px solid #f8cacc; padding:7px;">
+						<span style="font-family:jua; color:#ff6e74;">${result.menukeyword }</span>
+						</div>
+					</td>
                 </tr>
                 <tr>
                     <td><span>${result.menuinfo }</span></td>

@@ -11,7 +11,7 @@
     
     <nav aria-label="Page navigation example" 
     class="d-flex justify-content-center"
-    style="display:inline-block;">
+    style="display:inline-block; border: 1px solid #fff;">
     
         <ul class="pagination" >
         

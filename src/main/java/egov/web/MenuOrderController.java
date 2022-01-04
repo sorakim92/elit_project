@@ -19,6 +19,7 @@ import egov.service1.MemberVO;
 import egov.service1.MenuOrderService;
 import egov.service1.MenuOrderVO;
 import egov.service1.MenuVO;
+import egov.service1.StoreReviewVO;
 
 @Controller
 public class MenuOrderController {
@@ -30,7 +31,7 @@ public class MenuOrderController {
 	 * 주문하기 리스트 (소라)
 	 * */
 	@RequestMapping("menuOrderList.do")
-	public String selectStoreMenuList(MenuOrderVO vo,MemberVO mvo, Model model, HttpSession session) 
+	public String selectStoreMenuList(MenuOrderVO vo,MemberVO mvo,  Model model, HttpSession session) 
 											throws Exception {
 		
 		String s_text = vo.getS_text();
@@ -67,6 +68,8 @@ public class MenuOrderController {
 		
 		// 리뷰 개수 
 		int reviewTot = menuorderService.selectStoreReviewTotalCount(vo);
+		// 리뷰
+		List<?> slist = menuorderService.selectStorereview(vo);
 		
 		vo.setS_text(s_text);
 		vo.setMenukeyword(menukeyword);
@@ -94,6 +97,7 @@ public class MenuOrderController {
 		//model.addAttribute("total",total);
 		model.addAttribute("vo",vo);
 		model.addAttribute("mvo",mvo);
+		model.addAttribute("slist",slist);
 		model.addAttribute("list",list);
 		model.addAttribute("preList",preList);
 				

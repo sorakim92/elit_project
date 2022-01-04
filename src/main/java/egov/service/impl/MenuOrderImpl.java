@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import egov.service1.MemberVO;
 import egov.service1.MenuOrderService;
 import egov.service1.MenuOrderVO;
+import egov.service1.StoreReviewVO;
 
 @Service("menuorderService")
 public class MenuOrderImpl implements MenuOrderService {
@@ -72,5 +73,10 @@ public class MenuOrderImpl implements MenuOrderService {
 	@Override
 	public int deleteOrderMenu(MenuOrderVO vo) throws Exception {
 		return menuorderDAO.deleteOrderMenu(vo);
+	}
+
+	@Override
+	public List<?> selectStorereview(MenuOrderVO vo) throws Exception {
+		return menuorderDAO.selectStorereview(vo);
 	}
 }

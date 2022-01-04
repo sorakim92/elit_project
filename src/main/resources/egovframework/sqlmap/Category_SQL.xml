@@ -52,6 +52,8 @@
 		SELECT b.* FROM (
 			SELECT rownum rn, a.* FROM (
 				SELECT 	storeunq||'' storeunq,
+                
+                        nvl((select count(*) from zzimlist where storeunq = store.storeunq group by zzimlist.storeunq),0) cnt,
 						cateunq,
 						storename,
 						storeinfo,
@@ -65,7 +67,8 @@
 						decode(storeimage,null,'사진',storeimage) storeimage
 				FROM 	store
 				WHERE 	cateunq = #cateunq#
-				ORDER BY	storerate DESC )a) b
+				ORDER BY	storerate DESC )a
+                order by $orderby$ $ord$) b
 				
 			
 	</select>

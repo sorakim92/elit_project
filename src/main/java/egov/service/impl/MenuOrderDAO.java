@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import egov.service1.MemberVO;
 import egov.service1.MenuOrderVO;
+import egov.service1.StoreReviewVO;
 import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
 
 @Repository("menuorderDAO")
@@ -56,6 +57,10 @@ public class MenuOrderDAO extends EgovAbstractDAO{
 
 	public int deleteOrderMenu(MenuOrderVO vo) {
 		return (int) delete("menuorderDAO.deleteOrderMenu",vo);
+	}
+
+	public List<?> selectStorereview(MenuOrderVO vo) {
+		return list("menuorderDAO.selectStorereview",vo);
 	}
 
 }

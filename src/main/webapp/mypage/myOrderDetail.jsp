@@ -11,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지-주문내역</title>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=xbgymw4piz&callback=initMap&submodules=geocoder"></script>
 
    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
@@ -90,8 +91,101 @@ body {
 }
 
 </style>
-<body>
+<script>
+var map = null;
+var HOME_PATH = window.HOME_PATH || '.';
 
+function initMap() {
+    map = new naver.maps.Map('map', {
+    center: new naver.maps.LatLng(37.3595316, 127.1052133),
+	zoom: 10
+    });
+	var address = $("#address").val();
+	var infoWindow = new naver.maps.InfoWindow({
+		  anchorSkew: true
+		});
+
+		map.setCursor('pointer');
+
+	
+
+		function searchAddressToCoordinate(address) {
+		  naver.maps.Service.geocode({
+		    query: address
+		  }, function(status, response) {
+		    if (status === naver.maps.Service.Status.ERROR) {
+		      if (!address) {
+		        return alert('Geocode Error, Please check address');
+		      }
+		      return alert('Geocode Error, address:' + address);
+		    }
+
+		    if (response.v2.meta.totalCount === 0) {
+		      return alert('No result.');
+		    }
+
+		    var htmlAddresses = [],
+		      item = response.v2.addresses[0],
+		      point = new naver.maps.Point(item.x, item.y);
+		    
+		    var marker = new naver.maps.Marker({
+		        position: new naver.maps.LatLng(item.x, item.y),
+		        map: map
+		    });
+		    
+		    map.setCenter(point);
+		    infoWindow.open(map, point);
+		  });
+		}
+		
+		var marker = new naver.maps.Marker({
+	        position: new naver.maps.LatLng(37.3595704, 127.105399),
+	        map: map
+	    });
+		
+
+}
+
+
+//map.fitBounds(naver.maps.LatLngBounds.bounds(new naver.maps.LatLng(items.x, items.y),
+//new naver.maps.LatLng(${vo.storelatitude }, ${vo.storelongitude })));
+
+//var urlMarker = new naver.maps.Marker({
+//position: new naver.maps.LatLng(${vo.storelatitude }, ${vo.storelongitude }),
+//map: map,
+//title: 'urlMarker',
+//icon: HOME_PATH +"/img/example/pin_default.png",
+//animation: naver.maps.Animation.BOUNCE
+//});
+
+//naver.maps.Event.addListener(urlMarker, 'click', function() {
+//if (urlMarker.getAnimation() !== null) {
+//urlMarker.setAnimation(null);
+//} else {
+//urlMarker.setAnimation(naver.maps.Animation.BOUNCE);
+//}
+//});
+
+//var imageMarker = new naver.maps.Marker({
+//position: new naver.maps.LatLng(items.x, items.y),
+//map: map,
+//title: 'imageMarker',
+//icon: HOME_PATH +"/img/example/pin_default.png",
+//animation: naver.maps.Animation.BOUNCE
+//});
+
+//});
+
+
+
+
+
+
+
+
+</script>
+<body>
+<input type="text" id="address" name="addr" value="${vo.addr }">
 <div class="pop_wrapper">
      <div class="pop_title">
          주문상세보기
@@ -139,23 +233,11 @@ body {
         		${vo.comment2 }
         		</div>
         		
-        		<div class="">
-        			<c:choose>
-                   		<c:when test="${vo.map.equals('사진') }">
-                   		   	<div class="pop_od_div2" 
-                   		   		style="line-height:410px;font-family:jua; text-align:center;color:#92a8d1">
-                    			지도 준비중
-                   			 </div>
-                   		</c:when>
-                   		<c:otherwise>
-                   		    <div class="" >
-                   		    <img class="pop_od_div2"
-                   		    	src="<c:url value='/upload/map/${vo.map }'/>">
-                  		    </div>
-                   		</c:otherwise>
-                    </c:choose>
-        		</div>
-        	
+        		
+        		<div id="map"  style="width:100%;height:400px;">
+        		
+        		 </div>
+
         	
         	</div>
            

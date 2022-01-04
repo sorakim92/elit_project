@@ -84,7 +84,7 @@ $(function(){
                 공지사항
             </div>
             <form name="frm" method="post" action="nBoardList.do">
-            <div class="bwnansoard_sc_search">
+            <div class="bwnansoard_sc_search" style="float:right;">
             	 <select name="s_field" style="font-size:15px;">
             	 	<option value="title"
             	 		<c:if test="${s_field=='title' }">selected</c:if> 
@@ -160,7 +160,7 @@ $(function(){
 %>
     
 <!-- 페이징 -->
-    <div style=" font-size:10px; " >
+    <div style=" font-size:10px; margin-top:30px; float:left" >
 		<%@include file = "../include/board_pagination.jsp" %>
       </div>
 </div>

@@ -23,12 +23,25 @@ public class ProgressOrderVO {
 	private String storename;
 	private String storephone;
 	
-	
+	private String storelongitude;
+	private String storelatitude;
 	
 	
 	
 	
 
+	public String getStorelongitude() {
+		return storelongitude;
+	}
+	public void setStorelongitude(String storelongitude) {
+		this.storelongitude = storelongitude;
+	}
+	public String getStorelatitude() {
+		return storelatitude;
+	}
+	public void setStorelatitude(String storelatitude) {
+		this.storelatitude = storelatitude;
+	}
 	public String getStorephone() {
 		return storephone;
 	}

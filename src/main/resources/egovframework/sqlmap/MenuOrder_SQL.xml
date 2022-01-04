@@ -7,6 +7,7 @@
 	<typeAlias  alias="memberVO" type="egov.service1.MemberVO"/>
 	
 	
+	
 	<!-- 메뉴리스트(소라)  -->
 	<select id="menuorderDAO.selectStoreMenuList" resultClass="egovMap">
 		select 	s.storeunq, 
@@ -118,6 +119,20 @@
 	
 	
 	</select>
+	
+	<!-- 스토어  리뷰 검색 -->
+	<select id ="menuorderDAO.selectStorereview" resultClass="egovMap">
+		select reviewindex,
+				storeunq,
+				rate,
+				rcontent,
+				rimage,
+				rdate,
+				userid,
+				oderindex 
+		from orderreview where storeunq = #storeunq# and rimage is not null
+	</select>
+	
 	
 	<!-- 주문하기전 주문표에 잠시 담아두기 (소라) -->
 	<insert id="menuorderDAO.insertAddOrder" parameterClass="menuorderVO">

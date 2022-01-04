@@ -94,6 +94,18 @@
 	border-color:#f8cacc
 }
 
+.div_orderinfo_1{
+	height:auto; 
+	width:100%;
+	font-family:jua;
+	font-size:16px;
+	color:#ff6e74;
+	padding:20px;
+	text-align:center;
+	border-radius:2em; 
+	border:1px solid #eee; 
+	margin-top:50px;
+}
 </style>
 <script>
 function fn_detail(id,unq) {
@@ -159,11 +171,20 @@ function fn_detail(id,unq) {
 		<input type="hidden" id="userid" name="userid">
 	 	<input type="hidden" id="orderindex" name="orderindex">                
 	</form>
+	
+		
         <div style="width:100%; 
 					float:left; 
 					margin-top:20px; 
 					font-size:13px;"
 					class="bd_tbl_div">
+					
+			<c:if test = "${empty list}">
+	        	<div class="div_orderinfo_1">
+	           	아직 주문한 내역이 없습니다. <br>
+	           	이릿 서비스를 이용해주세요.
+	           	</div>
+	        </c:if>
             <table style="width:100%;" class="table1">
                 <colgroup>
                     <col width="30%" />
@@ -171,7 +192,7 @@ function fn_detail(id,unq) {
                     <col width="15%" />
                   
                 </colgroup>
-                
+             
                 <c:forEach var="result" items="${list }">
                 <tr> 
                 	<th>${result.rdate } &nbsp; 

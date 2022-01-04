@@ -80,7 +80,7 @@
 		        s.storename,
 		        decode(s.storeimage,null,'사진',s.storeimage) storeimage,
 		     	to_char(s.rdate,'yy/mm/dd (dy)') rdate,
-		     	ecode(p.map,null,'사진',p.map) map
+		     	decode(p.map,null,'사진',p.map) map
 		     	
 
 		FROM 
@@ -105,12 +105,13 @@
 			  to_char(p.rdate,'YYYY"년 "MM" 월"DD" 일" am hh:mi') rdate,
 			  p.price, 
 			  decode(upper(p.method),'K','카카오페이','N','네이버페이','C','카드결제') method,
-			  p.addr,
+			  substr(p.addr,9) addr,
 			  p.phone,
 			  decode(p.comment1,null,'요청사항 없음.',p.comment1) comment1,
 			  decode(p.comment2,null,'요청사항 없음.',p.comment2) comment2,
 			  s.storephone,
-			decode(p.map,null,'사진',p.map) map
+			  s.storelongitude,
+			s.storelatitude
 			from
 			        progressorder p, store s
 			    where p.storeunq = s.storeunq and p.userid=#userid# and p.orderindex=#orderindex#

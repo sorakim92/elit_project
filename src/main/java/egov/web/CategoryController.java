@@ -178,7 +178,8 @@ public class CategoryController {
 		
 		//System.out.println(zlist.size());
 		//System.out.println(zlist.get(0));
-		
+		model.addAttribute("vo",vo);
+
 		model.addAttribute("list",list);
 		model.addAttribute("zlist",zlist);
 
