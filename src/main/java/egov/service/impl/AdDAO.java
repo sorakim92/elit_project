@@ -23,13 +23,15 @@ public class AdDAO extends EgovAbstractDAO {
 	public AdVO selectadDetailService(AdVO vo) {
 		return (AdVO) select("adDAO.selectadDetailService",vo);
 	}
-	
+	//강
 	public int adApproveService(AdVO vo) {
 		return (int) update("adDAO.adApproveService",vo);
 	}
+	//강
 	public int selectcount(AdVO vo) {
 		return (int) select("adDAO.selectcount",vo);
 	}
+	//강
 	public int selectAdTotal(AdVO vo) {
 		return (int) select("adDAO.selectAdTotal",vo);
 	}
