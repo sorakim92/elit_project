@@ -141,6 +141,7 @@
 				userid is not null and userid = #userid#
 	</update>
 	
+<!-- 	member -> bossmember (강성모) -->
 	<insert id ="bossmemberDAO.insertBossMember">
 		
 		INSERT INTO bossmember(
