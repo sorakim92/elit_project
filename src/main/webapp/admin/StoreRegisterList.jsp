@@ -22,6 +22,40 @@
     font-size: 16px;
 }
     </style>
+    <script>
+    $(function(){
+    	$("#btn_save").click(function(){
+    		var formdata = $(frm2).serialize();
+    		
+    		$.ajax({
+    			type : "post",
+    			data : formdata,
+    			url  : "storeSave.do",
+    			datatype : "json",
+    			success : function(data){
+    				//{"aaaa":"ok","bbbb":"강성모"}
+    				if(data.aaaa=="ok"){
+    					alert("입점 승인완료");
+    				} else if(data.aaaa=="er1"){
+    					alert("이미 등록된 점포입니다.");
+    				} else{
+    					alert("승인 실패");
+    				}
+    			},
+    			error : function(){
+    				alert("전송오류");
+    			}
+    			
+    		})
+    	})
+    	
+    })
+    
+    
+    
+    </script>
+    
+    
     
   </head>
   <body class='main page'>
@@ -186,48 +220,54 @@
           <div class='panel-body'>
          
 		<form id = "frm2" name ="frm2" >
-
+			<input type ="hidden" id = "userid" name ="userid" value = "${vo.userid }">
             <input type ="hidden" id = "openindex" name ="openindex" value = "${vo.openindex }">
 <!--         그리고 jquery에 넘길때는 id값이 편함   sql로   값을 넘길때 name으로 넘기기때문에 name값이 중요 -->
               <fieldset>
                 <div class='form-group row'>
                   <div class='col-lg-2'>
                     <label class='control-label'>STORENAME</label>
-                    <input class='form-control' placeholder='I D' disabled 
+                    <input class='form-control'readonly placeholder='I D'  
+                    name="storename" id="storename"
                     value = "${vo.storename }">
                   </div>
                   <div class='col-lg-3'>
                     <label class='control-label'>STOREPHONE</label>
-                    <input class='form-control' placeholder='Phone' disabled 
+                    <input class='form-control'readonly placeholder='Phone'  
+                    name="storephone" id="storephone"
                     value = "${vo.phone }">
                   </div>
                   <div class='col-lg-7'>
                     <label class='control-label'>STOREADDR</label>
-                    <input class='form-control' placeholder='Addr' disabled 
+                    <input class='form-control' readonly placeholder='Addr'  
+                    name="storeaddr" id="storeaddr"
                     value = "${vo.address }">
                   </div>
                   
                 </div>
                  <div class='form-group'>
                   <label class='control-label'>INQUIRE</label>
-                  <input class='form-control' disabled placeholder='Inquire'
+                  <input class='form-control' readonly placeholder='Inquire'
                   value = "${vo.inquire }">
                 </div>
           
                  <div class='form-group row'>
                   <div class='col-lg-3'>
                     <label class='control-label'>CATEGORY</label>
-                    <input class='form-control' placeholder='Category' disabled 
+                    <input class='form-control' readonly placeholder='Category'  
+                    name="cateunq" id="cateunq"
                     value = "${vo.category }">
                   </div>
                   <div class='col-lg-3'>
                     <label class='control-label'>FEE(배달비)</label>
                     <input class='form-control' placeholder='Fee' 
+                    name="fee" id="fee"
                     value = "3000">
                   </div>
                   <div class='col-lg-3'>
                     <label class='control-label'>MINPRICE(주문최소금액)	</label>
                     <input class='form-control' placeholder='Minprice'  
+                   name="minprice" id="minprice"
                     value = "10000">
                   </div>
 

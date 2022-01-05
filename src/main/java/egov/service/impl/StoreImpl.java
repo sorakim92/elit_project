@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import egov.service1.BusinessEnterVO;
 import egov.service1.StoreService;
+import egov.service1.StoreVO;
 
 @Service("storeService")
 public class StoreImpl implements StoreService{
@@ -29,5 +30,17 @@ public class StoreImpl implements StoreService{
 	public BusinessEnterVO selectStoreDetail(BusinessEnterVO vo) throws Exception {
 
 		return storeDAO.selectStoreDetail(vo);
+	}
+
+
+	@Override
+	public String insertStoreInfo(StoreVO vo) throws Exception {
+		return storeDAO.insertStoreInfo(vo);
+	}
+
+
+	@Override
+	public int selectsavecnt(StoreVO vo) throws Exception {
+		return storeDAO.selectsavecnt(vo);
 	}
 }

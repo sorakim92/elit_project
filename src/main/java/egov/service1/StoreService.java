@@ -14,4 +14,8 @@ public interface StoreService {
 	 *	 */
 	BusinessEnterVO selectStoreDetail(BusinessEnterVO vo) throws Exception;
 
+	String insertStoreInfo(StoreVO vo) throws Exception;
+
+	int selectsavecnt(StoreVO vo) throws Exception;
+
 }
