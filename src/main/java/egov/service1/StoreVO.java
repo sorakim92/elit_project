@@ -20,8 +20,15 @@ public class StoreVO {
 	private String storeimage;
 	private String menukeyword;
 	private int tagindex;
+	private int minprice;
 	
 	
+	public int getMinprice() {
+		return minprice;
+	}
+	public void setMinprice(int minprice) {
+		this.minprice = minprice;
+	}
 	public int getStoreunq() {
 		return storeunq;
 	}

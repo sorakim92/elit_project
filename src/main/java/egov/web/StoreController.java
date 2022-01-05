@@ -7,9 +7,12 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import egov.service1.BusinessEnterVO;
 import egov.service1.StoreService;
+import egov.service1.StoreVO;
 
 @Controller
 public class StoreController {
@@ -33,5 +36,32 @@ public class StoreController {
 		return "admin/StoreRegisterList";
 	}
 	
+	
+	/*
+	 * storeDetail -> store테이블 전송버튼 (강성모)
+	 * 	 */
 
+	@RequestMapping("storeSave.do")
+	@ResponseBody
+	public ModelAndView insertStoreInfo(StoreVO vo)
+								throws Exception{
+		ModelAndView mav = new ModelAndView("jsonView");
+		String message="";		
+		int cnt = storeService.selectsavecnt(vo);
+		
+		if(cnt >= 1) {
+			message = "er1";
+		} else {				
+			String result =storeService.insertStoreInfo(vo);								
+			if(result==null) {
+				message = "ok";			
+			}
+		}
+		//{"aaaa":"ok","bbbb":"강성모"}
+		mav.addObject("aaaa",message);
+		
+		return mav;
+	}
+	
+	
 }

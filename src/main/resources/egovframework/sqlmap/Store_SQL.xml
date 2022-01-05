@@ -56,7 +56,38 @@
 	
 	</select>
 	
+	<select id="storeDAO.selectsavecnt" resultClass="java.lang.Integer">	
+		select count(*) from store where userid=#userid#
+	</select>
 	
+	
+	
+	<insert id="storeDAO.insertStoreInfo">
+	
+	insert into store(
+				storeunq,
+				cateunq,
+				userid,
+				storename,
+				storephone,
+				storeaddr,
+				fee,
+				rdate,
+				minprice
+				)
+				values(
+				store_seq.nextval,
+				#cateunq#,
+				#userid#,
+				#storename#,
+				#storephone#,
+				#storeaddr#,
+				#fee#,
+				sysdate,
+				#minprice#
+				)
+					
+	</insert>
 	
 	
 	
