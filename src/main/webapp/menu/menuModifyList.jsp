@@ -86,7 +86,7 @@ nav {
 
 section {
 	width:1000px;
-	height:900px;
+	height:1600px;
 	/*background-color:#92a8d1;*/
 	text-align:center;
 }
@@ -205,7 +205,7 @@ $(function(){
         <br>
         <div style="text-align:left;" >  
           
-            <table style="width:1200px; height:500px; text-align:center;">
+        <table style="width:1000px; height:300px; text-align:center;">
 	  		<colgroup>
 	  			<col width="5%"/>
 	  			<col width="50%"/>

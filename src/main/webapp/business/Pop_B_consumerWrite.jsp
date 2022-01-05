@@ -145,7 +145,7 @@
 
     <div class="total">
 		
-        <div class="">
+        <div class="" style:text-align="center"><br><br>
             <font class="field_title">분류*</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <select name="b_group" id="b_group" class= "field_cho" >
                 <option value="" class="">분류선택</option>

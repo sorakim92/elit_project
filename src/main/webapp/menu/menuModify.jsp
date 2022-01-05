@@ -221,18 +221,19 @@ $(function(){
 			("#menukeyword").focus();
 			return false;
 		}
-		if( $("#uploadfile").val() == "" ) {
-				alert("사진 입력해주세요.");
-				$("#uploadfile").focus();
-				return false;
-		}
-		var form = new FormData(document.getElementById('frm'));
+		//if( $("#uploadfile").val() == "" ) {
+			//	alert("사진 입력해주세요.");
+				//$("#uploadfile").focus();
+				//return false;
+		//}
+		//var form = new FormData(document.getElementById('frm'));
+		var formdata = $("#frm").serialize();
   		$.ajax({
   			type : "post",
-  			url  : "uploadModifySave.do",
+  			url  : "menuModifySave.do",
   			data : formdata,
-  			processData : false,
-			contentType : false,
+  			//processData : false,
+			//contentType : false,
   			datatype : "text",  //성공여부 ( ok )
   			success : function(data) {
   				
@@ -288,7 +289,7 @@ $(function(){
         
     
      <section>
-     <form name="frm" id="frm" action="uploadModifySave.do" method="post" enctype="multipart/form-data" >
+     <form name="frm" id="frm" action="menuModifySave.do"> <!-- method="post" enctype="multipart/form-data"  >-->
      <input type="hidden" name="menuunq" id="menuunq" value="${vo.menuunq }" >	
         <div style="text-align:left;" >
             <font size="5">메뉴수정</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

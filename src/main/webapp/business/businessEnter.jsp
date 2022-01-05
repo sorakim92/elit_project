@@ -143,7 +143,7 @@ $(function() {
 
 <body>
  <form name="frm" id="frm">
-	<input type="hidden" name="phone" id="phone" value="">
+	<input type="hidden" name="phone" id="phone" value=""><br>
     <font size="4"><b>입점문의</b></font><br>
     <div class="text-align:left" >
    
@@ -190,7 +190,7 @@ $(function() {
     </div><br>
 	<div>
         1. 유저 아이디 알려주세요.*
-        <input type="text" size="54" name="userid" id="userid">
+        <input type="text" size="54" name="userid" id="userid" >
     </div><br>
     <div>
         2. 매장 이름을 알려주세요.*
@@ -255,7 +255,7 @@ $(function() {
         <input type="text" size="84" name="inquire" id="inquire">
     </div>
 
-<br><br>
+<br><br><br>
 <div class="btnloc">
     <button type="button"class="btn3" id="btn3">확인</button>
 </div>

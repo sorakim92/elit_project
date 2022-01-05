@@ -180,8 +180,8 @@ section {
      <section>
         <div style="text-align:left;" >
             <font size="5">메뉴관리</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <a href="menuList.do"> <font size="4" color="black" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;메뉴편집 |</font> </a> 
-            <a href="storeReviewList.do"><font size="4" >&nbsp;&nbsp; 리뷰관리</font></a>
+           <a href="menuList.do"> <font size="4"  > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;메뉴편집 |</font> </a> 
+            <a href="storeReviewList.do"><font size="4" color="black" >&nbsp;&nbsp; 리뷰관리</font></a>
         </div>
         <br>
 

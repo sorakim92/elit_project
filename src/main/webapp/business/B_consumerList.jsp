@@ -148,7 +148,7 @@ section {
 <script>
 function fn_write(BossmemberSessionID) {
 	var url = "b_ConsumerListWrite.do";
-	window.open(url,"popup","width=600,height=350");
+	window.open(url,"popup","width=600,height=450, ");
 	
 }
 </script>

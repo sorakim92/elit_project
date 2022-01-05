@@ -306,7 +306,7 @@ $(function() {
    		
     <div style="">
         아이디&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="userid" id="userid" placeholder="${vo.userid}" readonly><br>
-        새로운 암호 <input type="password" name="userpw" id="userpw" style="font-family:monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        새로운 암호 <input type="password" name="userpw" size="23" id="userpw" style="font-family:monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         비밀번호 확인 <input type="password" name="userpw2" id="userpw2" style="font-family:monospace;"> <br>
         핸드폰 번호 <input type="text" id="userphone" name="userphone" value="${vo.userphone}"> <br>
         이메일 주소 
