@@ -26,6 +26,8 @@ public class ProgressOrderController {
 	@RequestMapping(value="progressorderList.do")
 	public String selectProgressOrderList(ProgressOrderVO vo, Model model) throws Exception {
 		
+		
+		
 		List<?> list = progressorderService.selectProgressOrderList(vo);
 		model.addAttribute("list",list);
 		

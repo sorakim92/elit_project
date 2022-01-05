@@ -20,7 +20,8 @@
 					userid
 		FROM progressorder 
 
-			where storeunq between 234 and 241 		
+			where storeunq = '241' 
+				order by rdate desc  		
 
 	</select>
 	
@@ -39,8 +40,8 @@
 					addr
 		FROM progressorder 
 
-			where storeunq  between 234 and 241 
-
+			where storeunq  = '241' 
+					order by rdate desc  
 		
 		  		
 	</select>

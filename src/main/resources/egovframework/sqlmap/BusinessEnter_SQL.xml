@@ -48,20 +48,20 @@
 	</insert>
 	
 	<select id="businessenterDAO.selectbusinessEnterList"  resultClass="egovMap"  >
-		SELECT 
+		  SELECT 
 						
-						e.storename,
-						e.region,
-						e.category,
-						e.category2,
-						e.category3,
-						e.phone,
-						e.email,
-						e.address,
-						e.name,
-						e.inquire,
-						b.userid
-						FROM (SELECT * FROM businessenter WHERE userid = #userid#) E, (SELECT * FROM bossmember) B WHERE E.userid = B.userid
+						storename,
+						region,
+						category,
+						category2,
+						category3,
+						phone,
+						email,
+						address,
+						name,
+						inquire,
+						userid
+						FROM  businessenter WHERE userid = #userid#
 		
 		
 	</select>
