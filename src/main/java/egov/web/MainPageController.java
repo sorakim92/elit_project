@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import egov.service1.AdService;
+import egov.service1.AdVO;
 import egov.service1.MemberService;
 import egov.service1.MemberVO;
 import egov.service1.NBoardService;
@@ -33,6 +35,9 @@ public class MainPageController {
 	
 	@Resource(name = "memberService")
 	MemberService memberService;
+	
+	@Resource(name = "adService")
+	AdService adService;
 	
 	/*
 	 * 주소 입력시 멤버테이블 ... 배달지 설정 (소라)
@@ -60,7 +65,7 @@ public class MainPageController {
   메인페이지 (소라)
   */
 	@RequestMapping("mainPage.do")
-	public String mainPage(NBoardVO vo,	ProgressOrderVO pvo, Model model, HttpSession session) 
+	public String mainPage(AdVO avo, NBoardVO vo,	ProgressOrderVO pvo, Model model, HttpSession session) 
 													throws Exception {
 		
 		
@@ -77,6 +82,10 @@ public class MainPageController {
 		
 		
 		
+		List<?> blist = adService.selectAdBanner(avo);
+		
+				
+				
 		//메인페이지 하단 공지사항, 자주묻는질문 보이기 
 		
 		List<?> list = nboardService.selectNboardList(vo);
@@ -84,7 +93,7 @@ public class MainPageController {
 		List<?> flist = nboardService.selectFAQList(vo);
 
 		
-		
+		model.addAttribute("blist",blist);
 		model.addAttribute("list",list);
 		model.addAttribute("flist",flist);
 

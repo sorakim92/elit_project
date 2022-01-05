@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import egov.service1.AdService;
 import egov.service1.AdVO;
+import egov.service1.NBoardVO;
 
 @Service("adService")
 public class AdImpl implements AdService{
@@ -45,6 +46,13 @@ public class AdImpl implements AdService{
 		public int selectAdTotal(AdVO vo) throws Exception {
 			return adDAO.selectAdTotal(vo);
 		}
+		@Override
+		public List<?> selectAdBanner(AdVO avo) throws Exception {
+			return adDAO.selectAdBanner(avo);
+		}
+		
+		
+		
 
 		
 }

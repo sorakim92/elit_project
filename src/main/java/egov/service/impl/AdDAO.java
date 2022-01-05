@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import egov.service1.AdVO;
+import egov.service1.NBoardVO;
 import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
 
 @Repository("adDAO")
@@ -34,6 +35,11 @@ public class AdDAO extends EgovAbstractDAO {
 	//강
 	public int selectAdTotal(AdVO vo) {
 		return (int) select("adDAO.selectAdTotal",vo);
+	}
+	
+	//소라 
+	public List<?> selectAdBanner(AdVO avo) {
+		return list("adDAO.selectAdBanner",avo);
 	}
 
 	

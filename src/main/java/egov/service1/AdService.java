@@ -20,6 +20,12 @@ public interface AdService {
 
 	//광고 총 데이터 개수 구하기(강)
 	int selectAdTotal(AdVO vo) throws Exception;
+
+
+	// 소라 메인 배너 불러오기 
+	List<?> selectAdBanner(AdVO avo) throws Exception;
+
+
 	
 
 	

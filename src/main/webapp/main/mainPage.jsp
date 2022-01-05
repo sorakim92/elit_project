@@ -388,15 +388,11 @@ function fn_detail(id,unq) {
       <div class="rolling_panel">
            
             <ul>
+            <c:forEach var="result" items="${blist }">
                 <li> 
-                	<img src="<c:url value='/img/b1.png'/> ">
+                	<img src="<c:url value='upload/banner/${result.banner }'/> ">
                 </li>
-                <li>
-               		<img src="img/b2.png" >
-                </li>
-                <li>
-             		<img src="img/b3.png" >
-                </li>
+             </c:forEach>
             </ul>
         </div>
         <div class="banner_btn_a" style="margin-left:5px;">
