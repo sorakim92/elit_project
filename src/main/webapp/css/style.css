@@ -40,16 +40,17 @@
 .board_list {
   width: 100%;
   border-top: 2px solid #000;
-}
+  text-align: center;
+ }
 
 .board_list > div {
   border-bottom: 1px solid #ddd;
 }
 
-.top {
+/* .top {
   margin-left: 10%; 
   
-}
+} */
 
 /* .board_list > div:last-child {
   border-bottom: 1px solid #000;
@@ -59,7 +60,7 @@
   display: inline-block;
   padding: 15px 0;  
   font-size: 1.2rem;
-  width: 10%;
+  width: 8%;
 }
 
 .board_list .num {
@@ -67,7 +68,7 @@
 }
 
 .board_list .title {
-  width: 40%;
+  width: 50%;
   text-align: center;
 }
 
@@ -75,17 +76,18 @@
   text-align: center;
 }
 
-.board_list .write {
-  width: 15%;
+.top .writer {
+  	width: 10%;
+    text-align: center;
+    padding-left: 50px;
 }
 
-.board_list .date {
-  width: 15%;
-}
+
 
 .board_list .count {
   width: 20%;
-  padding-left: 60px;
+  text-align: center;
+
 }
 
 .board_page {
@@ -138,10 +140,12 @@
   font-size: 1.2rem;
 }
 
+
+
 .board_view .info {
   padding: 15px;
   border-bottom: 1px solid #999;
-  /*font-size: 0; */
+  font-size: 0; 
 }
 
 

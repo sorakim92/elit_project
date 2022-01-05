@@ -49,6 +49,60 @@ body {
     height: 100%;
 }
 
+.board_list > div > div {
+    display: inline-block;
+    padding: 15px 0;
+    font-size: 1.2rem;
+}
+
+.board_list .num {
+  width: 15%;
+}
+
+.board_list .title {
+  width: 40%;
+  text-align: center;
+}
+
+.top .writer {
+  	width: 10%;
+    text-align: center;
+    padding-left: 50px;
+}
+
+.board_list .date {
+  width: 10%;
+  padding-left:40px;
+  text-align: center;
+  
+}
+.board_list .count {
+    width: 20%;
+    /* padding-left: 30px; */
+    text-align: center;
+}
+
+.bt_wrap {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 0;
+}
+
+.board_list {
+    width: 100%;
+    border-top: 2px solid #000;
+    text-align: center;
+}
+
+.footer {
+	margin-left: 220px;
+	width:1000px;
+    height:auto;
+	background-color:#eeeeee;
+ 
+    clear:both;
+}
 
 </style>
 
@@ -82,8 +136,8 @@ body {
                     <div class="count">조회수</div>
                     
                   <c:forEach  var="result" items="${list }">                  
-                  	<div class=num>${result.inquiryindex }</div>
-                  	<%-- <div>${result.option }</div> --%>
+                  	<div class="num">${result.inquiryindex }</div>
+                  	
                     <div class="title">
                    		 <a href="InquiryDetail.do?inquiryindex=${result.inquiryindex }">${result.title } </a> </div>
                     <div class="writer">${result.userid }</div>
@@ -104,7 +158,7 @@ body {
     </div>
       </section>
 <!-- 페이징 -->
-    <div style=" font-size:10px; " >
+    <div style=" font-size:15px; " >
     <nav aria-label="Page navigation example" 
     class="d-flex justify-content-center"
     style="display:inline-block;">
@@ -131,7 +185,7 @@ body {
     <footer>
           <%@include file = "../include/main_footer.jsp" %>
     </footer>
-    </div>
+   
 </body>
 	
 </html>

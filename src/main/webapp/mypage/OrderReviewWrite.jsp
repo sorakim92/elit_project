@@ -19,57 +19,78 @@
 </head>
 
 <style>
+@font-face {
+  font-family: "hanna";
+  src: url("fonts/BMHANNAAir_otf.otf");
+}
+
+@font-face {
+  font-family: "jua";
+  src: url("fonts/BMJUA_otf.otf");
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html{
+    height: 100%;
+}
+
+body {
+    font-size: 16px;
+    font-family: hanna;
+    padding-left: 100px;
+    height: 100%;
+}
 
 
 </style>
-
-
-<script>
-$(function(){
-
-	/* 공지사항 글쓰기에서 저장 버튼 클릭시 */
-	$("#btn_save").click(function(){
-		
-		if($("#rcontent").val() == "" ) {
-			alert("내용을 입력해주세요.");
-			("#rcontent").focus();
-			return false;
-		}
-		
-  		var formdata = $("#frm").serialize();
-  		$.ajax({
-  			type : "post",
-  			url  : "OrderReviewWriteSave.do",
-  			data : formdata,
-  			
-  			datatype : "text",  //성공여부 ( ok )
-  			success : function(data) {
-  				
-  				if(data == "ok") {
-  					alert("저장성공");
-  					location="OrderReviewList.do";
-  				
-  				}else {
-  					alert("저장실패");
-  				}
-  				
-  			},
-  			error  : function() {
-					alert("오류발생");
-  			}
-  			
-  		});
-		
-		
-		
-	})
 	
-})
+<script>
+    
+	 $(function() {
+
+		 /*  오더리뷰에서 저장 버튼 클릭시 */
+
+		 $("#btn_save").click(function(){
+
+			 if( $("#rcontent").val() == "" ) {
+				 alert("내용을 입력해주세요.");
+				 $("#rcontent").focus();
+				 return false;
+			 }
+		 
+			 var formdata = $("#frm").serialize();
+				$.ajax({
+					type : "post",
+					url  : "OrderReviewWriteSave.do",
+					data : formdata,
+					
+					datatype : "text",  // 성공여부 (ok)
+					success : function(data) {
+
+						if (data == "ok") {
+							alert("저장완료");
+							location="OrderReviewList.do";
+						} else {
+							alert("저장실패");
+						}
+					},	
+					error : function() {
+						alert("오류발생");
+					}
+				});
+			});
+		});
+	
+	</script>
+    
 
 
-</script>
 <body>
-   <div class="wrapper">   
+<div class="wrapper">   
   <header class="width:100%; height:50px;">
        <%@include file = "../include/main_header.jsp" %>
   </header>
@@ -79,50 +100,42 @@ $(function(){
                     height:100px;">
            <%@include file = "../include/topmenu.jsp" %>
        </div>
-    </nav>
-        <section>
-           
-            <div class="s_review">
-                <!-- 상위 추천메뉴 이외에 -->
-                <form name="frm" id="frm">               
-              
-		             <div style="width:120px; height: 120px; border: 1px solid #f8cacc; border-radius: 2em;
-					                text-align: center; margin-top: 20px;">
-					       <img src="img/addpic.png" alt="업체대표사진" width="120px;" height="120px;" name="" id="">
-					        
-				     </div>    
-				    
-					 <span style="font-weight: bold; margin-bottom: ;padding-left: 150px;">${result.rdate }</span> 
-			                       
-	                  <div style="font-size:13px; text-align: left; padding-left: 150px;">                       
-	                     	<span> ${result.menuname } </span>
-	                       	
-	                  </div>
-	                  
-                	  <div style="font-size:13px; text-align: left; padding-left: 150px;">
-			                    <span>${result.price }</span><br>
-			                   
-                  	 </div>
-
-				     <div style="font-size:16px; ; margin-left: 15%;  text-align: left; ">
-				        <textarea name="rcontent" id="rcontent" cols="90" rows="10" placeholder="음식의 맛, 양, 포장 상태 등 음식에 대한 솔직한 리뷰를 남겨주세요."></textarea>
-				  	       
-				     </div>  
-				   
-				    
-		
-            </form>
+</nav>
+<section>
+    <div class="board_wrap">
+        <div class="board_title">
+            <strong>Review 관리</strong>
+            
+        </div>
+        
+        <form name="frm" id="frm">
+        <div class="board_write_wrap">
+            <div class="board_write">
+                <div class="info">         
+						
+                  
+                    <dl> 
+                        <dt> </dt>
+                        <dd></dd>
+                    </dl>
+                </div>
+            
+                <div class="cont">
+                    <textarea id="rcontent" name="rcontent" placeholder="내용 입력"></textarea>
+                    <dd><input type="file" name="file" id="file"></dd>
+                </div>
             </div>
-                        
+            
             <div class="bt_wrap">
                 <a href="" id="btn_save"> 등록 </a>
                 <a href="OrderReviewList.do">취소</a> 
             </div>
-             
-            
-
+            </div>
+            </form>
+        </div>
         </section>
-          
+    
+    
     <footer>
           <%@include file = "../include/main_footer.jsp" %>
     </footer>

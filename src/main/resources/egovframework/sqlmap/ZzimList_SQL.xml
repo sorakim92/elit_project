@@ -17,7 +17,7 @@
 							 
 				   VALUES  ( zzimlist_seq.nextval,
 				   			 sysdate,
-							 'test1',
+							 '$userid$',
 							 '$storeunq$',						 
 							 '$likechk$',
 							 '$cateunq$'  )

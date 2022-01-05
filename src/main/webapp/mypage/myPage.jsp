@@ -33,6 +33,23 @@
   src: url("fonts/BMJUA_otf.otf");
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html{
+    height: 100%;
+}
+
+body {
+    font-size: 16px;
+    font-family: hanna;
+    padding-left: 100px;
+    height: 100%;
+}
+
+
 .navbar {
   display: flex;
   justify-content: space-between;

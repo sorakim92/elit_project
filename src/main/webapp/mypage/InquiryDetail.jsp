@@ -39,7 +39,8 @@
         </div>
         <div class="board_view_wrap">
             <div class="board_view">
-               <div class="title">${vo.title} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${vo.rdate }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${vo.hits }</div>
+               <div class="title">${vo.title} 
+               	 <span style=" word-spacing: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${vo.rdate }  ${vo.hits }</span> </div>
 				
                <div class="cont"> ${vo.content } </div>
 

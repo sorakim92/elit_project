@@ -24,10 +24,9 @@ public class InquiryController {
 		
 		
 		@RequestMapping("InquiryList.do")
-		public String selectInquiryList(InquiryVO vo, Model model) throws Exception {
+		public String selectInquiryList(InquiryVO vo, Model model ) throws Exception {
 			
-			
-			
+						
 			// 페이지번호
 			  int page_no = vo.getPage_no(); // 1->1 ;; 2->11 ;; 3->21 
 			  int s_no = (page_no -1)*10 + 1;
@@ -84,13 +83,12 @@ public class InquiryController {
 		
 		// 글 내용(상혁)
 		@RequestMapping("InquiryDetail.do")
-		public String selectBoardDetail(InquiryVO vo, Model model, HttpSession session ) throws Exception {
+		public String selectBoardDetail(InquiryVO vo, Model model ) throws Exception {
 			
 			// 상세 보기 서비스
 			
 			  
-			String userid = (String) session.getAttribute("UserID");			
-			vo.setUserid(userid);
+			
 			 
 			vo = inquiryService.selectBoardDetail(vo);
 			
@@ -159,18 +157,24 @@ public class InquiryController {
 		// 글 수정 저장(상혁)
 		@RequestMapping("InquiryModifySave.do")
 		@ResponseBody
-		public String InquiryModifySave( InquiryVO vo) throws Exception {
+		public String InquiryModifySave( InquiryVO vo, HttpSession session) throws Exception {
+			
+			String msg = "ok";
+			String userid = (String) session.getAttribute("SessionUserID");	
+			
+			
+			vo.setUserid(userid);
 			
 			int result = inquiryService.updateBoard(vo);
 			
-			String message = "ok";
+			String msg2 = "";
 			if( result == 0) {
-				message = "error";
-			} else if(result ==1) {
-				message = "ok";
+				msg2 = "error";
+			} else if(result == 1) {
+				msg2 = "ok";
 			}
 			
-			return message;
+			return msg2;
 			
 		}
 		
