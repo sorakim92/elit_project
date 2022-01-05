@@ -14,9 +14,13 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="css/memberSignin.css">
   <style>
-    body {
+    body { 
       min-height: 100vh;
-      
+      background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#f8cacc));
+      background: -webkit-linear-gradient(bottom left, #92b5db 0%, #f8cacc 100%); 
+      background: -moz-linear-gradient(bottom left, #92b5db 0%, #f8cacc 100%); 
+      background: -o-linear-gradient(bottom left, #92b5db 0%, #f8cacc 100%); 
+      background: linear-gradient(to top right, #92b5db 0%, #f8cacc 100%); 
     }
     .input-form {
       max-width: 680px;
@@ -110,7 +114,7 @@
 //			alert($("#business").val());
 			
 			var formData = $("#frm").serialize();
-			alert(formData);
+			
 			$.ajax ({
 	    		/* 전송 전 셋팅 */
 	    		type : "POST",
@@ -195,6 +199,7 @@
 </head>
 
 <body>
+<div>
   <div class="container " style="font-family:'fonts\BMHANNAPro.ttf'; font-size:16px;">
     <div class="input-form-backgroud row" style="width:100%; height: 10%;">
       <div class="input-form col-md-12 mx-auto " style="width:100%; height: 10%;">
@@ -254,7 +259,7 @@
             
             <div class="" style="float:right;width: 50%;">
               <label for="name">휴대폰</label>
-              <input type="text" class="form-control" id="userphone" name="userphone" placeholder="휴대폰번호입력" value="" required>
+              <input type="text" class="form-control" id="userphone" name="userphone" placeholder="010-0000-0000" value="" required>
               <div class="invalid-feedback">
                 휴대폰번호를입력해주세요.
               </div>
@@ -294,6 +299,6 @@
       </div>
     </div>
   </div>
-
+</div>
 </body>
 </html>

@@ -13,10 +13,14 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
      <style>
-      body {
-        min-height: 100vh;
-
-      }
+      body { 
+      min-height: 100vh;
+      background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#f8cacc));
+      background: -webkit-linear-gradient(bottom left, #92b5db 0%, #f8cacc 100%); 
+      background: -moz-linear-gradient(bottom left, #92b5db 0%, #f8cacc 100%); 
+      background: -o-linear-gradient(bottom left, #92b5db 0%, #f8cacc 100%); 
+      background: linear-gradient(to top right, #92b5db 0%, #f8cacc 100%); 
+    }
       .input-form {
         max-width: 680px;
   
@@ -144,7 +148,7 @@
 
   <body>
 
-
+<div>
 <div class="container" >
   <div class="input-form-backgroud row" >
     <div class="input-form col-md-12 mx-auto">
@@ -162,7 +166,7 @@
           <input type="button" value="비밀번호 찾기" id="userpwfd" name="userpwfd" style="float:right;">
           <input type="password" class="form-control" id="userpw" name="userpw">
         </div>
-        <div class="checkbox pull-right" style="width:100%;">
+        <div class="" style="width:100%;">
           <label style="float: right;">
           <a href="memberwrite.do">회원가입</a>
           </label>
@@ -181,6 +185,7 @@
       </div>
     </div>
   </div> 
-</div> 
+</div>
+</div>
 </body>
 </html>
