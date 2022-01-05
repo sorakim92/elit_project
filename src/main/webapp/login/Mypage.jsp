@@ -13,127 +13,81 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link rel="stylesheet" href="css/headFooter.css">
   	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-  
-  
+  	<link rel="stylesheet" href="css/headFooter.css">
+  	<link rel="stylesheet" href="css/css.css">
+  	<link rel="stylesheet" href="css/mypageBoard.css">
 </head>
 <style>
 @font-face {
-    font-family: "hanna";
-    src: url("../fonts/BMHANNAAir_otf.otf");
+  font-family: "hanna";
+  src: url("fonts/BMHANNAAir_otf.otf");
 }
+
 @font-face {
-    font-family: "jua";
-    src: url("../fonts/BMJUA_otf.otf");
+  font-family: "jua";
+  src: url("fonts/BMJUA_otf.otf");
 }
-html{
-    height: 100%;
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+}    
+.navbar_menu {
+  display: flex;
+  list-style: none;
+  border-bottom: 2px solid #ccc;
+  padding-left: 0;
 }
-body {
-    font-size: 16px;
-    font-family: hanna;
-    padding-left:100px;
-    height:100%;
+.navbar_menu li {
+  padding: 8px 12px;
+  margin-top: 20px;
 }
-header {
-	width:1000px;
-	height:100px;
-	/*background-color:#ffcc99;*/
-	/*line-height:5.0;*/
+.navbar_menu li:hover {
+  background: pink;
+  border-radius: 4px;
 }
-nav {
-	width:1000px;
-	height:100px;
-	/*background-color:#f8cacc;*/
-	text-align:center;
-	line-height:3.5;
-}
-.wrapper {
-    width: 1000px;
-    min-height: calc(100vh-70px);
-    position: relative;
-    /*background-color: beige;*/
-    padding: 10px;
+@media screen and(max-width: 768px) {
+  .navbar {
     flex-direction: column;
-    display: flex;
-    margin: auto;
-}
-.logo {
-    width:  300px;
-    height: 50px; 
-    float : left;
-}
-.search {
-    width: 500px;
-    height: 50px;
-    float : left;
-    margin: 20px 0 0 0;
-    text-align: right;
-}
-.login {
-    width: 150px;
-    height: 50px;
-    float: left;
-    margin: 20px 50px 0 0;
-    text-align: right;
-}
+    padding: 8px 12px;
+  }
+  .navbar-menu {
+    flex-direction: column;
+    width: 100%;
+  }
 
-
-section {
-	width:1000px;
-	height:900px;
-	/*background-color:#92a8d1;*/
-	text-align:center;
-}
-
-
-.footer {
-	width:100%;
-    height:100px;
-	background-color:#ccc;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-}
-.ft_ul {
-    width:100%;
-    height:50px;
-}
-.ft_info {
-    width:100%;
-    height:50px;
+  .navbar-menu li {
+    width: 100%;
     text-align: center;
-    font-size:14px;
-    padding-bottom:20px;
+  }
 }
-.ul1{
-    float:left;
-    padding-top:7px;
+.box > .nail {
+  border: 1px solid #ccc;
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  margin-top: 20px;
+
+}
+.box2 {
+        margin-top: 20px;
+        width: 100%;
 }
 
-.ul1 li{
-    font-size:14px;
-    list-style:none;
-    float:left;
-    border-left:1px solid #ccc;
-    padding-left:10px;
-    padding-right:10px;
+/* 주문상세버튼  */
+.btn {
+	background: #f8cacc; 
+	color: black; 
+	border-color:#f8cacc
+}
+input {
+	width:200px;
+  	height:30px;
 }
 
-.ul2{
-    float:right;
-    padding-top:7px;
-}
-
-.ul2 li{
-    font-size:14px;
-    list-style:none;
-    float:left;
-    border-left:1px solid #ccc;
-    padding-left:10px;
-    padding-right:10px;
-}
 </style>
 
 
@@ -257,37 +211,26 @@ $(function() {
 <body>
 <div class="wrapper">
     <div class="main" style="min-height: 100%; padding-bottom:100px; flex:1;">
-    <header class="width:100%; height:50px;">
-         <div class="logo" style=" cursor: pointer;" onclick="location.href='mainPage.do';">
-    		<img src="<c:url value='/img/logo.png'/>" width="200px" height="100px" alt="로고"/>
-            <h4>마이페이지</h4>
-        </div>
-        <div class="search">
-            
-          
-        </div> 
-        <!-- 기능: 로그아웃상태에서는 로그인 버튼,  로그인상태에서는 마이페이지 | 로그아웃 -->
-        <div class="login">
-            <button type="button" class="btn btn-outline-warning" style="border-color: #f8cacc; color: black;">로그인</button>
-        </div>
-    </header>
-        
+     <header class="width:100%; height:50px;">
+       <%@include file = "../include/main_header.jsp" %>
+    	</header>
+
     <nav>
-        <div class="" >
-          
-            <a href="progressorderList.do"><font size="4" color="black">주문내역 | </font></a>
-            <a href="membermypage.do"><font size="4">회원정보수정 |</font></a>
-            <a href=""><font size="4" color="black">문의내역 |</font></a>
-            
-        </div>
+        <%@include file = "../include/topmenu.jsp" %>
     </nav>
-        
-    
+    <section>    
+    <div class="board_sc_top">
+            <div class="board_sc_title">
+               	회원정보 수정
+            </div>
+
+        </div> 
     <form name="frm" id="frm"> 
    
     <div style="">
-        아이디&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="userid" id="userid" placeholder="${vo.userid}"value="${vo.userid}" readonly><br>
-        새로운 암호 <input type="password" name="userpw" id="userpw" value="" style="font-family: monospace;"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <br>
+        아이디&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="userid" id="userid" placeholder="${vo.userid}"value="${vo.userid}" readonly><br>
+        새로운 암호 <input type="password" name="userpw" id="userpw" value="" style="font-family: monospace;"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         비밀번호 확인 <input type="password" name="reuserpw" id="reuserpw" value="" style="font-family: monospace;"/> <br>
         핸드폰 번호 <input type="text" name="userphone" id="userphone" value="${vo.userphone}"> <br>
         이메일 주소 
@@ -318,11 +261,9 @@ $(function() {
         </div>
         
        
-    </div>
-	
+	</form>
     </section>
-    </form>
-     
+    </div> 
     <footer>
       <%@ include file = "../include/main_footer.jsp" %>
     </footer>
