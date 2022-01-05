@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import egov.service1.MemberVO;
 import egov.service1.OrderReviewService;
 import egov.service1.OrderReviewVO;
 
@@ -66,13 +67,10 @@ public class OrderReviewController {
 	// 리뷰저장(상혁)
 	@RequestMapping("OrderReviewWriteSave.do")
 	@ResponseBody
-	public String OrderReviewWriteSave( OrderReviewVO vo, HttpSession session) throws Exception {
+	public String OrderReviewWriteSave( OrderReviewVO vo) throws Exception {
 		
 		/* System.out.println("========rate====="+vo.getRdate()); */
-		
-		String userid = (String) session.getAttribute("UserID");			
-		vo.setUserid(userid);
-		
+				
 		String result = orderreviewService.insertBoard(vo);
 		
 		/* System.out.println("========"+result); */
@@ -95,9 +93,11 @@ public class OrderReviewController {
 		vo = orderreviewService.selectBoardDetail(vo);
 		
 		
-		  String rcontent = vo.getRcontent(); if(rcontent != null &&
-		  !rcontent.equals("")) { rcontent = rcontent.replace("\n", "<br>"); rcontent =
-		  rcontent.replace(" ", "&nbsp;"); vo.setRcontent(rcontent); }
+		  String rcontent = vo.getRcontent(); 
+		  if(rcontent != null && !rcontent.equals("")) { 
+			  rcontent = rcontent.replace("\n", "<br>"); 
+			  rcontent = rcontent.replace(" ", "&nbsp;"); 
+			  vo.setRcontent(rcontent); }
 		 
 		
 		model.addAttribute("vo",vo);
@@ -109,9 +109,43 @@ public class OrderReviewController {
 	@RequestMapping("OrderReviewModify.do")
 	public String OrderReviewModify( OrderReviewVO vo, Model model) throws Exception {
 		
-		vo = orderreviewService.selectBoardDetail(vo);
+		OrderReviewVO vo1 = orderreviewService.selectBoardDetail(vo);
+		String unq1 = "";
+		String unq2 = "";
+		String data = "";
+		String next_unq = "";
+		String before_unq = "";
+		String[] array;
+		int len = 0;		
+		List<?> list = null;
+		
+		int unq = vo.getOderindex();
+		vo.setUnq1(unq+"");
+		vo.setUnq2(null);
+		
+		list = orderreviewService.selectBoardList(vo);
+		
+		len = list.size();
+		if(len > 0) {
+			data = list.get(len-1) + "";  
+			array = data.split(", ");
+			next_unq = array[1].split("=")[1];
+		}
 					
-		model.addAttribute("vo",vo);
+		vo.setUnq1(null);	
+		vo.setUnq2(unq+"");	
+		list = orderreviewService.selectBoardList(vo);
+		len = list.size();
+		if(len > 0) {
+			data = list.get(0)+"";
+			array = data.split(", ");
+			before_unq = array[1].split("=")[1];
+		}
+				
+		model.addAttribute("vo",vo1);
+		model.addAttribute("next_unq",next_unq);
+		model.addAttribute("before_unq",before_unq);
+		
 			
 		
 		return "mypage/OrderReviewModify";
@@ -120,19 +154,25 @@ public class OrderReviewController {
 	// 리뷰 수정저장(상혁)
 	@RequestMapping("OrderReviewModifySave.do")
 	@ResponseBody
-	public String OrderReviewModifySave(OrderReviewVO vo) throws Exception {
+	public String OrderReviewModifySave(OrderReviewVO vo, HttpSession session) throws Exception {
+		
+		String msg = "ok";
+		String userid = (String) session.getAttribute("SessionUserID");
+				
+		vo.setUserid(userid);
+				
 		
 		int result = orderreviewService.updateBoard(vo);
 		
-		String msg = "";
+		String msg2 = "";
 		
 		if( result == 0 ) {
-			msg = "error";
+			msg2 = "error";
 		} else if( result == 1 ) {
-			msg = "ok";
+			msg2 = "ok";
 		}
 
-		return msg;
+		return msg2;
 	}
 	
 	// 리뷰 삭제(상혁)
@@ -142,7 +182,7 @@ public class OrderReviewController {
 		
 		int result = orderreviewService.deleteBoard(vo);
 		
-		String msg = "ok";
+		String msg = "";
 		if( result == 0 ) {
 			msg = "error";
 		} else if( result == 1 ) {

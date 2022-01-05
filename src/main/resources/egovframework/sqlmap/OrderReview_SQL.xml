@@ -23,7 +23,7 @@
 									'$rcontent$',
 									'$rimage$',
 									sysdate,
-									'$userid$',
+									'test1',
 									'$oderindex$' )
 	]]>
 	</insert>	

@@ -31,23 +31,29 @@
 </head>
 <style>
 @font-face {
-	font-family: "Hanna";
-	src: url("fonts/BMHANNAAir_ttf.ttf");
+  font-family: "hanna";
+  src: url("fonts/BMHANNAAir_otf.otf");
 }
 
 @font-face {
-	font-family: "jua";
-	src: url("fonts/BMJUA_ttf.ttf");
+  font-family: "jua";
+  src: url("fonts/BMJUA_otf.otf");
 }
 
-@font-face {
-	font-family: "hanna";
-	src: url("../fonts/BMHANNAAir_otf.otf");
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-@font-face {
-	font-family: "jua";
-	src: url("../fonts/BMJUA_otf.otf");
+html{
+    height: 100%;
+}
+
+body {
+    font-size: 16px;
+    font-family: hanna;
+    padding-left: 100px;
+    height: 100%;
 }
 </style>
 

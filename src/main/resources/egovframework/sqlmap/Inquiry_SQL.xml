@@ -63,7 +63,7 @@
 			UPDATE inquiry
 					SET
 						title='$title$',
-						userid='$userid$',
+						userid='test1',
 						content='$content$'
 						
 				WHERE 
