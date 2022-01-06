@@ -55,6 +55,14 @@ body {
     padding-left: 100px;
     height: 100%;
 }
+
+.navbar_menu {
+  display: flex;
+  list-style: none;  
+  padding-left: 70px;
+  margin-top: 10px;
+  border-bottom: 2px solid #ccc;
+}
 </style>
 
 <body>
@@ -73,25 +81,32 @@ body {
 			<section class="content">
 
 				<!--메뉴-->
-				<div style="width: 100%;">
+				<div style="width: 100%; line-height: 2.0;">
 					<table
-						style="width: 100%; text-align: left; border-bottom: 2px solid #ccc">
+						style="width: 100%; text-align: center; border-bottom: 2px solid #ccc">
 						<colgroup>
+							<%-- <col width="30%" /> --%>
+							<col width="20%" />
 							<col width="30%" />
 							<col width="*" />
 						</colgroup>
 
 						<tr>
-							<td>찜 리스트</td>
+							<!-- <td>가게이미지</td> -->
+							<td>찜 리스트</td>							
+							<td>가게이름</td>
+							<td>가게소개</td>
+							
 
 
 						</tr>
 
 						<c:forEach var="result" items="${list }">
 							<tr>
-
-								<td>${result.zzimindex }</td>
-								<td>${result.storeunq }</td>
+								<%-- <td>${result.storeimage }</td> --%>								
+								<td>${result.zzimindex }</td>								
+								<td>${result.storename  }</td>
+								<td>${result.storeinfo }</td>
 
 							</tr>
 						</c:forEach>

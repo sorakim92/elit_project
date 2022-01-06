@@ -27,7 +27,7 @@ public class OrderReviewController {
 	
 	// 주문리뷰(상혁)
 	@RequestMapping("OrderReviewList.do")
-	public String selectOrderReviewList(OrderReviewVO vo, Model model) throws Exception {
+	public String selectOrderReviewList(OrderReviewVO vo, Model model, HttpSession session) throws Exception {
 	
 	  int page_no = vo.getPage_no(); // 1->1 ;; 2->11 ;; 3->21 
 	  int s_no = (page_no -1)*10 + 1;
@@ -35,6 +35,9 @@ public class OrderReviewController {
 	  
 	  vo.setS_no(s_no); 
 	  vo.setE_no(e_no);
+	  
+	String userid = (String) session.getAttribute("SessionUserID");				
+	vo.setUserid(userid);
 	  	 
 	List<?> list = orderreviewService.selectBoardList(vo);
 	int total = orderreviewService.selectBoardTotal(vo);
@@ -67,17 +70,20 @@ public class OrderReviewController {
 	// 리뷰저장(상혁)
 	@RequestMapping("OrderReviewWriteSave.do")
 	@ResponseBody
-	public String OrderReviewWriteSave( OrderReviewVO vo) throws Exception {
+	public String OrderReviewWriteSave( OrderReviewVO vo, HttpSession session) throws Exception {
 		
-		/* System.out.println("========rate====="+vo.getRdate()); */
+		
+		String userid = (String) session.getAttribute("SessionUserID");			
+		vo.setUserid(userid);
+		/* System.out.println("===111111111111111111"); */ 
 				
 		String result = orderreviewService.insertBoard(vo);
 		
 		/* System.out.println("========"+result); */
 		
-		String msg = "";
-		if( result == null ) {
-			msg = "ok";
+		String msg = "ok";
+		if( result != null ) {
+			msg = "error";
 		}
 		/* System.out.println("========="+result+"====="+msg); */
 		

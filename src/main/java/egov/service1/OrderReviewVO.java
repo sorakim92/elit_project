@@ -8,7 +8,7 @@ public class OrderReviewVO {
 	private String rcontent;
 	private String rimage;
 	private String rdate;
-	private String userid;
+	private String userid = "";
 	private int oderindex;
 	
 	

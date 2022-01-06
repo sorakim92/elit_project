@@ -42,7 +42,8 @@
 					
 					datatype : "text",  // 성공여부 (ok)
 					success : function(data) {
-						if (data == "ok") {
+						
+						if (data == "ok") {							
 							alert("저장완료");
 							location="InquiryList.do";
 						} else {
@@ -103,7 +104,7 @@
             
                 <div class="cont">
                     <textarea id="content" name="content" placeholder="내용 입력"></textarea>
-                    <dd><input type="file" name="file" id="file"></dd>
+                    <!-- <dd><input type="file" name="file" id="file"></dd> -->
                 </div>
             </div>
             

@@ -143,4 +143,6 @@
 		delete from member where userid = '$userid$' and userpw = '$userpw$'
 	</delete>
 	
+	
+	
 </sqlMap>

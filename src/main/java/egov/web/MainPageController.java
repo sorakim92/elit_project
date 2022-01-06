@@ -106,10 +106,12 @@ public class MainPageController {
 	 *  로그인 유저 마이페이지
 	 */
 	@RequestMapping("myPage.do")
-	public String myPage() throws Exception {
+	public String myPage( ) throws Exception {
 		
+				
 		return "mypage/myPage";
 	}
+	
 	/*
   이용약관 (소라)
   */

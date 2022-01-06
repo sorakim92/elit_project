@@ -24,7 +24,7 @@ public class InquiryController {
 		
 		
 		@RequestMapping("InquiryList.do")
-		public String selectInquiryList(InquiryVO vo, Model model ) throws Exception {
+		public String selectInquiryList(InquiryVO vo, Model model, HttpSession session ) throws Exception {
 			
 						
 			// 페이지번호
@@ -35,7 +35,9 @@ public class InquiryController {
 			  vo.setS_no(s_no); 
 			  vo.setE_no(e_no);
 			  
-			 
+			String userid = (String) session.getAttribute("SessionUserID");				
+			vo.setUserid(userid);
+				
 			 
 			List<?> list = inquiryService.selectBoardList(vo);
 			int total = inquiryService.selectBoardTotal(vo);
@@ -69,13 +71,18 @@ public class InquiryController {
 		// 글쓰기 저장(상혁)
 		@RequestMapping("InquiryWriteSave.do")
 		@ResponseBody
-		public String mypage_InquiryWriteSave(InquiryVO vo) throws Exception {
+		public String mypage_InquiryWriteSave(InquiryVO vo, HttpSession session) throws Exception {
+			
+			String userid = (String) session.getAttribute("SessionUserID");			
+			vo.setUserid(userid);
 			
 			String result = inquiryService.insertBoard(vo);
 			
 			String message = "";
 			if( result == null ) {
 				message = "ok";
+			} else {
+				message = "Save-fail";
 			}
 			
 			return message;			
@@ -160,9 +167,7 @@ public class InquiryController {
 		public String InquiryModifySave( InquiryVO vo, HttpSession session) throws Exception {
 			
 			String msg = "ok";
-			String userid = (String) session.getAttribute("SessionUserID");	
-			
-			
+			String userid = (String) session.getAttribute("SessionUserID");			
 			vo.setUserid(userid);
 			
 			int result = inquiryService.updateBoard(vo);
