@@ -145,7 +145,31 @@ public class AdController {
 			msg = "ok";			
 		}
 		
+	
 		return msg;
+	}
+	
+	//	광고 거절버튼(강성모)
+	@RequestMapping("adReject.do")
+	@ResponseBody
+	public ModelAndView updateAdReject(AdVO vo)
+								throws Exception{
+		ModelAndView mav = new ModelAndView("jsonView");
+		String message="";
+//		int cnt=adService.selectRejectCnt(vo);
+//		if(cnt >= 1) {
+//			message = "ok";
+//		} else {
+//			message = "er1";
+//		}
+		int result=adService.updateAdStatus(vo);
+		if(result>=1) {
+			message="ok";
+		} else{
+			message="er1"	;		
+		}
+		mav.addObject("aaaa",message);
+		return mav;
 	}
 	
 	

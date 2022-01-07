@@ -5,6 +5,90 @@
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="adminVO" type="egov.service1.AdminVO"/>
 	
+	
+<!-- 	메인페이지 광고List(강성모) -->
+	<select id="adminDAO.selectAdList" resultClass ="egovMap">
+		SELECT b.* FROM (
+			SELECT rownum rn, a.* from (	
+				SELECT  adindex,
+						userid,
+						service,
+						ment,
+						sdate,
+						edate,
+						to_char(rdate,'yyyy/mm/dd') rdate,
+						banner,
+						DECODE(UPPER(status),'P','대기','N','거절','Y','완료') status,
+						email,
+						phone,
+						name			
+				FROM	
+						ad
+				WHERE	
+						(userid IS NOT NULL
+				AND		UPPER(status)='P')
+				ORDER BY rdate DESC) a )b
+			WHERE
+				rn between 1 and 3			
+	</select>
+	
+	<!-- 	메인페이지 입점List(강성모) -->
+	<select id="adminDAO.selectEnterStoreList" resultClass="egovMap">
+		SELECT b.* FROM (
+			SELECT rownum rn, a.* from (	
+				SELECT  openindex,
+						storename,
+						region,
+				DECODE	(category,'111','한식','222','치킨'
+								,'333','일식','444','양식'
+								,'555','중식','666','샐러드/샌드위치'
+								,'777','분식','888','카페/디저트') category,
+						phone,
+						email,
+						address,
+						name,
+						inquire,
+						to_char(rdate,'yyyy/mm/dd') rdate,
+						category2,
+						category3,
+						userid,
+						DECODE(UPPER(status),'P','대기','N','거절','Y','완료') status	
+				FROM	
+						businessenter
+				WHERE	
+						openindex IS NOT NULL 
+				AND 	UPPER(status)='P'
+				ORDER BY rdate DESC) a )b
+				WHERE
+				rn between 1 and 3	
+	
+	</select>
+	
+	<!-- 	메인페이지 사업자 List(강성모) -->
+	<select id="adminDAO.selectNewBossList" resultClass="egovMap">
+		SELECT b.* FROM (
+			SELECT rownum rn, a.* from (	
+				SELECT  userid,
+						userpw,
+						username,
+						email,
+						userphone,					
+						decode(UPPER(business),'Y','사장님','P','일반회원') business,
+						to_char(rdate,'yyyy/mm/dd') rdate						
+				FROM	
+						bossmember
+				WHERE	
+						userid IS NOT NULL 
+				AND		UPPER(business) = 'Y'			
+				ORDER BY rdate DESC) a )b
+				WHERE
+				rn between 1 and 3
+	</select>
+	
+	
+	
+	
+<!-- 	관리자 추가페이지 list(강성모) -->
 	<select id="adminDAO.selectadminService" resultClass = "egovMap">
 
 	SELECT b.* FROM (

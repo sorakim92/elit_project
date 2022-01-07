@@ -41,6 +41,9 @@ public class AdDAO extends EgovAbstractDAO {
 	public List<?> selectAdBanner(AdVO avo) {
 		return list("adDAO.selectAdBanner",avo);
 	}
+	public int updateAdStatus(AdVO vo) {
+		return (int) update("adDAO.updateAdStatus",vo);
+	}
 
 	
 

@@ -17,8 +17,18 @@
     <style>
     
     body {
-    font-size: 16px;
+    font-size: 16px;   
 }
+/* 	.container{ */
+/* 	margin-bottom : 0px; */
+/* 	margin-top : 0px; */
+/* 	border: 1px solid #ccc; */
+/* 	} */
+
+	.alert{
+/* 		border: 1px solid #ccc; */
+		margin: 0px 0px 10px 0px;
+	}
     </style>
     
     
@@ -79,36 +89,63 @@
 
       <!-- Content -->
       <div id='content'>
+      <form style="float:left;">
         <div class='panel panel-default'>
           <div class='panel-heading'>
             <i class='icon-file-text-alt icon-large'></i>
-           <b> 광고 </b>           
+           <b><font color="green">( NEW )</font> 광고 신청</b>           
           </div>
-          <div class='panel-body'>
-           <p>[하남시] XX육개장 칼국수 배너</p>
+          <div class='panel-body' style="float:left;">
+          	<div class="container">
+          <c:forEach var="result" items="${list }">          
+				<div class="alert alert-success alert-dismissible fade in" role="alert">
+			  		<strong>${result.name }님 &nbsp&nbsp </strong> "${result.ment }"
+				</div>      
+          </c:forEach>
+          </div>
           </div>
         </div>
-
+		</form>
+		
+		<form style="float:left;">
         <div class='panel panel-default'>
           <div class='panel-heading'>
             <i class='icon-envelope icon-large'></i>
-           <b> 문의내역</b>           
+           <b> <font color="blue">( NEW )</font>입점문의</b>           
           </div>
-          <div class='panel-body'>
-           <p>[하남시] XX족발 사장님 로그인문의</p>
+          <div class='panel-body' style="float:left;">
+           	<div class="container">
+           		<c:forEach var="resultB" items="${listB }">
+					<div class="alert alert-info alert-dismissible fade in" role="alert">
+				  		<strong>${resultB.name }님  &nbsp&nbsp</strong>
+				  		" ${resultB.category } &nbsp&nbsp/&nbsp&nbsp
+				  		${resultB.region } &nbsp&nbsp/&nbsp&nbsp
+				  		${resultB.address } &nbsp&nbsp/&nbsp&nbsp
+				  		${resultB.storename } "
+					</div>
+				</c:forEach>
+			</div>
           </div>
         </div>
-
+		</form>
+		
+		<form style="float:left;">
         <div class='panel panel-default'>
           <div class='panel-heading'>
             <i class='icon-user icon-large'></i>
-           <b> 신규 사업자 목록 </b> 
+           <b> <font color="red">( NEW )</font>신규 사업자 목록 </b> 
           </div>         
-          <div class='panel-body'>
-            <p>내가 바로 사장이다</p>
+          <div class='panel-body' style="float:left;">
+            	<div class="container" >
+            		<c:forEach var="resultC" items="${listC }">
+						<div class="alert alert-warning alert-dismissible fade in" role="alert">
+					  		<strong>${resultC.username }(${resultC.userid })</strong> 님이 새로운 관리자로 추가되었습니다.
+						</div>
+					</c:forEach>
+				</div>
            </div>
         </div>
-
+		</form>
 
         
       </div>

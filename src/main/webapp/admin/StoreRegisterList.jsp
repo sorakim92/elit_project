@@ -52,6 +52,29 @@
     })
     
     
+    $(function(){
+		$("#btn_Reject").click(function(){
+		var formdata = $(frm2).serialize();
+		
+			$.ajax({
+				type : "post",
+				data : formdata,
+				url  : "StoreReject.do",
+				datatype : "json",
+				success  : function(data){
+					if(data.aaaa=="ok"){
+						alert("거절완료");
+					} else{
+						alert("승인실패!");
+					}
+				},
+				error : function(){
+					alert("전송오류~");
+				}
+			})
+		})
+	})
+    
     
     </script>
     
@@ -277,7 +300,7 @@
               </fieldset>
            <div class='form-actions'>
                 <button class='btn btn-default' id ="btn_save"  style ="margin-right : 30px;" type='button'>저장하기</button>
-                <button class='btn btn-default' style ="margin-right : 30px;" type='button'> 거절 </button>
+                <button class='btn btn-default' id ="btn_Reject" style ="margin-right : 30px;" type='button'> 거절 </button>
                 
               </div>
             </form>
