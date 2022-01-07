@@ -139,7 +139,7 @@ function initMap() {
 		}
 		
 		var marker = new naver.maps.Marker({
-	        position: new naver.maps.LatLng(37.3595704, 127.105399),
+	        position: new naver.maps.LatLng(${vo.storelatitude}, ${vo.storelongitude}),
 	        map: map
 	    });
 		

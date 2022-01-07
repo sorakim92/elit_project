@@ -40,21 +40,22 @@ public class StoreController {
 	/*
 	 * storeDetail -> store테이블 전송버튼 (강성모)
 	 * 	 */
-
 	@RequestMapping("storeSave.do")
 	@ResponseBody
-	public ModelAndView insertStoreInfo(StoreVO vo)
+	public ModelAndView insertStoreInfo(StoreVO vo,BusinessEnterVO bvo)
 								throws Exception{
 		ModelAndView mav = new ModelAndView("jsonView");
 		String message="";		
 		int cnt = storeService.selectsavecnt(vo);
 		
+		
 		if(cnt >= 1) {
 			message = "er1";
 		} else {				
 			String result =storeService.insertStoreInfo(vo);								
-			if(result==null) {
-				message = "ok";			
+			if(result==null) {					
+			int result2=storeService.updateStoreStatus(bvo);
+			message = "ok";	
 			}
 		}
 		//{"aaaa":"ok","bbbb":"강성모"}
@@ -63,5 +64,24 @@ public class StoreController {
 		return mav;
 	}
 	
+	/*
+	 * 입점문의 거절버튼(강성모)
+	 * 	 */
+	@RequestMapping("StoreReject.do")
+	@ResponseBody
+	public ModelAndView updateBossReject(BusinessEnterVO vo)
+														throws Exception{
+		ModelAndView mav = new ModelAndView("jsonView");
+		String message="";
+		int result=storeService.updateBusinessStatus(vo);
+		if(result>=1) {
+			message="ok";
+		} else{
+			message="er1"	;		
+		}
+		mav.addObject("aaaa",message);
+		return mav;
+	
+	}
 	
 }

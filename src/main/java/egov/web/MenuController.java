@@ -77,15 +77,24 @@ public class MenuController {
 		
 		return msg;
 	}
+	
 	@RequestMapping(value = "/uploadModifySave.do")
 	@ResponseBody
 	public String uploadModifySave (
 	                           final MultipartHttpServletRequest multiRequest,
 	                           HttpServletResponse response, MenuVO vo) throws Exception {
+      
+      String oldname = vo.getMenuimage();
 
 	  Map<String, String> map = new HashMap<String, String>();
 	  Map<String, MultipartFile> files = multiRequest.getFileMap();
-	  String uploadPath = "C:\\Users\\winid\\git\\elit_project\\src\\main\\webapp\\upload\\menu";
+
+	 // String uploadPath = "C:\\Users\\winid\\git\\elit_project\\src\\main\\webapp\\upload\\menu";
+
+
+//	  String uploadPath = "C:\\Users\\user\\git\\elit_project\\src\\main\\webapp\\upload\\menu";
+	  //소라 테스트 
+	  String uploadPath ="/Users/ksr/git/elit_project/src/main/webapp/upload/menu/";
 
 	  Iterator<Entry<String, MultipartFile>> itr = files.entrySet().iterator();
 	 
@@ -96,24 +105,25 @@ public class MenuController {
 	      String originalFilename = file.getOriginalFilename();
 	      
 		  System.out.println("파일이름 ::::: " + file.getOriginalFilename());
-		  uploadPath = uploadPath + "\\" + originalFilename;
+		  
+		  //    소라 테스트 
+		  uploadPath = uploadPath + "/" + originalFilename;
 		  file.transferTo(new File(uploadPath));
 		  
+		  if(oldname != null && !oldname.equals("")) {
+			  File ff = new File(uploadPath + "/" + oldname);
+			  ff.delete();
+		  }
 		  vo.setFilename(originalFilename);
 	  }
-	  
-	  
-	  
+	    
 	  String msg = "ok";
 	  int result = menuService.updateMenu(vo);
 		
-	
-	  
-
 	  return "ok";
 
 	}
-
+	
 	@RequestMapping("menuDelete.do")
 	@ResponseBody
 	public String deleteMenu(MenuVO vo) throws Exception {
@@ -152,7 +162,13 @@ public class MenuController {
 
 	  Map<String, String> map = new HashMap<String, String>();
 	  Map<String, MultipartFile> files = multiRequest.getFileMap();
-	  String uploadPath = "C:\\Users\\winid\\git\\elit_project\\src\\main\\webapp\\upload\\menu";
+
+	 // String uploadPath = "C:\\Users\\winid\\git\\elit_project\\src\\main\\webapp\\upload\\menu";
+
+	  //소라 테스트 
+	  String uploadPath ="/Users/ksr/git/elit_project/src/main/webapp/upload/menu/";
+//	  String uploadPath = "C:\\Users\\user\\git\\elit_project\\src\\main\\webapp\\upload\\menu";
+
 
 	  Iterator<Entry<String, MultipartFile>> itr = files.entrySet().iterator();
 	 
@@ -163,7 +179,8 @@ public class MenuController {
 	      String originalFilename = file.getOriginalFilename();
 	      
 		  System.out.println("파일이름 ::::: " + file.getOriginalFilename());
-		  uploadPath = uploadPath + "\\" + originalFilename;
+		  //    소라 테스트 
+		  uploadPath = uploadPath + "/" + originalFilename;
 		  file.transferTo(new File(uploadPath));
 		  
 		  vo.setFilename(originalFilename);

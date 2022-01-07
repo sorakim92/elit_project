@@ -15,14 +15,14 @@
 						username,
 						email,
 						userphone,					
-						decode(business,'Y','사장님','P','일반회원') business,
+						decode(UPPER(business),'Y','사장님','P','일반회원') business,
 						rdate						
 				FROM	
 						member
 				WHERE	
 						userid IS NOT NULL 
-				AND		(business = 'P'
-				OR 		business = 'Y')
+				AND		(UPPER(business) = 'P'
+				OR 		UPPER(business) = 'Y')
 				
 				<isNotNull property="k2text">
 					<isNotEmpty property="k2text">

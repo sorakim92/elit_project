@@ -9,8 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import egov.service1.AdVO;
 import egov.service1.AdminService;
 import egov.service1.AdminVO;
+import egov.service1.BossMemberVO;
+import egov.service1.BusinessEnterVO;
 import egov.service1.NBoardVO;
 
 @Controller
@@ -22,8 +25,14 @@ public class AdminController {
 	 * 관리자 메인페이지 List(강성모)
 	 *  */
 	@RequestMapping("AdminMain.do")
-	public String selectMainList(AdminVO vo)
+	public String selectMainList(AdVO vo,BusinessEnterVO bvo,BossMemberVO cvo, Model model)
 											throws Exception{
+		List<?> list = adminService.selectAdList(vo);
+		List<?> listB = adminService.selectEnterStoreList(bvo); 
+		List<?> listC = adminService.selectNewBossList(cvo); 
+		model.addAttribute("list",list);
+		model.addAttribute("listB",listB);
+		model.addAttribute("listC",listC);
 		return "admin/AdminMain";
 	}
 	/*

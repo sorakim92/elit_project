@@ -67,6 +67,7 @@
 <body>
     <div style="text-align:center">
         <form id = "pwd_form" method="POST">
+        <br><br><br><br><br><br>
       			아이디 : <input type="text" id ="userid"  name ="userid" placeholder="Enter Your ID">      
             <br><br>
             	이메일 : <input type="text" id ="email"  name ="email" placeholder="Enter Your EMAIL">

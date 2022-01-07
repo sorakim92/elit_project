@@ -79,9 +79,9 @@ a:hover, .cap:hover{
 }
 .slider_nav {
 	width:1000px;
-	height:160px;
+	height:200px;
 /* 	background-color:#f8cacc; */
- 	line-height:160px;
+ 	line-height:180px;
 /* 	justify-content: center; */
 /* 	display: inline-block;  */
 /* 	align-items: center; */
@@ -90,12 +90,12 @@ a:hover, .cap:hover{
 	display:inline-block; 
 /* 	background:pink;  */
 	float:left; 
-	line-height:140px;
+	line-height:200px;
 }
 .rolling_panel { 
 	position: relative; 
 	width: 970px; 
-	height: 140px;
+	height: 200px;
  	margin: 0; 
  	padding: 0; 
  	justify-content: center; 
@@ -111,11 +111,11 @@ a:hover, .cap:hover{
  .rolling_panel ul li { 
  	float: left; 
  	width: 98%; 
- 	height: 140px;
+ 	height: 200px;
  }
  .rolling_panel ul li img {
  	width: 970px;
- 	height: 140px;
+ 	height: 200px;
  }
 
 /* 배너부분끝  */
@@ -350,28 +350,7 @@ $(document).ready(function() {
     }
 });
 </script>
-<script>
-function fn_detail(id,unq) {
-	var userid = id;
-	var orderindex = unq;
 
-	$("#userid").val(userid);
-	$("#orderindex").val(orderindex);
-	
-	var popWidth = window.screen.width/2 - 550;
-	var popHeight = window.screen.height/2 - 400;
-	
-	var pop_title = "detailPopup";
-	window.open("",pop_title,"status=no, width=1100, height=800, left="+popWidth+", top="+popHeight);
-	
-	var frm = document.frm_detail;
-	frm.target = pop_title;
-	frm.action = "myorderDetail.do";
-	
-	frm.submit();
-
-}
-</script>
 <body>
 <div class="wrapper">
     <div class="main" style="min-height: 100%; padding-bottom:100px; flex:1;">
@@ -389,9 +368,11 @@ function fn_detail(id,unq) {
            
             <ul>
             <c:forEach var="result" items="${blist }">
+            	<c:if test="${result.service.equals('U') }">
                 <li> 
                 	<img src="<c:url value='upload/banner/${result.banner }'/> ">
                 </li>
+                </c:if>
              </c:forEach>
             </ul>
         </div>
@@ -401,7 +382,7 @@ function fn_detail(id,unq) {
        
     </nav>
     <!-- 주소 검색창 -->
-    <section style="height:auto;">
+    <section style="height:auto; clear:both;">
     	<!--  검색시 우편번호, 주소 (상세주소제외) member 배송지 주소컬럼인 addr4,addr5,addr6의 4,5로 update -->
 	    <form name="search_frm" id="search_frm">
 	     	<input type="hidden" id="useraddr4" name="useraddr4" >
@@ -493,16 +474,13 @@ function fn_detail(id,unq) {
 		      <div class="rolling_panel">
 		           
 		            <ul>
+		                <c:forEach var="result" items="${blist }">
+		            	<c:if test="${result.service.equals('L') }">
 		                <li> 
-		                	<img src="img/b3.png" >
-		                	
+		                	<img src="<c:url value='upload/banner/${result.banner }'/> ">
 		                </li>
-		                <li>
-		               		<img src="img/b2.png" >
-		                </li>
-		                <li>
-		             		<img src="<c:url value='/img/b1.png'/> ">
-		                </li>
+		                </c:if>
+		             </c:forEach>
 		            </ul>
 		        </div>
 		        <div class="banner_btn_a" style="margin-left:5px;">
@@ -553,7 +531,7 @@ function fn_detail(id,unq) {
                 
             </table>
             <div style="text-align: right; padding-right:20px;">
-                 <button type="button" class="btn" onclick="javascript:fn_detail('${result.userid}','${result.orderindex }')">주문상세</button>           
+                 <button type="button" class="btn" onclick="location.href='myOrderList.do;'">주문내역</button>           
             </div>
         </div>
     </article>

@@ -24,21 +24,25 @@
 						category2,
 						category3,
 						userid,
-						DECODE(status,'P','대기','N','거절','Y','완료') status	
+						DECODE(UPPER(status),'P','대기','N','거절','Y','완료') status	
 				FROM	
 						businessenter
 				WHERE	
 						openindex IS NOT NULL 
-				AND 	status='P'
+				AND 	UPPER(status)='P'
 				ORDER BY rdate DESC) a )b	
 	</select>
 	
+	<!-- 	(강성모) -->
 	<select id="storeDAO.selectStoreDetail" resultClass="BusinessEnterVO">
 	
 		SELECT  openindex,
 				storename,
 				region,
-				category,
+				DECODE	(category,'111','한식','222','치킨'
+								,'333','일식','444','양식'
+								,'555','중식','666','샐러드/샌드위치'
+								,'777','분식','888','카페/디저트') category,
 				phone,
 				email,
 				address,
@@ -48,7 +52,7 @@
 				category2,
 				category3,
 				userid,
-				DECODE(status,'P','대기','N','거절','Y','완료') status
+				DECODE(UPPER(status),'P','대기','N','거절','Y','완료') status
 		FROM
 				businessenter
 		WHERE
@@ -56,12 +60,13 @@
 	
 	</select>
 	
+	<!-- 	(강성모) -->
 	<select id="storeDAO.selectsavecnt" resultClass="java.lang.Integer">	
 		select count(*) from store where userid=#userid#
 	</select>
 	
 	
-	
+	<!-- 	(강성모) -->
 	<insert id="storeDAO.insertStoreInfo">
 	
 	insert into store(
@@ -89,11 +94,21 @@
 					
 	</insert>
 	
+<!-- 	(강성모) -->
+	<update id="storeDAO.updateStoreStatus">
 	
+	UPDATE	 businessenter
+		SET	status='Y'
+		WHERE openindex=#openindex#
 	
+	</update>
 	
-	
-	
+	<!-- 	(강성모) -->
+	<update id="storeDAO.updateBusinessStatus">
+	UPDATE businessenter
+			SET status = 'N'
+			WHERE openindex=#openindex#
+	</update>
 	
 	
 	

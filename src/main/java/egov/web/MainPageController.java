@@ -102,6 +102,7 @@ public class MainPageController {
 	
 	
 
+
 	/*
 	 *  로그인 유저 마이페이지
 	 */
@@ -111,7 +112,7 @@ public class MainPageController {
 				
 		return "mypage/myPage";
 	}
-	
+
 	/*
   이용약관 (소라)
   */

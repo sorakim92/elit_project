@@ -113,8 +113,8 @@ public class AdController {
 
 		String msg = "";
 		String banner = null;
-		String path = "Z:/Git2/elit_project/src/main/webapp/upload/banner";//파일이 업로드 될 위치
-		
+//		String path = "Z:/Git2/elit_project/src/main/webapp/upload/banner";//파일이 업로드 될 위치
+		String path = "/Users/ksr/git/elit_project/src/main/webapp/upload/banner"; // 소라 테스트 
 		//스프링내에서 지원해주는 파일업로드 인터페이스
 		MultipartFile mtfile = vo.getMtfile();
 		System.out.println("1.====="+mtfile);
@@ -145,7 +145,31 @@ public class AdController {
 			msg = "ok";			
 		}
 		
+	
 		return msg;
+	}
+	
+	//	광고 거절버튼(강성모)
+	@RequestMapping("adReject.do")
+	@ResponseBody
+	public ModelAndView updateAdReject(AdVO vo)
+								throws Exception{
+		ModelAndView mav = new ModelAndView("jsonView");
+		String message="";
+//		int cnt=adService.selectRejectCnt(vo);
+//		if(cnt >= 1) {
+//			message = "ok";
+//		} else {
+//			message = "er1";
+//		}
+		int result=adService.updateAdStatus(vo);
+		if(result>=1) {
+			message="ok";
+		} else{
+			message="er1"	;		
+		}
+		mav.addObject("aaaa",message);
+		return mav;
 	}
 	
 	
