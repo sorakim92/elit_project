@@ -86,10 +86,9 @@
   				type : "post",
   				url  : "uploadWriteSave.do",
   				data : form,
-  				
   				processData : false,
   				contentType : false,
-  				
+  				//alert(dddd),
   				datatype : "text",  // 성공여부 (ok)
   				success : function(data) {
   					if (data == "ok") {
@@ -105,7 +104,7 @@
   			});
   		});
   	});
- </script>
+</script>
   	
  
 

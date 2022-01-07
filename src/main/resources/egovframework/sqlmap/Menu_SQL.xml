@@ -33,15 +33,10 @@
 				menuname='$menuname$',
 				menuinfo='$menuinfo$',
 				price = '$price$',
-				
+				menuimage = '$filename$',
 				menukeyword = '$menukeyword$'
 		WHERE menuunq = '$menuunq$'
 	</update>
-	
-	
-	
-	
-	
 	
 	<select id="menuDAO.selectMenuList"  resultClass="egovMap"  >
 		SELECT 
