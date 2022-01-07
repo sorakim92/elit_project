@@ -95,19 +95,18 @@ body {
     text-align: center;
 }
 
-
-.footer {	
-	width:1000px;
-    height:auto;
-	background-color:#eeeeee;
- 
-    clear:both;
-}
-
 .navbar_menu {
     display: flex;
     list-style: none;   
     padding-left: 0;
+}
+
+.footer {
+    width: 1000px;
+    height: auto;
+    background-color: #eeeeee;
+    clear: both;
+    margin-left: 15%;
 }
 
 </style>
@@ -181,8 +180,8 @@ body {
             </a>
           </li>
           <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <!-- <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li> -->
           <li class="page-item">
             <a class="page-link" href="#" aria-label="Next">
               <span aria-hidden="true">&raquo;</span>
