@@ -60,15 +60,34 @@
 			  },
 			  error : function(){
 				  alert("오류~");
-			  }
-			  
-			  
-			  
+			  }		  
 		  })
-	  } )
-	  
-	  
+	  } )	  	  
   } );
+  
+//   광고 거절 함수
+	$(function(){
+		$("#btn_reject").click(function(){
+		var formdata = $(frm).serialize();
+		
+			$.ajax({
+				type : "post",
+				data : formdata,
+				url  : "adReject.do",
+				datatype : "json",
+				success  : function(data){
+					if(data.aaaa=="ok"){
+						alert("거절완료");
+					} else{
+						alert("승인실패!");
+					}
+				},
+				error : function(){
+					alert("전송오류~");
+				}
+			})
+		})
+	})
   </script>
 <style>
   .ui-accordion .ui-accordion-header{
@@ -212,7 +231,7 @@
               </fieldset>
            <div class='form-actions'>
                 <button class='btn btn-default' id ="btn_save"  style ="margin-right : 30px;" type='button'>저장하기</button>
-                <button class='btn btn-default' style ="margin-right : 30px;" type='button'> 거절 </button>
+                <button class='btn btn-default' id="btn_reject" style ="margin-right : 30px;" type='button'> 거절 </button>
                 
               </div>
             </form>

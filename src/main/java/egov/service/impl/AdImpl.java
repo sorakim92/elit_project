@@ -50,8 +50,11 @@ public class AdImpl implements AdService{
 		public List<?> selectAdBanner(AdVO avo) throws Exception {
 			return adDAO.selectAdBanner(avo);
 		}
-		
-		
+		@Override
+		public int updateAdStatus(AdVO vo) throws Exception {
+			return adDAO.updateAdStatus(vo);
+		}
+
 		
 
 		
