@@ -96,8 +96,7 @@ body {
 }
 
 
-.footer {
-	margin-left: 220px;
+.footer {	
 	width:1000px;
     height:auto;
 	background-color:#eeeeee;
@@ -105,8 +104,10 @@ body {
     clear:both;
 }
 
-.to {
-	text-align: left;
+.navbar_menu {
+    display: flex;
+    list-style: none;   
+    padding-left: 0;
 }
 
 </style>
@@ -133,7 +134,7 @@ body {
         <div class="board_list_wrap">
         
             <div class="board_list">
-            <div class="To">Total:${total }</div>
+            <div style="text-align:left">Total:${total }</div>
                 <div class="top"> 
                     <div class=num>번호</div>
                     <!-- <div>분류</div> -->                    

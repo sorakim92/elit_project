@@ -71,6 +71,11 @@ section {
 	text-align:center;
 }
 
+.navbar_menu {
+    display: flex;
+    list-style: none;    
+    padding-left: 0;
+}
 
 
 
