@@ -12,6 +12,27 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 </head>
+<style>
+
+@font-face {
+    font-family: "hanna";
+    src: url("../fonts/BMHANNAAir_otf.otf");
+}
+@font-face {
+    font-family: "jua";
+    src: url("../fonts/BMJUA_otf.otf");
+}
+html{
+    height: 100%;
+}
+body {
+    font-size: 16px;
+    font-family: hanna;
+    padding-left:100px;
+    height:100%;
+}
+
+</style>
 <script>
 $(function() {
 	$("#btn_submit").click(function(){
@@ -67,9 +88,9 @@ $(function() {
         <tr>        
             <td><form id="frm" method="post">
                 <div style="text-align:center;">
-            변경할 비밀번호 입력 : <input type = "text" name = "userpw" id="userpw" placeholder = "비밀번호를 입력하세요." >
+            변경할 비밀번호 입력 : <input type = "password" name = "userpw" id="userpw" placeholder = "비밀번호를 입력하세요." >
             <br> <br>
-           비밀번호 재입력 : <input type = "text" name = "reuserpw" id="reuserpw" placeholder = "비밀번호를 입력하세요." >
+           비밀번호 재입력 : <input type = "password" name = "reuserpw" id="reuserpw" placeholder = "비밀번호를 입력하세요." >
             <br> <br>
             <input type="hidden" id="userid" name="userid" value="${userid}">
             <input type="hidden" id="email" name="email" value="${email}">
