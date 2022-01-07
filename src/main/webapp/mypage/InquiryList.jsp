@@ -106,14 +106,13 @@ body {
     height: auto;
     background-color: #eeeeee;
     clear: both;
-    margin-left: 15%;
 }
 
 </style>
 
 <body>
 <div class="wrapper">   
-
+<div class="main">
   <header class="width:100%; height:50px;">
        <%@include file = "../include/main_header.jsp" %>
   </header>
@@ -124,7 +123,7 @@ body {
            <%@include file = "../include/topmenu.jsp" %>
        </div>
 </nav>
-<section>
+<section class="content">
     <div class="board_wrap">
         <div class="board_title">
             <strong>문의목록</strong>
@@ -196,6 +195,7 @@ body {
     <footer>
           <%@include file = "../include/main_footer.jsp" %>
     </footer>
+    </div>
    
 </body>
 	
