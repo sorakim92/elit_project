@@ -9,7 +9,7 @@
 <body>
 <div style="width:100%;">
         <ul class="navbar_menu">
-                        
+
             <li><a href="myOrderList.do">주문내역</a></li>
             <li><a href="memberMypage.do">회원정보수정</a></li>
             <li><a href="InquiryList.do">문의내역</a></li>

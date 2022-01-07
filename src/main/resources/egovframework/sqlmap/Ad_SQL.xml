@@ -94,7 +94,7 @@
 <!--  광고 배너 상단 불러오기 (소라)  -->
 	<select id="adDAO.selectAdBanner" resultClass="egovMap">
 		select banner, status, service, adindex,sdate, edate from ad 
-		where upper(service)='U' and upper(status) ='Y'
+		where banner is not null and upper(status) ='Y'
 	</select>
 
 

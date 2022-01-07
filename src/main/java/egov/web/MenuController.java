@@ -85,8 +85,9 @@ public class MenuController {
 
 	  Map<String, String> map = new HashMap<String, String>();
 	  Map<String, MultipartFile> files = multiRequest.getFileMap();
-	  String uploadPath = "C:\\Users\\user\\git\\elit_project\\src\\main\\webapp\\upload\\menu";
-
+//	  String uploadPath = "C:\\Users\\user\\git\\elit_project\\src\\main\\webapp\\upload\\menu";
+	  //소라 테스트 
+	  String uploadPath ="/Users/ksr/git/elit_project/src/main/webapp/upload/menu";
 	  Iterator<Entry<String, MultipartFile>> itr = files.entrySet().iterator();
 	 
 	  if( itr.hasNext() ) {

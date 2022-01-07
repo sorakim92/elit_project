@@ -92,20 +92,20 @@ function fn_like(u,c) {
         <div style="margin:30px 0 0 0; ">
             <%@include file = "../include/cate_subTab.jsp" %>
        </div>
-       <div style="margin:0 0 10px 0;">
-        <ul class="nav2">
-            <li>추천순</li>
-            <li>가까운순</li>
-            <li>찜많은순</li>
-            <li>*</li>
-            <li>*</li>
-        </ul>
-        </div>
+<!--        <div style="margin:0 0 10px 0;"> -->
+<!--         <ul class="nav2"> -->
+<!--             <li>추천순</li> -->
+<!--             <li>가까운순</li> -->
+<!--             <li>찜많은순</li> -->
+<!--             <li>*</li> -->
+<!--             <li>*</li> -->
+<!--         </ul> -->
+<!--         </div> -->
     </nav>
       				
   	<section>
   	<article class="">	
-    	<table style="margin-top: 10px; width:100%; " class="cate_tbl2"> 
+    	<table style="margin-top: -20px; width:100%; " class="cate_tbl2"> 
            <colgroup>
                <col width="20%"/>
                <col width="30%"/>

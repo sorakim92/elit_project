@@ -113,6 +113,7 @@ body {
 
 <body>
 <div class="wrapper">   
+
   <header class="width:100%; height:50px;">
        <%@include file = "../include/main_header.jsp" %>
   </header>

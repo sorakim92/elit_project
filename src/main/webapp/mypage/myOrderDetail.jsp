@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지-주문내역</title>
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=xbgymw4piz&callback=initMap&submodules=geocoder"></script>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=&callback=initMap&submodules=geocoder"></script>
 
    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
@@ -139,7 +139,7 @@ function initMap() {
 		}
 		
 		var marker = new naver.maps.Marker({
-	        position: new naver.maps.LatLng(37.3595704, 127.105399),
+	        position: new naver.maps.LatLng(${vo.storelatitude}, ${vo.storelongitude}),
 	        map: map
 	    });
 		
