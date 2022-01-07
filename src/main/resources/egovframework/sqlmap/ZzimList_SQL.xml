@@ -26,21 +26,20 @@
 	</insert>
 	
 	<select id="zzimlistDAO.selectZzimList" resultClass="egovMap">
-		SELECT b.* FROM (
-			SELECT rownum rn, a.* FROM (
+	
+		
 			
-					SELECT 		zzimindex,
-						 		to_char(rdate,'yyyy/mm/dd')rdate,
-						 		userid,
-						 		storeunq,						 		
-						 		likechk,
-						 		cateunq 
-					FROM
-										ZzimList
-								ORDER BY
-										zzimindex DESC ) a ) b
-			WHERE
-						rn BETWEEN '$s_no$' AND '$e_no$'
+			select  zzimlist.ZZIMINDEX,
+			        zzimlist.RDATE,
+			        zzimlist.USERID,
+			        zzimlist.STOREUNQ,
+			        zzimlist.LIKECHK,
+			        zzimlist.CATEUNQ,  
+			        STORENAME,
+			        STOREINFO
+			from zzimlist    join store on zzimlist.storeunq = store.storeunq
+			
+			where    zzimlist.userid = #userid# and zzimlist.likechk = 'L'
 		
 	</select>
 	

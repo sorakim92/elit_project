@@ -113,6 +113,7 @@ $(function(){
         <div style="width:100%; float:left; margin-top:20px; font-size:16px;">
             <table style="width:100%;" class="table table-hover">
                 <colgroup>
+                	<%-- <col width="10%" /> --%>
                     <col width="*" />
                     <col width="20%" />
                     <col width="10%" />
@@ -120,6 +121,7 @@ $(function(){
                   
                 </colgroup>
                  <tr>
+                <!--  	<td>가게이름</td> -->
                     <td>Review</td>
                     <td>아이디</td>                    
                     <td>등록일</td>
@@ -127,6 +129,8 @@ $(function(){
                 
                 <c:forEach var="result" items="${list }"> 
                 <tr>
+                
+                	<%-- <td>${result.storename }</td> --%>
                     <td>
                     	<a href="OrderReviewDetail.do?reviewindex=${result.reviewindex }">${result.rcontent }
                     </a></td>

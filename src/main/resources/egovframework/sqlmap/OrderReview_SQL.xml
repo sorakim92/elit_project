@@ -7,7 +7,8 @@
 	<typeAlias  alias="orderreviewVO" type="egov.service1.OrderReviewVO"/>
 	
 	<insert id="orderreviewDAO.insertBoard">
-	<![CDATA[
+				
+	
 		INSERT INTO orderreview (	reviewindex,
 									storeunq,
 									rate,
@@ -23,9 +24,9 @@
 									'$rcontent$',
 									'$rimage$',
 									sysdate,
-									'test1',
+									'$userid$',
 									'$oderindex$' )
-	]]>
+	
 	</insert>	
  	
 	<select id="orderreviewDAO.selectBoardList" resultClass="egovMap">
@@ -42,7 +43,7 @@
 								userid,
 								oderindex 
 					FROM
-										OrderReview
+										OrderReview where userid = #userid#
 								ORDER BY
 										reviewindex DESC ) a ) b
 			WHERE
@@ -92,7 +93,7 @@
 	</delete>
 	
 	<select id="orderreviewDAO.selectBoardTotal" resultClass="java.lang.Integer">
-		SELECT COUNT(*) FROM orderreview
+		SELECT COUNT(*) FROM orderreview where userid = #userid#
 
 	</select>
 	

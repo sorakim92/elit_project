@@ -1,5 +1,7 @@
 package egov.service1;
 
+import java.util.List;
+
 public interface MemberService {
 	
 	//회원가입 처리
@@ -51,5 +53,8 @@ public interface MemberService {
 	 * 메인에서 주소 검색시 배달주소 설정 (소라) 
 	 */
 	public int mainPageDeliveryAddr(MemberVO vo) throws Exception;
-
+	
+	
+	
+	
 }

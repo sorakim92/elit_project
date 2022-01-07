@@ -95,6 +95,7 @@ body {
     text-align: center;
 }
 
+
 .footer {
 	margin-left: 220px;
 	width:1000px;
@@ -102,6 +103,10 @@ body {
 	background-color:#eeeeee;
  
     clear:both;
+}
+
+.to {
+	text-align: left;
 }
 
 </style>
@@ -127,10 +132,12 @@ body {
 		</div>
 		
         <div class="board_list_wrap">
+        
             <div class="board_list">
+            <div class="To">Total:${total }</div>
                 <div class="top"> 
                     <div class=num>번호</div>
-                    <!-- <div>분류</div> -->
+                    <!-- <div>분류</div> -->                    
                     <div class="title">제목</div>
                     <div class="writer">글쓴이</div>
                     <div class="date">작성일</div>
@@ -146,6 +153,9 @@ body {
                     <div class="count">${result.hits }</div>
                   </c:forEach>
                 
+                 <c:if var= "result" test="${total == 0 }">
+                 <div>등록된 내용이 없습니다.</div>
+                 </c:if>
                 </div>
                 
             </div>
