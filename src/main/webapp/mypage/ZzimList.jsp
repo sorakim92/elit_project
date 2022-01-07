@@ -63,6 +63,13 @@ body {
   margin-top: 10px;
   border-bottom: 2px solid #ccc;
 }
+
+.navbar_menu {
+    display: flex;
+    list-style: none;
+    border-bottom: 2px solid #ccc;
+    padding-left: 0;
+}
 </style>
 
 <body>
