@@ -77,11 +77,14 @@ public class MenuController {
 		
 		return msg;
 	}
+	
 	@RequestMapping(value = "/uploadModifySave.do")
 	@ResponseBody
 	public String uploadModifySave (
 	                           final MultipartHttpServletRequest multiRequest,
 	                           HttpServletResponse response, MenuVO vo) throws Exception {
+      
+      String oldname = vo.getMenuimage();
 
 	  Map<String, String> map = new HashMap<String, String>();
 	  Map<String, MultipartFile> files = multiRequest.getFileMap();
@@ -96,24 +99,24 @@ public class MenuController {
 	      String originalFilename = file.getOriginalFilename();
 	      
 		  System.out.println("파일이름 ::::: " + file.getOriginalFilename());
+		 
 		  uploadPath = uploadPath + "\\" + originalFilename;
 		  file.transferTo(new File(uploadPath));
 		  
+		  if(oldname != null && !oldname.equals("")) {
+			  File ff = new File(uploadPath + "\\" + oldname);
+			  ff.delete();
+		  }
 		  vo.setFilename(originalFilename);
 	  }
-	  
-	  
-	  
+	    
 	  String msg = "ok";
 	  int result = menuService.updateMenu(vo);
 		
-	
-	  
-
 	  return "ok";
 
 	}
-
+	
 	@RequestMapping("menuDelete.do")
 	@ResponseBody
 	public String deleteMenu(MenuVO vo) throws Exception {
