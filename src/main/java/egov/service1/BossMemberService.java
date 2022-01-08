@@ -26,5 +26,10 @@ public interface BossMemberService {
 	BossMemberVO selectBossMemberInfo2(MemberVO vo) throws Exception;
 
 	int deleteBossMember(BossMemberVO bvo) throws Exception;
+
+	//화면 출력 개수 출력(강)
+	int selectcountB(BossMemberVO vo) throws Exception;
+	//사업자 총 데이터 개수 구하기(강)
+	int selectBossTotal(BossMemberVO vo) throws Exception;
 	
 }

@@ -47,6 +47,14 @@ public class BossMemberDAO extends EgovAbstractDAO {
 		return (int) delete("bossmemberDAO.deleteBossMember",bvo);
 	}
 
+	public int selectcountB(BossMemberVO vo) {
+		return (int) select("bossmemberDAO.selectcountB",vo);
+	}
+
+	public int selectBossTotal(BossMemberVO vo) {
+		return (int) select("bossmemberDAO.selectBossTotal",vo);
+	}
+
 	
 	
 }

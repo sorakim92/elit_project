@@ -139,7 +139,7 @@
             	<div class="container" >
             		<c:forEach var="resultC" items="${listC }">
 						<div class="alert alert-warning alert-dismissible fade in" role="alert">
-					  		<strong>${resultC.username }(${resultC.userid })</strong> 님이 새로운 관리자로 추가되었습니다.
+					  		<strong>${resultC.username }(${resultC.userid })</strong> 님이 새로운 사업자로 추가되었습니다.
 						</div>
 					</c:forEach>
 				</div>

@@ -42,6 +42,7 @@
 						edate,
 						to_char(rdate,'yyyy/mm/dd') rdate,
 						banner,
+						adrejection,
 						DECODE(UPPER(status),'P','대기','N','거절','Y','완료') status,
 						email,
 						phone,
@@ -65,6 +66,7 @@
 						ment,
 						sdate,
 						edate,
+						adrejection,
 						to_char(rdate,'yyyy/mm/dd') rdate,
 						banner,
 						status,
@@ -79,7 +81,7 @@
 	</select>
 
 <!-- 	광고 승인대기 list 개수-->
-	<select id = "adDAO.selectcount" resultClass = "java.lang.Integer">
+	<select id = "adDAO.selectcount" resultClass ="java.lang.Integer">
 	
 		SELECT count(*) from ad where UPPER(status) = 'P'
 	
@@ -107,7 +109,8 @@
 
 	<update id="adDAO.updateAdStatus">
 	UPDATE ad
-			SET status = 'N'
+			SET status = 'N',
+				adrejection=#adrejection#
 			WHERE adindex = #adindex#
 	</update>
 

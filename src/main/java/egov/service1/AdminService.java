@@ -21,6 +21,10 @@ public interface AdminService {
 	List<?> selectEnterStoreList(BusinessEnterVO bvo) throws Exception;
 	//이하동문
 	List<?> selectNewBossList(BossMemberVO cvo) throws Exception;
+//페이징처리(강성모)
+	int selectcountAdmin(AdminVO vo) throws Exception;
+	//페이징처리(강성모)
+	int selectAdminTotal(AdminVO vo) throws Exception;
 
 	
 

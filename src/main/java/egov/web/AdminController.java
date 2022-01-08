@@ -41,10 +41,32 @@ public class AdminController {
 	@RequestMapping("AdminRegister.do")
 	public String selectadmin( AdminVO vo, Model model)
 								throws Exception{
+//		페이징처리
+		int page_no = vo.getPage_no();
+		int page_unit = vo.getPage_unit();
+		int page_size = vo.getPage_size();
+		int s_no = (page_no -1)*page_unit+1;
+		int e_no = s_no+(page_unit-1);
+		vo.setS_no(s_no);
+		vo.setE_no(e_no);
+		int count = adminService.selectcountAdmin(vo);
 		
 		List<?> list = adminService.selectadminService(vo);
-		
+		//페이징처리
+		int total = adminService.selectAdminTotal(vo);
+		int total_page = (int) Math.ceil((double)total/page_unit);
+		int page_sno = ((page_no-1)/page_size)*page_size + 1;
+		int page_eno = page_sno +(page_size-1);
+		if(page_eno > total_page) {
+			page_eno = total_page;
+		}
+		vo.setTotal(total);
+		vo.setTotal(total_page);
+		vo.setPage_sno(page_sno);
+		vo.setPage_eno(page_eno);				
 		model.addAttribute("vo",vo);
+		model.addAttribute("count",count);
+		//요 위에까지 페이징에 필요함 
 		model.addAttribute("list",list);
 		model.addAttribute("ktext",vo.getKtext());
 		
