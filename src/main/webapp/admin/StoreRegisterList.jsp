@@ -212,6 +212,7 @@
               	
               	
               	</c:forEach>
+              </ul>
           
         </div>  
         <div class='panel panel-default'>

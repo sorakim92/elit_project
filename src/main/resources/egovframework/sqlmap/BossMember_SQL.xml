@@ -77,6 +77,10 @@
 				</isNotNull>
 				
 				ORDER BY rdate DESC) a )b
+				
+				WHERE
+				rn between $s_no$ and $e_no$
+				
 	</select>
 	<select id="bossmemberDAO.selectbossmemberDetail" resultClass="BossMemberVO">
 		SELECT 	userid, 

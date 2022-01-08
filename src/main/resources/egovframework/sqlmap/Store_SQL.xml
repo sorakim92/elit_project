@@ -30,7 +30,9 @@
 				WHERE	
 						openindex IS NOT NULL 
 				AND 	UPPER(status)='P'
-				ORDER BY rdate DESC) a )b	
+				ORDER BY rdate DESC) a )b
+				WHERE
+				rn between $s_no$ and $e_no$	
 	</select>
 <!-- 	storeRegister화면 페이징 -->
 	<select id="storeDAO.selectcountRE" resultClass="java.lang.Integer">
