@@ -6,6 +6,20 @@
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="bossmemberVO" type="egov.service1.BossMemberVO"/>
 	
+	<!-- 사업자 신청 토탈 데이터개수 -->
+	<select id="bossmemberDAO.selectBossTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM member WHERE (UPPER(business) = 'P'
+				OR 		UPPER(business) = 'Y')
+	</select>
+	
+	
+	<!-- 	사업자 화면 list 개수-->
+	<select id="bossmemberDAO.selectcountB" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM member WHERE (UPPER(business) = 'P'
+				OR 		UPPER(business) = 'Y')		
+	</select>
+	
+	
 <!-- 	사업자 등록페이지 List (강성모) -->
 	<select id="bossmemberDAO.selectbossmemberService" resultClass = "egovMap">
 		SELECT b.* FROM (

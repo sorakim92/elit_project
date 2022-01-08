@@ -42,6 +42,12 @@ public class AdminDAO extends EgovAbstractDAO{
 	public List<?> selectNewBossList(BossMemberVO cvo) {
 		return list("adminDAO.selectNewBossList",cvo);
 	}
+	public int selectcountAdmin(AdminVO vo) {
+		return (int) select("adminDAO.selectcountAdmin",vo);
+	}
+	public int selectAdminTotal(AdminVO vo) {
+		return (int) select("adminDAO.selectAdminTotal",vo);
+	}
 
 	
 }

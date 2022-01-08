@@ -22,4 +22,8 @@ public interface StoreService {
 
 	int updateBusinessStatus(BusinessEnterVO vo) throws Exception;
 
+	int selectcountRE(BusinessEnterVO bvo) throws Exception;
+
+	int selectTotalRE(BusinessEnterVO bvo) throws Exception;
+
 }

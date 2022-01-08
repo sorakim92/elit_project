@@ -60,6 +60,18 @@ public class AdminImpl implements AdminService{
 	}
 
 
+	@Override
+	public int selectcountAdmin(AdminVO vo) throws Exception {
+		return adminDAO.selectcountAdmin(vo);
+	}
+
+
+	@Override
+	public int selectAdminTotal(AdminVO vo) throws Exception {
+		return adminDAO.selectAdminTotal(vo);
+	}
+
+
 	
 
 }

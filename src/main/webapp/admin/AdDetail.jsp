@@ -220,7 +220,8 @@
                 <br>
                 <div class='form-group'>
                   <label class='control-label'>거절사유 ( 거절 시에만 작성해주세요. ) </label>               
-                  <textarea class='form-control' rows='4'></textarea>
+                  <textarea class='form-control' rows='4' name="adrejection" id="adrejection"
+                  value="${vo.adrejection }"></textarea>
                 </div>
                  <br>
                 <div class='form-group'>

@@ -147,6 +147,15 @@
 				ORDER BY hiredate DESC) a )b	
 	</select>
 	
+<!-- 	관리자 추가페이지 페이징작업  -->
+	<select id="adminDAO.selectcountAdmin" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM emp
+	</select>
+	
+	<select id="adminDAO.selectAdminTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM emp
+	</select>
+	
 	<!-- 관리자 추가 -->
 	<update id ="adminDAO.adminPlus">
 		UPDATE

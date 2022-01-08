@@ -64,6 +64,16 @@ public class BossMemberImpl implements BossMemberService{
 		return bossmemberDAO.deleteBossMember(bvo);
 	}
 
+	@Override
+	public int selectcountB(BossMemberVO vo) throws Exception {
+		return bossmemberDAO.selectcountB(vo);
+	}
+
+	@Override
+	public int selectBossTotal(BossMemberVO vo) throws Exception {
+		return bossmemberDAO.selectBossTotal(vo);
+	}
+
 	
 
 	
