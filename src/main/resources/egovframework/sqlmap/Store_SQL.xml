@@ -28,8 +28,20 @@
 				FROM	
 						businessenter
 				WHERE	
-						openindex IS NOT NULL 
+						openindex IS NOT NULL 																
 				AND 	UPPER(status)='P'
+				
+				<isNotNull property="ktext">
+					<isNotEmpty property="ktext">
+					and (						
+						 region		LIKE '%$ktext$%'
+					OR   storename	LIKE '%$ktext$%'
+					OR   phone		LIKE '%$ktext$%'
+					OR   name		LIKE '%$ktext$%'
+					OR   email		LIKE '%$ktext$%'		
+					)
+					</isNotEmpty>
+				</isNotNull>								
 				ORDER BY rdate DESC) a )b
 				WHERE
 				rn between $s_no$ and $e_no$	

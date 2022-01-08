@@ -3,6 +3,7 @@ package egov.web;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,22 +26,42 @@ public class AdminController {
 	 * 관리자 메인페이지 List(강성모)
 	 *  */
 	@RequestMapping("AdminMain.do")
-	public String selectMainList(AdVO vo,BusinessEnterVO bvo,BossMemberVO cvo, Model model)
+	public String selectMainList(AdVO vo,BusinessEnterVO bvo,BossMemberVO cvo, Model model,HttpSession session)
 											throws Exception{
+		
+		String url="";
+		String ADMIN = (String) session.getAttribute("AdminSessionID");		
+		if(ADMIN == null || ADMIN.trim().equals("")) {
+			url="etc/alert";
+		model.addAttribute("msg","로그인 후 이용해주세요.ㅎㅎ");
+		model.addAttribute("url","memberlogin.do");
+		} else {
+			url="admin/AdminMain";
+		}
+		
 		List<?> list = adminService.selectAdList(vo);
 		List<?> listB = adminService.selectEnterStoreList(bvo); 
 		List<?> listC = adminService.selectNewBossList(cvo); 
 		model.addAttribute("list",list);
 		model.addAttribute("listB",listB);
 		model.addAttribute("listC",listC);
-		return "admin/AdminMain";
+		return url;
 	}
 	/*
 	 * 관리자 추가페이지 (강성모)
 	 * 	*/
 	@RequestMapping("AdminRegister.do")
-	public String selectadmin( AdminVO vo, Model model)
+	public String selectadmin( AdminVO vo, Model model, HttpSession session)
 								throws Exception{
+		String url="";
+		String ADMIN = (String) session.getAttribute("AdminSessionID");		
+		if(ADMIN == null || ADMIN.trim().equals("")) {
+			url="etc/alert";
+		model.addAttribute("msg","로그인 후 이용해주세요.ㅎㅎ");
+		model.addAttribute("url","memberlogin.do");
+		} else {
+			url="admin/AdminRegister";
+		}
 //		페이징처리
 		int page_no = vo.getPage_no();
 		int page_unit = vo.getPage_unit();
@@ -71,7 +92,7 @@ public class AdminController {
 		model.addAttribute("ktext",vo.getKtext());
 		
 		
-		return "admin/AdminRegister";		
+		return url;		
 	}
 
 	/*

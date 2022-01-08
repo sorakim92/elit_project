@@ -23,8 +23,17 @@ public class BossMemberController {
 	 * 사업자추가 페이지 List (강성모)
 	 * 	 */
 	@RequestMapping("BossMemberList.do")
-	public String selectbossmemeberlist( BossMemberVO vo, Model model ) throws Exception{
+	public String selectbossmemeberlist( BossMemberVO vo, Model model,HttpSession session ) throws Exception{
 		
+		String url="";
+		String ADMIN = (String) session.getAttribute("AdminSessionID");		
+		if(ADMIN == null || ADMIN.trim().equals("")) {
+			url="etc/alert";
+		model.addAttribute("msg","로그인 후 이용해주세요.ㅎㅎ");
+		model.addAttribute("url","memberlogin.do");
+		} else {
+			url="admin/BossMemberList";
+		}
 		//(페이징)페이징처리 vo를 먼저쓰고오자
 				//전송된 출력페이지 번호를 받음 . 1.2.3
 			int page_no = vo.getPage_no();	
@@ -79,7 +88,7 @@ public class BossMemberController {
 		model.addAttribute("list",list);
 		model.addAttribute("k2text",vo.getK2text());
 		
-		return "admin/BossMemberList";
+		return url;
 	}
 	
 	
