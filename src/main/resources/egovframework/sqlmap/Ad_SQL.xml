@@ -36,7 +36,7 @@
 			SELECT rownum rn, a.* from (	
 				SELECT  adindex,
 						userid,
-						service,
+						DECODE(UPPER(service),'U','메인상단','L','메인하단') service,
 						ment,
 						sdate,
 						edate,

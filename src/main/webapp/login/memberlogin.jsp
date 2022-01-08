@@ -173,7 +173,7 @@
           </label>
         </div>
         <div style="width:100%; text-align:center;">
-        <button type="button" class="btn btn btn-primary" id="btn_submit" style="width:70%; margin-top:5px;" >
+        <button class="btn btn btn-primary" id="btn_submit" style="width:70%; margin-top:5px;" >
           로그인
         </button>
         <!-- 로그인버튼과 sns로그인 공간 확보용 -->

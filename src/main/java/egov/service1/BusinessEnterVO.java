@@ -16,7 +16,10 @@ public class BusinessEnterVO {
 	private String userid;
 	private String status;
 	private String cateunq;
+	String ktext;
+	
 	//페이징
+	
 	
 			// 행 출력
 			int page_unit = 3;
@@ -41,8 +44,15 @@ public class BusinessEnterVO {
 			
 			//총 페이지 번호
 			int total_page = 0;
+			
+			public String getKtext() {
+				return ktext;
+			}
+			public void setKtext(String ktext) {
+				this.ktext = ktext;
+			}
 	
-	public int getPage_unit() {
+			public int getPage_unit() {
 				return page_unit;
 			}
 			public void setPage_unit(int page_unit) {

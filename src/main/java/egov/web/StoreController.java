@@ -3,6 +3,7 @@ package egov.web;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,8 +25,17 @@ public class StoreController {
 	 * StoreRegister화면 List (강성모)
 	 *	 */
 	@RequestMapping("StoreRegisterList.do")
-	public String selectStoreRegister( BusinessEnterVO vo,BusinessEnterVO bvo, Model model )
+	public String selectStoreRegister( BusinessEnterVO vo,BusinessEnterVO bvo, Model model, HttpSession session )
 												throws Exception{
+		String url="";
+		String ADMIN = (String) session.getAttribute("AdminSessionID");		
+		if(ADMIN == null || ADMIN.trim().equals("")) {
+			url="etc/alert";
+		model.addAttribute("msg","로그인 후 이용해주세요.ㅎㅎ");
+		model.addAttribute("url","memberlogin.do");
+		} else {
+			url="admin/StoreRegisterList";
+		}
 //		페이징처리
 		int page_no = bvo.getPage_no();
 		int page_unit = bvo.getPage_unit();
@@ -56,8 +66,9 @@ public class StoreController {
 		model.addAttribute("bvo",bvo);
 		model.addAttribute("list",list);
 		model.addAttribute("vo",vo);
+		model.addAttribute("ktext",bvo.getKtext());
 		
-		return "admin/StoreRegisterList";
+		return url;
 	}
 	
 	

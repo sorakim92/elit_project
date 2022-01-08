@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Controller;
@@ -29,8 +30,17 @@ public class AdController {
 	 * 광고 페이지  강성모 
 	 * 	 */
 	@RequestMapping("AdList.do")
-	public String selectadlist( AdVO vo, Model model ) 
+	public String selectadlist( AdVO vo, Model model, HttpSession session  ) 
 												throws Exception{
+		String url="";
+		String ADMIN = (String) session.getAttribute("AdminSessionID");		
+		if(ADMIN == null || ADMIN.trim().equals("")) {
+			url="etc/alert";
+		model.addAttribute("msg","로그인 후 이용해주세요.ㅎㅎ");
+		model.addAttribute("url","memberlogin.do");
+		} else {
+			url="admin/AdList";
+		}
 	//(페이징)페이징처리 vo를 먼저쓰고오자
 		//전송된 출력페이지 번호를 받음 . 1.2.3
 	int page_no = vo.getPage_no();	
@@ -85,20 +95,29 @@ public class AdController {
 //	(광고P개수출력)
 	model.addAttribute("count",count);
 	model.addAttribute("list",list);
-		return "admin/AdList";
+		return url;
 	}
 	
 	/*
 	 * 광고승인/거절페이지(강성모)
 	 * 	 */
 	@RequestMapping("AdDetail.do")
-	public String selectadDetail( AdVO vo, Model model)
+	public String selectadDetail( AdVO vo, Model model, HttpSession session)
 													throws Exception{
+		String url="";
+		String ADMIN = (String) session.getAttribute("AdminSessionID");		
+		if(ADMIN == null || ADMIN.trim().equals("")) {
+			url="etc/alert";
+		model.addAttribute("msg","로그인 후 이용해주세요.ㅎㅎ");
+		model.addAttribute("url","memberlogin.do");
+		} else {
+			url="admin/AdDetail";
+		}
 	vo = adService.selectadDetailService(vo);
 		
 	model.addAttribute("vo",vo);
 	
-		return "admin/AdDetail";
+		return url;
 	}
 	
 	

@@ -150,14 +150,24 @@
             <div class='col-md-9'>               
             </div>
             <div class='col-md-3'>
-              <div class='input-group'>
-                <input class='form-control' placeholder='Quick search...' type='text'>
-                <span class='input-group-btn'>
-                  <button class='btn' type='button'>
+            
+            
+              <form name="frm" method="post" action="StoreRegisterList.do">
+                <div class='input-group'>
+                  <input class='form-control' name = "ktext" id="ktext"
+                   value="${ktext }"
+                   placeholder='Quick search...' type='text'>
+                   
+                 <span class='input-group-btn'>
+                  <button class='btn'>
                     <i class='icon-search'></i>
                   </button>
                 </span>
-              </div>              
+              </div> 
+              </form>  
+              
+              
+                         
             </div>
 
             <table class='table'>
