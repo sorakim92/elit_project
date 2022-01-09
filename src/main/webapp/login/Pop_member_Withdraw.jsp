@@ -58,6 +58,7 @@ $(function() {
 				if(data == "ok") {
 					alert("회원탈퇴 성공.");
 					self.close();
+					opener.document.location.reload();
 				} else {
 					alert("회원탈퇴 실패.");
 				}
@@ -98,7 +99,7 @@ $(function() {
                 <input type="text" value="" name="userid" id="userid" placeholder="아이디">
                 </p>
                 <p>비밀번호 입력
-                <input type="text" value="" name="userpw" id="userpw" placeholder="비밀번호">
+                <input type="password" value="" name="userpw" id="userpw" placeholder="비밀번호">
                 </p>
                 <button type="button" id="btn_draw" name="btn_draw">회원탈퇴</button>
         </div>

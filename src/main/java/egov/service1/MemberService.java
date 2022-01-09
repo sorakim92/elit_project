@@ -51,5 +51,8 @@ public interface MemberService {
 	 * 메인에서 주소 검색시 배달주소 설정 (소라) 
 	 */
 	public int mainPageDeliveryAddr(MemberVO vo) throws Exception;
+	
+	//사업자 회원탈퇴 (경석)
+	public int deleteBossMember(MemberVO vo) throws Exception;
 
 }
