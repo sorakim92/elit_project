@@ -104,7 +104,7 @@ body {
 <section>
     <div class="board_wrap">
         <div class="board_title">
-            <strong>Review 관리</strong>
+            <strong>Review 등록</strong>
             
         </div>
         

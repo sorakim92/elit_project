@@ -77,9 +77,8 @@ section {
     padding-left: 0;
 }
 
-
-
 </style>
+
 <script>
 
 $(function(){
@@ -116,6 +115,7 @@ $(function(){
         </div>
 		         
         <div style="width:100%; float:left; margin-top:20px; font-size:16px;">
+        <div style="text-align:left">Total:${total }</div>
             <table style="width:100%;" class="table table-hover">
                 <colgroup>
                 	<%-- <col width="10%" /> --%>
@@ -142,8 +142,11 @@ $(function(){
                     <td>${result.userid }</td> 
                     <td>${result.rdate }</td> 
                 </tr>
-                </c:forEach> 
+                </c:forEach>              
             </table>
+             <c:if var= "result" test="${total == 0 }">
+					<div>등록된 내용이 없습니다.</div>
+			</c:if> 
           
         </div>
     </section>
