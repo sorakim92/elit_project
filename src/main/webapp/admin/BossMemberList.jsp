@@ -202,7 +202,6 @@
                 <th>User ID</th>
                 <th>Name</th>
                 <th>Number</th>
-                <th>Loc / Store</th>
                 <th>E-mail</th>
                 <th class='actions'>
                   Actions
@@ -216,8 +215,7 @@
                 <td>${result.business }</td>
                 <td>${result.userid }</td> 
                 <td>${result.username}</td> 
-               <td>${result.userphone }</td> 
-                <td>[하남]네네치킨</td>
+               <td>${result.userphone }</td>                 
                 <td>${result.email }</td>
                 <td class='action'>
                   <a class='btn btn-success' data-toggle='tooltip' title='사업자등록'
