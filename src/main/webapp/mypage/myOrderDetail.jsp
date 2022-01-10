@@ -97,8 +97,8 @@ var HOME_PATH = window.HOME_PATH || '.';
 
 function initMap() {
     map = new naver.maps.Map('map', {
-    center: new naver.maps.LatLng(37.3595316, 127.1052133),
-	zoom: 10
+    center: new naver.maps.LatLng(${vo.storelatitude}, ${vo.storelongitude}),
+	zoom: 16
     });
 	var address = $("#address").val();
 	var infoWindow = new naver.maps.InfoWindow({
@@ -185,7 +185,7 @@ function initMap() {
 
 </script>
 <body>
-<input type="text" id="address" name="addr" value="${vo.addr }">
+<input type="hidden" id="address" name="addr" value="${vo.addr }">
 <div class="pop_wrapper">
      <div class="pop_title">
          주문상세보기

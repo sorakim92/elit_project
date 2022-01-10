@@ -18,12 +18,11 @@
     
     <!-- 주소 api -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <!-- naver map api -->
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=xbgymw4piz&submodules=geocoder"></script>
     
-    <!-- 카카오맵 api -->
-    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca0677edae05b7ec94acd37b20938aa7"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca0677edae05b7ec94acd37b20938aa7&libraries=services"></script>
  
- 
+ 	<!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     <!--  	부트스트랩 -->
@@ -170,52 +169,7 @@ $(function(){
 })
 
 </script>
-<script>
 
-$(function(){
-	
-	$("#current_loc").click(function(){
-		
-	
-		
-		var lat;
-		var lon;
-		// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
-		if (navigator.geolocation) {
-		   
-		    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-		    navigator.geolocation.getCurrentPosition(function(position) {
-		        
-		        var lat = position.coords.latitude, // 위도
-		            lon = position.coords.longitude; // 경도
-		       
-		      
-		      });
-		    
-		} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-			 alert("GPS_추적이 불가합니다.");
-
-		}
-		// 주소-좌표 변환 객체를 생성합니다
-		var geocoder = new kakao.maps.services.Geocoder();
-
-		var coord = new kakao.maps.LatLng(lat, lon);
-		var callback = function(result, status) {
-			 if (status === kakao.maps.services.Status.OK) {
-				 console.log("fsdflkj"+ result[0].address.address_name );
-			 }
-			
-		};
-		geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
-		
-	});
-	
-	
-
-	   
-});
-
-</script>
 <script>
     function sample6_execDaumPostcode() {
         new daum.Postcode({
@@ -350,6 +304,64 @@ $(document).ready(function() {
     }
 });
 </script>
+
+<script>
+var map = null;
+var HOME_PATH = window.HOME_PATH || '.';
+
+
+    map = new naver.maps.Map('map', {
+    center: new naver.maps.LatLng(37.3595316, 127.1052133),
+	zoom: 10
+    });
+	var address = $("#address").val();
+	var infoWindow = new naver.maps.InfoWindow({
+		  anchorSkew: true
+		});
+
+		map.setCursor('pointer');
+
+	
+
+		function searchAddressToCoordinate(address) {
+		  naver.maps.Service.geocode({
+		    query: address
+		  }, function(status, response) {
+		    if (status === naver.maps.Service.Status.ERROR) {
+		      if (!address) {
+		        return alert('Geocode Error, Please check address');
+		      }
+		      return alert('Geocode Error, address:' + address);
+		    }
+
+		    if (response.v2.meta.totalCount === 0) {
+		      return alert('No result.');
+		    }
+
+		    var htmlAddresses = [],
+		      item = response.v2.addresses[0],
+		      point = new naver.maps.Point(item.x, item.y);
+		    
+		    var marker = new naver.maps.Marker({
+		        position: new naver.maps.LatLng(item.x, item.y),
+		        map: map
+		    });
+		    
+		    map.setCenter(point);
+		    infoWindow.open(map, point);
+		  });
+		}
+		
+		var marker = new naver.maps.Marker({
+	        position: new naver.maps.LatLng(${pvo.storelatitude}, ${pvo.storelongitude}),
+	        map: map
+	    });
+		
+
+
+
+</script>
+
 
 <body>
 <div class="wrapper">
@@ -501,7 +513,9 @@ $(document).ready(function() {
   <c:forEach var="result" items="${plist }">
 
     <article class="article2">
-        <img src="" width="300px" height="300px" style="float:left; line-height:290px;" alt="배달상황지도API">
+        <div id="map"  style="width:300px;height:300px; float:left">
+        		
+        		 </div>
         <div class="order_detail">
             <table 	class="table table-hover" 
             		style="width:65%; float:right; margin-top:30px;">

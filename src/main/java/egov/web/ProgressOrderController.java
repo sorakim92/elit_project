@@ -48,7 +48,7 @@ public class ProgressOrderController {
 	@ResponseBody
 	public String updateProgressOrder(ProgressOrderVO vo)
 											throws Exception {
-		
+	
 		int result = progressorderService.updateProgressOrder(vo);
 		System.out.println(result);
 		

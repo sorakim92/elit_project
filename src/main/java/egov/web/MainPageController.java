@@ -1,3 +1,4 @@
+
 package egov.web;
 
 import java.io.BufferedReader;
@@ -75,9 +76,19 @@ public class MainPageController {
 		String userid = (String) session.getAttribute("SessionUserID");
 		//System.out.println("===========아이디!!!"+userid);
 		
+	
+		
 		if(userid != null ) {
+	
+			
 			List<?> plist = progressorderService.selectMainProOrder(userid);
+			pvo.setUserid(userid);
+			int orderindex = pvo.getOrderindex();
+			pvo = progressorderService.selectMyorderDetail(pvo);
+			model.addAttribute("pvo",pvo);
 			model.addAttribute("plist",plist);
+
+			
 		}
 		
 		
@@ -92,6 +103,9 @@ public class MainPageController {
 		
 		List<?> flist = nboardService.selectFAQList(vo);
 
+		
+		
+		
 		
 		model.addAttribute("blist",blist);
 		model.addAttribute("list",list);
