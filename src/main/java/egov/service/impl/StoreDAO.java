@@ -30,5 +30,21 @@ public class StoreDAO extends EgovAbstractDAO{
 	public int selectsavecnt(StoreVO vo) {
 		return (int) select("storeDAO.selectsavecnt",vo);
 	}
+
+	public int updateStoreStatus(BusinessEnterVO bvo) {
+		return (int) update("storeDAO.updateStoreStatus",bvo);
+	}
+
+	public int updateBusinessStatus(BusinessEnterVO vo) {
+		return (int) update("storeDAO.updateBusinessStatus",vo);
+	}
+
+	public int selectcountRE(BusinessEnterVO bvo) {
+		return (int) select("storeDAO.selectcountRE",bvo);
+	}
+
+	public int selectTotalRE(BusinessEnterVO bvo) {
+		return (int) select("storeDAO.selectTotalRE",bvo);
+	}
 	
 }

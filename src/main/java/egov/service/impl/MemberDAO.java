@@ -1,5 +1,7 @@
 package egov.service.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import egov.service1.MemberVO;
@@ -64,9 +66,11 @@ public class MemberDAO extends EgovAbstractDAO{
 	public int mainPageDeliveryAddr(MemberVO vo) {
 		return (int) update("memberDAO.mainPageDeliveryAddr",vo);
 	}
+
 	public int deleteBossMember(MemberVO vo) {
 		return delete("memberDAO.deleteBossMember",vo);
 	}
+
 
 	
 	

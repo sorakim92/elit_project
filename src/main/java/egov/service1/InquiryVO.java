@@ -8,7 +8,7 @@ public class InquiryVO {
 	private int hits;
 	private String rdate;
 	private int inquiryindex;
-	private String userid = "test1";
+	private String userid = "";
 	
 	int rn = 1;	
 	

@@ -104,11 +104,12 @@ body {
 <section>
     <div class="board_wrap">
         <div class="board_title">
-            <strong>Review 관리</strong>
+            <strong>Review 등록</strong>
             
         </div>
         
         <form name="frm" id="frm">
+        <input type="hidden" name="userid" id="userid" value="">
         <div class="board_write_wrap">
             <div class="board_write">
                 <div class="info">         
@@ -127,7 +128,7 @@ body {
             </div>
             
             <div class="bt_wrap">
-                <a href="" id="btn_save"> 등록 </a>
+                <a href="OrderReviewList.do" id="btn_save"> 등록 </a>
                 <a href="OrderReviewList.do">취소</a> 
             </div>
             </div>

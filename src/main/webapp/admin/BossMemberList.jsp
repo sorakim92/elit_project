@@ -202,7 +202,6 @@
                 <th>User ID</th>
                 <th>Name</th>
                 <th>Number</th>
-                <th>Loc / Store</th>
                 <th>E-mail</th>
                 <th class='actions'>
                   Actions
@@ -216,8 +215,7 @@
                 <td>${result.business }</td>
                 <td>${result.userid }</td> 
                 <td>${result.username}</td> 
-               <td>${result.userphone }</td> 
-                <td>[하남]네네치킨</td>
+               <td>${result.userphone }</td>                 
                 <td>${result.email }</td>
                 <td class='action'>
                   <a class='btn btn-success' data-toggle='tooltip' title='사업자등록'
@@ -242,40 +240,21 @@
           	<input type="hidden" id ="userid" name ="userid">          
           </form>
           
-          <div class='panel-footer' style="text-align:center;">
+          <div style="text-align:center;" >
             <ul class='pagination pagination-sm'>
-              <li>
-                <a href='#'>«</a>
-              </li>
-              <li class='active'>
-                <a href='#'>1</a>
-              </li>
-              <li>
-                <a href='#'>2</a>
-              </li>
-              <li>
-                <a href='#'>3</a>
-              </li>
-              <li>
-                <a href='#'>4</a>
-              </li>
-              <li>
-                <a href='#'>5</a>
-              </li>
-              <li>
-                <a href='#'>6</a>
-              </li>
-              <li>
-                <a href='#'>7</a>
-              </li>
-              <li>
-                <a href='#'>8</a>
-              </li>
-              <li>
-                <a href='#'>»</a>
-              </li>
+            
+              	<c:forEach var = "i" begin = "${vo.page_sno }" end = "${vo.page_eno }">
+              		<li>
+              			<a href = 'BossMemberList.do?page_no=${i }'>${i }</a>
+              		</li>
+              	
+              	
+              	</c:forEach>
+              
+          
+              
             </ul>
-           
+            
           </div>
         </div>
         

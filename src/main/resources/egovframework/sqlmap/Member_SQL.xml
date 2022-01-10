@@ -142,10 +142,11 @@
 	<delete id="memberDAO.deletememberuser">
 		DELETE FROM member WHERE userid = '$userid$' AND userpw = '$userpw$'
 	</delete>
-	
+
 	<!-- 사업자 회원탈퇴(경석) -->
 	<delete id="memberDAO.deleteBossMember">
 		DELETE FROM bossmember 
 			WHERE userid='$userid$' AND userpw ='$userpw$' AND UPPER(business)='Y'
 	</delete>
+
 </sqlMap>

@@ -18,4 +18,12 @@ public interface StoreService {
 
 	int selectsavecnt(StoreVO vo) throws Exception;
 
+	int updateStoreStatus(BusinessEnterVO bvo) throws Exception;
+
+	int updateBusinessStatus(BusinessEnterVO vo) throws Exception;
+
+	int selectcountRE(BusinessEnterVO bvo) throws Exception;
+
+	int selectTotalRE(BusinessEnterVO bvo) throws Exception;
+
 }

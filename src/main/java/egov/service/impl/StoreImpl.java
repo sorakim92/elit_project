@@ -43,4 +43,28 @@ public class StoreImpl implements StoreService{
 	public int selectsavecnt(StoreVO vo) throws Exception {
 		return storeDAO.selectsavecnt(vo);
 	}
+
+
+	@Override
+	public int updateStoreStatus(BusinessEnterVO bvo) throws Exception {
+		return storeDAO.updateStoreStatus(bvo);
+	}
+
+
+	@Override
+	public int updateBusinessStatus(BusinessEnterVO vo) throws Exception {
+		return storeDAO.updateBusinessStatus(vo);
+	}
+
+
+	@Override
+	public int selectcountRE(BusinessEnterVO bvo) throws Exception {
+		return storeDAO.selectcountRE(bvo);
+	}
+
+
+	@Override
+	public int selectTotalRE(BusinessEnterVO bvo) throws Exception {
+		return storeDAO.selectTotalRE(bvo);
+	}
 }

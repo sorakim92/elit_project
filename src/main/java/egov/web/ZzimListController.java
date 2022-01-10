@@ -21,7 +21,10 @@ public class ZzimListController {
 		
 	// 찜 리스트(상혁)
 	@RequestMapping("ZzimList.do")
-	public String selectZzimList(ZzimListVO vo, Model model ) throws Exception {
+	public String selectZzimList(ZzimListVO vo, Model model, HttpSession session ) throws Exception {
+		
+		String userid = (String) session.getAttribute("SessionUserID");				
+		vo.setUserid(userid);
 		
 		List<?> list = zzimlistService.selectZzimList(vo);
 		/* int total = zzimlistService.selectZzimListTotal(vo); */

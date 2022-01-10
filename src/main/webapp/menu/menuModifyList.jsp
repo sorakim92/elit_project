@@ -189,7 +189,7 @@ $(function(){
         </div>
     </nav>
         
-    <form name="frm" id="frm" action="MenuList.do" > 
+    <form name="frm" id="frm" action="MenuList.do"  > 
      <section>
         <div style="text-align:left;" >
             <font size="5">메뉴관리</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -225,7 +225,7 @@ $(function(){
         <c:forEach  var="result" items="${list }">
 	  		<tr>
 	  			<td>${result.menuunq }</td>
-	  			<td><img src="<c:url value='/upload/menu/${result.menuimage }'/>" width="100px" height="120px" alt="로고"/></td>
+	  			<td><img src="<c:url value='/upload/menu/${result.menuimage }'/>" width="150px" height="100px" alt=""/></td>
 	  			<td><a href="menuModify.do?menuunq=${result.menuunq }">${result.menuname }
                     </a></td>
 	  			<td>${result.price }</td>

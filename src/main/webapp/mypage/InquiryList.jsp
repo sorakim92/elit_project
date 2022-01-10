@@ -95,19 +95,25 @@ body {
     text-align: center;
 }
 
-.footer {
-	margin-left: 220px;
-	width:1000px;
-    height:auto;
-	background-color:#eeeeee;
- 
-    clear:both;
+.navbar_menu {
+    display: flex;
+    list-style: none;   
+    padding-left: 0;
 }
+
+.footer {
+    width: 1000px;
+    height: auto;
+    background-color: #eeeeee;
+    clear: both;
+}
+
 
 </style>
 
 <body>
 <div class="wrapper">   
+<div class="main">
   <header class="width:100%; height:50px;">
        <%@include file = "../include/main_header.jsp" %>
   </header>
@@ -118,7 +124,7 @@ body {
            <%@include file = "../include/topmenu.jsp" %>
        </div>
 </nav>
-<section>
+<section class="content">
     <div class="board_wrap">
         <div class="board_title">
             <strong>문의목록</strong>
@@ -126,10 +132,12 @@ body {
 		</div>
 		
         <div class="board_list_wrap">
+        
             <div class="board_list">
+            <div style="text-align:left">Total:${total }</div>
                 <div class="top"> 
                     <div class=num>번호</div>
-                    <!-- <div>분류</div> -->
+                    <!-- <div>분류</div> -->                    
                     <div class="title">제목</div>
                     <div class="writer">글쓴이</div>
                     <div class="date">작성일</div>
@@ -145,6 +153,9 @@ body {
                     <div class="count">${result.hits }</div>
                   </c:forEach>
                 
+                 <c:if var= "result" test="${total == 0 }">
+                 <div>등록된 내용이 없습니다.</div>
+                 </c:if>
                 </div>
                 
             </div>
@@ -169,8 +180,8 @@ body {
             </a>
           </li>
           <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <!-- <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li> -->
           <li class="page-item">
             <a class="page-link" href="#" aria-label="Next">
               <span aria-hidden="true">&raquo;</span>
@@ -185,6 +196,7 @@ body {
     <footer>
           <%@include file = "../include/main_footer.jsp" %>
     </footer>
+    </div>
    
 </body>
 	

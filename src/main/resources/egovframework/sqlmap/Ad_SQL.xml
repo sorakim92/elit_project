@@ -36,16 +36,17 @@
 			SELECT rownum rn, a.* from (	
 				SELECT  adindex,
 						userid,
-						service,
+						DECODE(UPPER(service),'U','메인상단','L','메인하단') service,
 						ment,
 						sdate,
 						edate,
 						to_char(rdate,'yyyy/mm/dd') rdate,
 						banner,
-						DECODE(status,'P','대기','N','거절','Y','완료') status,
+						adrejection,
+						DECODE(UPPER(status),'P','대기','N','거절','Y','완료') status,
 						email,
 						phone,
-						name				
+						name					
 				FROM	
 						ad
 				WHERE	
@@ -65,6 +66,7 @@
 						ment,
 						sdate,
 						edate,
+						adrejection,
 						to_char(rdate,'yyyy/mm/dd') rdate,
 						banner,
 						status,
@@ -79,9 +81,9 @@
 	</select>
 
 <!-- 	광고 승인대기 list 개수-->
-	<select id = "adDAO.selectcount" resultClass = "java.lang.Integer">
+	<select id = "adDAO.selectcount" resultClass ="java.lang.Integer">
 	
-		SELECT count(*) from ad where status = 'P'
+		SELECT count(*) from ad where UPPER(status) = 'P'
 	
 	
 	</select>
@@ -94,7 +96,7 @@
 <!--  광고 배너 상단 불러오기 (소라)  -->
 	<select id="adDAO.selectAdBanner" resultClass="egovMap">
 		select banner, status, service, adindex,sdate, edate from ad 
-		where upper(service)='U' and upper(status) ='Y'
+		where banner is not null and upper(status) ='Y'
 	</select>
 
 
@@ -105,7 +107,11 @@
 				WHERE adindex = #adindex#
 	</update>
 
-
-	
+	<update id="adDAO.updateAdStatus">
+	UPDATE ad
+			SET status = 'N',
+				adrejection=#adrejection#
+			WHERE adindex = #adindex#
+	</update>
 
 </sqlMap>

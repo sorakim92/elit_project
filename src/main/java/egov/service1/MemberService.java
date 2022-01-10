@@ -1,5 +1,7 @@
 package egov.service1;
 
+import java.util.List;
+
 public interface MemberService {
 	
 	//회원가입 처리
@@ -52,7 +54,9 @@ public interface MemberService {
 	 */
 	public int mainPageDeliveryAddr(MemberVO vo) throws Exception;
 	
+
 	//사업자 회원탈퇴 (경석)
 	public int deleteBossMember(MemberVO vo) throws Exception;
+
 
 }

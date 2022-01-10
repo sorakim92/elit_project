@@ -17,6 +17,10 @@ public class OrderReviewImpl implements OrderReviewService{
 	
 	@Override
 	public String insertBoard(OrderReviewVO vo) throws Exception {
+		
+		
+		
+		/* System.out.print("222222222222"); */
 		return orderreviewDAO.insertBoard(vo);
 	}	
 
@@ -35,7 +39,7 @@ public class OrderReviewImpl implements OrderReviewService{
 		return orderreviewDAO.updateBoard(vo);
 	}
 
-	@Override
+	@Override 
 	public int deleteBoard(OrderReviewVO vo) throws Exception {
 		return orderreviewDAO.deleteBoard(vo);
 	}

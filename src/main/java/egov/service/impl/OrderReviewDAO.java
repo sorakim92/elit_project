@@ -11,6 +11,9 @@ import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
 public class OrderReviewDAO extends EgovAbstractDAO{
 	
 	public String insertBoard(OrderReviewVO vo) {
+		
+		/* System.out.print("333333333333333"); */
+		
 		return (String) insert("orderreviewDAO.insertBoard",vo);
 	}	
 

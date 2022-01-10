@@ -55,6 +55,13 @@ body {
     padding-left: 100px;
     height: 100%;
 }
+
+.navbar_menu {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+
 </style>
 
 <body>
@@ -71,32 +78,48 @@ body {
 				</div>
 			</nav>
 			<section class="content">
-
+				<div style="width:100%; height:auto; padding:10px;">
+            <div style="width:50%; text-align: left; 
+                        font-family: jua; float:left;">
+                찜 게시판
+            </div>          
+        </div>
 				<!--메뉴-->
-				<div style="width: 100%;">
+				<div style="width: 100%; line-height: 2.0;">
+				
 					<table
-						style="width: 100%; text-align: left; border-bottom: 2px solid #ccc">
+						style="width: 100%; margin-top: 30px; text-align: center; border-bottom: 2px solid #ccc">
 						<colgroup>
+							<%-- <col width="30%" /> --%>
+							<col width="20%" />
 							<col width="30%" />
 							<col width="*" />
 						</colgroup>
 
 						<tr>
-							<td>찜 리스트</td>
+							<!-- <td>가게이미지</td> -->
+							<td>List</td>							
+							<td>가게이름</td>
+							<td>음식종류</td>
+							
 
 
 						</tr>
 
 						<c:forEach var="result" items="${list }">
 							<tr>
-
-								<td>${result.zzimindex }</td>
-								<td>${result.storeunq }</td>
+								<%-- <td>${result.storeimage }</td> --%>								
+								<td>${result.zzimindex }</td>								
+								<td>${result.storename  }</td>
+								<td>${result.storeinfo }</td>
 
 							</tr>
 						</c:forEach>
-
+						<c:if var= "result" test="${total == 0 }">
+							<div>등록된 하트가 없습니다.</div>
+						</c:if>
 					</table>
+					
 				</div>
 			</section>
 			<footer>

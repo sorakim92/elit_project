@@ -1,5 +1,7 @@
 package egov.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -85,6 +87,7 @@ public class MemberImpl implements MemberService{
 	public int mainPageDeliveryAddr(MemberVO vo) throws Exception {
 		return memberDAO.mainPageDeliveryAddr(vo);
 	}
+
 	//회원탈퇴 사업자용
 	@Override
 	public int deleteBossMember(MemberVO vo) throws Exception {

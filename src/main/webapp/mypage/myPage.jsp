@@ -58,8 +58,7 @@ body {
 }    
 .navbar_menu {
   display: flex;
-  list-style: none;
-  border-bottom: 2px solid #ccc;
+  list-style: none;  
   padding-left: 0;
 }
 .navbar_menu li {

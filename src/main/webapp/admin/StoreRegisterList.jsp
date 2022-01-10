@@ -38,8 +38,10 @@
     					alert("입점 승인완료");
     				} else if(data.aaaa=="er1"){
     					alert("이미 등록된 점포입니다.");
-    				} else{
-    					alert("승인 실패");
+    				} else if(data.aaaa=="er3"){
+    					alert("점포 추가실패.");
+    				} else if(data.aaaa=="er2"){
+    					alert("입점문의 status 변경에러")
     				}
     			},
     			error : function(){
@@ -51,6 +53,29 @@
     	
     })
     
+    
+    $(function(){
+		$("#btn_Reject").click(function(){
+		var formdata = $(frm2).serialize();
+		
+			$.ajax({
+				type : "post",
+				data : formdata,
+				url  : "StoreReject.do",
+				datatype : "json",
+				success  : function(data){
+					if(data.aaaa=="ok"){
+						alert("거절완료");
+					} else{
+						alert("승인실패!");
+					}
+				},
+				error : function(){
+					alert("전송오류~");
+				}
+			})
+		})
+	})
     
     
     </script>
@@ -125,14 +150,24 @@
             <div class='col-md-9'>               
             </div>
             <div class='col-md-3'>
-              <div class='input-group'>
-                <input class='form-control' placeholder='Quick search...' type='text'>
-                <span class='input-group-btn'>
-                  <button class='btn' type='button'>
+            
+            
+              <form name="frm" method="post" action="StoreRegisterList.do">
+                <div class='input-group'>
+                  <input class='form-control' name = "ktext" id="ktext"
+                   value="${ktext }"
+                   placeholder='Quick search...' type='text'>
+                   
+                 <span class='input-group-btn'>
+                  <button class='btn'>
                     <i class='icon-search'></i>
                   </button>
                 </span>
-              </div>              
+              </div> 
+              </form>  
+              
+              
+                         
             </div>
 
             <table class='table'>
@@ -176,42 +211,19 @@
             </table>
           </div>
 
-
+		<!--           페이징처리 -->
           <div style="text-align:center;" >
             <ul class='pagination pagination-sm'>
-              <li>
-                <a href='#'>«</a>
-              </li>
-              <li class='active'>
-                <a href='#'>1</a>
-              </li>
-              <li>
-                <a href='#'>2</a>
-              </li>
-              <li>
-                <a href='#'>3</a>
-              </li>
-              <li>
-                <a href='#'>4</a>
-              </li>
-              <li>
-                <a href='#'>5</a>
-              </li>
-              <li>
-                <a href='#'>6</a>
-              </li>
-              <li>
-                <a href='#'>7</a>
-              </li>
-              <li>
-                <a href='#'>8</a>
-              </li>
-              <li>
-                <a href='#'>»</a>
-              </li>
-            </ul>
             
-          </div>
+              	<c:forEach var = "i" begin = "${bvo.page_sno }" end = "${bvo.page_eno }">
+              		<li>
+              			<a href = 'StoreRegisterList.do?page_no=${i }'>${i }</a>
+              		</li>
+              	
+              	
+              	</c:forEach>
+              </ul>
+          
         </div>  
         <div class='panel panel-default'>
           <div class='panel-heading'>           
@@ -255,9 +267,10 @@
                   <div class='col-lg-3'>
                     <label class='control-label'>CATEGORY</label>
                     <input class='form-control' readonly placeholder='Category'  
-                    name="cateunq" id="cateunq"
+                    name="category" id="category"
                     value = "${vo.category }">
-                  </div>
+                    <input type="hidden" name="cateunq" id="cateunq" value="${vo.cateunq }">
+                  </div>                  
                   <div class='col-lg-3'>
                     <label class='control-label'>FEE(배달비)</label>
                     <input class='form-control' placeholder='Fee' 
@@ -277,7 +290,7 @@
               </fieldset>
            <div class='form-actions'>
                 <button class='btn btn-default' id ="btn_save"  style ="margin-right : 30px;" type='button'>저장하기</button>
-                <button class='btn btn-default' style ="margin-right : 30px;" type='button'> 거절 </button>
+                <button class='btn btn-default' id ="btn_Reject" style ="margin-right : 30px;" type='button'> 거절 </button>
                 
               </div>
             </form>

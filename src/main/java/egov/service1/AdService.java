@@ -25,6 +25,12 @@ public interface AdService {
 	// 소라 메인 배너 불러오기 
 	List<?> selectAdBanner(AdVO avo) throws Exception;
 
+	//광고 거절 -> adupdate(강성모)
+	int updateAdStatus(AdVO vo) throws Exception;
+
+
+
+
 
 	
 

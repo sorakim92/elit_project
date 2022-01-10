@@ -18,12 +18,11 @@
     
     <!-- 주소 api -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <!-- naver map api -->
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=xbgymw4piz&submodules=geocoder"></script>
     
-    <!-- 카카오맵 api -->
-    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca0677edae05b7ec94acd37b20938aa7"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca0677edae05b7ec94acd37b20938aa7&libraries=services"></script>
  
- 
+ 	<!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     <!--  	부트스트랩 -->
@@ -79,9 +78,9 @@ a:hover, .cap:hover{
 }
 .slider_nav {
 	width:1000px;
-	height:160px;
+	height:200px;
 /* 	background-color:#f8cacc; */
- 	line-height:160px;
+ 	line-height:180px;
 /* 	justify-content: center; */
 /* 	display: inline-block;  */
 /* 	align-items: center; */
@@ -90,12 +89,12 @@ a:hover, .cap:hover{
 	display:inline-block; 
 /* 	background:pink;  */
 	float:left; 
-	line-height:140px;
+	line-height:200px;
 }
 .rolling_panel { 
 	position: relative; 
 	width: 970px; 
-	height: 140px;
+	height: 200px;
  	margin: 0; 
  	padding: 0; 
  	justify-content: center; 
@@ -111,11 +110,11 @@ a:hover, .cap:hover{
  .rolling_panel ul li { 
  	float: left; 
  	width: 98%; 
- 	height: 140px;
+ 	height: 200px;
  }
  .rolling_panel ul li img {
  	width: 970px;
- 	height: 140px;
+ 	height: 200px;
  }
 
 /* 배너부분끝  */
@@ -170,52 +169,7 @@ $(function(){
 })
 
 </script>
-<script>
 
-$(function(){
-	
-	$("#current_loc").click(function(){
-		
-	
-		
-		var lat;
-		var lon;
-		// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
-		if (navigator.geolocation) {
-		   
-		    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-		    navigator.geolocation.getCurrentPosition(function(position) {
-		        
-		        var lat = position.coords.latitude, // 위도
-		            lon = position.coords.longitude; // 경도
-		       
-		      
-		      });
-		    
-		} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-			 alert("GPS_추적이 불가합니다.");
-
-		}
-		// 주소-좌표 변환 객체를 생성합니다
-		var geocoder = new kakao.maps.services.Geocoder();
-
-		var coord = new kakao.maps.LatLng(lat, lon);
-		var callback = function(result, status) {
-			 if (status === kakao.maps.services.Status.OK) {
-				 console.log("fsdflkj"+ result[0].address.address_name );
-			 }
-			
-		};
-		geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
-		
-	});
-	
-	
-
-	   
-});
-
-</script>
 <script>
     function sample6_execDaumPostcode() {
         new daum.Postcode({
@@ -350,28 +304,65 @@ $(document).ready(function() {
     }
 });
 </script>
+
 <script>
-function fn_detail(id,unq) {
-	var userid = id;
-	var orderindex = unq;
+var map = null;
+var HOME_PATH = window.HOME_PATH || '.';
 
-	$("#userid").val(userid);
-	$("#orderindex").val(orderindex);
-	
-	var popWidth = window.screen.width/2 - 550;
-	var popHeight = window.screen.height/2 - 400;
-	
-	var pop_title = "detailPopup";
-	window.open("",pop_title,"status=no, width=1100, height=800, left="+popWidth+", top="+popHeight);
-	
-	var frm = document.frm_detail;
-	frm.target = pop_title;
-	frm.action = "myorderDetail.do";
-	
-	frm.submit();
 
-}
+    map = new naver.maps.Map('map', {
+    center: new naver.maps.LatLng(37.3595316, 127.1052133),
+	zoom: 10
+    });
+	var address = $("#address").val();
+	var infoWindow = new naver.maps.InfoWindow({
+		  anchorSkew: true
+		});
+
+		map.setCursor('pointer');
+
+	
+
+		function searchAddressToCoordinate(address) {
+		  naver.maps.Service.geocode({
+		    query: address
+		  }, function(status, response) {
+		    if (status === naver.maps.Service.Status.ERROR) {
+		      if (!address) {
+		        return alert('Geocode Error, Please check address');
+		      }
+		      return alert('Geocode Error, address:' + address);
+		    }
+
+		    if (response.v2.meta.totalCount === 0) {
+		      return alert('No result.');
+		    }
+
+		    var htmlAddresses = [],
+		      item = response.v2.addresses[0],
+		      point = new naver.maps.Point(item.x, item.y);
+		    
+		    var marker = new naver.maps.Marker({
+		        position: new naver.maps.LatLng(item.x, item.y),
+		        map: map
+		    });
+		    
+		    map.setCenter(point);
+		    infoWindow.open(map, point);
+		  });
+		}
+		
+		var marker = new naver.maps.Marker({
+	        position: new naver.maps.LatLng(${pvo.storelatitude}, ${pvo.storelongitude}),
+	        map: map
+	    });
+		
+
+
+
 </script>
+
+
 <body>
 <div class="wrapper">
     <div class="main" style="min-height: 100%; padding-bottom:100px; flex:1;">
@@ -389,9 +380,11 @@ function fn_detail(id,unq) {
            
             <ul>
             <c:forEach var="result" items="${blist }">
+            	<c:if test="${result.service.equals('U') }">
                 <li> 
                 	<img src="<c:url value='upload/banner/${result.banner }'/> ">
                 </li>
+                </c:if>
              </c:forEach>
             </ul>
         </div>
@@ -401,7 +394,7 @@ function fn_detail(id,unq) {
        
     </nav>
     <!-- 주소 검색창 -->
-    <section style="height:auto;">
+    <section style="height:auto; clear:both;">
     	<!--  검색시 우편번호, 주소 (상세주소제외) member 배송지 주소컬럼인 addr4,addr5,addr6의 4,5로 update -->
 	    <form name="search_frm" id="search_frm">
 	     	<input type="hidden" id="useraddr4" name="useraddr4" >
@@ -493,16 +486,13 @@ function fn_detail(id,unq) {
 		      <div class="rolling_panel">
 		           
 		            <ul>
+		                <c:forEach var="result" items="${blist }">
+		            	<c:if test="${result.service.equals('L') }">
 		                <li> 
-		                	<img src="img/b3.png" >
-		                	
+		                	<img src="<c:url value='upload/banner/${result.banner }'/> ">
 		                </li>
-		                <li>
-		               		<img src="img/b2.png" >
-		                </li>
-		                <li>
-		             		<img src="<c:url value='/img/b1.png'/> ">
-		                </li>
+		                </c:if>
+		             </c:forEach>
 		            </ul>
 		        </div>
 		        <div class="banner_btn_a" style="margin-left:5px;">
@@ -523,7 +513,9 @@ function fn_detail(id,unq) {
   <c:forEach var="result" items="${plist }">
 
     <article class="article2">
-        <img src="" width="300px" height="300px" style="float:left; line-height:290px;" alt="배달상황지도API">
+        <div id="map"  style="width:300px;height:300px; float:left">
+        		
+        		 </div>
         <div class="order_detail">
             <table 	class="table table-hover" 
             		style="width:65%; float:right; margin-top:30px;">
@@ -553,7 +545,7 @@ function fn_detail(id,unq) {
                 
             </table>
             <div style="text-align: right; padding-right:20px;">
-                 <button type="button" class="btn" onclick="javascript:fn_detail('${result.userid}','${result.orderindex }')">주문상세</button>           
+                 <button type="button" class="btn" onclick="location.href='myOrderList.do;'">주문내역</button>           
             </div>
         </div>
     </article>

@@ -6,6 +6,20 @@
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="bossmemberVO" type="egov.service1.BossMemberVO"/>
 	
+	<!-- 사업자 신청 토탈 데이터개수 -->
+	<select id="bossmemberDAO.selectBossTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM member WHERE (UPPER(business) = 'P'
+				OR 		UPPER(business) = 'Y')
+	</select>
+	
+	
+	<!-- 	사업자 화면 list 개수-->
+	<select id="bossmemberDAO.selectcountB" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM member WHERE (UPPER(business) = 'P'
+				OR 		UPPER(business) = 'Y')		
+	</select>
+	
+	
 <!-- 	사업자 등록페이지 List (강성모) -->
 	<select id="bossmemberDAO.selectbossmemberService" resultClass = "egovMap">
 		SELECT b.* FROM (
@@ -15,14 +29,14 @@
 						username,
 						email,
 						userphone,					
-						decode(business,'Y','사장님','P','일반회원') business,
+						decode(UPPER(business),'Y','사장님','P','일반회원') business,
 						rdate						
 				FROM	
 						member
 				WHERE	
 						userid IS NOT NULL 
-				AND		(business = 'P'
-				OR 		business = 'Y')
+				AND		(UPPER(business) = 'P'
+				OR 		UPPER(business) = 'Y')
 				
 				<isNotNull property="k2text">
 					<isNotEmpty property="k2text">
@@ -63,6 +77,10 @@
 				</isNotNull>
 				
 				ORDER BY rdate DESC) a )b
+				
+				WHERE
+				rn between $s_no$ and $e_no$
+				
 	</select>
 	<select id="bossmemberDAO.selectbossmemberDetail" resultClass="BossMemberVO">
 		SELECT 	userid, 

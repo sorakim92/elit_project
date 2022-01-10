@@ -216,40 +216,23 @@
              
             </tbody>
           </table>
-          <div class='panel-footer' style="text-align:center;">
+          
+          <!--           페이징처리 -->
+          <div style="text-align:center;" >
             <ul class='pagination pagination-sm'>
-              <li>
-                <a href='#'>«</a>
-              </li>
-              <li class='active'>
-                <a href='#'>1</a>
-              </li>
-              <li>
-                <a href='#'>2</a>
-              </li>
-              <li>
-                <a href='#'>3</a>
-              </li>
-              <li>
-                <a href='#'>4</a>
-              </li>
-              <li>
-                <a href='#'>5</a>
-              </li>
-              <li>
-                <a href='#'>6</a>
-              </li>
-              <li>
-                <a href='#'>7</a>
-              </li>
-              <li>
-                <a href='#'>8</a>
-              </li>
-              <li>
-                <a href='#'>»</a>
-              </li>
+            
+              	<c:forEach var = "i" begin = "${vo.page_sno }" end = "${vo.page_eno }">
+              		<li>
+              			<a href = 'AdminRegister.do?page_no=${i }'>${i }</a>
+              		</li>
+              	
+              	
+              	</c:forEach>
+              
+          
+              
             </ul>
-           
+            
           </div>
         </div>
         

@@ -16,10 +16,11 @@ public class AdVO {
 	private String b_userid;
 	private String email;
 	private String phone;
-	
+	private String adrejection;
 	private MultipartFile mtfile;
 	
 	//페이징
+	
 	
 	// 행 출력
 	int page_unit = 7;
@@ -45,6 +46,14 @@ public class AdVO {
 	//총 페이지 번호
 	int total_page = 0;
 	
+	
+	
+	public String getAdrejection() {
+		return adrejection;
+	}
+	public void setAdrejection(String adrejection) {
+		this.adrejection = adrejection;
+	}
 	public int getPage_eno() {
 		return page_eno;
 	}
