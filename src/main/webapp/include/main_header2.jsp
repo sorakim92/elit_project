@@ -39,7 +39,6 @@
 </script>
 
 <%
-
 String USERID = (String) session.getAttribute("SessionUserID");
 String BOSSUSERID = (String) session.getAttribute("BossmemberSessionID");
 String ADMINID= (String) session.getAttribute("AdminSessionID");
@@ -50,8 +49,6 @@ String ADMINID= (String) session.getAttribute("AdminSessionID");
 <!-- 기능: 로그아웃상태에서는 로그인 버튼,  로그인상태에서는 마이페이지 | 로그아웃 -->
 
 <%
-
-	
 	if(USERID != null && !USERID.equals("") ) {
 %>
 	
@@ -73,7 +70,7 @@ String ADMINID= (String) session.getAttribute("AdminSessionID");
         &nbsp;&nbsp;<a href="progressorderList.do"><font color="black">사장님 광장 |</font></a>
 		&nbsp;&nbsp;<a href="javascript:fn_logout();" class="header_a"><font color="black">로그아웃</font></a>
 		</div>
-		
+			
 <%
 	} else {
 %>
@@ -81,7 +78,7 @@ String ADMINID= (String) session.getAttribute("AdminSessionID");
     	<a href="memberlogin.do" class="header_a">로그인</a>
     	<a href="memberwrite.do" class="header_a">회원가입</a>
     	
-<% 
+<%
 	}
 %>
 	</ul>

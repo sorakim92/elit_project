@@ -87,25 +87,6 @@
 	
 	</select>
 	
-	<!-- 메인페이지 배달 주소 입력 시 멤버테이블 addr4,5 업데이트  -->
-	<update id="memberDAO.mainPageDeliveryAddr">
-		UPDATE
-				member
-		SET
-				useraddr4 = #useraddr4#,
-				useraddr5 = #useraddr5#
-		WHERE
-				userid = #userid#
-	
-	</update>
-	<!-- 비밀번호 변경 (경석) -->
-	<update id="memberDAO.Pop_newuserpw" >
-		UPDATE member SET userpw = '$userpw$',
-						  reuserpw = '$reuserpw$'
-					WHERE
-							userid = '$userid$' AND email = '$email$'
-	</update>
-	
 	<!-- 회원정보 -->
 	<select id="memberDAO.selectmemberuser" resultClass="memberVO">
 		SELECT  userid,
@@ -138,11 +119,34 @@
 	
 	</update>
 	
+	<!-- 메인페이지 배달 주소 입력 시 멤버테이블 addr4,5 업데이트  -->
+	<update id="memberDAO.mainPageDeliveryAddr">
+		UPDATE
+				member
+		SET
+				useraddr4 = #useraddr4#,
+				useraddr5 = #useraddr5#
+		WHERE
+				userid = #userid#
+	
+	</update>
+	<!-- 비밀번호 변경 (경석) -->
+	<update id="memberDAO.Pop_newuserpw" >
+		UPDATE member SET userpw = '$userpw$',
+						  reuserpw = '$reuserpw$'
+					WHERE
+							userid = '$userid$' AND email = '$email$'
+	</update>
+	
 	<!-- 회원탈퇴 (경석) -->
 	<delete id="memberDAO.deletememberuser">
-		delete from member where userid = '$userid$' and userpw = '$userpw$'
+		DELETE FROM member WHERE userid = '$userid$' AND userpw = '$userpw$'
 	</delete>
-	
-	
-	
+
+	<!-- 사업자 회원탈퇴(경석) -->
+	<delete id="memberDAO.deleteBossMember">
+		DELETE FROM bossmember 
+			WHERE userid='$userid$' AND userpw ='$userpw$' AND UPPER(business)='Y'
+	</delete>
+
 </sqlMap>

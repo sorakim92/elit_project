@@ -254,21 +254,27 @@ public class MemberController {
 	//회원탈퇴Save(경석)
 	@RequestMapping("Pop_member_WithdrawSave.do")
 	@ResponseBody
-	public String Pop_member_WithdrawSave(MemberVO vo) throws Exception {
+	public String Pop_member_WithdrawSave(MemberVO vo, HttpSession session) throws Exception {
 		
+		int b_user = memberService.deleteBossMember(vo);
+		int user = memberService.deletememberuser(vo);
 		String msg = "";
-		int result = memberService.deletememberuser(vo);
 		
 		String userid = vo.getUserid();
 		String userpw = vo.getUserpw();
 		
-		System.out.println(userid);
-		System.out.println(userpw);
-		
-		if(result != 0) {
+		if( user == 1) {
+			session.removeAttribute("SessionUserID");
 			msg = "ok";
+			if( b_user == 1) {
+				session.removeAttribute("BossmemberSessionID");
+				msg = "ok";
+			} else {
+				msg = "er";
+			}
+			
 		} else {
-			msg = "fail";
+			msg = "er";
 		}
 		
 		return msg;
@@ -287,7 +293,7 @@ public class MemberController {
 		
 		return "login/Mypage";
 	}
-	
+	//회원정보 수정save (경석)
 	@RequestMapping("memberMypageSave.do")
 	@ResponseBody
 	public String updatemember(MemberVO vo, HttpSession session) throws Exception {

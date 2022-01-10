@@ -66,7 +66,11 @@ public class MemberDAO extends EgovAbstractDAO{
 	public int mainPageDeliveryAddr(MemberVO vo) {
 		return (int) update("memberDAO.mainPageDeliveryAddr",vo);
 	}
-	
+
+	public int deleteBossMember(MemberVO vo) {
+		return delete("memberDAO.deleteBossMember",vo);
+	}
+
 
 	
 	
