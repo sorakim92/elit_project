@@ -18,7 +18,7 @@ public class NBoardVO {
 	//페이징 
 	
 	int page_unit = 10; // 행 출력단위
-	int page_size = 10; // 페이징 출력 단위
+	int page_size = 5; // 페이징 출력 단위
 	
 	int page_no = 1; // 출력 페이지 번호
 

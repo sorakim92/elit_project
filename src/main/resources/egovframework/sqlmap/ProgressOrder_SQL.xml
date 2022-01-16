@@ -20,7 +20,7 @@
 					userid
 		FROM progressorder 
 
-			where storeunq = '236' 
+			where storeunq = '241' 
 				order by rdate desc  		
 
 	</select>
@@ -40,7 +40,7 @@
 					addr
 		FROM progressorder 
 
-			where storeunq  = '236' 
+			where storeunq  = '241' 
 					order by rdate desc  
 		
 		  		

@@ -61,7 +61,7 @@ $(function(){
     </nav>
         
 
-    <section >
+    <section style="height:auto;">
         <div class="board_sc_top">
             <div class="board_sc_title">
                 공지사항
@@ -96,23 +96,29 @@ $(function(){
     </section>
     <!-- 글쓰기 버튼부분 (관리자)-->
 
-    <div class="board_btn_write">
+    <div class="board_btn_write" style="margin-bottom:30px; ">
         <button type="button" class="btn btn-outline-warning" 
-                style="border-color: #f8cacc; color: black;"
+                style="border-color: #f8cacc; color: black; margin-top:10px;"
                 onclick="location.href='nBoardList.do'";
                 >
             목록</button>
            <!--  관리자로 로그인시만.. -->
+           <%
+	if(ADMINID!=null) {
+%>
          <button type="button" class="btn btn-outline-warning" 
         		id="btn_modi" 
-                style="border-color: #f8cacc;background-color: #f8cacc; color: black;">
+                style="border-color: #f8cacc;background-color: #f8cacc; color: black; margin-top:10px;">
             수정</button>
+             <%
+  }
+  %>
     </div>
-   
+ 
               
     <div style="width:100%; height:auto; 
     				float:left;">
-      <table style="width:100%; " 
+      <table style="width:100%;  " 
       		class="table table-hover">
           <colgroup>
 				<col width="10%" />
