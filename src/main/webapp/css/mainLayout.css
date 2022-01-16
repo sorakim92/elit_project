@@ -1,0 +1,420 @@
+@charset "UTF-8";
+
+
+@font-face {
+    font-family: "hanna";
+    src: url("../fonts/BMHANNAAir_otf.otf");
+}
+@font-face {
+    font-family: "jua";
+    src: url("../fonts/BMJUA_otf.otf");
+}
+html{
+    height: 100%;
+}
+body {
+    font-size: 16px;
+    font-family: hanna;
+    padding-left:100px;
+    height:100%;
+}
+
+header {
+	width:1000px;
+	height:130px;
+	/*background-color:#ffcc99;*/
+	/*line-height:5.0;*/
+}
+/* 배너부분  */
+.slider_nav {
+	width:1000px;
+	height:160px;
+/* 	background-color:#f8cacc; */
+ 	line-height:160px;
+/* 	justify-content: center; */
+/* 	display: inline-block;  */
+/* 	align-items: center; */
+}
+.banner_btn_a {
+	display:inline-block; 
+/* 	background:pink;  */
+	float:left; 
+	line-height:140px;
+}
+.rolling_panel { 
+	position: relative; 
+	width: 970px; 
+	height: 140px;
+ 	margin: 0; 
+ 	padding: 0; 
+ 	justify-content: center; 
+ 	overflow: hidden; 
+ 	float:left;
+ }
+ .rolling_panel ul {
+  	position: absolute; 
+  	margin: 5px; 
+  	padding: 0; 
+  	list-style: none; 
+ }
+ .rolling_panel ul li { 
+ 	float: left; 
+ 	width: 98%; 
+ 	height: 140px;
+ }
+ .rolling_panel ul li img {
+ 	width: 970px;
+ 	height: 140px;
+ }
+
+/* 배너부분끝  */
+
+
+.wrapper {
+    width: 1000px;
+    min-height: calc(100vh-70px);
+    position: relative;
+    /*background-color: beige;*/
+    padding: 10px;
+    flex-direction: column;
+    display: flex;
+    margin: auto;
+}
+
+.div_addr {
+   
+    width: 1000px;
+    height: 70px;
+    text-align: center;
+    line-height: 3.0;
+}
+
+section {
+	width:1000px;
+	height:auto;
+	/*background-color:#92a8d1;*/
+	text-align:center;
+    min-height: 550px;
+}
+
+
+.article1 {
+    width:1000px;
+	height:auto;
+	/*background-color:#92a8d1;*/
+	text-align:center;
+}
+/* 메인 카테고리 사진 이미지 */
+.main_cate_img {
+	border-radius: 2em;
+	width:200px;
+	height:150px;
+}
+
+.article2 {
+    width:1000px;
+	height:300px;
+    border: 1px solid #eee;
+	/*background-color:#92a8d1;*/
+	text-align:center;
+	margin-bottom:10px;
+}
+.article3 {
+    width:1000px;
+    height:300px;
+    /*border: 1px solid #ccc;*/
+    margin: 5px 0 10px 0;
+    clear: both;
+}
+.article3_tbl_cap {
+	color:#000; 
+	caption-side: top;
+	font-family: jua;
+}
+.ldiv{
+    float:left;
+   
+	width:49%;
+	height:300px;
+	font-size:16px;
+	
+}
+.rdiv{
+    float:right;
+	width:49%;
+	height:300px;
+	font-size:16px;
+}
+
+.main_b_tbl{
+    width: 100%;
+    height:200px;
+    border: 1px solid #eee;
+}
+
+.cate_tbl {
+    width : 100%;
+}
+
+.cate_tbl td{
+	line-height:4.0;
+  
+}
+.div_cate {
+	padding:20px;
+}
+.odr_main_table{
+    width:45%;
+}
+.odr_main_table td{
+    text-align: left;
+    border:1px solid #ccc;
+
+}
+
+
+
+/* sub tab 부분 */
+.article_nav {
+   display: inline-block;
+}
+.article_nav li {
+    font-size:16px;
+    list-style:none;
+    float:left;
+    padding-left:10px;
+    padding-right:20px;
+    padding-bottom: -10px;
+}
+ul.article_nav li.current{
+	background: #pink;
+	color: #222;
+}
+
+/*
+   게시판 부분  
+*/
+.board_nav {
+	width:1000px;
+	height:100px;
+	/*background-color:#f8cacc;*/
+	text-align:center;
+	line-height:3.5;
+}
+.board_nav div {
+	width:100%; 
+    height:50px; 
+    border-bottom: 1px solid #ccc;
+}
+
+ /* 게시판 section 부분 div*/
+.board_sc_top{
+	width:100%; 
+	height:auto; 
+	padding:10px; 
+	margin-top:-40px;
+}
+.board_sc_title {
+	width:50%; 
+	text-align: left; 
+    font-family: jua; 
+    float:left;
+}
+.board_sc_search {
+	float:left;
+	width:50%;
+	text-align:right;
+}
+.board_btn_write {
+	width: 100%;
+	height: auto;
+    margin: 20px 50px 0 0;
+    text-align: right;
+}
+	/* 게시판 테이블 th*/
+.bd_tbl_div th {
+	font-size:15px;
+	background : #eee;
+}
+
+
+	/*게시판 input 상자 크기, textarea 높이 */
+.bd_input1 {
+    width:90%;
+} 
+.bd_textarea {
+    width: 90%;
+    height: auto;
+    min-height: 300px;
+}
+
+
+	/*스토어 (가게)*/
+.nav1 {
+    float:left;
+    width:1000px;
+}
+.nav1 li{
+    width:90px;
+    font-size:13px;
+    list-style:none;
+    float:left;
+    border-bottom: 1px solid #ccc;
+    padding-left:10px;
+    padding-right:10px;
+}
+.nav2 {
+    float:left;
+}
+.nav2 li{
+    width:110px;
+    font-size:14px;
+    list-style:none;
+    float:left;
+    padding-left:10px;
+    padding-right:10px;
+    margin-top: -20px;
+}
+
+.cate_tbl2_strinfo1 span {
+	font-size:14px;
+	
+}
+.cate_tbl2 td {
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+    padding-top: 20px;
+}
+
+.cate_tbl2_div1 {
+	width:140px; 
+	height: 140px; 
+	border: 1px solid #f8cacc; 
+	border-radius: 2em;
+  	margin:5px 20px 10px 20px; 
+  	text-align: center;
+    cursor: pointer;
+}
+
+.cate_tbl2_strname {
+	font-weight: bold; 
+	cursor: pointer;
+}
+
+.cate_tbl2_strinfo1{
+	font-size:12px; 
+	text-align: left; 
+	padding-left: 10px;
+}
+
+
+	/* 메뉴주문 부분(가게,메뉴 소개 및 주문) */
+.sub_kw_tab {
+    width:100%;
+    padding: 10px;
+    float:left;
+
+}
+.sub_kw_tab li {
+    font-size:15px;
+    list-style:none;
+    float:left;
+    padding-left:10px;
+    padding-right:10px;
+} 
+.input_kw_search {
+	width:150px;
+	height:22px;
+	font-size:15px;
+}
+.sidebar{
+    float:right;
+   
+    width:40%; 
+    height:auto;
+    padding: 10px 10px 10px 10px;
+} 
+	
+.content {
+	border-right:1px solid #ccc; 
+	width:60%; 
+	float:left;
+}
+
+.str_div_info1 {
+	border:1px solid #ccc; 
+	width:98%; 
+	height:210px; 
+	padding:10px 30px 10px 30px;
+}
+
+.str_div_info2 {
+	text-align:left; 
+    font-size: 20px; 
+    font-family:JUA;  
+    width:45%; 
+    height:40px;
+    line-height: 2.0;
+    float:left; 
+    margin-right:20px;
+	
+}
+
+.str_div_info3 {
+	text-align:right; 
+    font-size: 15px; 
+    font-family:hanna;  
+    width:50%; 
+    float:left;
+}
+
+.str_div_info4 {
+	 width:100%; 
+	 height:20px; 
+     float:left; 
+     margin:10px 0 5px 0;
+}
+.str_div_info5 {
+	 width:100%; 
+	 height:85px; 
+     float:left; 
+     margin:5px 0 10px 0; 
+     padding:5px;
+	
+}
+
+.str_sp_info1 {
+	display:block; 
+	width:50%; 
+	text-align: right; 
+	float:left;
+	font-size: 14px;
+}
+
+.str_img_reviewtype1 {
+	width:70px; 
+	height:70px; 
+ 	border:1px solid #ccc; 
+ 	padding:5px; 
+    margin-right:5px;
+}
+
+.str_keyword {
+	width:100%; 
+    height:40px; 
+    border-bottom: 1px solid #ccc;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

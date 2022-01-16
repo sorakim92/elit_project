@@ -1,8 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
 
-
 <sqlMap namespace = "inquiry_space">
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="inquiryVO" type="egov.service1.InquiryVO"/>
+	
+	<insert id="inquiryDAO.insertBoard">
+		<![CDATA[
+			INSERT INTO inquiry( inquiryindex,
+								title,
+								 content,
+								 hits,
+								 rdate,
+								 userid )
+					VALUES  ( inquiry_seq.nextval,
+								 '$title$',
+								 '$content$',
+								 0,
+								 sysdate,
+								 '$userid$' )
+		]]>
+	</insert>
+	
+	<select id="inquiryDAO.selectBoardList" resultClass="egovMap">
+	
+		SELECT b.* FROM (
+			SELECT rownum rn, a.* FROM (
+				     SELECT		 title,
+								 content,
+								 files,
+							  	 hits,
+								 to_char(rdate,'yyyy/mm/dd')rdate,
+								 inquiryindex,
+								 userid 
+					 FROM
+											Inquiry where userid = #userid#
+									ORDER BY 
+											inquiryindex DESC ) a ) b
+			WHERE 
+							rn BETWEEN '$s_no$' AND '$e_no$'
+			
+				
+			
+	</select>
+	
+
+	<select id="inquiryDAO.selectBoardDetail" resultClass="InquiryVO">
+		SELECT 
+				  	 title,
+					 content,
+					 files,
+				  	 hits,
+					 to_char(rdate,'yyyy/mm/dd') rdate,
+					 inquiryindex,
+					 userid
+				 
+		FROM inquiry 
+		  		WHERE inquiryindex = #inquiryindex#
+	</select>
+	
+	<update id="inquiryDAO.updateBoard">
+			UPDATE inquiry
+					SET
+						title='$title$',
+						userid='$userid$',
+						content='$content$'
+						
+				WHERE 
+						inquiryindex='$inquiryindex$'
+	</update>
+	
+	<update id="inquiryDAO.updateBoardHits">
+		UPDATE inquiry SET hits=hits+1 WHERE inquiryindex=#inquiryindex#
+	
+	</update>
+
+	<delete id="inquiryDAO.deleteBoard">
+		DELETE FROM inquiry WHERE inquiryindex=#inquiryindex#
+	</delete>
+	
+
+	<select id="inquiryDAO.selectBoardTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM inquiry where userid = #userid#
+
+	</select>
+
+	
 </sqlMap>

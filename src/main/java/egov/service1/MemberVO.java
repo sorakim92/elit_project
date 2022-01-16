@@ -2,20 +2,37 @@ package egov.service1;
 
 public class MemberVO {
 
-	private String userid;
+	private String userid="";
 	private String userpw;
+	private String reuserpw;
 	private String username;
-	private String email;
+	private String email="";
 	private String userphone;
 	private String useraddr1;
 	private String useraddr2;
 	private String useraddr3;
+	private String useraddr4;
+	private String useraddr5;
+	private String useraddr6;
+	private String useraddr7;
+	private String useraddr8;
+	private String useraddr9;
 	private String storelongitude;
 	private String storelatitude;
 	private String business;
 	private String rdate;
 	
+	private String addr; 
 	
+	
+	
+	
+	public String getAddr() {
+		return addr;
+	}
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
 	public String getUserid() {
 		return userid;
 	}
@@ -27,6 +44,12 @@ public class MemberVO {
 	}
 	public void setUserpw(String userpw) {
 		this.userpw = userpw;
+	}
+	public String getReuserpw() {
+		return reuserpw;
+	}
+	public void setReuserpw(String reuserpw) {
+		this.reuserpw = reuserpw;
 	}
 	public String getUsername() {
 		return username;
@@ -64,6 +87,42 @@ public class MemberVO {
 	public void setUseraddr3(String useraddr3) {
 		this.useraddr3 = useraddr3;
 	}
+	public String getUseraddr4() {
+		return useraddr4;
+	}
+	public void setUseraddr4(String useraddr4) {
+		this.useraddr4 = useraddr4;
+	}
+	public String getUseraddr5() {
+		return useraddr5;
+	}
+	public void setUseraddr5(String useraddr5) {
+		this.useraddr5 = useraddr5;
+	}
+	public String getUseraddr6() {
+		return useraddr6;
+	}
+	public void setUseraddr6(String useraddr6) {
+		this.useraddr6 = useraddr6;
+	}
+	public String getUseraddr7() {
+		return useraddr7;
+	}
+	public void setUseraddr7(String useraddr7) {
+		this.useraddr7 = useraddr7;
+	}
+	public String getUseraddr8() {
+		return useraddr8;
+	}
+	public void setUseraddr8(String useraddr8) {
+		this.useraddr8 = useraddr8;
+	}
+	public String getUseraddr9() {
+		return useraddr9;
+	}
+	public void setUseraddr9(String useraddr9) {
+		this.useraddr9 = useraddr9;
+	}
 	public String getStorelongitude() {
 		return storelongitude;
 	}
@@ -88,5 +147,8 @@ public class MemberVO {
 	public void setRdate(String rdate) {
 		this.rdate = rdate;
 	}
+
+
+	
 
 }

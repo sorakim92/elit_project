@@ -5,4 +5,166 @@
 <sqlMap namespace = "progressorder_space">
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="progressorderVO" type="egov.service1.ProgressOrderVO"/>
+
+	
+	<select id="progressorderDAO.selectProgressOrderList"  resultClass="egovMap"  >
+		SELECT 
+				    menuname, 
+					price, 
+					comment1,
+					comment2,
+					phone,
+					acctime,
+					orderindex,
+					to_char(rdate,'YYYY-MM-DD hh24:mi')rdate,
+					userid
+		FROM progressorder 
+
+			where storeunq = '241' 
+				order by rdate desc  		
+
+	</select>
+	
+	<select id="progressorderDAO.selectorderendList"  resultClass="egovMap"  >
+		SELECT 
+				    comment1,
+				    comment2, 
+					price, 
+					menuname,
+					orderindex,
+					to_char(rdate+acctime/(24*60),'YYYY-MM-DD hh24:mi')acctime,
+					dctime,
+					method,
+					phone,
+					to_char(rdate, 'YYYY-MM-DD hh24:mi')rdate,
+					addr
+		FROM progressorder 
+
+			where storeunq  = '241' 
+					order by rdate desc  
+		
+		  		
+	</select>
+	
+	<!-- 메인페이지에 아이디로 로그인시 진행중인 메뉴 조회(소라) -->
+	
+	<select id="progressorderDAO.selectMainProOrder" resultClass="egovMap">
+		SELECT 
+		        orderindex,
+		        menuname,
+		        map,
+		        addr, 
+		        userid, 
+		        phone, 
+		        storeunq,
+		        decode(acctime,null,'승인대기중',to_char(rdate+acctime/(24*60),'YYYY-MM-DD hh24:mi')) acctime
+
+		FROM 
+		        progressorder 
+		WHERE 
+		        userid=#userid#
+		AND 
+		        receive='P'
+	
+	</select>
+	
+	<!--  마이페이지 오더리스트 불러오기(소라)  -->
+	<select id="progressorderDAO.selectMyOrderlist" resultClass="egovMap">
+		SELECT 
+		        p.userid,
+		        p.orderindex, 
+		        p.menuname, 
+		        p.price, 
+		        decode(p.receive,'P','배달중','Y','배달완료') receive,
+		        decode(p.acctime,null,'승인대기중',to_char(p.rdate+p.acctime/(24*60),'YYYY-MM-DD hh24:mi')) acctime,
+		        p.storeunq,
+		        s.storename,
+		        decode(s.storeimage,null,'사진',s.storeimage) storeimage,
+		     	to_char(s.rdate,'yy/mm/dd (dy)') rdate,
+		     	decode(p.map,null,'사진',p.map) map
+		     	
+
+		FROM 
+	       		 progressorder p, store s 
+		WHERE  
+					p.storeunq = s.storeunq AND p.userid=#userid#
+		ORDER BY 
+					rdate DESC
+	
+	</select>
+	
+	<!-- 마이페이지 주문상세내역 (소라) -->
+	<select id="progressorderDAO.selectMyorderDetail" resultClass="progressorderVO">
+		<![CDATA[
+		 select 
+			  p.userid,
+			  p.orderindex, 
+			  p.storeunq,
+			  decode(p.acctime,null,'승인대기중',to_char(p.rdate+p.acctime/(24*60),'MM/DD am hh:mi')) acctime,
+			  s.storename,
+			  p.menuname,
+			  to_char(p.rdate,'YYYY"년 "MM" 월"DD" 일" am hh:mi') rdate,
+			  p.price, 
+			  decode(upper(p.method),'K','카카오페이','N','네이버페이','C','카드결제') method,
+			  substr(p.addr,9) addr,
+			  p.phone,
+			  decode(p.comment1,null,'요청사항 없음.',p.comment1) comment1,
+			  decode(p.comment2,null,'요청사항 없음.',p.comment2) comment2,
+			  s.storephone,
+			  s.storelongitude,
+			s.storelatitude
+			from
+			        progressorder p, store s
+			    where p.storeunq = s.storeunq and p.userid=#userid# and p.orderindex=#orderindex#
+		]]>
+	</select>
+	
+
+	<!--  주문내역 progressorder 테이블로 저장 (소라) -->
+	<insert id = "progressorderDAO.insertProgressOrder" >
+		INSERT INTO progressorder 
+					(orderindex, 
+					menuname, 
+					price, 
+					comment1,
+					comment2,
+					phone,
+					map,
+					addr, 
+					method,
+					rdate,
+					storeunq, 
+					userid) 
+			VALUES 
+					(progressorder_seq.nextval,
+					#menuname#,
+					#price#,
+					#comment1#,
+					#comment2#,
+					#phone#,
+					null,
+					#addr#,
+					'K',
+					sysdate,
+					#storeunq#,
+					#userid#)
+	
+	</insert>
+	<!-- 상연 -->
+	<update id="progressorderDAO.updateProgressOrder">
+		UPDATE progressorder 
+			SET 
+				acctime= '$acctime$',
+				dctime= '$dctime$'
+				
+		WHERE orderindex = '$orderindex$'
+	</update>
+	
+	<!-- 주문완료시 preorder 정보 지우기 (소라) -->
+	<delete id="progressorderDAO.resetpreorder" >
+		DELETE FROM preorder 
+				WHERE  userid = #userid# and storeunq = #storeunq#
+	</delete>
+
+
 </sqlMap>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="menuorder_space">
+
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="menuorderVO" type="egov.service1.MenuOrderVO"/>
+	<typeAlias  alias="memberVO" type="egov.service1.MemberVO"/>
+	
+	
+	
+	<!-- 메뉴리스트(소라)  -->
+	<select id="menuorderDAO.selectStoreMenuList" resultClass="egovMap">
+		select 	s.storeunq, 
+				s.cateunq, 
+				s.storename, 
+				s.storeinfo,
+				s.storerate,
+                m.menuunq,
+                m.menuname,
+                m.menukeyword,
+                m.menuinfo,
+                to_char(m.price,'FM9,999,999') price,
+                decode(m.menuimage,null,'사진',m.menuimage) menuimage
+		from 	store s, menu m
+			where s.storeunq=m.storeunq and m.storeunq = #storeunq#
+			<isNotNull property="s_text">
+				<isNotEmpty property="s_text">
+				and m.menuname LIKE '%$s_text$%'
+				</isNotEmpty>
+			</isNotNull>
+			<isNotNull property="menukeyword">
+				<isNotEmpty property="menukeyword">
+					and m.menukeyword like '$menukeyword$'
+				</isNotEmpty>
+			</isNotNull>
+			
+
+	 
+	</select>
+	
+	<!-- 가게정보(소라) -->
+	<select id="menuorderDAO.selectStoreinfo" resultClass="menuorderVO">
+		SELECT 	storeunq, 
+				storename,
+				decode(storerate,null,'0',storerate) storerate, 
+				decode(fee,0,'무료',fee) fee,
+				minprice
+				
+		from 	store
+			where storeunq = #storeunq#
+
+	</select>
+	
+	<!-- 가게 리뷰 개수(소라) -->
+	<select id="menuorderDAO.selectStoreReviewTotalCount" resultClass="java.lang.Integer">
+		SELECT count(*) FROM  storereview WHERE storeunq = #storeunq#
+	
+	</select>
+	
+	<!-- 메뉴 상세항목(소라) -->
+	<select id="menuorderDAO.selectmenudetail" resultClass="menuorderVO" >
+		select menuunq, menuname, price, storeunq from menu where menuunq= #menuunq#
+	
+	
+	</select>
+	
+	<!-- 주문표에 잠시 등록하기 위해 같은메뉴 있는지 체크 (소라) -->
+	<select id="menuorderDAO.countMenuunq" resultClass="java.lang.Integer">
+		SELECT count(*)
+		FROM	preorder
+		WHERE 
+				userid = #userid#
+			AND
+				menuunq = #menuunq#
+	
+	</select>
+	
+	
+	<!--해당가게 담아둔 주문표 내용이있나 확인 (소라) -->
+	<select id="menuorderDAO.selectPreOrderList" resultClass="egovMap">
+		SELECT 	
+				pindex,
+				menuunq,
+				menuname,
+				price,
+				qty,
+				userid,
+				storeunq
+		FROM	
+				preorder
+		WHERE 
+				storeunq = #storeunq# AND userid=#userid#
+	
+	</select>
+	
+	<!-- 결제금액 (소라) -->
+	<select id = "menuorderDAO.selectTotPrice" resultClass="java.lang.Integer">
+		SELECT 
+				nvl(sum(price * qty),0) total 
+		FROM 
+				preorder 
+		WHERE 	
+				userid = #userid# 
+			AND storeunq = #storeunq#
+	
+	</select>
+	
+	<!-- 회원정보 (소라) -->
+	<select id="menuorderDAO.selectMemberInfo" resultClass="memberVO">
+		SELECT userid,
+				username,
+				userphone,
+				'('||useraddr4||') '||useraddr5 addr,
+				decode(useraddr6,null,'',useraddr6) useraddr6 
+		FROM	
+				member
+		WHERE 
+				userid = #userid#
+	
+	
+	</select>
+	
+	<!-- 스토어  리뷰 검색 -->
+	<select id ="menuorderDAO.selectStorereview" resultClass="egovMap">
+		select reviewindex,
+				storeunq,
+				rate,
+				rcontent,
+				rimage,
+				rdate,
+				userid,
+				oderindex 
+		from orderreview where storeunq = #storeunq# and rimage is not null
+	</select>
+	
+	
+	<!-- 주문하기전 주문표에 잠시 담아두기 (소라) -->
+	<insert id="menuorderDAO.insertAddOrder" parameterClass="menuorderVO">
+		INSERT INTO preorder(
+						pindex, 
+						menuunq, 
+						menuname,
+						price,
+						qty,
+						storeunq,
+						userid)
+						VALUES(preorder_seq.nextval,
+								$menuunq$,
+								#menuname#,
+								#price#,
+								#qty#,
+								#storeunq#,
+								#userid#)
+	</insert>
+	
+
+	<!--수량변경 (소라)  -->
+	<update id="menuorderDAO.updateqty">
+	
+		UPDATE preorder SET qty = qty+1 
+		WHERE menuunq=#menuunq# AND userid = #userid#
+	
+	</update>
+
+	<!-- 주문표내역에서 메뉴 제거 (소라) -->
+	<delete id="menuorderDAO.deleteOrderMenu" >
+		DELETE FROM preorder 
+				WHERE  pindex = #pindex#
+				
+	</delete>
+
+</sqlMap>

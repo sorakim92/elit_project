@@ -6,4 +6,50 @@
 <sqlMap namespace = "storereview_space">
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="storereviewVO" type="egov.service1.StoreReviewVO"/>
+	
+	<select id="storereviewDAO.selectstoreReviewList"  resultClass="egovMap"  >
+		<!--  SELECT 
+				reviewindex,	
+				storeunq,
+				rate,
+				rcontent,
+				rdate,
+				userid,
+				orderindex
+				
+
+		FROM orderreview -->
+		select 
+		 reviewindex,
+		 rate,
+		 
+		 userid,
+		 rcontent,
+		 to_char(rdate,'yyyy/mm/dd,hh24:mi/ss')rdate
+		 from orderreview
+		
+		  		
+	</select>
+	
+	<insert id="storereviewDAO.insertstoreReviewWrite">
+		  
+		  <![CDATA[
+		   INSERT INTO storereview (	
+		 					b_reviewindex,
+		 					reviewindex,
+							rcontent,
+							b_userid,
+							rdate,
+							storeunq
+							) 
+					VALUES(	storereview_seq.nextval,
+							orderreview_seq.nextval,
+							#rcontent#,
+							'test1',
+							sysdate,
+							'$storeunq$',
+							) ]]> 
+	</insert>
+	
+	
 </sqlMap>

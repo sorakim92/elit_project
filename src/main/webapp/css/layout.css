@@ -1,0 +1,105 @@
+@font-face {
+  font-family: "hanna";
+  src: url("fonts/BMHANNAAir_otf.otf");
+}
+
+@font-face {
+  font-family: "jua";
+  src: url("fonts/BMJUA_otf.otf");
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html{
+    height: 100%;
+}
+
+body {
+    font-size: 16px;
+    font-family: hanna;
+    padding-left: 100px;
+    height: 100%;
+}
+
+header {
+	width:1000px;
+	height:100px;
+	/*background-color:#ffcc99;*/
+	/*line-height:5.0;*/
+}
+
+nav {
+	width:1000px;
+	height:100px;
+	/*background-color:#f8cacc;*/
+	text-align:center;
+	line-height:3.5;
+}
+.wrapper {
+    width: 1000px;
+   /*  min-height: calc(100vh-70px); */
+    position: relative;
+    /*background-color: beige;*/
+    padding: 10px;
+    flex-direction: column;
+    display: flex;
+    margin: auto;
+}
+
+
+
+section {
+	width:1000px;
+	height:auto;
+	/*background-color:#92a8d1;*/	
+    min-height: 550px;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border-bottom: 1px solid #ccc;
+}
+.navbar_menu {
+  display: flex;
+  list-style: none;  
+  padding-left: 70px;
+  margin-top: 10px;
+  
+}
+
+.navbar_menu li {
+  padding: 8px 12px;
+  margin-top: 20px;
+}
+.navbar_menu li:hover {
+  background: pink;
+  border-radius: 4px;
+}
+
+.nav .gnb {
+  float: left;
+}
+
+nav .gnb li {
+  display: inline-block;
+  margin-top: 28px;
+  margin-left: 30px;
+  padding: 10px;
+}
+
+.s_review {
+	margin-top: 20px; 
+	border-top: 1px solid #ccc; 
+	line-height: 2.0;
+}

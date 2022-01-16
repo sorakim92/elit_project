@@ -2,26 +2,93 @@ package egov.service1;
 
 public class ProgressOrderVO {
 
-	private int oderindex;
+	private int orderindex;
 	private String menuname;
 	private int price;
-	private String comnment1;
+	private String comment1;
 	private String comment2;
 	private String map;
 	private String addr;
 	private String method;
 	private String rdate;
 	private String adate;
-	private String reveive;
+	private String REVEIVE;
 	private String complete;
 	private String accept;
 	private int storeunq;
 	private String userid;
-	public int getOderindex() {
-		return oderindex;
+	private String phone;
+	private String acctime;
+	private String dctime;
+	private String storename;
+	private String storephone;
+	
+	private String storelongitude;
+	private String storelatitude;
+	
+	
+	
+	
+
+	public String getStorelongitude() {
+		return storelongitude;
 	}
-	public void setOderindex(int oderindex) {
-		this.oderindex = oderindex;
+	public void setStorelongitude(String storelongitude) {
+		this.storelongitude = storelongitude;
+	}
+	public String getStorelatitude() {
+		return storelatitude;
+	}
+	public void setStorelatitude(String storelatitude) {
+		this.storelatitude = storelatitude;
+	}
+	public String getStorephone() {
+		return storephone;
+	}
+	public void setStorephone(String storephone) {
+		this.storephone = storephone;
+	}
+	public String getStorename() {
+		return storename;
+	}
+	public void setStorename(String storename) {
+		this.storename = storename;
+	}
+	public String getDctime() {
+		return dctime;
+	}
+	public void setDctime(String dctime) {
+		this.dctime = dctime;
+	}
+	public String getREVEIVE() {
+		return REVEIVE;
+	}
+	public void setREVEIVE(String rEVEIVE) {
+		REVEIVE = rEVEIVE;
+	}
+	public String getAcctime() {
+		return acctime;
+	}
+	public void setAcctime(String acctime) {
+		this.acctime = acctime;
+	}
+	public int getOrderindex() {
+		return orderindex;
+	}
+	public void setOrderindex(int orderindex) {
+		this.orderindex = orderindex;
+	}
+	public String getComment1() {
+		return comment1;
+	}
+	public void setComment1(String comment1) {
+		this.comment1 = comment1;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	public String getMenuname() {
 		return menuname;
@@ -35,12 +102,7 @@ public class ProgressOrderVO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public String getComnment1() {
-		return comnment1;
-	}
-	public void setComnment1(String comnment1) {
-		this.comnment1 = comnment1;
-	}
+	
 	public String getComment2() {
 		return comment2;
 	}
@@ -78,10 +140,10 @@ public class ProgressOrderVO {
 		this.adate = adate;
 	}
 	public String getReveive() {
-		return reveive;
+		return REVEIVE;
 	}
 	public void setReveive(String reveive) {
-		this.reveive = reveive;
+		this.REVEIVE = reveive;
 	}
 	public String getComplete() {
 		return complete;

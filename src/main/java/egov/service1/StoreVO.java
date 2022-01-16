@@ -20,8 +20,22 @@ public class StoreVO {
 	private String storeimage;
 	private String menukeyword;
 	private int tagindex;
+	private int minprice;
+	private String catetest;
 	
-	
+
+	public String getCatetest() {
+		return catetest;
+	}
+	public void setCatetest(String catetest) {
+		this.catetest = catetest;
+	}
+	public int getMinprice() {
+		return minprice;
+	}
+	public void setMinprice(int minprice) {
+		this.minprice = minprice;
+	}
 	public int getStoreunq() {
 		return storeunq;
 	}

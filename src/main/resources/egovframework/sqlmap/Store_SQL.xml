@@ -1,9 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
 
-
-
 <sqlMap namespace = "store_space">
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="storeVO" type="egov.service1.StoreVO"/>
+	
+	
+	
+<!-- 	  StoreRegister화면 List (강성모) -->	 
+	<select id="storeDAO.selectstoreService" resultClass = "egovMap">
+		SELECT b.* FROM (
+			SELECT rownum rn, a.* from (	
+				SELECT  openindex,
+						storename,
+						region,
+						category,
+						phone,
+						email,
+						address,
+						name,
+						inquire,
+						to_char(rdate,'yyyy/mm/dd') rdate,
+						category2,
+						category3,
+						userid,
+						DECODE(UPPER(status),'P','대기','N','거절','Y','완료') status	
+				FROM	
+						businessenter
+				WHERE	
+						openindex IS NOT NULL 																
+				AND 	UPPER(status)='P'
+				
+				<isNotNull property="ktext">
+					<isNotEmpty property="ktext">
+					and (						
+						 region		LIKE '%$ktext$%'
+					OR   storename	LIKE '%$ktext$%'
+					OR   phone		LIKE '%$ktext$%'
+					OR   name		LIKE '%$ktext$%'
+					OR   email		LIKE '%$ktext$%'		
+					)
+					</isNotEmpty>
+				</isNotNull>								
+				ORDER BY rdate DESC) a )b
+				WHERE
+				rn between $s_no$ and $e_no$	
+	</select>
+<!-- 	storeRegister화면 페이징 -->
+	<select id="storeDAO.selectcountRE" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM businessenter WHERE UPPER(status)='P'
+	</select>
+	<select id="storeDAO.selectTotalRE" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM businessenter WHERE UPPER(status)='P'
+	</select>
+	
+	<!-- 	(강성모) -->
+	<select id="storeDAO.selectStoreDetail" resultClass="BusinessEnterVO">
+	
+		SELECT  openindex,
+				storename,
+				region,				
+				DECODE(category,'111','한식','222','치킨','333','일식','444','양식','555','중식','666','샐러드/샌드위치','777','분식','888','카페/디저트') category,				
+				category as cateunq,
+				phone,
+				email,
+				address,
+				name,
+				inquire,
+				to_char(rdate,'yyyy/mm/dd') rdate,
+				category2,
+				category3,
+				userid,
+				DECODE(UPPER(status),'P','대기','N','거절','Y','완료') status
+		FROM
+				businessenter
+		WHERE
+				openindex=#openindex#	
+	</select>
+	
+	<!-- 	(강성모) -->
+	<select id="storeDAO.selectsavecnt" resultClass="java.lang.Integer">	
+		select count(*) from store where userid=#userid#
+	</select>
+		
+	<!-- 	(강성모) -->
+	<insert id="storeDAO.insertStoreInfo">
+	
+	insert into store(
+				storeunq,
+				cateunq,
+				userid,
+				storename,
+				storephone,
+				storeaddr,
+				fee,
+				rdate,
+				minprice
+				)
+				values(
+				store_seq.nextval,
+				#cateunq#,
+				#userid#,
+				#storename#,
+				#storephone#,
+				#storeaddr#,
+				#fee#,
+				sysdate,
+				#minprice#
+				)
+					
+	</insert>
+	
+<!-- 	(강성모) -->
+	<update id="storeDAO.updateStoreStatus">
+	
+	UPDATE	 businessenter
+		SET	status='Y'
+		WHERE openindex=#openindex#
+	
+	</update>
+	
+	<!-- 	(강성모) -->
+	<update id="storeDAO.updateBusinessStatus">
+	UPDATE businessenter
+			SET status = 'N'
+			WHERE openindex=#openindex#
+	</update>
+	
+	
+	
+	
+	
+	
 </sqlMap>

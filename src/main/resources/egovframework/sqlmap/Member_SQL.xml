@@ -5,4 +5,148 @@
 <sqlMap namespace = "member_space">
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="memberVO" type="egov.service1.MemberVO"/>
+	
+	<!-- 회원가입 화면 (경석)  -->
+	<insert id="memberDAO.insertMember">
+		INSERT INTO member (
+			userid,
+			userpw,
+			reuserpw,
+			username,
+			email,
+			userphone,
+			useraddr1,
+			useraddr2,
+			useraddr3,
+			business) VALUES (
+			'$userid$',
+			'$userpw$',
+			'$reuserpw$',
+			'$username$',
+			'$email$',
+			'$userphone$',
+			'$useraddr1$',
+			'$useraddr2$',
+			'$useraddr3$',
+			'$business$'
+			)
+	</insert>
+	
+	<!-- 로그인화면 (경석)  -->
+	<select id="memberDAO.selectMemberCount" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM member
+			 WHERE userid = '$userid$' AND userpw = '$userpw$'
+	</select>
+	
+	<!-- 로그인 세션 처리용(경석) -->
+	<select id="memberDAO.selectMemberCerify" resultClass="memberVO">
+		SELECT 
+			userid, 
+			username
+		FROM member
+			WHERE userid = '$userid$'
+	</select>
+	<!-- 아이디 중복체크 (경석) -->
+	<select id="memberDAO.popidck" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM member WHERE userid = #userid#
+	</select>
+	
+	<select id="memberDAO.selectMemberIdCheck" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM member WHERE userid = #userid#
+	</select>
+
+	<!-- 비밀번호 찾기 (경석) -->
+	<select id="memberDAO.Pop_memberpassfind" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM member WHERE email = '$email$' AND userid = '$userid$'
+	</select>
+
+	<!-- 아이디 찾기 (경석) -->
+	<select id="memberDAO.Pop_useridfd" resultClass="java.lang.String">
+		SELECT userid FROM member WHERE email = #email#
+	</select>
+	
+	<!-- 사업자 로그인(소라) -->
+	<select id="memberDAO.selectBusinessMemberCount" resultClass="java.lang.Integer">
+		SELECT 
+				count(*)
+		 FROM 
+		 		member 
+		 WHERE
+		 		 userid=#userid# AND userpw =#userpw# AND UPPER(business)='Y'
+
+	</select>
+	
+	<!--  관리자 로그인 (소라) -->
+	<select id="memberDAO.selectAdminMemberLogin" resultClass="java.lang.Integer">
+		SELECT
+				 count(*) 
+		FROM	
+				 emp 
+		WHERE 
+				empid = #userid# AND passwd =#userpw# AND UPPER(section) = 'Y'
+	
+	</select>
+	
+	<!-- 회원정보 -->
+	<select id="memberDAO.selectmemberuser" resultClass="memberVO">
+		SELECT  userid,
+				userpw,
+				reuserpw,
+				email,
+				userphone,
+				useraddr1,
+				useraddr2,
+				useraddr3
+			FROM member
+			WHERE userid = '$userid$'
+							
+	</select>
+	
+	<!-- 회원정보 수정 -->
+	<update id="memberDAO.updatemember">
+	
+		UPDATE member
+				SET
+					userpw = '$userpw$',
+					reuserpw = '$reuserpw$',
+					email = '$email$',
+					userphone = '$userphone$',
+					useraddr1 = '$useraddr1$',
+					useraddr2 = '$useraddr2$',
+					useraddr3 = '$useraddr3$'
+				WHERE
+					userid = '$userid$'
+	
+	</update>
+	
+	<!-- 메인페이지 배달 주소 입력 시 멤버테이블 addr4,5 업데이트  -->
+	<update id="memberDAO.mainPageDeliveryAddr">
+		UPDATE
+				member
+		SET
+				useraddr4 = #useraddr4#,
+				useraddr5 = #useraddr5#
+		WHERE
+				userid = #userid#
+	
+	</update>
+	<!-- 비밀번호 변경 (경석) -->
+	<update id="memberDAO.Pop_newuserpw" >
+		UPDATE member SET userpw = '$userpw$',
+						  reuserpw = '$reuserpw$'
+					WHERE
+							userid = '$userid$' AND email = '$email$'
+	</update>
+	
+	<!-- 회원탈퇴 (경석) -->
+	<delete id="memberDAO.deletememberuser">
+		DELETE FROM member WHERE userid = '$userid$' AND userpw = '$userpw$'
+	</delete>
+
+	<!-- 사업자 회원탈퇴(경석) -->
+	<delete id="memberDAO.deleteBossMember">
+		DELETE FROM bossmember 
+			WHERE userid='$userid$' AND userpw ='$userpw$' AND UPPER(business)='Y'
+	</delete>
+
 </sqlMap>

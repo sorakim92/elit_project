@@ -5,4 +5,197 @@
 <sqlMap namespace = "BossMember_space">
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="bossmemberVO" type="egov.service1.BossMemberVO"/>
+	
+	<!-- 사업자 신청 토탈 데이터개수 -->
+	<select id="bossmemberDAO.selectBossTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM member WHERE (UPPER(business) = 'P'
+				OR 		UPPER(business) = 'Y')
+	</select>
+	
+	
+	<!-- 	사업자 화면 list 개수-->
+	<select id="bossmemberDAO.selectcountB" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM member WHERE (UPPER(business) = 'P'
+				OR 		UPPER(business) = 'Y')		
+	</select>
+	
+	
+<!-- 	사업자 등록페이지 List (강성모) -->
+	<select id="bossmemberDAO.selectbossmemberService" resultClass = "egovMap">
+		SELECT b.* FROM (
+			SELECT rownum rn, a.* from (	
+				SELECT  userid,
+						userpw,
+						username,
+						email,
+						userphone,					
+						decode(UPPER(business),'Y','사장님','P','일반회원') business,
+						rdate						
+				FROM	
+						member
+				WHERE	
+						userid IS NOT NULL 
+				AND		(UPPER(business) = 'P'
+				OR 		UPPER(business) = 'Y')
+				
+				<isNotNull property="k2text">
+					<isNotEmpty property="k2text">
+					and (
+					<!-- 오라클데이터의 Y값이 아닌 한글을 입력해도 검색어에 나오도록하기 -->
+					<isEqual property = "k2text" compareValue="사장">
+						business LIKE 'Y'
+					</isEqual>
+					<isEqual property = "k2text" compareValue="사장님">
+						business LIKE 'Y'
+					</isEqual>
+					<isEqual property = "k2text" compareValue="일반">
+						business LIKE 'P'
+					</isEqual>
+					<isEqual property = "k2text" compareValue="일반회원">
+						business LIKE 'P'
+					</isEqual>
+					
+					<!-- 위의 단어수 만큼 isnotequal만들어주자 -->
+					<isNotEqual property = "k2text" compareValue="사장">
+					<isNotEqual property = "k2text" compareValue="사장님">
+					<isNotEqual property = "k2text" compareValue="일반">
+					<isNotEqual property = "k2text" compareValue="일반회원">
+					
+						 business   LIKE '%$k2text$%'
+					OR   userid     LIKE '%$k2text$%'
+					OR   username   LIKE '%$k2text$%'
+					OR   userphone  LIKE '%$k2text$%' 
+					OR   email  LIKE '%$k2text$%' 
+					</isNotEqual>
+					</isNotEqual>
+					</isNotEqual>
+					</isNotEqual>
+				
+					
+					)
+					</isNotEmpty>
+				</isNotNull>
+				
+				ORDER BY rdate DESC) a )b
+				
+				WHERE
+				rn between $s_no$ and $e_no$
+				
+	</select>
+	<select id="bossmemberDAO.selectbossmemberDetail" resultClass="BossMemberVO">
+		SELECT 	userid, 
+				userphone,
+				email,
+				storeaddr
+				
+		FROM 
+				bossmember
+		WHERE 
+				userid = '$userid$'
+		
+		
+	
+	</select>
+
+	<select id = "bossmemberDAO.selectBossMemberInfo" resultClass = "BossMemberVO">
+		SELECT userid,
+				userpw,
+				username,
+				email,
+				userphone,
+				business
+		FROM 	
+				member
+		WHERE 	
+				userid = #userid# 
+		AND 	
+				business = 'Y'
+	</select>
+
+	<select id = "bossmemberDAO.selectBossMemberInfo2" resultClass = "BossMemberVO">
+		SELECT userid,
+				userpw,
+				username,
+				email,
+				userphone,
+				business
+		FROM 	
+				member
+		WHERE 	
+				userid = #userid# 
+		AND 	
+				business = 'P'
+	
+	
+	</select>
+	
+	<update id="bossmemberDAO.updatebossmember">
+		UPDATE bossmember
+			SET 
+				userpw=#userpw#,		
+				email=#email#,
+				userphone=#userphone#,
+				storeaddr=#storeaddr#
+				
+		WHERE userid = '$userid$'
+	</update>
+	
+	<update id ="bossmemberDAO.updateMemberBusiness">
+		UPDATE
+				member				
+		SET
+				business = 'Y'
+		WHERE
+				userid is not null and userid = #userid#
+	
+	</update>
+	
+	<update id ="bossmemberDAO.returnMemberBusiness">
+		UPDATE
+				member				
+		SET
+				business = 'P'
+		WHERE
+				userid is not null and userid = #userid#
+	</update>
+	<!-- member -> bossmember (강성모) -->
+	<insert id ="bossmemberDAO.insertBossMember">
+		
+		INSERT INTO bossmember(
+								    userid,
+								    userpw,
+								    username,
+								    email,
+								    userphone,
+								    storeaddr,
+								    business,
+								    rdate,
+								    storeunq
+								)
+			VALUES(
+									#userid#,
+									#userpw#,
+									#username#,
+									#email#,
+									#userphone#,
+									(SELECT storeaddr
+									        FROM store
+									        WHERE userid = #userid#),									     
+									#business#,
+									sysdate,									
+									(SELECT storeunq FROM store WHERE userid=#userid#)
+					)
+	
+		
+	
+	</insert>
+	
+	<delete id ="bossmemberDAO.deleteBossMember">
+	
+	DELETE FROM bossmember
+	WHERE userid IS NOT NULL AND userid = #userid#
+	
+	</delete>
+				
+
 </sqlMap>

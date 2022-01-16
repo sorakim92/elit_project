@@ -7,4 +7,63 @@
 	<typeAlias  alias="businessenterVO" type="egov.service1.BusinessEnterVO"/>
 
 
+
+	<insert id = "businessenterDAO.insertbusinessEnterWrite">
+		
+		<![CDATA[
+		INSERT INTO businessenter(
+						openindex,
+						userid,
+						storename,
+						region,
+						category,
+						category2,
+						category3,
+						phone,
+						email,
+						address,
+						name,
+						inquire,
+						rdate,
+						status
+									
+						       )  
+				VALUES  ( businessenter_seq.nextval,
+							'$userid$',
+							'$storename$',
+							'$region$',
+							'$category$',
+							'$category2$',
+							'$category3$',
+							'$phone$',
+							'$email$',
+							'$address$',
+							'$name$',
+							'$inquire$',
+							sysdate,
+							'P'				
+							)
+		 ]]>
+
+	</insert>
+	
+	<select id="businessenterDAO.selectbusinessEnterList"  resultClass="egovMap"  >
+		  SELECT 
+						
+						storename,
+						region,
+						category,
+						category2,
+						category3,
+						phone,
+						email,
+						address,
+						name,
+						inquire,
+						userid
+						FROM  businessenter WHERE userid = #userid#
+		
+		
+	</select>
+
 </sqlMap>

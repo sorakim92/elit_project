@@ -3,7 +3,115 @@
 
 <sqlMap namespace="ad_space" >
 
-<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
-<typeAlias  alias="adVO" type="egov.service1.AdVO"/>
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="adVO" type="egov.service1.AdVO"/>
+	
+	<insert id = "adDAO.insertAd">
+			   INSERT INTO ad( adindex,
+							email,
+							name,
+							userid,
+							phone,	
+							service,
+							ment,
+							rdate,
+							status	
+							       )  
+					VALUES  ( ad_seq.nextval,
+								'$email$',
+								'$name$',
+								'$userid$',
+								'$phone$',
+								'$service$',
+								'$ment$',
+								sysdate	,	
+								'P'			
+								)
+
+	</insert>
+	
+<!-- 	광고페이지 List 강성모-->
+	<select id="adDAO.selectadService" resultClass = "egovMap">
+		SELECT b.* FROM (
+			SELECT rownum rn, a.* from (	
+				SELECT  adindex,
+						userid,
+						DECODE(UPPER(service),'U','메인상단','L','메인하단') service,
+						ment,
+						sdate,
+						edate,
+						to_char(rdate,'yyyy/mm/dd') rdate,
+						banner,
+						adrejection,
+						DECODE(UPPER(status),'P','대기','N','거절','Y','완료') status,
+						email,
+						phone,
+						name					
+				FROM	
+						ad
+				WHERE	
+						userid IS NOT NULL
+				ORDER BY rdate DESC) a )b
+			WHERE
+				rn between $s_no$ and $e_no$
+	</select>
+
+<!-- 광고 DETAIL 강성모 -->
+	<select id="adDAO.selectadDetailService" resultClass = "adVO">
+		SELECT b.* FROM (
+			SELECT rownum rn, a.* from (	
+				SELECT  adindex,
+						userid,
+						service,
+						ment,
+						sdate,
+						edate,
+						adrejection,
+						to_char(rdate,'yyyy/mm/dd') rdate,
+						banner,
+						status,
+						email,
+						phone,
+						name				
+				FROM	
+						ad
+				WHERE	
+						adindex = #adindex#
+				ORDER BY rdate DESC) a )b
+	</select>
+
+<!-- 	광고 승인대기 list 개수-->
+	<select id = "adDAO.selectcount" resultClass ="java.lang.Integer">
+	
+		SELECT count(*) from ad where UPPER(status) = 'P'
+	
+	
+	</select>
+
+<!-- 광고 신청 토탈 데이터개수 -->
+	<select id ="adDAO.selectAdTotal" resultClass="java.lang.Integer">		
+		SELECT count(*) FROM ad	
+	</select>
+
+<!--  광고 배너 상단 불러오기 (소라)  -->
+	<select id="adDAO.selectAdBanner" resultClass="egovMap">
+		select banner, status, service, adindex,sdate, edate from ad 
+		where banner is not null and upper(status) ='Y'
+	</select>
+
+
+	<update id = "adDAO.adApproveService">
+		UPDATE ad
+				SET    banner = #banner#,
+						status = 'Y'
+				WHERE adindex = #adindex#
+	</update>
+
+	<update id="adDAO.updateAdStatus">
+	UPDATE ad
+			SET status = 'N',
+				adrejection=#adrejection#
+			WHERE adindex = #adindex#
+	</update>
 
 </sqlMap>

@@ -5,4 +5,69 @@
 <sqlMap namespace = "menu_space">
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="menuVO" type="egov.service1.MenuVO"/>
+	
+	<insert id = "menuDAO.insertMenu" >
+		<![CDATA[
+	
+		INSERT INTO menu(
+						menuunq,
+						menuname,
+						menukeyword,
+						menuinfo,
+						price,
+						menuimage
+						       )  
+				VALUES  ( menu_seq.nextval,
+							'$menuname$',
+							'$menukeyword$',
+							'$menuinfo$',
+							'$price$',
+							'$filename$'					
+							)
+		]]>
+
+	</insert>
+	<update id="menuDAO.updateMenu">
+		UPDATE menu 
+			SET 
+				menuname='$menuname$',
+				menuinfo='$menuinfo$',
+				price = '$price$',
+				menuimage = '$filename$',
+				menukeyword = '$menukeyword$'
+		WHERE menuunq = '$menuunq$'
+	</update>
+	
+	<select id="menuDAO.selectMenuList"  resultClass="egovMap"  >
+		SELECT 
+				menuunq,	
+				menuname,
+				menuimage,
+				menukeyword,
+				price 
+		FROM menu 
+		
+		  		
+	</select>
+	
+	<select id="menuDAO.selectMenuDetail" resultClass="MenuVO">
+		SELECT 	menuunq, 
+				menuname,
+				menuinfo,
+				menuimage,
+				price,
+				menukeyword
+				
+		FROM menu 
+		WHERE menuunq = #menuunq#
+	
+	</select>
+	
+	<delete id="menuDAO.deleteMenu">
+	
+		DELETE FROM menu WHERE menuunq = '$menuunq$'
+	
+	</delete>
+	
+	
 </sqlMap>

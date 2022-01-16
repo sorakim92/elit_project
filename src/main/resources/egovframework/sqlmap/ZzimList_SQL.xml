@@ -5,4 +5,109 @@
 <sqlMap namespace = "zzimlist_space">
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="zzimlistVO" type="egov.service1.ZzimListVO"/>
+	
+	<insert id="zzimlistDAO.insertZzimList">
+	<![CDATA[
+		INSERT INTO ZzimList(zzimindex,
+							 rdate,
+							 userid,
+							 storeunq,						 
+							 likechk,
+							 cateunq  )
+							 
+				   VALUES  ( zzimlist_seq.nextval,
+				   			 sysdate,
+							 '$userid$',
+							 '$storeunq$',						 
+							 '$likechk$',
+							 '$cateunq$'  )
+						
+		]]>			
+	</insert>
+	
+	<select id="zzimlistDAO.selectZzimList" resultClass="egovMap">
+	
+		
+			
+			select  zzimlist.ZZIMINDEX,
+			        zzimlist.RDATE,
+			        zzimlist.USERID,
+			        zzimlist.STOREUNQ,
+			        zzimlist.LIKECHK,
+			        zzimlist.CATEUNQ,  
+			        STORENAME,
+			        STOREINFO
+			from zzimlist    join store on zzimlist.storeunq = store.storeunq
+			
+			where    zzimlist.userid = #userid# and zzimlist.likechk = 'L'
+		
+	</select>
+	
+	<select id="zzimlistDAO.selectZzimListTotal" resultClass="java.lang.Integer">
+	
+		SELECT COUNT(*) FROM zzimlist
+			
+	</select>
+	
+	
+	<!-- 소라 -->
+	<select id = "zimlistDAO.LikeInsertChk" resultClass ="java.lang.Integer">
+		select count(*) from zzimlist where userid = #userid# and storeunq = #storeunq# and cateunq = #cateunq#
+	</select>
+	
+	<!-- 소라 -->
+	<select id="zimlistDAO.selectLikeChk" resultClass = "java.lang.String" >
+		select 
+				likechk 
+		from 
+				zzimlist 
+		where 
+				userid = #userid# and storeunq = #storeunq# and cateunq = #cateunq#
+	</select>
+	
+	<!-- 소라 -->
+	<insert id="zimlistDAO.insertZzimlike">
+	
+		INSERT INTO zzimlist(
+							zzimindex,
+							rdate,
+							userid,
+							storeunq,
+							likechk,
+							cateunq
+									)VALUES (
+							zzimlist_seq.nextval,
+							sysdate,		
+							#userid#,
+							#storeunq#,		
+							'L',
+							#cateunq#) 
+			
+	</insert>
+	
+	<!-- 소라 -->
+	<update id="zimlistDAO.addzzimlike">
+	
+		UPDATE  
+				zzimlist 
+		SET 
+				likechk = 'L'
+		WHERE
+				userid= #userid# and storeunq = #storeunq# and cateunq = #cateunq#
+	</update>
+	
+	<!-- 소라 -->
+	<update id="zimlistDAO.cancelzzimlike">
+			UPDATE  
+				zzimlist 
+		SET 
+				likechk = 'U'
+		WHERE
+				userid= #userid# and storeunq = #storeunq# and cateunq = #cateunq#
+	
+	</update>
+	
+	
+	
+	
 </sqlMap>

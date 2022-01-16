@@ -1,5 +1,7 @@
 package egov.service1;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class MenuVO {
 	private int menuunq;
 	private String menuname;
@@ -9,6 +11,35 @@ public class MenuVO {
 	private int price;
 	private int cateunq;
 	private int storeunq;
+	private String userid;
+	private String filename;
+	private MultipartFile uploadFile;
+
+
+
+	
+	
+	
+	
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
 	public int getMenuunq() {
 		return menuunq;
 	}
