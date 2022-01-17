@@ -20,10 +20,12 @@ YouTube에 제가 담당한 파트를 촬영하여 업로드한 영상을 확인
 ---
 
 ### 📌  **프로젝트 상세**
-<a href="https://drive.google.com/file/d/1ASvnZ5V95S9NWzgoVTMi0tZW5MWBdWcG/view?usp=sharing" target="_blank" rel="noopener noreferrer">[ 프로젝트 pdf로 보기 ]</a>
+<a href="https://drive.google.com/file/d/1ASvnZ5V95S9NWzgoVTMi0tZW5MWBdWcG/view?usp=sharing" target="_blank" rel="noopener noreferrer">[ pdf 현재창에서 열기 ]</a>
 
 
 프로젝트 기획의도 및 개발환경, 화면정의서를 pdf로 확인해 주세요 :) 
 
 ---
 
+<img width="800" alt="elit_project_description" src="https://user-images.githubusercontent.com/89364507/149778106-bd1d7adf-a7fc-4a9e-baf9-1645e1041f3d.png">
+<img width="800" alt="elit_flow_chart" src="https://user-images.githubusercontent.com/89364507/149778125-f6f91489-11e6-42f4-9502-8f1f2de68211.png">
