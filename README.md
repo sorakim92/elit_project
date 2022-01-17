@@ -19,8 +19,8 @@ YouTube에 제가 담당한 파트를 촬영하여 올려두었으니 방문해�
 
 ---
 
-### 📌  **Portfolio**
-<a href="https://github.com/sorakim92/elit_project/files/7878006/Sora.Kim.Portfolio_elit.pdf" target="_blank" rel="noopener noreferrer">[Sora Kim Portfolio_elit.pdf]</a>
+### 📌  **프로젝트 상세**
+<a href="https://drive.google.com/file/d/1ASvnZ5V95S9NWzgoVTMi0tZW5MWBdWcG/view?usp=sharing" target="_blank" rel="noopener noreferrer">[ 프로젝트 pdf로 보기 ]</a>
 
 ---
 
